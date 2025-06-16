@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:food_near_me_app/views/controllers/splash_controller.dart';
+import 'package:food_near_me_app/views/widgets/matwid/loadingcircle.dart';
+import 'package:get/get.dart';
+
+import 'widgets/matwid/backgoundsplash.dart';
+
+
+class SplashUi extends StatelessWidget {
+  const SplashUi({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final SplashContrller counterController = Get.put(SplashContrller());
+
+    return Scaffold(
+      body: Stack(
+        
+        children: [
+          Positioned.fill(child: Backgoundsplash()),
+          Scaffold(
+             backgroundColor: Colors.transparent,
+            body: Center(
+              child: LoadingCircle(),
+            ),
+          )
+          
+
+        ],
+      ),
+    );
+  }
+}

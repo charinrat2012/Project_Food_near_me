@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 // Import หน้า HomeUi ของคุณ
-import 'package:food_near_me_app/views/home_ui.dart';
-import 'package:food_near_me_app/views/login_ui.dart';
 
 import 'controllers/pagectrl.dart'; // ตัวอย่างหน้าจออื่นๆ ในแท็บ
 

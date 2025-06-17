@@ -278,7 +278,7 @@ Widget build(BuildContext context) {
 
   Widget _buildProvinceDropdown() {
   return _buildContainer(
-    Container(
+    SizedBox(
       width: 130, // ✅ ความยาวของปุ่ม (ปรับค่าตามต้องการ เช่น 200, 250, 300)
       child: DropdownButton<String>(
         isExpanded: true, // ✅ ให้ปุ่มขยายเต็มความกว้างที่กำหนด
@@ -314,7 +314,7 @@ Widget build(BuildContext context) {
   final districts = districtsByProvince[selectedProvince] ?? [];
 
   return _buildContainer(
-    Container(
+    SizedBox(
       width: 175, // ✅ ปรับความยาวของปุ่มตามต้องการ
       child: DropdownButton<String>(
         isExpanded: true, // ✅ ให้ปุ่มขยายเต็ม container
@@ -380,7 +380,7 @@ Widget build(BuildContext context) {
 
   Widget _buildLocationButton() {
   return _buildContainer(
-    Container(
+    SizedBox(
      
       width: 150, 
       child: TextButton.icon(

@@ -6,7 +6,6 @@ import 'package:food_near_me_app/views/widgets/otpwid/form_otp.dart';
 import 'package:food_near_me_app/views/widgets/matwid/iconperson.dart';
 import 'package:food_near_me_app/views/widgets/otpwid/otp_head.dart';
 import 'package:food_near_me_app/views/widgets/otpwid/otp_logo.dart';
-import 'package:get/get.dart';
 
 import 'widgets/otpwid/otp_bt.dart';
 

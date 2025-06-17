@@ -4,22 +4,28 @@ import 'package:get/get.dart';
 class BackBt extends StatelessWidget {
   const BackBt({super.key});
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-           Align(
-            
-                              alignment: Alignment.centerLeft,
-                              child: IconButton(
-                                onPressed: () {
-                                  FocusScope.of(Get.context!).unfocus();
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(Icons.arrow_back_ios_new_outlined),
-                                color: Colors.white.withValues(alpha: 8 * 0.05),
-                              ),
-                            ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: IconButton(
+            onPressed: () {
+              FocusScope.of(Get.context!).unfocus();
+              Navigator.pop(context);
+            },
+           
+            icon: Image.asset( 
+              "assets/ics/backicon.png", 
+              width: 50.0, 
+              height: 50.0, 
+              color: Colors.white,
+              
+                                    
+            ),
+          ),
+        ),
       ],
     );
   }

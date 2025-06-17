@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_near_me_app/views/details_ui.dart';
-import 'package:food_near_me_app/views/login_ui.dart';
-import 'package:food_near_me_app/views/register_ui.dart';
 import 'package:food_near_me_app/views/splash_ui.dart';
 import 'package:get/get.dart';
 
@@ -31,7 +29,7 @@ void main() {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: (DetailsUi()), //DetailsUi
+      home: (SplashUi()), //DetailsUi
     );
   }
 }

@@ -2,17 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/views/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/views/widgets/matwid/blurcontainer.dart';
-import 'package:food_near_me_app/views/widgets/matwid/checkbox.dart';
-import 'package:food_near_me_app/views/widgets/otpwid/form_otp.dart';
 import 'package:food_near_me_app/views/widgets/resetwid/from_reset.dart';
 import 'package:food_near_me_app/views/widgets/matwid/iconperson.dart';
-import 'package:food_near_me_app/views/widgets/otpwid/otp_head.dart';
-import 'package:food_near_me_app/views/widgets/otpwid/otp_logo.dart';
 import 'package:food_near_me_app/views/widgets/regiswid/resetpass_bt.dart';
 import 'package:food_near_me_app/views/widgets/resetwid/resetpass_head.dart';
-import 'package:get/get.dart';
 
-import 'widgets/otpwid/otp_bt.dart';
 
 class ResetpassUi extends StatelessWidget {
   const ResetpassUi({super.key});

@@ -3,7 +3,6 @@ import 'package:food_near_me_app/views/controllers/resetpassctrl.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../controllers/registerctrl.dart';
 
 class ResetpassBt extends StatelessWidget {
   ResetpassBt({super.key});

@@ -3,11 +3,9 @@ import 'package:food_near_me_app/views/controllers/registerctrl.dart';
 import 'package:food_near_me_app/views/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/views/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/views/widgets/matwid/blurcontainer.dart';
-import 'package:food_near_me_app/views/widgets/matwid/logo.dart';
 import 'package:food_near_me_app/views/widgets/regiswid/register_bt.dart';
 import 'package:food_near_me_app/views/widgets/regiswid/register_head.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:food_near_me_app/views/widgets/regiswid/form_register.dart';
 

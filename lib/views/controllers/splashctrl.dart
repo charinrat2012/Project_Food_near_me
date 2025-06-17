@@ -1,6 +1,3 @@
-import 'package:food_near_me_app/views/home_ui.dart';
-import 'package:food_near_me_app/views/login_ui.dart';
-import 'package:food_near_me_app/views/register_ui.dart';
 import 'package:get/get.dart';
 
 import '../navbar.dart';

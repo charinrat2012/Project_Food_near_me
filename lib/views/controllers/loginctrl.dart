@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/home_ui.dart';
-import 'package:food_near_me_app/views/splash_ui.dart';
 import 'package:get/get.dart';
 
 
 
 class LoginController extends GetxController {
-  final emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   final _obscureText = true.obs;

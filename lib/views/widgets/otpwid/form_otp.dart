@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/otp_cotroller.dart';
+import 'package:food_near_me_app/views/controllers/otpctrl.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 

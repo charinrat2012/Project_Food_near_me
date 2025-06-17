@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/widgets/forgotwid/form_forgot.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'controllers/fogotpass_controller.dart';
+import 'controllers/fogotpassctrl.dart';
 import 'widgets/forgotwid/forgot_head.dart';
 import 'widgets/forgotwid/sent_bt.dart';
 import 'widgets/matwid/back_bt.dart';

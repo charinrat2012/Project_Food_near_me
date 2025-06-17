@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:food_near_me_app/views/controllers/login_controller.dart';
+import 'package:food_near_me_app/views/controllers/loginctrl.dart';
 
 class FormLogin extends StatelessWidget {
   FormLogin({super.key});

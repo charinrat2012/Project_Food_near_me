@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/register_controller.dart';
+import 'package:food_near_me_app/views/controllers/registerctrl.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 

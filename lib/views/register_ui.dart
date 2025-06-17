@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/register_controller.dart';
+import 'package:food_near_me_app/views/controllers/registerctrl.dart';
 import 'package:food_near_me_app/views/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/views/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/views/widgets/matwid/blurcontainer.dart';

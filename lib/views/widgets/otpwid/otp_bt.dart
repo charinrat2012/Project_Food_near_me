@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../controllers/otp_cotroller.dart';
+import '../../controllers/otpctrl.dart';
 
 class OtpBt extends StatelessWidget {
    OtpBt({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/splash_controller.dart';
+import 'package:food_near_me_app/views/controllers/splashctrl.dart';
 import 'package:food_near_me_app/views/widgets/matwid/loadingcircle.dart';
 import 'package:get/get.dart';
 

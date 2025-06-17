@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../controllers/resetpass_controller.dart';
+import '../../controllers/resetpassctrl.dart';
 
 class FormReset extends StatelessWidget {
    FormReset({super.key});

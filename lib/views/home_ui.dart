@@ -100,42 +100,42 @@ class HomeUi extends StatelessWidget {
                                 isOpen: false,
                                 showMotorcycleIcon: false),
                             RestaurantCard(
-                                imageUrl: 'assets/imgs/pama.png',
-                                restaurantName: 'Pasta AMA',
+                                imageUrl: 'assets/imgs/im1.jpg',
+                                restaurantName: 'UMENOHANA นิฮอนมูระมอลล์',
                                 description:
-                                    'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
+                                    'ร้านนี้โดดเด่นที่เมนูเต้าหู้ มาแล้วต้องลองกับฟองเต้าหู้สดที่เราต้มเองกับมือ! รายละเอียดเพิ่มเติม คลิกได้เลย',
                                 rating: 3.5,
                                 isOpen: true,
                                 showMotorcycleIcon: true),
                             RestaurantCard(
-                                imageUrl: 'assets/imgs/pama.png',
-                                restaurantName: 'Pasta AMA',
+                                imageUrl: 'assets/imgs/im2.jpg',
+                                restaurantName: 'Simple Day Gelato',
                                 description:
-                                    'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
+                                    'ร้านเล็กๆสำหรับคนรักขนมหวานที่เรานำทุกเมนูโปรด ชนิดที่เรียกว่าเป็นขนมที่ต้องมีติดบ้านไว้เสมอ  รายละเอียดเพิ่มเติม คลิกได้เลย',
                                 rating: 1.5,
                                 isOpen: true,
                                 showMotorcycleIcon: true),
                             RestaurantCard(
-                                imageUrl: 'assets/imgs/pama.png',
-                                restaurantName: 'Pasta AMA',
+                                imageUrl: 'assets/imgs/im3.jpg',
+                                restaurantName: 'มิตรโกหย่วน',
                                 description:
-                                    'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
+                                    ' ร้านอาหารตามสั่ง เจ้าเด็ดที่ต่อมา เราขอพาทุกคนไปอิ่มกับร้าน มิตรโกหย่วน แถวย่านเสาชิงช้า รายละเอียดเพิ่มเติม คลิกได้เลย',
                                 rating: 0.5,
                                 isOpen: true,
                                 showMotorcycleIcon: false),
                             RestaurantCard(
-                                imageUrl: 'assets/imgs/pama.png',
-                                restaurantName: 'Pasta AMA',
+                                imageUrl: 'assets/imgs/im4.jpg',
+                                restaurantName: 'ส้มตำหม่องปลาแดก',
                                 description:
-                                    'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
+                                    'ร้านส้มตำที่ขึ้นชื่อเรื่องความจัดจ้านแบบไม่เป็นสองรองใครในย่านลาดกระบัง สารพัดเมนูตำแซ่บๆ มาเพียบ! รายละเอียดเพิ่มเติม คลิกได้เลย',
                                 rating: 4.5,
                                 isOpen: false,
                                 showMotorcycleIcon: true),
                             RestaurantCard(
-                                imageUrl: 'assets/imgs/pama.png',
-                                restaurantName: 'Pasta AMA',
+                                imageUrl: 'assets/imgs/im5.jpg',
+                                restaurantName: 'เหมยหมึกเป็นซาชิมิ',
                                 description:
-                                    'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
+                                    'ร้านของเราคือการคัดสรรวัตถุดิบคุณภาพ เมนูอาหารทะเลที่หลากหลายกว่า 200 เมนู ไม่ต้องไปไกลถึงทะเล ร้านเราก็มีขาย! รายละเอียดเพิ่มเติม คลิกได้เลย',
                                 rating: 0.1,
                                 isOpen: true,
                                 showMotorcycleIcon: false),

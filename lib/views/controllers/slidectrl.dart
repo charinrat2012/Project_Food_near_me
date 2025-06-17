@@ -9,6 +9,10 @@ class SlideController extends GetxController {
     'assets/imgs/bn2.png',
     'assets/imgs/bn3.png',
     'assets/imgs/bn4.png',
+    'assets/imgs/bn5.jpg',
+    'assets/imgs/bn6.jpg',
+    'assets/imgs/bn7.jpg',
+    
   ];
 
   late final RxList<String> displayPizzaImages;

@@ -17,6 +17,7 @@ class ScrollToTopButton extends StatelessWidget {
       onPressed: onPressed,
       mini: false,
       backgroundColor: Colors.pink[200],
+      heroTag: null,
       child: const Icon(
         Icons.keyboard_double_arrow_up_sharp,
         color: Colors.white,

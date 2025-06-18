@@ -1,0 +1,95 @@
+import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'package:food_near_me_app/views/controllers/reviewctrl.dart';
+import 'package:food_near_me_app/views/home_ui.dart'; // Correct import path for HomeUi
+
+class RestaurantDetailController extends GetxController {
+  final TextEditingController commentController = TextEditingController();
+  final RxDouble userRating = 0.0.obs;
+
+  final String restaurantId;
+
+  // RxMap for restaurant data
+  final RxMap<String, dynamic> restaurantData = <String, dynamic>{}.obs;
+
+  late final ReviewController _reviewController;
+
+  // RxList for reviews specific to this restaurant
+  final RxList<Map<String, dynamic>> reviews = <Map<String, dynamic>>[].obs;
+
+
+  RestaurantDetailController({required this.restaurantId});
+
+  @override
+  void onInit() {
+    super.onInit();
+    _reviewController = Get.find<ReviewController>();
+
+    // Access static restaurantList directly from HomeUi
+    final foundRestaurant = HomeUi.restaurantList.firstWhereOrNull(
+      (restaurant) => restaurant['id'] == restaurantId,
+    );
+
+    if (foundRestaurant != null) {
+      restaurantData.value = Map<String, dynamic>.from(foundRestaurant); // Convert to mutable Map<String, dynamic> if needed
+      print('RestaurantDetailController: Loaded restaurant data for ID: $restaurantId');
+    } else {
+      print('Error: Restaurant data not found for ID: $restaurantId');
+      Get.snackbar('ข้อผิดพลาด', 'ไม่พบข้อมูลร้านค้า', snackPosition: SnackPosition.TOP);
+    }
+
+    // Load initial reviews when the controller is initialized
+    _loadReviews();
+  }
+
+  void _loadReviews() {
+    reviews.value = _reviewController.getReviewsForRestaurant(restaurantId);
+    print('RestaurantDetailController: Loaded reviews for ID: $restaurantId, count: ${reviews.length}');
+  }
+
+
+  @override
+  void onClose() {
+    commentController.dispose();
+    super.onClose();
+  }
+
+  void onRatingChanged(double newRating) {
+    userRating.value = newRating;
+  }
+
+  void submitReview() {
+    if (commentController.text.isNotEmpty && userRating.value > 0) {
+      final newReview = {
+        'user': 'ผู้ใช้ใหม่ (คุณ)', // Placeholder for user's name
+        'rating': userRating.value,
+        'comment': commentController.text,
+      };
+
+      _reviewController.addReview(restaurantId, newReview);
+      
+      // After adding the review, reload the reviews for THIS specific restaurant
+      _loadReviews(); // This will update the 'reviews' RxList and trigger UI rebuilds
+
+      commentController.clear();
+      userRating.value = 0.0;
+
+      Get.snackbar(
+        'ส่งรีวิวแล้ว',
+        'รีวิวของคุณถูกส่งเรียบร้อยแล้วค่ะ!',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.green[400],
+        colorText: Colors.white,
+      );
+      print('RestaurantDetailController: Review submitted for ID: $restaurantId, new total reviews: ${reviews.length}');
+    } else {
+      Get.snackbar(
+        'ข้อผิดพลาด',
+        'โปรดให้คะแนนและเขียนคอมเมนต์ให้ครบถ้วนก่อนส่ง',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.red[400],
+        colorText: Colors.white,
+      );
+    }
+  }
+}

@@ -6,7 +6,7 @@ import '../../controllers/otpctrl.dart';
 
 class OtpBt extends StatelessWidget {
    OtpBt({super.key});
-  final OtpCotroller controller = Get.put(OtpCotroller());
+  final OtpCotroller controller = Get.find<OtpCotroller>();
   @override
   Widget build(BuildContext context) {
     return Column(

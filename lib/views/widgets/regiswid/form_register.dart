@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FormRegister extends StatelessWidget {
   FormRegister({super.key});
-  RegisterController controller = Get.put(RegisterController());
+ final RegisterController controller = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {

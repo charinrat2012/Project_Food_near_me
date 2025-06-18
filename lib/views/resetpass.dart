@@ -4,7 +4,7 @@ import 'package:food_near_me_app/views/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/views/widgets/matwid/blurcontainer.dart';
 import 'package:food_near_me_app/views/widgets/resetwid/from_reset.dart';
 import 'package:food_near_me_app/views/widgets/matwid/iconperson.dart';
-import 'package:food_near_me_app/views/widgets/regiswid/resetpass_bt.dart';
+import 'package:food_near_me_app/views/widgets/resetwid/resetpass_bt.dart';
 import 'package:food_near_me_app/views/widgets/resetwid/resetpass_head.dart';
 
 

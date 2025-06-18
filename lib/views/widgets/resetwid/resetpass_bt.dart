@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ResetpassBt extends StatelessWidget {
   ResetpassBt({super.key});
-  ResetpassController controller = Get.put(ResetpassController());
+  final ResetpassController controller = Get.find<ResetpassController>();
 
   @override
   Widget build(BuildContext context) {

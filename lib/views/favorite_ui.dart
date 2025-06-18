@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class FavoriteUi extends StatelessWidget {
   const FavoriteUi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('หน้าโปรไฟล์'),
-        backgroundColor: Colors.orangeAccent,
-        foregroundColor: Colors.white,
-      ),
-      body: const Center(
-        child: Text('ดูโปรไฟล์ของคุณที่นี่', style: TextStyle(fontSize: 24)),
+    // <--- ลบ Scaffold ออกไปเลย
+    return Center( // คุณสามารถใช้ Column, ListView, SingleChildScrollView หรือ Stack แทนได้ ขึ้นอยู่กับเนื้อหาของคุณ
+      child: Column( // ตัวอย่าง: ใช้ Column เป็นเนื้อหาหลัก
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Icon(Icons.favorite, size: 100, color: Colors.red),
+          SizedBox(height: 20),
+          Text('ดูรายการโปรดของคุณที่นี่', style: TextStyle(fontSize: 24)),
+        ],
       ),
     );
   }

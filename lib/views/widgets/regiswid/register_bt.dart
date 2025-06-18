@@ -6,7 +6,7 @@ import '../../controllers/registerctrl.dart';
 
 class RegisterBt extends StatelessWidget {
   RegisterBt({super.key});
-  RegisterController controller = Get.put(RegisterController());
+  final RegisterController controller = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {

@@ -11,21 +11,16 @@ class SplashUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SplashContrller counterController = Get.put(SplashContrller());
+   final SplashContrller counterController = Get.find<SplashContrller>();
 
-    return Scaffold(
-      body: Stack(
-        
+    return Scaffold( // <--- Scaffold หลักเพียงตัวเดียว
+      backgroundColor: Colors.transparent, // ตั้งค่าสีพื้นหลัง หรือสีที่คุณต้องการ
+      body: Stack( // <--- ใช้ Stack เป็น body ของ Scaffold
         children: [
-          Positioned.fill(child: Backgoundsplash()),
-          Scaffold(
-             backgroundColor: Colors.transparent,
-            body: Center(
-              child: LoadingCircle(),
-            ),
-          )
-          
-
+          Positioned.fill(child: Backgoundsplash()), // พื้นหลังเต็มหน้าจอ
+          Center( // วาง LoadingCircle ไว้ตรงกลาง
+            child: LoadingCircle(),
+          ),
         ],
       ),
     );

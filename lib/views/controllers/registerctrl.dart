@@ -80,12 +80,8 @@ class RegisterController extends GetxController {
     confirmPasswordController.clear();
     FocusScope.of(Get.context!).unfocus(); // Dismiss the keyboard
     // Navigate to the home page
-    Navigator.of(Get.context!).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => LoginUi(       
-        ),
-      ),
-    );
+    Get.offAll(LoginUi());
+    
     return;
   }
 }

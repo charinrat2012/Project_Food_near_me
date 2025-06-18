@@ -62,13 +62,10 @@ class ForgotpassController extends GetxController {
     emailController.clear();
     
     FocusScope.of(Get.context!).unfocus(); 
+    checkboxController.isChecked.value = false;
+    Get.to(() => OtpUi());
 
-    Navigator.of(Get.context!).push(
-      MaterialPageRoute(
-        builder: (context) => OtpUi(),
-      ),
 
-    );
     return;
   }
 }

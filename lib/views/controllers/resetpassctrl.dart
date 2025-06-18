@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:get/get.dart';
-
-
-
 class ResetpassController extends GetxController {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-
-
   final _obscureText = true.obs;
   final _obscureText2 = true.obs;
   get obscureText => _obscureText.value;
   get obscureText2 => _obscureText2.value;
   set obscureText(value) => _obscureText.value = value;
   set obscureText2(value) => _obscureText2.value = value;
-
   String oldpassword = '123456';
-
-
   void fetchReset() {
     // var context = Get.context!;
-
     if (passwordController.text.isEmpty|| confirmPasswordController.text.isEmpty ) {
       Get.closeAllSnackbars();
       Get.snackbar(
@@ -31,7 +22,6 @@ class ResetpassController extends GetxController {
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
-        
       );
       return;
     }   else if (passwordController.text.length < 6) {
@@ -43,7 +33,6 @@ class ResetpassController extends GetxController {
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
-        
       );
       return;
     } else if (passwordController.text != confirmPasswordController.text) {
@@ -55,7 +44,6 @@ class ResetpassController extends GetxController {
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
-        
       );
       return;
     }else if (passwordController.text == oldpassword || confirmPasswordController.text == oldpassword) {
@@ -67,23 +55,15 @@ class ResetpassController extends GetxController {
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
-        
       );
       return;
     }
-
     // Proceed with login logic
-    
     passwordController.clear();
     confirmPasswordController.clear();
     FocusScope.of(Get.context!).unfocus(); // Dismiss the keyboard
     // Navigate to the home page
-    Navigator.of(Get.context!).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => LoginUi(       
-        ),
-      ),
-    );
+     Get.offAll(() => LoginUi());
     return;
   }
 }

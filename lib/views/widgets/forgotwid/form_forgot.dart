@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 class FormForgot extends StatelessWidget {
    FormForgot({super.key});
 
-  final controller = Get.put(ForgotpassController());
-
+  // final controller = Get.put(ForgotpassController());
+final ForgotpassController controller = Get.find<ForgotpassController>();
 
   @override
   Widget build(BuildContext context) {

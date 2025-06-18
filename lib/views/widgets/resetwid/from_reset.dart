@@ -7,7 +7,8 @@ import '../../controllers/resetpassctrl.dart';
 
 class FormReset extends StatelessWidget {
    FormReset({super.key});
-  final ResetpassController controller = Get.put(ResetpassController());
+  final ResetpassController controller = Get.find<ResetpassController>();
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -7,7 +7,7 @@ import 'package:food_near_me_app/views/controllers/loginctrl.dart';
 class LoginBt extends StatelessWidget {
   LoginBt({super.key});
 
-  final LoginController controller = Get.put(LoginController());
+  final LoginController controller = Get.find<LoginController>();
   @override
   Widget build(BuildContext context) {
     return Column(

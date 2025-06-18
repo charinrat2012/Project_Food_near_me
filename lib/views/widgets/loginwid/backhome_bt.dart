@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/views/navbar.dart';
 import 'package:get/get.dart';
 
-class BackBt extends StatelessWidget {
-  const BackBt({super.key});
+class BackHomeBt extends StatelessWidget {
+  const BackHomeBt({super.key});
 
    @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class BackBt extends StatelessWidget {
           child: IconButton(
             onPressed: () {
               FocusScope.of(Get.context!).unfocus();
-              Get.back();
+              Get.offAll(() => Navbar());
             },
            
             icon: Image.asset( 

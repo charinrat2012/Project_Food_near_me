@@ -6,8 +6,8 @@ class FormOtp extends StatelessWidget {
   FormOtp({super.key});
 
   // ใช้ Get.put() เพื่อเข้าถึง OtpCotroller ที่สร้างไว้
-  final OtpCotroller controller = Get.put(OtpCotroller());
-
+  // final OtpCotroller controller = Get.put(OtpCotroller());
+final OtpCotroller controller = Get.find<OtpCotroller>();
   @override
   Widget build(BuildContext context) {
     return Row(

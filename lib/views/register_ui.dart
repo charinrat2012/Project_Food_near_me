@@ -14,7 +14,7 @@ import 'widgets/matwid/iconperson.dart';
 class RegisterUi extends StatelessWidget {
   RegisterUi({super.key});
 
-  final RegisterController controller = Get.put(RegisterController());
+  final RegisterController controller = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {

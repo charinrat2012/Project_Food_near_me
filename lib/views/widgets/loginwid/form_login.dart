@@ -6,7 +6,7 @@ import 'package:food_near_me_app/views/controllers/loginctrl.dart';
 
 class FormLogin extends StatelessWidget {
   FormLogin({super.key});
-  LoginController controller = Get.put(LoginController());
+  final LoginController controller = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {

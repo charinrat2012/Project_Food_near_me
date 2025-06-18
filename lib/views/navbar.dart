@@ -13,8 +13,8 @@ class Navbar extends StatelessWidget {
   Widget build(BuildContext context) {
     // สร้าง (หรือค้นหา) Instance ของ MainController
     // Get.put() จะสร้าง Controller ครั้งแรก และคืนค่า Instance เดิมในการเรียกครั้งถัดไป
-    final MainController controller = Get.put(MainController());
-
+    // final MainController controller = Get.put(MainController());
+final MainController controller = Get.find<MainController>();
     return PersistentTabView(
       controller: controller.tabController, // ใช้ tabController จาก Controller
       tabs: controller.tabs, // ใช้ getter tabs จาก Controller

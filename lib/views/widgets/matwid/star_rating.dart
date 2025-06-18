@@ -1,15 +1,15 @@
-// lib/views/widgets/star_rating.dart
-
 import 'package:flutter/material.dart';
 
 class StarRating extends StatelessWidget {
   final double rating;
-  final double size; // เพิ่มขนาดของดาวให้ปรับได้
+  final double size;
+  final Function(double)? onRatingChanged; 
 
   const StarRating({
     super.key,
     required this.rating,
-    this.size = 10, // กำหนดค่าเริ่มต้นตามที่คุณใช้ใน RestaurantCard
+    this.size = 24.0,
+    this.onRatingChanged, 
   });
 
   @override
@@ -17,25 +17,30 @@ class StarRating extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: List.generate(5, (index) {
+        
+        IconData iconData;
+        Color iconColor = Colors.pink; 
         if (index < rating.floor()) {
-          return Icon(
-            Icons.star,
-            color: Colors.pink,
-            size: size, // ใช้ size ที่รับมา
-          );
-        } else if (index == rating.floor() && (rating % 1 != 0)) {
-          return Icon(
-            Icons.star_half,
-            color: Colors.pink,
-            size: size, // ใช้ size ที่รับมา
-          );
+          iconData = Icons.star; 
+        } else if (index < rating) {
+          iconData = Icons.star_half; 
         } else {
-          return Icon(
-            Icons.star_border,
-            color: Colors.pink,
-            size: size, // ใช้ size ที่รับมา
-          );
+          iconData = Icons.star_border; 
         }
+
+        return GestureDetector( 
+          onTap: onRatingChanged == null
+              ? null
+              : () {
+                  
+                  onRatingChanged!(index + 1.0);
+                },
+          child: Icon(
+            iconData,
+            color: iconColor,
+            size: size,
+          ),
+        );
       }),
     );
   }

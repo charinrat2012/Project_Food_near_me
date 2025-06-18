@@ -92,9 +92,7 @@ class OtpCotroller extends GetxController {
     if (Get.context != null) {
       FocusScope.of(Get.context!).unfocus();
 
-      Navigator.of(
-        Get.context!,
-      ).push(MaterialPageRoute(builder: (context) => ResetpassUi()));
+     Get.to(() => ResetpassUi());
     }
   }
 }

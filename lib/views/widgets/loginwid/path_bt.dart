@@ -9,7 +9,7 @@ import 'package:food_near_me_app/views/controllers/loginctrl.dart';
 class PathBt extends StatelessWidget {
   PathBt({super.key});
 
-  final LoginController controller = Get.put(LoginController());
+  final LoginController controller = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +20,7 @@ class PathBt extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                Navigator.of(Get.context!).push(
-                  MaterialPageRoute(builder: (context) => RegisterUi()),
-                );
+                Get.to(RegisterUi());
               },
               child: Text(
                 "Register",
@@ -34,9 +32,7 @@ class PathBt extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(Get.context!).push(
-                  MaterialPageRoute(builder: (context) => ForgotPassUi()),
-                );
+                Get.to(ForgotPassUi());
               },
               child: Text(
                 "Forgot password?",

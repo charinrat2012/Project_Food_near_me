@@ -1,10 +1,8 @@
 // lib/views/widgets/homewid/item.dart
 
 import 'package:flutter/material.dart';
-
-
 import '../matwid/star_rating.dart';
-import '../matwid/statustag.dart'; // **1. Import StatusTag Widget**
+import '../matwid/statustag.dart';
 
 class RestaurantCard extends StatelessWidget {
   final String imageUrl;
@@ -39,7 +37,7 @@ class RestaurantCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.0),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row(
+          child: Row( // <-- Layout แบบเดิม (แนวนอน)
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
@@ -80,8 +78,7 @@ class RestaurantCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        StarRating(rating: rating, size: 10),
-                        // **2. ใช้ StatusTag Widget แทน _buildStatusWidget function**
+                        StarRating(rating: rating, size: 10, onRatingChanged: (newRating) {  },),
                         StatusTag(
                           isOpen: isOpen,
                           showMotorcycleIcon: showMotorcycleIcon,
@@ -98,5 +95,4 @@ class RestaurantCard extends StatelessWidget {
       ),
     );
   }
-  // **_buildStatusWidget function ถูกลบออกจากที่นี่แล้ว**
 }

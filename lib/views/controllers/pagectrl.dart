@@ -12,20 +12,29 @@ import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:food_near_me_app/views/controllers/scrollctrl.dart'; // ตรวจสอบ path
 
 
+// lib/views/controllers/pagectrl.dart (หรือย้าย ProfileScreen ไปไฟล์อื่น ถ้าต้องการ)
+// ไม่จำเป็นต้อง import PersistentTabController หรือ Get ใน ProfileScreen แล้ว ถ้า ProfileScreen แค่แสดง UI
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('หน้าโปรไฟล์'),
-        backgroundColor: Colors.orangeAccent,
-        foregroundColor: Colors.white,
-      ),
-      body: const Center(
-        child: Text('ดูโปรไฟล์ของคุณที่นี่', style: TextStyle(fontSize: 24)),
-      ),
+    // ลบ Scaffold ออกไป
+    return Column( // หรือ Container, Stack, CustomScrollView, หรือ Widget อื่นๆ ที่เหมาะสมกับเนื้อหา
+      children: [
+        // ถ้าคุณต้องการ AppBar สำหรับแท็บนี้ คุณสามารถใส่ AppBar เข้าไปตรงๆ ใน Column/Stack ได้เลย
+        AppBar(
+          title: const Text('หน้าโปรไฟล์'),
+          backgroundColor: Colors.orangeAccent,
+          foregroundColor: Colors.white,
+        ),
+        const Expanded( // ใช้ Expanded เพื่อให้เนื้อหาที่เหลือเติมเต็มพื้นที่
+          child: Center(
+            child: Text('ดูโปรไฟล์ของคุณที่นี่', style: TextStyle(fontSize: 24)),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -40,24 +49,25 @@ class MainController extends GetxController {
     // Initialize tabController เมื่อ Controller ถูกสร้างและพร้อมใช้งาน
     // กำหนด initialIndex เป็น 1 เพื่อให้หน้าแรกเริ่มต้นที่แท็บ "หน้าแรก"
     tabController = PersistentTabController(initialIndex: 1);
-    print('MainController onInit: PersistentTabController ถูกสร้างแล้ว');
+    // print('MainController onInit: PersistentTabController ถูกสร้างแล้ว');
 
-    // *** Get.put() ScrollpageController และ SlideController ที่นี่ เพียงครั้งเดียว ***
-    // ให้ controllers เหล่านี้มีชีวิตอยู่ตราบเท่าที่ MainController มีชีวิตอยู่
-    Get.put<ScrollpageController>(ScrollpageController());
-    Get.put<SlideController>(SlideController());
-    print('ScrollpageController และ SlideController ถูก put แล้ว');
+    // // *** Get.put() ScrollpageController และ SlideController ที่นี่ เพียงครั้งเดียว ***
+    // // ให้ controllers เหล่านี้มีชีวิตอยู่ตราบเท่าที่ MainController มีชีวิตอยู่
+    // Get.put<ScrollpageController>(ScrollpageController());
+    // Get.put<SlideController>(SlideController());
+    // print('ScrollpageController และ SlideController ถูก put แล้ว');
   }
 
   @override
+
   void onClose() {
     // อย่าลืม dispose tabController เพื่อป้องกัน Memory Leak
     tabController.dispose();
-    // Get.delete() Controllers ที่ถูก put โดย MainController เมื่อ MainController ถูกปิด
-    Get.delete<ScrollpageController>();
-    Get.delete<SlideController>();
-    print('MainController onClose: Controllers ถูก dispose และ delete แล้ว');
-    super.onClose();
+    // // Get.delete() Controllers ที่ถูก put โดย MainController เมื่อ MainController ถูกปิด
+    // Get.delete<ScrollpageController>();
+    // Get.delete<SlideController>();
+    // print('MainController onClose: Controllers ถูก dispose และ delete แล้ว');
+    // super.onClose();
   }
 
   // List ของ PersistentTabConfig สำหรับแต่ละแท็บ

@@ -11,7 +11,7 @@ import '../../controllers/fogotpassctrl.dart';
 
 class SentBt extends StatelessWidget {
    SentBt({super.key});
-   final ForgotpassController controller = Get.put(ForgotpassController());
+final ForgotpassController controller = Get.find<ForgotpassController>();
 
   @override
   Widget build(BuildContext context) {

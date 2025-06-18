@@ -12,7 +12,8 @@ import 'widgets/matwid/iconperson.dart';
 
 class ForgotPassUi extends StatelessWidget {
   ForgotPassUi({super.key});
-  final ForgotpassController controller = Get.put(ForgotpassController());
+  // final ForgotpassController controller = Get.put(ForgotpassController());
+  final ForgotpassController controller = Get.find<ForgotpassController>();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

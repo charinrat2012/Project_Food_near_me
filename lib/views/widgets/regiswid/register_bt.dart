@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../controllers/registerctrl.dart';
-
 class RegisterBt extends StatelessWidget {
   RegisterBt({super.key});
   final RegisterController controller = Get.find<RegisterController>();
-
   @override
   Widget build(BuildContext context) {
     return Column(

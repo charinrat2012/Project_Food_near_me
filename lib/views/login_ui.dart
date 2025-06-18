@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/controllers/loginctrl.dart';
-
 import 'package:food_near_me_app/views/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/views/widgets/matwid/blurcontainer.dart';
 import 'package:food_near_me_app/views/widgets/loginwid/form_login.dart';
@@ -8,18 +7,13 @@ import 'package:food_near_me_app/views/widgets/loginwid/login_with.dart';
 import 'package:food_near_me_app/views/widgets/loginwid/path_bt.dart';
 import 'package:food_near_me_app/views/widgets/loginwid/login_bt.dart';
 import 'package:get/get.dart';
-
-
-
 import 'widgets/loginwid/backhome_bt.dart';
-// import 'widgets/matwid/back_bt.dart';
 import 'widgets/matwid/iconperson.dart';
 import 'widgets/loginwid/login_head.dart';
 
 class LoginUi extends StatelessWidget {
   LoginUi({super.key});
 
-  // final LoginController controller = Get.put(LoginController());
   final LoginController controller = Get.find<LoginController>();
 
   @override
@@ -50,11 +44,7 @@ class LoginUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(
-                            children: [
-                              BackHomeBt(), Iconperson()
-                              ]
-                              ),
+                          Stack(children: [BackHomeBt(), Iconperson()]),
                           // SizedBox(height: 10),
                           LoginHead(),
                           // SizedBox(height: 10),

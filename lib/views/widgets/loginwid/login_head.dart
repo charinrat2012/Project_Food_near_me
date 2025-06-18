@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 class LoginHead extends StatelessWidget {
   const LoginHead({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(

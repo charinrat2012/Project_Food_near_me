@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../controllers/otpctrl.dart';
-
 class OtpBt extends StatelessWidget {
    OtpBt({super.key});
   final OtpCotroller controller = Get.find<OtpCotroller>();
@@ -16,7 +14,7 @@ class OtpBt extends StatelessWidget {
           child: ElevatedButton(
             onPressed: controller.verifyOtp,
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(double.infinity, 50), // Full width
+              minimumSize: Size(double.infinity, 50), 
               backgroundColor: Colors.pink.withValues(alpha: 8 * 0.03),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),

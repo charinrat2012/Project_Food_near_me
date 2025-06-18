@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:food_near_me_app/views/controllers/loginctrl.dart';
 
 class LoginBt extends StatelessWidget {
   LoginBt({super.key});
-
   final LoginController controller = Get.find<LoginController>();
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class LoginBt extends StatelessWidget {
               controller.fetchLogin();
             },
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(double.infinity, 50), // Full width
+              minimumSize: Size(double.infinity, 50),
               backgroundColor: Colors.pink.withValues(alpha: 8 * 0.03),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),

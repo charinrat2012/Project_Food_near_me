@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 class OtpLogo extends StatelessWidget {
   const OtpLogo({super.key});
-
   @override
   Widget build(BuildContext context) {
     return 
@@ -13,6 +11,5 @@ class OtpLogo extends StatelessWidget {
           //   SizedBox(height: 8 *2),
           ],
         );
-
   }
 }

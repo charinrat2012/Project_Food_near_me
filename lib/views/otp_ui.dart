@@ -6,7 +6,6 @@ import 'package:food_near_me_app/views/widgets/otpwid/form_otp.dart';
 import 'package:food_near_me_app/views/widgets/matwid/iconperson.dart';
 import 'package:food_near_me_app/views/widgets/otpwid/otp_head.dart';
 import 'package:food_near_me_app/views/widgets/otpwid/otp_logo.dart';
-
 import 'widgets/otpwid/otp_bt.dart';
 
 class OtpUi extends StatelessWidget {
@@ -34,7 +33,7 @@ class OtpUi extends StatelessWidget {
                   children: [
                     SizedBox(height: 20),
 
-                    Blurcontainer (
+                    Blurcontainer(
                       width: MediaQuery.of(context).size.width * 0.88,
                       height: MediaQuery.of(context).size.height * 0.6,
                       padding: const EdgeInsets.all(10.0),
@@ -44,11 +43,10 @@ class OtpUi extends StatelessWidget {
                           OtpHead(),
                           FormOtp(),
                           // Expanded(child: SizedBox()),
-                           Expanded(child: SizedBox()),
+                          Expanded(child: SizedBox()),
                           OtpLogo(),
                           Expanded(child: SizedBox()),
                           OtpBt(),
-
                         ],
                       ),
                     ),

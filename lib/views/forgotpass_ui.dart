@@ -12,7 +12,6 @@ import 'widgets/matwid/iconperson.dart';
 
 class ForgotPassUi extends StatelessWidget {
   ForgotPassUi({super.key});
-  // final ForgotpassController controller = Get.put(ForgotpassController());
   final ForgotpassController controller = Get.find<ForgotpassController>();
   @override
   Widget build(BuildContext context) {
@@ -23,19 +22,15 @@ class ForgotPassUi extends StatelessWidget {
       child: Stack(
         children: [
           Positioned.fill(child: Backgoundlogin()),
-
           Scaffold(
             backgroundColor: Colors.transparent,
-
             body: Center(
               child: SingleChildScrollView(
                 padding: EdgeInsets.symmetric(horizontal: 8 * 4),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-
                   children: [
                     SizedBox(height: 20),
-
                     Blurcontainer(
                       width: MediaQuery.of(context).size.width * 0.88,
                       height: MediaQuery.of(context).size.height * 0.6,
@@ -46,7 +41,6 @@ class ForgotPassUi extends StatelessWidget {
                           ForgotHead(),
                           SizedBox(height: 5),
                           FormForgot(),
-
                           SizedBox(height: 8 * 3),
                           Stack(
                             children: [

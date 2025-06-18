@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class Iconperson extends StatelessWidget {
   const Iconperson({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(

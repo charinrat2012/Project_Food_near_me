@@ -7,7 +7,6 @@ import 'package:food_near_me_app/views/widgets/matwid/iconperson.dart';
 import 'package:food_near_me_app/views/widgets/resetwid/resetpass_bt.dart';
 import 'package:food_near_me_app/views/widgets/resetwid/resetpass_head.dart';
 
-
 class ResetpassUi extends StatelessWidget {
   const ResetpassUi({super.key});
 
@@ -33,7 +32,7 @@ class ResetpassUi extends StatelessWidget {
                   children: [
                     SizedBox(height: 20),
 
-                    Blurcontainer (
+                    Blurcontainer(
                       width: MediaQuery.of(context).size.width * 0.88,
                       height: MediaQuery.of(context).size.height * 0.6,
                       padding: const EdgeInsets.all(10.0),
@@ -43,7 +42,7 @@ class ResetpassUi extends StatelessWidget {
                           ResetpassHead(),
                           FormReset(),
                           // SizedBox(height: 8*20),
-                           Expanded(child: SizedBox()),
+                          Expanded(child: SizedBox()),
                           // Stack(children: [
                           //   Padding(
                           //     padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -56,7 +55,6 @@ class ResetpassUi extends StatelessWidget {
                           // ]),
                           // SizedBox(height: 8*10),
                           ResetpassBt(),
-
                         ],
                       ),
                     ),

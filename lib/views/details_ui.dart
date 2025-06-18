@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-
-import 'controllers/detailctrl.dart'; // ตรวจสอบว่า import ถูกต้อง
+import 'controllers/detailctrl.dart'; 
 import 'widgets/matwid/back_bt.dart';
 import 'widgets/matwid/dotline.dart';
 import 'widgets/matwid/star_rating.dart';
 import 'widgets/matwid/statustag.dart';
-
 class RestaurantDetailPageUi extends StatelessWidget {
   final String restaurantId;
-
   const RestaurantDetailPageUi({
     super.key,
     required this.restaurantId,
   });
-
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<RestaurantDetailController>(tag: restaurantId); 
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -47,9 +42,7 @@ class RestaurantDetailPageUi extends StatelessWidget {
           if (controller.restaurantData.isEmpty) {
             return const Center(child: CircularProgressIndicator());
           }
-
           final restaurantData = controller.restaurantData;
-
           return SingleChildScrollView(
             child: Center(
               child: Column(
@@ -59,9 +52,8 @@ class RestaurantDetailPageUi extends StatelessWidget {
                     height: 4,
                     dashWidth: 6,
                   ),
-                  // **แก้ไขตรงนี้: เพิ่ม Hero widget รอบ Image.asset**
                   Hero(
-                    tag: 'restaurant_image_${restaurantId}', // **Tag ต้องตรงกันกับใน RestaurantCard**
+                    tag: 'restaurant_image_${restaurantId}', 
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 0.0),
                       child: Image.asset(
@@ -195,7 +187,6 @@ class RestaurantDetailPageUi extends StatelessWidget {
                           dashWidth: 6,
                         ),
                         const SizedBox(height: 20.0),
-
                         Container(
                           height: 300, 
                           width: double.infinity,
@@ -257,7 +248,6 @@ class RestaurantDetailPageUi extends StatelessWidget {
                             }
                           }),
                         ),
-
                         const SizedBox(height: 30.0),
                         Text(
                           "เขียนรีวิวของคุณ",
@@ -268,7 +258,6 @@ class RestaurantDetailPageUi extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 15.0),
-
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Row(
@@ -286,7 +275,6 @@ class RestaurantDetailPageUi extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 15.0),
-
                         TextField(
                           controller: controller.commentController,
                           maxLines: 4,
@@ -304,7 +292,6 @@ class RestaurantDetailPageUi extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 20.0),
-
                         Center(
                           child: ElevatedButton(
                             onPressed: controller.submitReview,

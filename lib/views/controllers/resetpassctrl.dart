@@ -12,13 +12,11 @@ class ResetpassController extends GetxController {
   set obscureText2(value) => _obscureText2.value = value;
   String oldpassword = '123456';
   void fetchReset() {
-    // var context = Get.context!;
     if (passwordController.text.isEmpty|| confirmPasswordController.text.isEmpty ) {
       Get.closeAllSnackbars();
       Get.snackbar(
           'System',
           'กรูณากรอกข้อมูลให้ครบถ้วน',
-          // duration: const Duration(seconds: 3),
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
@@ -29,7 +27,6 @@ class ResetpassController extends GetxController {
      Get.snackbar(
           'System',
           'กรูณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร',
-          // duration: const Duration(seconds: 3),
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
@@ -40,7 +37,6 @@ class ResetpassController extends GetxController {
       Get.snackbar(
           'System',
           'รหัสผ่านไม่ตรงกัน',
-          // duration: const Duration(seconds: 3),
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
@@ -51,18 +47,15 @@ class ResetpassController extends GetxController {
       Get.snackbar(
           'System',
           'รหัสผ่านนี้เคยใช้ไปแล้ว',
-          // duration: const Duration(seconds: 3),
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
       );
       return;
     }
-    // Proceed with login logic
     passwordController.clear();
     confirmPasswordController.clear();
-    FocusScope.of(Get.context!).unfocus(); // Dismiss the keyboard
-    // Navigate to the home page
+    FocusScope.of(Get.context!).unfocus(); 
      Get.offAll(() => LoginUi());
     return;
   }

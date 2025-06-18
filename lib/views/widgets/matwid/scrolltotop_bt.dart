@@ -1,15 +1,8 @@
-
 import 'package:flutter/material.dart';
 
-
 class ScrollToTopButton extends StatelessWidget {
-  final VoidCallback onPressed; // ฟังก์ชันที่จะถูกเรียกเมื่อปุ่มถูกกด
-
-  const ScrollToTopButton({
-    super.key,
-    required this.onPressed,
-  });
-
+  final VoidCallback onPressed;
+  const ScrollToTopButton({super.key, required this.onPressed});
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui; // Import ui สำหรับ ImageFilter
+import 'dart:ui' as ui;
 
 class Blurcontainer extends StatelessWidget {
-  final Widget child; // รับ Widget ลูกเข้ามา
+  final Widget child;
   final double? width;
   final double? height;
   final EdgeInsetsGeometry? padding;
@@ -10,19 +10,17 @@ class Blurcontainer extends StatelessWidget {
   final double blurSigmaY;
   final Color backgroundColor;
   final BorderRadiusGeometry? borderRadius;
-
   const Blurcontainer({
     super.key,
     required this.child,
     this.width,
     this.height,
     this.padding,
-    this.blurSigmaX = 30, // ค่าเริ่มต้นสำหรับ blur
-    this.blurSigmaY = 30, // ค่าเริ่มต้นสำหรับ blur
-    this.backgroundColor = const Color.fromRGBO(255, 255, 255, 0.01), // Colors.white.withValues(alpha: 8 * 0.01)
-    this.borderRadius = const BorderRadius.all(Radius.circular(20)), // ค่าเริ่มต้นสำหรับ borderRadius
+    this.blurSigmaX = 30,
+    this.blurSigmaY = 30,
+    this.backgroundColor = const Color.fromRGBO(255, 255, 255, 0.01),
+    this.borderRadius = const BorderRadius.all(Radius.circular(20)),
   });
-
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -37,7 +35,7 @@ class Blurcontainer extends StatelessWidget {
             color: backgroundColor,
             borderRadius: borderRadius,
           ),
-          child: child, // แสดง Widget ลูกที่รับเข้ามา
+          child: child,
         ),
       ),
     );

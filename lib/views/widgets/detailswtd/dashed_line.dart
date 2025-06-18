@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
 class DashedLine extends StatelessWidget {
   final double height; // ความสูงของแต่ละจุดประ
   final Color color; // สีของจุดประ
   final double dashWidth; // ความกว้างของแต่ละจุดประ
   final double dashSpace; // ช่องว่างระหว่างจุดประ
-
   const DashedLine({
     super.key,
     this.height = 3.0, // ความสูง
@@ -13,7 +11,6 @@ class DashedLine extends StatelessWidget {
     this.dashWidth = 20.0, // ความยาว
     this.dashSpace = 10.0, // ความห่าง
   });
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

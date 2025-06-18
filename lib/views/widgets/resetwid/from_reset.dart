@@ -38,7 +38,7 @@ class FormReset extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    // Toggle password visibility
+           
                     controller.obscureText = !controller.obscureText;
                   },
                 ),
@@ -73,7 +73,6 @@ class FormReset extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    // Toggle password visibility
                     controller.obscureText2 = !controller.obscureText2;
                   },
                 ),

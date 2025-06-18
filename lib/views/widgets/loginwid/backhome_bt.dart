@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 
 class BackHomeBt extends StatelessWidget {
   const BackHomeBt({super.key});
-
-   @override
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -16,14 +15,11 @@ class BackHomeBt extends StatelessWidget {
               FocusScope.of(Get.context!).unfocus();
               Get.offAll(() => Navbar());
             },
-           
-            icon: Image.asset( 
-              "assets/ics/backicon.png", 
-              width: 50.0, 
-              height: 50.0, 
+            icon: Image.asset(
+              "assets/ics/backicon.png",
+              width: 50.0,
+              height: 50.0,
               color: Colors.white,
-              
-                                    
             ),
           ),
         ),

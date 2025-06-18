@@ -1,8 +1,6 @@
-// lib/controllers/slide_controller.dart
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 class SlideController extends GetxController {
   final List<String> originalPizzaImages = [
     'assets/imgs/bn1.png',
@@ -12,18 +10,13 @@ class SlideController extends GetxController {
     'assets/imgs/bn5.jpg',
     'assets/imgs/bn6.jpg',
     'assets/imgs/bn7.jpg',
-    
   ];
-
   late final RxList<String> displayPizzaImages;
   final RxInt currentPage = 0.obs;
-
   late PageController pageController;
   Timer? _timer;
-
   static const int _initialPageIndex = 1;
   int get _lastActualPageIndex => originalPizzaImages.length;
-
   @override
   void onInit() {
     super.onInit();
@@ -39,19 +32,16 @@ class SlideController extends GetxController {
       ].obs;
       print('Display images for looping: ${displayPizzaImages.length} items');
     }
-
     pageController = PageController(initialPage: _initialPageIndex);
-    currentPage.value = _initialPageIndex; // ตั้งค่าเริ่มต้นให้ตรง
+    currentPage.value = _initialPageIndex; 
     print('PageController initialized at page: ${currentPage.value}');
   }
-
   @override
-  void onReady() { // <--- ใช้ onReady() ของ GetX
+   void onReady() { 
     super.onReady();
     print('SlideController onReady called. Starting auto scroll now.');
-    _startAutoScroll(); // เริ่ม Timer เมื่อ Widget พร้อมใช้งาน
+    _startAutoScroll(); 
   }
-
   void _startAutoScroll() {
     print('Starting auto scroll timer...');
     _timer?.cancel();
@@ -60,27 +50,18 @@ class SlideController extends GetxController {
         print('Timer: Not enough images to scroll.');
         return;
       }
-
       int targetPage;
       bool isJumpToFirstActualPage = false;
-
       if (currentPage.value < displayPizzaImages.length - 1) {
         targetPage = currentPage.value + 1;
-        // print('Timer: Moving to next page: $targetPage from ${currentPage.value}');
       } else {
         targetPage = _initialPageIndex;
         isJumpToFirstActualPage = true;
-        // print('Timer: Reached end, preparing to jump to first actual page ($targetPage)');
       }
-
-      // No need for addPostFrameCallback here usually, as onReady ensures it's ready.
-      // But adding a slight delay for animateToPage can sometimes help with timing.
-      // Future.delayed(Duration(milliseconds: 10), () {
         if (pageController.hasClients) {
           if (isJumpToFirstActualPage) {
             pageController.jumpToPage(targetPage);
             currentPage.value = targetPage;
-            // print('Timer: JUMPED to page: $targetPage (first actual)');
           } else {
             pageController.animateToPage(
               targetPage,
@@ -91,7 +72,6 @@ class SlideController extends GetxController {
                  final int pageAfterAnimation = pageController.page!.round();
                  if (currentPage.value != pageAfterAnimation) {
                      currentPage.value = pageAfterAnimation;
-                     // print('Timer: Animated to page: ${currentPage.value}');
                  }
               }
             });
@@ -99,28 +79,19 @@ class SlideController extends GetxController {
         } else {
            print('Timer: PageController has no clients when attempting to scroll.');
         }
-      // }); // Optional: uncomment if you still have timing issues
     });
   }
-
   void onPageChanged(int page) {
-    // print('onPageChanged triggered by user to page: $page');
-    currentPage.value = page; // อัปเดต currentPage ของ Controller ทันที
-
-    // จัดการการวนซ้ำเมื่อผู้ใช้เลื่อนถึงขอบ
+    currentPage.value = page; 
     if (page == 0 && displayPizzaImages.length > 1) {
-      // print('onPageChanged: User scrolled to beginning duplicate, jumping to actual last page.');
       pageController.jumpToPage(_lastActualPageIndex);
       currentPage.value = _lastActualPageIndex;
     } else if (page == displayPizzaImages.length - 1 && displayPizzaImages.length > 1) {
-      // print('onPageChanged: User scrolled to end duplicate, jumping to actual first page.');
       pageController.jumpToPage(_initialPageIndex);
       currentPage.value = _initialPageIndex;
     }
-
-    _startAutoScroll(); // รีสตาร์ท Timer
+    _startAutoScroll(); 
   }
-
   @override
   void onClose() {
     print('SlideController onClose called');

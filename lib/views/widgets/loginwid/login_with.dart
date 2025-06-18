@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:food_near_me_app/views/controllers/loginctrl.dart';
-
 class LoginWith extends StatelessWidget {
   LoginWith({super.key});
-
   final LoginController controller = Get.put(LoginController());
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,7 +36,6 @@ class LoginWith extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-
         //-----------ICON------------------
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

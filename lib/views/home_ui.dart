@@ -3,7 +3,7 @@ import 'package:food_near_me_app/views/details_ui.dart';
 import 'package:food_near_me_app/views/widgets/homewid/LocationFilterBar.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/views/widgets/homewid/formsearch.dart';
-import 'package:food_near_me_app/views/widgets/homewid/item.dart'; // ใช้ RestaurantCard ตามที่คุณต้องการ
+import 'package:food_near_me_app/views/widgets/homewid/item.dart';
 import 'package:food_near_me_app/views/widgets/homewid/slideim.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:food_near_me_app/views/controllers/scrollctrl.dart';
@@ -12,9 +12,8 @@ import 'widgets/matwid/scrolltotop_bt.dart';
 class HomeUi extends StatelessWidget {
   const HomeUi({super.key});
   static final List<Map<String, dynamic>> restaurantList = [
-    // ตรวจสอบข้อมูลใน List นี้ให้แน่ใจว่ามีคีย์ครบถ้วนและไม่มีค่าเป็น null
     {
-      'id': 'pasta_ama_001',
+      'id': 'F001',
       'imageUrl': 'assets/imgs/pama.png',
       'restaurantName': 'Pasta AMA',
       'description':
@@ -23,16 +22,17 @@ class HomeUi extends StatelessWidget {
       'isOpen': false,
       'showMotorcycleIcon': false,
       'details':
-          ' Pasta AMA เป็นร้านอาหารอิตาเลียนที่เชี่ยวชาญด้านพาสต้าสดใหม่ ด้วยวัตถุดิบคุณภาพสูงและสูตรต้นตำรับ เมนูเด่นคือคาโบนาร่าที่เข้มข้น และเพสโต้ที่หอมกลิ่นใบโหระพาแท้ๆ บรรยากาศอบอุ่นเหมาะกับการมาทานกับครอบครัวหรือเพื่อนฝูง',
-      'openingHours':
-          "จันทร์ - พฤหัสบดี 10:00 - 21:00\nศุกร์ - เสาร์ 10:00 - 22:00\nอาทิตย์ 10:00 - 21:00",
-      'phoneNumber': "02-123-4567",
-      'location': "กรุงเทพมหานคร สุขุมวิท 39 (หน้าโครงการ The Opus ทองหล่อ 10)",
-      'menuimage': 'assets/imgs/menu.png',
+          'Pasta AMA เป็นร้านอาหารอิตาเลียนที่เชี่ยวชาญด้านพาสต้าสดใหม่ ด้วยวัตถุดิบคุณภาพสูงและสูตรต้นตำรับ เมนูเด่นคือคาโบนาร่าที่เข้มข้น และเพสโต้ที่หอมกลิ่นใบโหระพาแท้ๆ บรรยากาศอบอุ่นเหมาะกับการมาทานกับครอบครัวหรือเพื่อนฝูง',
+      'openingHours': "เปิดทุกวัน 08:00 น. ถึง 24:00 น.",
+      'phoneNumber': "088-662-8244",
+      'location':
+          "503/3 ชั้น 1 ยิ้มแย้ม โฮสเทล ถ. เพชรบุรี \nแขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
+      'menuimage': 'assets/imgs/p1.png',
       'bannerImage': 'assets/imgs/pomo.png',
     },
+    //----------------------------------
     {
-      'id': 'umenohana_002',
+      'id': 'F002',
       'imageUrl': 'assets/imgs/im1.jpg',
       'restaurantName': 'UMENOHANA นิฮอนมูระมอลล์',
       'description':
@@ -41,83 +41,167 @@ class HomeUi extends StatelessWidget {
       'isOpen': true,
       'showMotorcycleIcon': true,
       'details':
-          ' UMENOHANA นำเสนอประสบการณ์อาหารญี่ปุ่นแบบไคเซกิ โดยเน้นเมนูที่ทำจากเต้าหู้หลากหลายรูปแบบ ไม่ว่าจะเป็นเต้าหู้สดที่ทำเอง, เต้าหู้ทอดกรอบ, หรือเต้าหู้ในซุปใส บรรยากาศเงียบสงบสไตล์ญี่ปุ่นแท้ๆ เหมาะสำหรับผู้ที่ชื่นชอบอาหารเพื่อสุขภาพและรสชาติละเอียดอ่อน',
+          'UMENOHANA นำเสนอประสบการณ์อาหารญี่ปุ่นแบบไคเซกิ โดยเน้นเมนูที่ทำจากเต้าหู้หลากหลายรูปแบบ ไม่ว่าจะเป็นเต้าหู้สดที่ทำเอง, เต้าหู้ทอดกรอบ, หรือเต้าหู้ในซุปใส บรรยากาศเงียบสงบสไตล์ญี่ปุ่นแท้ๆ เหมาะสำหรับผู้ที่ชื่นชอบอาหารเพื่อสุขภาพและรสชาติละเอียดอ่อน',
       'openingHours':
-          "จันทร์ - ศุกร์ 11:00 - 22:00\nเสาร์ - อาทิตย์ 10:00 - 23:00",
-      'phoneNumber': "02-987-6543",
-      'location': "นิฮอนมูระมอลล์ ทองหล่อ 13",
-      'menuimage': 'assets/imgs/menu.png',
+          "ช่วงเที่ยง:11:00 - 15:00 น. \nช่วงเย็น:18:00 - 22:00 น. ",
+      'phoneNumber': "084-438-3892",
+      'location':
+          "Nihonmura Mall ถ. ทองหล่อ แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
+      'menuimage': 'assets/imgs/u1.png',
       'bannerImage': 'assets/imgs/pomo.png',
     },
+    //----------------------------------
     {
-      'id': 'simple_day_gelato_003',
+      'id': 'F003',
       'imageUrl': 'assets/imgs/im2.jpg',
       'restaurantName': 'Simple Day Gelato',
       'description':
-          'ร้านเล็กๆสำหรับคนรักขนมหวานที่เรานำทุกเมนูโปรด ชนิดที่เรียกว่าเป็นขนมที่ต้องมีติดบ้านไว้เสมอ รายละเอียดเพิ่มเติม คลิกได้เลย',
-      'rating': 1.5,
+          'ร้านเล็กๆสำหรับคนรักขนมหวานที่เรานำทุกเมนูโปรด ชนิดที่เรียกว่าเป็นขนมที่ต้องมีติดบ้านไว้เสมอ  รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 2.5,
       'isOpen': true,
       'showMotorcycleIcon': true,
       'details':
-          ' เป็นร้านขนมหวานรสชาตินุ่มละมุนที่ครองใจลูกค้าเป็นอย่างดี โดยมีเมนูของหวานอร่อยให้เลือกหลากหลายเมนู อาทิ Shibuya Honey Toast, เค้กช็อกโกแลต เครื่องดื่มสดชื่น บรรยากาศดี',
-      'openingHours': "ทุกวัน 10:30 - 21:30",
-      'phoneNumber': "000-0000-000",
+          'เป็นร้านขนมหวานรสชาตินุ่มละมุนที่ครองใจลูกค้าเป็นอย่างดี โดยมีเมนูของหวานอร่อยให้เลือกหลากหลายเมนู อาทิ Shibuya Honey Toast, เค้กช็อกโกแลต เครื่องดื่มสดชื่น บรรยากาศดี',
+      'openingHours': "เวลาเปิด-ปิด: 10.00 - 20.00 น. (ปิดทุกวันพุธ)",
+      'phoneNumber': "086-555-8789 ",
       'location':
-          "ชั้น G หน้าบิ๊กซีใหญ่ บางแคเหนือ บางแค กรุงเทพมหานคร (เดอะมอลล์บางแค)",
-      'menuimage': 'assets/imgs/menu.png',
+          "94 ถนนราชพฤกษ์ แขวงบางระมาด เขตตลิ่งชัน กรุงเทพมหานคร 10170. ร้านอยู่ในโครงการ The Bloc ราชพฤกษ์",
+      'menuimage': 'assets/imgs/s1.png',
       'bannerImage': 'assets/imgs/pomo.png',
     },
+    //----------------------------------
     {
-      'id': 'mit_ko_yuan_004',
+      'id': 'F004',
       'imageUrl': 'assets/imgs/im3.jpg',
       'restaurantName': 'มิตรโกหย่วน',
       'description':
-          ' ร้านอาหารตามสั่ง เจ้าเด็ดที่ต่อมา เราขอพาทุกคนไปอิ่มกับร้าน มิตรโกหย่วน แถวย่านย่านเสาชิงช้า รายละเอียดเพิ่มเติม คลิกได้เลย',
-      'rating': 0.5,
+          'ร้านอาหารตามสั่ง เจ้าเด็ดที่ต่อมา เราขอพาทุกคนไปอิ่มกับร้าน มิตรโกหย่วน แถวย่านย่านเสาชิงช้า รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 4.5,
       'isOpen': true,
       'showMotorcycleIcon': false,
       'details':
-          ' มิตรโกหย่วน คือร้านอาหารตามสั่งเก่าแก่ที่ขึ้นชื่อเรื่องความอร่อยแบบไทยแท้ๆ ทุกจานปรุงสดใหม่ด้วยวัตถุดิบคุณภาพ เมนูที่พลาดไม่ได้คือข้าวผัดกะเพราและแกงเขียวหวานรสจัดจ้าน เหมาะสำหรับมื้อกลางวันที่ต้องการความอิ่มอร่อยและคุ้มค่า',
-      'openingHours': "จันทร์ - ศุกร์ 09:00 - 18:00\nเสาร์ - อาทิตย์ หยุด",
-      'phoneNumber': "081-234-5678",
+          'มิตรโกหย่วน คือร้านอาหารตามสั่งเก่าแก่ที่ขึ้นชื่อเรื่องความอร่อยแบบไทยแท้ๆ ทุกจานปรุงสดใหม่ด้วยวัตถุดิบคุณภาพ เมนูที่พลาดไม่ได้คือข้าวผัดกะเพราและแกงเขียวหวานรสจัดจ้าน เหมาะสำหรับมื้อกลางวันที่ต้องการความอิ่มอร่อยและคุ้มค่า',
+      'openingHours':
+          "วันธรรมดา11:00-14:00,16:00-21:30\nวันเสาร์-อาทิตย์ 16:00-21:30",
+      'phoneNumber': "092-434-9996",
       'location':
           "ถนนดินสอ แขวงบวรนิเวศ เขตพระนคร กรุงเทพมหานคร (ใกล้ศาลาว่าการกรุงเทพมหานคร)",
       'menuimage': 'assets/imgs/menu.png',
       'bannerImage': 'assets/imgs/pomo.png',
     },
+    //----------------------------------
     {
-      'id': 'somtum_mong_pladaek_005',
+      'id': 'F005',
       'imageUrl': 'assets/imgs/im4.jpg',
       'restaurantName': 'ส้มตำหม่องปลาแดก',
       'description':
           'ร้านส้มตำที่ขึ้นชื่อเรื่องความจัดจ้านแบบไม่เป็นสองรองใครในย่านลาดกระบัง สารพัดเมนูตำแซ่บๆ มาเพียบ! รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 3.2,
+      'isOpen': false,
+      'showMotorcycleIcon': true,
+      'details':
+          'ส้มตำหม่องปลาแดก เป็นสวรรค์ของคนรักส้มตำปลาร้า ด้วยรสชาติที่จัดจ้านถึงใจและวัตถุดิบสดใหม่ เมนูหลากหลายตั้งแต่ส้มตำปูปลาร้า ไปจนถึงตำถาดรสแซ่บเผ็ดร้อน บรรยากาศร้านเป็นกันเอง เหมาะกับการมาสังสรรค์กับเพื่อนๆ',
+      'openingHours': "เปิดทุกวัน 11:00 - 21:00",
+      'phoneNumber': "098-765-4321",
+      'location':
+          "โครงการ The O-Zone Airport ตรงข้ามสน.ลาดกระบัง, 1529 ถนนลาดกระบัง แขวง/เขตลาดกระบัง กรุงเทพฯ 10520",
+      'menuimage': 'assets/imgs/a1.png',
+      'bannerImage': 'assets/imgs/pomo.png',
+    },
+    //----------------------------------
+    {
+      'id': 'F006',
+      'imageUrl': 'assets/imgs/im7.avif',
+      'restaurantName': 'เหมยหมึกเป็นซาชิมิ',
+      'description':
+          'ร้านของเราคือการคัดสรรวัตถุดิบคุณภาพ เมนูอาหารทะเลที่หลากหลายไม่ต้องไปไกลถึงทะเล ร้านเราก็มีขาย! รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 5.0,
+      'isOpen': true,
+      'showMotorcycleIcon': false,
+      'details':
+          'เหมยหมึกเป็นซาชิมิ ร้านอาหารทะเลสดๆ ที่นำเสนอเมนูปลาหมึกเป็นซาชิมิที่หาทานยาก พร้อมอาหารทะเลอื่นๆ อีกกว่า 200 เมนู เช่น กุ้งเผา, ปูผัดผงกะหรี่ และหอยเชลล์อบเนย การันตีความสดใหม่เหมือนยกทะเลมาไว้ที่ร้าน',
+      'openingHours': "ทุกวัน 12:00 - 23:00",
+      'phoneNumber': "085-336-7631",
+      'location':
+          "249 หมู่9 ร้านเหมย หมึกเป็นซาชิมิ \nแขวงทวีวัฒนา เขตทวีวัฒนา กรุงเทพมหานคร 10170",
+      'menuimage': 'assets/imgs/a2.png',
+      'bannerImage': 'assets/imgs/pomo.png',
+    },
+    //----------------------------------
+    {
+      'id': 'F007',
+      'imageUrl': 'assets/imgs/im8.jpg',
+      'restaurantName': 'ก๋วยเตี๋ยวเรือทองสมิทธ์',
+      'description':
+          'ร้านก๋วยเตี๋ยวเรือเจ้าดังที่มีเอกลักษณ์เฉพาะตัว รสชาติเข้มข้น ครบเครื่อง เส้นเหนียวนุ่ม รายละเอียดเพิ่มเติม คลิกได้เลย',
       'rating': 4.5,
       'isOpen': false,
       'showMotorcycleIcon': true,
       'details':
-          ' ส้มตำหม่องปลาแดก เป็นสวรรค์ของคนรักส้มตำปลาร้า ด้วยรสชาติที่จัดจ้านถึงใจและวัตถุดิบสดใหม่ เมนูหลากหลายตั้งแต่ส้มตำปูปลาร้า ไปจนถึงตำถาดรสแซ่บเผ็ดร้อน บรรยากาศร้านเป็นกันเอง เหมาะกับการมาสังสรรค์กับเพื่อนๆ',
-      'openingHours': "ทุกวัน 11:00 - 21:00",
-      'phoneNumber': "098-765-4321",
-      'location': "ลาดกระบัง ซอย 13 กรุงเทพมหานคร",
-      'menuimage': 'assets/imgs/menu.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+          'ร้านก๋วยเตี๋ยวเรือสุดพรีเมี่ยม บอกเลยว่ารสชาติก๋วยเตี๋ยวเรือของร้านนี้เข้มข้น จัดจ้าน บวกกับเนื้อคุณภาพดี ละลายในปากคือฟินที่สุดแล้วจ้าา นอกจากนี้เค้ายังมีเมนูหมูคุโรบุตะ และ กระดูกแก้ว สุดแสนอร่อยกรุบกรับ ก็เป็นอะไรที่พลาดไม่ได้นะบอกเลย!',
+      'openingHours': "เปิดทุกวัน 10:00 - 22:00 น.",
+      'phoneNumber': " 065-937-7386 ",
+      'location':
+          "518 , กรุงเทพมหานคร (ทองสมิทธ์ The Mall Lifestore Bangkae ร้านอยู่ชั้น G ใกล้กับ Gourmet) ",
+      'menuimage': 'assets/imgs/t2.jpg',
+      'bannerImage': 'assets/imgs/t3.jpg',
     },
+    //----------------------------------
     {
-      'id': 'mei_muek_sashimi_006',
-      'imageUrl': 'assets/imgs/im5.jpg',
-      'restaurantName': 'เหมยหมึกเป็นซาชิมิ',
+      'id': 'F008',
+      'imageUrl': 'assets/imgs/im9.jpg',
+      'restaurantName': 'มีตังค์ สเต็ก',
       'description':
-          'ร้านของเราคือการคัดสรรวัตถุดิบคุณภาพ เมนูอาหารทะเลที่หลากหลายกว่า 200 เมนู ไม่ต้องไปไกลถึงทะเล ร้านเราก็มีขาย! รายละเอียดเพิ่มเติม คลิกได้เลย',
-      'rating': 0.1,
-      'isOpen': true,
-      'showMotorcycleIcon': false,
+          'มีตังค์ สเต็ก อร่อยคุ้มค่าเกินราคา! สัมผัสสเต็กเนื้อนุ่ม ชุ่มฉ่ำ รสชาติเข้มข้น ปรุงจากวัตถุดิบคุณภาพดี รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 4.2,
+      'isOpen': false,
+      'showMotorcycleIcon': true,
       'details':
-          ' เหมยหมึกเป็นซาชิมิ ร้านอาหารทะเลสดๆ ที่นำเสนอเมนูปลาหมึกเป็นซาชิมิที่หาทานยาก พร้อมอาหารทะเลอื่นๆ อีกกว่า 200 เมนู เช่น กุ้งเผา, ปูผัดผงกะหรี่ และหอยเชลล์อบเนย การันตีความสดใหม่เหมือนยกทะเลมาไว้ที่ร้าน',
-      'openingHours': "ทุกวัน 12:00 - 23:00",
-      'phoneNumber': "080-111-2222",
-      'location': "ถนนพระราม 9 กรุงเทพมหานคร (ใกล้แยกผังเมือง)",
-      'menuimage': 'assets/imgs/menu.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+          'มีตังค์ สเต็ก เราใส่ใจในทุกรายละเอียด ตั้งแต่การคัดเลือกเนื้อสเต็กเกรดพรีเมียม การหมักที่พิถีพิถัน ไปจนถึงการย่างที่ได้ระดับความสุกที่คุณต้องการ เพื่อให้ทุกคำที่กัดลงไปคือความสุขที่แท้จริง ไม่ว่าจะเป็นเนื้อวัว เนื้อหมู หรือเนื้อไก่ เราก็มีเมนูหลากหลายให้คุณได้เลือกสรร มาสัมผัสประสบการณ์สเต็กที่ไม่เหมือนใครได้ที่ มีตังค์ สเต็ก แล้วคุณจะหลงรัก!',
+      'openingHours': "เปิดทุกวัน 12.00 - 22.00 น​.",
+      'phoneNumber': "095-862-0481  ",
+      'location':
+          "91/6 ข้างร้านซ่อมมอเตอร์ไซค์ ก่อนถึงซอย19, บางรักพัฒนา, บางบัวทอง, จ.นนทบุรี, 11110, ประเทศไทย นนทบุรี (ถนนเมน ระหว่างซอย​ 19 ก่อนถึงซอย19 ข้างร้านแชมป์มอไซด์)  ",
+      'menuimage': 'assets/imgs/m1.jpg',
+      'bannerImage': 'assets/imgs/m2.jpg',
+    },
+    //----------------------------------
+    {
+      'id': 'F009',
+      'imageUrl': 'assets/imgs/im10.jpg',
+      'restaurantName': 'Jones Salad',
+      'description':
+          'สุขภาพดีสร้างได้เริ่มต้นที่สลัดคุณให้ทุกมื้อเป็นเรื่องง่ายและดีต่อสุขภาพ กับสลัดที่คุณเลือกเองได้ รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 3.8,
+      'isOpen': false,
+      'showMotorcycleIcon': true,
+      'details':
+          'Jones Salad มากกว่าแค่สลัด คือมื้อแห่งความสุขที่ออกแบบมาเพื่อคุณโดยเฉพาะไม่ว่าคุณจะเป็นสายคลีน สายรักสุขภาพ หรือแค่อยากเติมความสดชื่น  พร้อมตอบโจทย์ทุกความต้องการ ด้วยผักสดนานาชนิด ท็อปปิ้งหลากหลาย คุณสามารถสร้างสรรค์สลัดในแบบของคุณเอง หรือเลือกเมนูยอดนิยมของเรา',
+      'openingHours': "เปิดทุกวัน 08:00 - 21:00 น. ",
+      'phoneNumber': "094-555-6430  ",
+      'location':
+          "518/1 ชั้น G, บางแคเหนือ บางแค กรุงเทพมหานคร กรุงเทพมหานคร   ",
+      'menuimage': 'assets/imgs/s1.jpg',
+      'bannerImage': 'assets/imgs/s2.jpg',
+    },
+    //----------------------------------
+    {
+      'id': 'F0010',
+      'imageUrl': 'assets/imgs/a5.webp',
+      'restaurantName': 'สุกี้จินดา',
+      'description':
+          'สุกี้จินดา ร้านสุกี้หม่าล่าเสียบไม้แบบสายพาน มีทั้งแบบสุกี้น้ำ และสุกี้แห้ง คุณสามารถเลือกน้ำซุปเองได้ มีน้ำซุปหลายรสชาติ รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 4.5,
+      'isOpen': false,
+      'showMotorcycleIcon': true,
+      'details':
+          'คนรักสุกี้หม่าล่า พลาดไม่ได้เด็ดขาด สุกี้จินดา มีไลน์อาหารให้เลือก มากกว่า 80+ เมนู คุณสามารถทานได้ไม่อั้นกับเวลา 1:30 ชม. (90 นาที) ในราคา 388 บาท  จัดเต็มสุกี้หม่าล่า น้ำซุป น้ำจิ้ม ของหวาน ผลไม้ เครื่องดื่ม',
+      'openingHours': "เปิดทุกวัน 11:00 น. ถึง 04:00 น.  ",
+      'phoneNumber': "091-795-3839  ",
+      'location':
+          "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
+      'menuimage': 'assets/imgs/a3.jpg',
+      'bannerImage': 'assets/imgs/a4.jpg',
     },
   ];
   @override
@@ -128,17 +212,12 @@ class HomeUi extends StatelessWidget {
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      // Wrap the entire content in a Stack to allow Positioned widgets
       child: Stack(
-        // <--- Wrap with Stack
         children: [
           Column(
             children: [
-              // AppBar is now directly a child of the Column, wrapped in PreferredSize.
               PreferredSize(
-                preferredSize: Size.fromHeight(
-                  8 * 12,
-                ), // Height of your original AppBar
+                preferredSize: Size.fromHeight(8 * 12),
                 child: AppBar(
                   backgroundColor: Colors.pink[200],
                   title: Align(
@@ -149,12 +228,12 @@ class HomeUi extends StatelessWidget {
                       fit: BoxFit.contain,
                     ),
                   ),
-                  toolbarHeight: 8 * 12, // Redundant here but harmless
+                  toolbarHeight: 8 * 12,
                   automaticallyImplyLeading: false,
                   actions: [
                     TextButton(
                       onPressed: () {
-                       Get.offAll(LoginUi());
+                        Get.offAll(LoginUi());
                       },
                       child: const Text(
                         "ล็อคอิน",
@@ -245,7 +324,6 @@ class HomeUi extends StatelessWidget {
               ),
             ],
           ),
-          // Positioned for the ScrollToTopButton is now correctly placed within the Stack.
           Obx(
             () => scrollpageController.showScrollToTopButton.value
                 ? Positioned(

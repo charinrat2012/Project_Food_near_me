@@ -1,22 +1,17 @@
-
-// ignore_for_file: sort_child_properties_last
-
 import 'package:flutter/material.dart';
 
 class Dotline extends StatelessWidget {
-  final Color color; // เพิ่ม property 'color'
+  final Color color;
   final double height;
   final double dashWidth;
   final double dashSpace;
-
   const Dotline({
     super.key,
-    this.color = Colors.white, // ตั้งค่าเริ่มต้นเป็นสีเทา หรือสีที่คุณต้องการ
+    this.color = Colors.white,
     this.height = 1.0,
     this.dashWidth = 5.0,
     this.dashSpace = 5.0,
   });
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -29,7 +24,9 @@ class Dotline extends StatelessWidget {
               width: dashWidth,
               height: height,
               child: DecoratedBox(
-                decoration: BoxDecoration(color: color), // ใช้ค่า 'color' ที่รับมา
+                decoration: BoxDecoration(
+                  color: color,
+                ), // ใช้ค่า 'color' ที่รับมา
               ),
             );
           }),

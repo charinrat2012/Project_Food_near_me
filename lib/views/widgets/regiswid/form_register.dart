@@ -5,8 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FormRegister extends StatelessWidget {
   FormRegister({super.key});
- final RegisterController controller = Get.find<RegisterController>();
-
+  final RegisterController controller = Get.find<RegisterController>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -76,7 +75,6 @@ class FormRegister extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    // Toggle password visibility
                     controller.obscureText = !controller.obscureText;
                   },
                 ),
@@ -91,7 +89,6 @@ class FormRegister extends StatelessWidget {
             () => TextField(
               controller: controller.confirmPasswordController,
               obscureText: controller.obscureText2,
-
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white.withValues(alpha: 8 * 0.03),
@@ -111,7 +108,6 @@ class FormRegister extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    // Toggle password visibility
                     controller.obscureText2 = !controller.obscureText2;
                   },
                 ),

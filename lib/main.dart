@@ -5,8 +5,7 @@ import 'package:food_near_me_app/views/controllers/otpctrl.dart';
 import 'package:food_near_me_app/views/controllers/splashctrl.dart';
 import 'package:food_near_me_app/views/splash_ui.dart';
 import 'package:get/get.dart';
-
-import 'views/controllers/loginctrl.dart';// <--- เปลี่ยนชื่อไฟล์นี้ใน import
+import 'views/controllers/loginctrl.dart';
 import 'views/controllers/pagectrl.dart';
 import 'views/controllers/registerctrl.dart';
 import 'views/controllers/resetpassctrl.dart';
@@ -21,8 +20,7 @@ void main() {
     DeviceOrientation.portraitDown,
   ]);
 
-  // Initializing all GetX controllers
-  Get.put(MainController()); // <--- ใช้ชื่อ MainTabController
+  Get.put(MainController());
   Get.put(ReviewController());
   Get.put(SlideController());
   Get.put(ScrollpageController());
@@ -47,7 +45,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true, // แนะนำให้ใช้ Material 3
       ),
-      home: const SplashUi(), // ใช้ const เพื่อประสิทธิภาพ
+      home: const SplashUi(),
     );
   }
 }

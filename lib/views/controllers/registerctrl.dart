@@ -1,38 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:get/get.dart';
-
-
-
 class RegisterController extends GetxController {
   final emailController = TextEditingController();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-
-
   final _obscureText = true.obs;
   final _obscureText2 = true.obs;
   get obscureText => _obscureText.value;
   get obscureText2 => _obscureText2.value;
   set obscureText(value) => _obscureText.value = value;
   set obscureText2(value) => _obscureText2.value = value;
-
-
-
   void fetchRegister() {
-    // var context = Get.context!;
-
     if (emailController.text.isEmpty || passwordController.text.isEmpty || usernameController.text.isEmpty || confirmPasswordController.text.isEmpty ) {
       Get.closeAllSnackbars();
       Get.snackbar(
           'System',
           'กรูณากรอกข้อมูลให้ครบถ้วน',
-          // duration: const Duration(seconds: 3),
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
-        
       );
       return;
     } else if (!emailController.text.isEmail) {
@@ -40,11 +28,9 @@ class RegisterController extends GetxController {
       Get.snackbar(
           'System',
           'กรูณากรอกอีเมลให้ถูกต้อง',
-          // duration: const Duration(seconds: 3),
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
-        
       );
       return;
     }  else if (passwordController.text.length < 6) {
@@ -52,11 +38,9 @@ class RegisterController extends GetxController {
      Get.snackbar(
           'System',
           'กรูณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร',
-          // duration: const Duration(seconds: 3),
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
-        
       );
       return;
     } else if (passwordController.text != confirmPasswordController.text) {
@@ -64,24 +48,18 @@ class RegisterController extends GetxController {
       Get.snackbar(
           'System',
           'รหัสผ่านไม่ตรงกัน',
-          // duration: const Duration(seconds: 3),
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
           backgroundColor: const Color.fromARGB(255, 255, 140, 131),
-        
       );
       return;
     }
-
-    // Proceed with login logic
     emailController.clear();
     usernameController.clear();
     passwordController.clear();
     confirmPasswordController.clear();
-    FocusScope.of(Get.context!).unfocus(); // Dismiss the keyboard
-    // Navigate to the home page
+    FocusScope.of(Get.context!).unfocus(); 
     Get.offAll(LoginUi());
-    
     return;
   }
 }

@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-
 class LocationFilterBar extends StatefulWidget {
   const LocationFilterBar({super.key});
-
   @override
   State<LocationFilterBar> createState() => _LocationFilterBarState();
 }
-
 class _LocationFilterBarState extends State<LocationFilterBar> {
   String? selectedProvince;
   String? selectedDistrict;
   String? selectedCategory;
-
-  final List<String> provinces = [//จังหวัด
+  final List<String> provinces = [
+    //จังหวัด
     "กรุงเทพมหานคร",
     "กระบี่",
     "กาญจนบุรี",
@@ -92,8 +89,8 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
     "อุทัยธานี",
     "อุบลราชธานี",
   ];
-
-  final Map<String, List<String>> districtsByProvince = {//เขต
+  final Map<String, List<String>> districtsByProvince = {
+    //เขต
     'กรุงเทพมหานคร': [
       'เขตพระนคร',
       'เขตดุสิต',
@@ -147,14 +144,38 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
       'เขตบางบอน',
     ],
     'กระบี่': ['เมืองกระบี่', 'อ่าวลึก', 'คลองท่อม'],
-    'กาญจนบุรี': ['เมืองกาญจนบุรี', 'ไทรโยค', 'บ่อพลอย', 'ป่าไม้อุมง', 'ศรีสวัสดิ์', 'ท่ามะกา', 'ท่าม่วง', 'ทองผาภูมิ', 'สังขละบุรี', 'พนมทวน', 'เลาขวัญ', 'ด่านมะขามเตี้ย', 'หนองปรือ', 'ห้วยกระเจา'],
+    'กาญจนบุรี': [
+      'เมืองกาญจนบุรี',
+      'ไทรโยค',
+      'บ่อพลอย',
+      'ป่าไม้อุมง',
+      'ศรีสวัสดิ์',
+      'ท่ามะกา',
+      'ท่าม่วง',
+      'ทองผาภูมิ',
+      'สังขละบุรี',
+      'พนมทวน',
+      'เลาขวัญ',
+      'ด่านมะขามเตี้ย',
+      'หนองปรือ',
+      'ห้วยกระเจา',
+    ],
     'กาฬสินธุ์': ['เมืองกาฬสินธุ์', 'ยางตลาด', 'กมลาไสย'],
     'กำแพงเพชร': ['เมืองกำแพงเพชร', 'พรานกระต่าย', 'ขาณุวรลักษบุรี'],
     'ขอนแก่น': ['เมืองขอนแก่น', 'บ้านไผ่', 'ชุมแพ'],
     'จันทบุรี': ['เมืองจันทบุรี', 'ท่าใหม่', 'ขลุง'],
     'ฉะเชิงเทรา': ['เมืองฉะเชิงเทรา', 'บางปะกง', 'พนมสารคาม'],
     'ชลบุรี': ['เมืองชลบุรี', 'บางละมุง', 'ศรีราชา'],
-    'ชัยนาท': ['เมืองชัยนาท', 'มโนรมย์', 'วัดสิงห์', 'สรรพยา', 'สรรคบุรี', 'หันคา', 'หนองมะโมง', 'เนินขาม'],
+    'ชัยนาท': [
+      'เมืองชัยนาท',
+      'มโนรมย์',
+      'วัดสิงห์',
+      'สรรพยา',
+      'สรรคบุรี',
+      'หันคา',
+      'หนองมะโมง',
+      'เนินขาม',
+    ],
     'ชัยภูมิ': ['เมืองชัยภูมิ', 'ภูเขียว', 'เกษตรสมบูรณ์'],
     'ชุมพร': ['เมืองชุมพร', 'หลังสวน', 'ทุ่งตะโก'],
     'เชียงราย': ['เมืองเชียงราย', 'แม่สาย', 'เชียงของ'],
@@ -163,7 +184,15 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
     'ตราด': ['เมืองตราด', 'คลองใหญ่', 'เกาะช้าง'],
     'ตาก': ['เมืองตาก', 'แม่สอด', 'อุ้มผาง'],
     'นครนายก': ['เมืองนครนายก', 'ปากพลี', 'องครักษ์', 'บ้านนา'],
-    'นครปฐม': ['เมืองนครปฐม', 'กำแพงแสน', 'นครชัยศรี', 'ดอนตูม', 'บางเลน', 'สามพราน', 'พุทธมณฑล'],
+    'นครปฐม': [
+      'เมืองนครปฐม',
+      'กำแพงแสน',
+      'นครชัยศรี',
+      'ดอนตูม',
+      'บางเลน',
+      'สามพราน',
+      'พุทธมณฑล',
+    ],
     'นครพนม': ['เมืองนครพนม', 'ท่าอุเทน', 'ธาตุพนม'],
     'นครราชสีมา': ['เมืองนครราชสีมา', 'ปากช่อง', 'พิมาย'],
     'นครศรีธรรมราช': ['เมืองนครศรีธรรมราช', 'ทุ่งสง', 'ปากพนัง'],
@@ -223,109 +252,126 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
     'อุทัยธานี': ['เมืองอุทัยธานี', 'ทัพทัน', 'บ้านไร่'],
     'อุบลราชธานี': ['เมืองอุบลราชธานี', 'วารินชำราบ', 'เดชอุดม'],
   };
-
-  final List<String> foodTypes = [//ประเภทอาหาร
-  "อาหารไทย",
-  "อาหารญี่ปุ่น",
-  "อาหารเกาหลี",
-  "อาหารจีน",
-  "อาหารยุโรป",
-  "อาหารอิตาเลียน",
-  "อาหารฝรั่งเศส",
-  "อาหารอินเดีย",
-  "อาหารตะวันออกกลาง",
-  "อาหารตามสั่ง",
-  "อาหารอีสาน",
-  "อาหารเจ/มังสวิรัติ",
-  "อาหารทะเล",
-  "ของหวานและเครื่องดื่ม",
-  "ของทานเล่น/ขนม",
+  final List<String> foodTypes = [
+    //ประเภทอาหาร
+    "อาหารไทย",
+    "อาหารญี่ปุ่น",
+    "อาหารเกาหลี",
+    "อาหารจีน",
+    "อาหารยุโรป",
+    "อาหารอิตาเลียน",
+    "อาหารฝรั่งเศส",
+    "อาหารอินเดีย",
+    "อาหารตะวันออกกลาง",
+    "อาหารตามสั่ง",
+    "อาหารอีสาน",
+    "อาหารเจ/มังสวิรัติ",
+    "อาหารทะเล",
+    "ของหวานและเครื่องดื่ม",
+    "ของทานเล่น/ขนม",
   ];
-
- @override
-Widget build(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // แถวบน: จังหวัด, เขต, ตำแหน่ง
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              _buildProvinceDropdown(),
-              const SizedBox(width: 8),
-              _buildDistrictDropdown(),
-              const SizedBox(width: 8),
-              _buildLocationButton(),
-            ],
-          ),
-        ),
-        const SizedBox(height: 8),
-
-        // แถวล่าง: ประเภทอาหาร (ให้ยาวเต็ม)
-        SizedBox(
-          width: double.infinity,
-          child: _buildCategoryDropdown(), // ใช้ฟังก์ชันใหม่
-        ),
-      ],
-    ),
-  );
-}
-
-
-
-  Widget _buildProvinceDropdown() {
-  return _buildContainer(
-    SizedBox(
-      width: 130, // ✅ ความยาวของปุ่ม (ปรับค่าตามต้องการ เช่น 200, 250, 300)
-      child: DropdownButton<String>(
-        isExpanded: true, // ✅ ให้ปุ่มขยายเต็มความกว้างที่กำหนด
-        value: selectedProvince,
-        hint: const Text(
-          'กรุณาเลือกจังหวัด',
-          style: TextStyle(color: Colors.white),
-        ),
-        dropdownColor: Colors.pink[200],
-        style: const TextStyle(color: Colors.white),
-        items: provinces.map((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(
-              value,
-              style: const TextStyle(color: Colors.white),
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                _buildProvinceDropdown(),
+                const SizedBox(width: 8),
+                _buildDistrictDropdown(),
+                const SizedBox(width: 8),
+                _buildLocationButton(),
+              ],
             ),
-          );
-        }).toList(),
-        onChanged: (newValue) {
-          setState(() {
-            selectedProvince = newValue;
-            selectedDistrict = null;
-          });
-        },
+          ),
+          const SizedBox(height: 8),
+          SizedBox(width: double.infinity, child: _buildCategoryDropdown()),
+        ],
       ),
-    ),
-  );
-}
-
-
+    );
+  }
+  Widget _buildProvinceDropdown() {
+    return _buildContainer(
+      SizedBox(
+        width: 130,
+        child: DropdownButton<String>(
+          isExpanded: true,
+          value: selectedProvince,
+          hint: const Text(
+            'กรุณาเลือกจังหวัด',
+            style: TextStyle(color: Colors.white),
+          ),
+          dropdownColor: Colors.pink[200],
+          style: const TextStyle(color: Colors.white),
+          items: provinces.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value, style: const TextStyle(color: Colors.white)),
+            );
+          }).toList(),
+          onChanged: (newValue) {
+            setState(() {
+              selectedProvince = newValue;
+              selectedDistrict = null;
+            });
+          },
+        ),
+      ),
+    );
+  }
   Widget _buildDistrictDropdown() {
-  final districts = districtsByProvince[selectedProvince] ?? [];
-
-  return _buildContainer(
-    SizedBox(
-      width: 175, // ✅ ปรับความยาวของปุ่มตามต้องการ
+    final districts = districtsByProvince[selectedProvince] ?? [];
+    return _buildContainer(
+      SizedBox(
+        width: 175,
+        child: DropdownButton<String>(
+          isExpanded: true,
+          value: selectedDistrict,
+          hint: const Text(
+            'กรุณาเลือกเขตหรืออำเภอ',
+            style: TextStyle(color: Colors.white),
+          ),
+          dropdownColor: Colors.pink[200],
+          style: const TextStyle(color: Colors.white),
+          items: districts.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value, style: const TextStyle(color: Colors.white)),
+            );
+          }).toList(),
+          onChanged: (newValue) {
+            setState(() {
+              selectedDistrict = newValue;
+            });
+          },
+        ),
+      ),
+    );
+  }
+  Widget _buildCategoryDropdown() {
+    return Container(
+      height: 35,
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.pink[300],
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: DropdownButton<String>(
-        isExpanded: true, // ✅ ให้ปุ่มขยายเต็ม container
-        value: selectedDistrict,
+        isExpanded: true,
+        value: selectedCategory,
         hint: const Text(
-          'กรุณาเลือกเขตหรืออำเภอ',
+          'ตัวกรองประเภทอาหาร',
           style: TextStyle(color: Colors.white),
         ),
         dropdownColor: Colors.pink[200],
         style: const TextStyle(color: Colors.white),
-        items: districts.map((String value) {
+        iconEnabledColor: Colors.white,
+        items: foodTypes.map((String value) {
           return DropdownMenuItem<String>(
             value: value,
             child: Text(value, style: const TextStyle(color: Colors.white)),
@@ -333,75 +379,32 @@ Widget build(BuildContext context) {
         }).toList(),
         onChanged: (newValue) {
           setState(() {
-            selectedDistrict = newValue;
+            selectedCategory = newValue;
           });
         },
       ),
-    ),
-  );
-}
-
-
-
-  Widget _buildCategoryDropdown() {
-  return Container(
-    height: 35,
-    padding: const EdgeInsets.symmetric(horizontal: 12),
-    decoration: BoxDecoration(
-      color: Colors.pink[300],
-      borderRadius: BorderRadius.circular(20),
-    ),
-    child: DropdownButton<String>(
-      isExpanded: true, // ทำให้ dropdown ขยายเต็มความกว้าง
-      value: selectedCategory,
-      hint: const Text(
-        'ตัวกรองประเภทอาหาร',
-        style: TextStyle(color: Colors.white),
-      ),
-      dropdownColor: Colors.pink[200],
-      style: const TextStyle(color: Colors.white),
-      iconEnabledColor: Colors.white,
-      items: foodTypes.map((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value, style: const TextStyle(color: Colors.white)),
-        );
-      }).toList(),
-      onChanged: (newValue) {
-        setState(() {
-          selectedCategory = newValue;
-        });
-      },
-    ),
-  );
-}
-
-
-
+    );
+  }
   Widget _buildLocationButton() {
-  return _buildContainer(
-    SizedBox(
-     
-      width: 150, 
-      child: TextButton.icon(
-        onPressed: () {
-          // TODO: ดึงตำแหน่งปัจจุบัน
-        },
-        icon: const Icon(Icons.my_location, color: Colors.white),
-        label: const Text(
-          "ตำแหน่งปัจจุบัน",
-          style: TextStyle(color: Colors.white),
+    return _buildContainer(
+      SizedBox(
+        width: 150,
+        child: TextButton.icon(
+          onPressed: () {
+            // TODO: ดึงตำแหน่งปัจจุบัน
+          },
+          icon: const Icon(Icons.my_location, color: Colors.white),
+          label: const Text(
+            "ตำแหน่งปัจจุบัน",
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-        
       ),
-    ),
-  );
-}
-
-
+    );
+  }
   Widget _buildContainer(Widget child) {
     return Container(
-       height: 35,
+      height: 35,
       padding: EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: Colors.pink[300],

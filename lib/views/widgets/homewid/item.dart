@@ -1,9 +1,6 @@
-// lib/views/widgets/homewid/item.dart
-
 import 'package:flutter/material.dart';
 import '../matwid/star_rating.dart';
 import '../matwid/statustag.dart';
-
 class RestaurantCard extends StatelessWidget {
   final String imageUrl;
   final String restaurantName;
@@ -12,7 +9,6 @@ class RestaurantCard extends StatelessWidget {
   final bool isOpen;
   final bool showMotorcycleIcon;
   final VoidCallback? onTap;
-
   const RestaurantCard({
     super.key,
     required this.imageUrl,
@@ -23,21 +19,18 @@ class RestaurantCard extends StatelessWidget {
     this.showMotorcycleIcon = false,
     this.onTap,
   });
-
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       elevation: 3,
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(15.0),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row( // <-- Layout แบบเดิม (แนวนอน)
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
@@ -67,10 +60,7 @@ class RestaurantCard extends StatelessWidget {
                     const SizedBox(height: 4.0),
                     Text(
                       description,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.grey[700],
-                      ),
+                      style: TextStyle(fontSize: 10, color: Colors.grey[700]),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -78,11 +68,15 @@ class RestaurantCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        StarRating(rating: rating, size: 10, onRatingChanged: (newRating) {  },),
+                        StarRating(
+                          rating: rating,
+                          size: 10,
+                          onRatingChanged: (newRating) {},
+                        ),
                         StatusTag(
                           isOpen: isOpen,
                           showMotorcycleIcon: showMotorcycleIcon,
-                          fontSize: 12, // กำหนดขนาดฟอนต์ตามต้องการ
+                          fontSize: 12,
                         ),
                       ],
                     ),

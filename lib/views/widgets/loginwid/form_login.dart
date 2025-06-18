@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:food_near_me_app/views/controllers/loginctrl.dart';
-
 class FormLogin extends StatelessWidget {
   FormLogin({super.key});
   final LoginController controller = Get.find<LoginController>();
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,30 +16,26 @@ class FormLogin extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               hintText: 'Username or Email',
-
               hintStyle: GoogleFonts.charmonman(
                 color: Colors.white.withValues(alpha: 8 * 0.07),
               ),
               filled: true,
               fillColor: Colors.white.withValues(alpha: 8 * 0.03),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10), //กรอบช่อง
+                borderRadius: BorderRadius.circular(10), 
               ),
             ),
           ),
         ),
         SizedBox(height: 8),
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0.1),
           child: Obx(
             () => TextField(
               controller: controller.passwordController,
-
               obscureText: controller.obscureText,
               decoration: InputDecoration(
                 hintText: 'Password',
-
                 hintStyle: GoogleFonts.charmonman(
                   color: Colors.white.withValues(alpha: 8 * 0.07),
                 ),
@@ -56,7 +49,6 @@ class FormLogin extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    // Toggle password visibility
                     controller.obscureText = !controller.obscureText;
                   },
                 ),
@@ -68,7 +60,6 @@ class FormLogin extends StatelessWidget {
             ),
           ),
         ),
-
       ],
     );
   }

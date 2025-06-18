@@ -1,26 +1,30 @@
-// lib/widgets/slide_widget.dart
+// lib/views/widgets/homewid/slideim.dart (หรือ lib/widgets/slide_widget.dart)
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/slidectrl.dart';
 
 
-class Slideim extends StatelessWidget {
-   Slideim({super.key});
 
-    final SlideController controller = Get.put(SlideController());
+
+class Slideim extends StatelessWidget {
+  Slideim({super.key});
+
+  // เปลี่ยน Get.put เป็น Get.find เพื่อดึง SlideController ที่ถูกสร้างใน MainController แล้ว
+  final SlideController controller = Get.find<SlideController>();
+
   @override
   Widget build(BuildContext context) {
 
     return Container(
     //   decoration: BoxDecoration(
-    //    borderRadius: BorderRadius.circular(32.0), // กำหนดความมนของมุม
+    //     borderRadius: BorderRadius.circular(32.0), // กำหนดความมนของมุม
     // boxShadow: [ // เพิ่มเงา
     //   BoxShadow(
-    //     color: Colors.pink.withValues(alpha: 8* 0.03) ,// สีเงา
-    //     spreadRadius: 2, // การกระจายของเงา
-    //     blurRadius: 5, // ความเบลอของเงา
-    //     offset: Offset(0, 3), // ตำแหน่งเงา (x, y)
+    //      color: Colors.pink.withValues(alpha: 8* 0.03) ,// สีเงา
+    //      spreadRadius: 2, // การกระจายของเงา
+    //      blurRadius: 5, // ความเบลอของเงา
+    //      offset: Offset(0, 3), // ตำแหน่งเงา (x, y)
     //   ),
     // ],
     //   ),

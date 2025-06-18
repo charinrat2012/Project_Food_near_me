@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/home_ui.dart';
 import 'package:get/get.dart';
 
+import '../navbar.dart';
+
 
 
 class LoginController extends GetxController {
@@ -62,12 +64,8 @@ class LoginController extends GetxController {
     passwordController.clear();
     FocusScope.of(Get.context!).unfocus(); // Dismiss the keyboard
 
-    Navigator.of(Get.context!).push(
-      MaterialPageRoute(
-        builder: (context) => HomeUi(),
-      ),
+      Get.back();
 
-    );
     return;
   }
 }

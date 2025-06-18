@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/forgotpass_ui.dart';
-import 'package:food_near_me_app/views/otp_ui.dart';
 import 'package:food_near_me_app/views/register_ui.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';

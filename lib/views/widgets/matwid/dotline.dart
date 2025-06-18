@@ -10,12 +10,12 @@ class Dotline extends StatelessWidget {
   final double dashSpace;
 
   const Dotline({
-    Key? key,
+    super.key,
     this.color = Colors.white, // ตั้งค่าเริ่มต้นเป็นสีเทา หรือสีที่คุณต้องการ
     this.height = 1.0,
     this.dashWidth = 5.0,
     this.dashSpace = 5.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

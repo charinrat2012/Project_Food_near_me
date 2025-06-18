@@ -9,7 +9,7 @@ import 'widgets/matwid/dotline.dart';
 import 'widgets/matwid/star_rating.dart';
 import 'widgets/matwid/statustag.dart'; // Make sure this path is correct
 
-class RestaurantDetailPage extends StatelessWidget {
+class RestaurantDetailPageUi extends StatelessWidget {
   final String imageUrl; // URL or Asset Path for the main restaurant image
   final String restaurantName;
   final String description; // Retained, but not directly used in this layout
@@ -23,7 +23,7 @@ class RestaurantDetailPage extends StatelessWidget {
   final String menuimage; // Menu image variable
   final String bannerImage; // Banner image variable
 
-  const RestaurantDetailPage({
+  const RestaurantDetailPageUi({
     super.key,
     required this.restaurantName,
     required this.imageUrl,

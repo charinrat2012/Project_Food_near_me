@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/controllers/loginctrl.dart';
-import 'package:food_near_me_app/views/controllers/registerctrl.dart';
 import 'package:food_near_me_app/views/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/views/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/views/widgets/matwid/blurcontainer.dart';
 import 'package:food_near_me_app/views/widgets/loginwid/form_login.dart';
 import 'package:food_near_me_app/views/widgets/loginwid/login_with.dart';
-import 'package:food_near_me_app/views/widgets/matwid/logo.dart';
 import 'package:food_near_me_app/views/widgets/loginwid/path_bt.dart';
-import 'package:food_near_me_app/views/widgets/regiswid/register_bt.dart';
-import 'package:food_near_me_app/views/widgets/regiswid/register_head.dart';
 import 'package:food_near_me_app/views/widgets/loginwid/login_bt.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import 'package:food_near_me_app/views/widgets/regiswid/form_register.dart';
 
 import 'widgets/matwid/iconperson.dart';
 import 'widgets/loginwid/login_head.dart';

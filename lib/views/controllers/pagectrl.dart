@@ -1,31 +1,13 @@
 import 'package:food_near_me_app/views/controllers/slidectrl.dart';
 import 'package:food_near_me_app/views/favorite_ui.dart';
+import 'package:food_near_me_app/views/myshop_ui.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:food_near_me_app/views/home_ui.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:food_near_me_app/views/controllers/scrollctrl.dart'; 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Column( 
-      children: [
-        AppBar(
-          title: const Text('หน้าโปรไฟล์'),
-          backgroundColor: Colors.orangeAccent,
-          foregroundColor: Colors.white,
-        ),
-        const Expanded(
-          child: Center(
-            child: Text('ดูโปรไฟล์ของคุณที่นี่', style: TextStyle(fontSize: 24)),
-          ),
-        ),
-      ],
-    );
-  }
-}
+
 class MainController extends GetxController {
   late PersistentTabController tabController;
   @override
@@ -58,10 +40,10 @@ class MainController extends GetxController {
         ),
       ),
       PersistentTabConfig(
-        screen: ProfileScreen(), 
+        screen: MyshopUi(), 
         item: ItemConfig(
-          icon: Icon(Icons.person), 
-          title: "โปรไฟล์",
+          icon: Icon(Icons.storefront), 
+          title: "ร้านค้าของฉัน",
           activeForegroundColor: Colors.deepPurple,
           inactiveForegroundColor: Colors.white,
         ),

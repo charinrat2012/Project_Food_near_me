@@ -203,139 +203,324 @@ class HomeUi extends StatelessWidget {
       'menuimage': 'assets/imgs/a3.jpg',
       'bannerImage': 'assets/imgs/a4.jpg',
     },
+     //----------------------------------
+    {
+      'id': 'F0011',
+      'imageUrl': 'assets/imgs/im13.jfif',
+      'restaurantName': 'petrichor เพทริเคอร์ คาเฟ่',
+      'description':
+          'petrichorที่ซึ่งกลิ่นไอธรรมชาติโอบกอดความสุขของคนรักสัตว์  เพลิดเพลินกับเครื่องดื่มและของว่างแสนอร่อย พร้อมบริการ  รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 5.0,
+      'isOpen': false,
+      'showMotorcycleIcon': false,
+      'details':
+          'สัมผัสบรรยากาศอบอุ่น ผ่อนคลาย  คุณจะได้เพลิดเพลินกับหลากหลายเมนูเครื่องดื่มและของว่างแสนอร่อย'
+          'ในขณะที่สัตว์เลี้ยงของคุณก็มีพื้นที่ส่วนตัวให้วิ่งเล่นและผ่อนคลายได้อย่างเต็มที่เราเชื่อว่าความสุขคือการได้ใช้เวลาร่วมกัน' 
+          'และแบ่งปันช่วงเวลาแห่งความสุขกับคนที่คุณรัก รวมถึงสมาชิกสี่ขาของครอบครัวคุณ ',
+      'openingHours': "เปิดทุกวัน เวลา 9:30 - 18:30 น. \nยกเว้นวันอังคารที่ร้านจะปิดทำการ",
+      'phoneNumber': "064-624-3559",
+      'location':
+          "88 หมู่2 ถนน ทวีวัฒนา แขวงทวีวัฒนา เขตทวีวัฒนา กรุงเทพมหานคร 10170",
+      'menuimage': 'assets/imgs/a6.jpg',
+      'bannerImage': 'assets/imgs/a7.jpg',
+    },
+     //----------------------------------
+         {
+      'id': 'F0012',
+      'imageUrl': 'assets/imgs/im14.png',
+      'restaurantName': 'SHU DAXIA Hotpot ',
+      'description':
+          'ร้านชาบูหม่าล่าอร่อยๆ ในกรุงเทพฯ หลายคนจะต้องนึกถึงร้านนี้ SHU DAXIA Hotpot เพราะที่นี่คือร้านหม่าล่าหม้อไฟหัวมังกร รสชาติต้นตำรับจากเมืองเฉิงตู ประเทศจีน  รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 4.5,
+      'isOpen': false,
+      'showMotorcycleIcon': false,
+      'details':
+          'สู่ต้าเสียคุณจะได้ทานทั้งเมนูร้านหม่าล่าหม้อไฟแสนอร่อย แล้วยังได้เพลินไปกับการแสดงสุดอลังการของทางร้าน ฟินได้ในทุกจุดไม่ว่าจะเป็นเมนูอาหาร การตกแต่งร้าน และการบริการ ต้องยอมรับว่าเค้าทำถึงจริงๆ ที่ร้านมีโต๊ะที่นั่งหลายขนาด รวมไปถึงห้องส่วนตัวสุดพรีเมียม ที่สามารถรองรับได้ตั้งแต่ 8-40 คน ตอบโจทย์ได้ทั้งครอบครัวเล็ก ครอบครัวใหญ่ รวมไปถึงการนัดสังสรรค์ของแกงค์เพื่อนฝูง',
+      'openingHours': "เปิดทุกวัน เวลา 10:00 น. - 03:00 น",
+      'phoneNumber': "094-491-3900",
+      'location':
+          "ถ. ประดิษฐ์มนูธรรม 19 แขวงคลองจั่น บางกะปิ กรุงเทพมหานคร 10240",
+      'menuimage': 'assets/imgs/a9.jpg',
+      'bannerImage': 'assets/imgs/a8.jpg',
+    },
+     //----------------------------------
+        {
+      'id': 'F0013',
+      'imageUrl': 'assets/imgs/im15.jpg',
+      'restaurantName': 'Hongdae Buffet ',
+      'description':
+          'ปิ้งย่างเกาหลีต้นตำรับ วัตถุดิบคุณภาพแน่นๆ ที่ Hongdae Buffet ทุกคำคือความสุข รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 5.0,
+      'isOpen': false,
+      'showMotorcycleIcon': false,
+      'details':
+          'ถ้าคุณกำลังมองหา บุฟเฟต์ปิ้งย่างเกาหลีแท้ๆ ที่ให้คุณอิ่มอร่อยได้ไม่อั้นในบรรยากาศสบายๆ ต้องมาที่ Hongdae Buffet '
+          'ปิ้งย่างเกาหลีพรีเมียมที่คุณไม่ควรพลาด!Hongdae Buffet โดดเด่นด้วย วัตถุดิบคุณภาพสูง'
+           'ทั้งหมูหมักซอสเกาหลี หมูสามชั้น เนื้อวัวพรีเมียม และ ซีฟู้ดสดๆ ให้คุณปิ้งย่างได้อย่างจุใจ'
+            'พร้อมน้ำจิ้มสูตรเด็ด ที่เป็นเอกลักษณ์ของร้าน และ เครื่องเคียงนานาชนิด ที่เติมได้ไม่อั้น เพื่อให้มื้ออาหารของคุณสมบูรณ์แบบตามสไตล์เกาหลีแท้ๆ',
+      'openingHours': "เปิดทุกวัน เวลา 11:00 น. ถึง 22:00 น",
+      'phoneNumber': "064-165-7175",
+      'location':
+          "Siam Square One ชั้น 5 และ Future Park รังสิต ชั้น G",
+      'menuimage': 'assets/imgs/a10.jpg',
+      'bannerImage': 'assets/imgs/a11.jpg',
+    },
+     //----------------------------------
+        {
+      'id': 'F0014',
+      'imageUrl': 'assets/imgs/im16.jpg',
+      'restaurantName': 'KFC',
+      'description':
+          'KFC กรอบนอก นุ่มใน...อร่อยทุกคำ ที่ทุกคนหลงรัก รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 5.0,
+      'isOpen': false,
+      'showMotorcycleIcon': false,
+      'details':
+          'ไก่ทอดร้อนๆ กรอบนอก นุ่มใน: หัวใจหลักของ KFC คือไก่ทอดสูตรต้นตำรับ 11 เครื่องเทศ ที่ทอดจนหนังไก่เหลืองทอง กรอบฟู แต่เนื้อด้านในยังคงนุ่ม ชุ่มฉ่ำ รสชาติเข้าถึงเนื้อทุกชิ้นKFC มีสาขาอยู่ทั่วประเทศ ทั้งในห้างสรรพสินค้า ปั๊มน้ำมัน หรือตามแหล่งชุมชน ทำให้คุณสามารถเข้าถึงความอร่อยได้ง่ายๆ สะดวกสบาย ไม่ว่าจะสั่งกลับบ้าน ทานที่ร้าน หรือใช้บริการเดลิเวอรี่',
+      'openingHours': "เปิดทุกวัน 10:00 น. ถึง 21:00 น.",
+      'phoneNumber': "020-290-700",
+      'location':
+          " เดอะมอลล์ไลฟ์สโตร์ บางแค แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
+      'menuimage': 'assets/imgs/k1.jpg',
+      'bannerImage': 'assets/imgs/k2.jpg',
+    },
+     //----------------------------------
+    {
+      'id': 'F0015',
+      'imageUrl': 'assets/imgs/a5.webp',
+      'restaurantName': 'rr',
+      'description':
+          'สุกี้จินดา ร้านสุกี้หม่าล่าเสียบไม้แบบสายพาน มีทั้งแบบสุกี้น้ำ และสุกี้แห้ง คุณสามารถเลือกน้ำซุปเองได้ มีน้ำซุปหลายรสชาติ รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 4.5,
+      'isOpen': false,
+      'showMotorcycleIcon': true,
+      'details':
+          'คนรักสุกี้หม่าล่า พลาดไม่ได้เด็ดขาด สุกี้จินดา มีไลน์อาหารให้เลือก มากกว่า 80+ เมนู คุณสามารถทานได้ไม่อั้นกับเวลา 1:30 ชม. (90 นาที) ในราคา 388 บาท  จัดเต็มสุกี้หม่าล่า น้ำซุป น้ำจิ้ม ของหวาน ผลไม้ เครื่องดื่ม',
+      'openingHours': "เปิดทุกวัน 11:00 น. ถึง 04:00 น.  ",
+      'phoneNumber': "091-795-3839  ",
+      'location':
+          "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
+      'menuimage': 'assets/imgs/a3.jpg',
+      'bannerImage': 'assets/imgs/a4.jpg',
+    },
+     //----------------------------------
+    {
+      'id': 'F0016',
+      'imageUrl': 'assets/imgs/a5.webp',
+      'restaurantName': 'ee',
+      'description':
+          'สุกี้จินดา ร้านสุกี้หม่าล่าเสียบไม้แบบสายพาน มีทั้งแบบสุกี้น้ำ และสุกี้แห้ง คุณสามารถเลือกน้ำซุปเองได้ มีน้ำซุปหลายรสชาติ รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 4.5,
+      'isOpen': false,
+      'showMotorcycleIcon': true,
+      'details':
+          'คนรักสุกี้หม่าล่า พลาดไม่ได้เด็ดขาด สุกี้จินดา มีไลน์อาหารให้เลือก มากกว่า 80+ เมนู คุณสามารถทานได้ไม่อั้นกับเวลา 1:30 ชม. (90 นาที) ในราคา 388 บาท  จัดเต็มสุกี้หม่าล่า น้ำซุป น้ำจิ้ม ของหวาน ผลไม้ เครื่องดื่ม',
+      'openingHours': "เปิดทุกวัน 11:00 น. ถึง 04:00 น.  ",
+      'phoneNumber': "091-795-3839  ",
+      'location':
+          "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
+      'menuimage': 'assets/imgs/a3.jpg',
+      'bannerImage': 'assets/imgs/a4.jpg',
+    },
+     //----------------------------------
+      {
+      'id': 'F0017',
+      'imageUrl': 'assets/imgs/pama.png',
+      'restaurantName': 'qq',
+      'description':
+          'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 5.0,
+      'isOpen': false,
+      'showMotorcycleIcon': false,
+      'details':
+          'Pasta AMA เป็นร้านอาหารอิตาเลียนที่เชี่ยวชาญด้านพาสต้าสดใหม่ ด้วยวัตถุดิบคุณภาพสูงและสูตรต้นตำรับ เมนูเด่นคือคาโบนาร่าที่เข้มข้น และเพสโต้ที่หอมกลิ่นใบโหระพาแท้ๆ บรรยากาศอบอุ่นเหมาะกับการมาทานกับครอบครัวหรือเพื่อนฝูง',
+      'openingHours': "เปิดทุกวัน 08:00 น. ถึง 24:00 น.",
+      'phoneNumber': "088-662-8244",
+      'location':
+          "503/3 ชั้น 1 ยิ้มแย้ม โฮสเทล ถ. เพชรบุรี \nแขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
+      'menuimage': 'assets/imgs/p1.png',
+      'bannerImage': 'assets/imgs/pomo.png',
+    },
+     //----------------------------------
+    {
+      'id': 'F0018',
+      'imageUrl': 'assets/imgs/a5.webp',
+      'restaurantName': 'uu',
+      'description':
+          'สุกี้จินดา ร้านสุกี้หม่าล่าเสียบไม้แบบสายพาน มีทั้งแบบสุกี้น้ำ และสุกี้แห้ง คุณสามารถเลือกน้ำซุปเองได้ มีน้ำซุปหลายรสชาติ รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 4.5,
+      'isOpen': false,
+      'showMotorcycleIcon': true,
+      'details':
+          'คนรักสุกี้หม่าล่า พลาดไม่ได้เด็ดขาด สุกี้จินดา มีไลน์อาหารให้เลือก มากกว่า 80+ เมนู คุณสามารถทานได้ไม่อั้นกับเวลา 1:30 ชม. (90 นาที) ในราคา 388 บาท  จัดเต็มสุกี้หม่าล่า น้ำซุป น้ำจิ้ม ของหวาน ผลไม้ เครื่องดื่ม',
+      'openingHours': "เปิดทุกวัน 11:00 น. ถึง 04:00 น.  ",
+      'phoneNumber': "091-795-3839  ",
+      'location':
+          "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
+      'menuimage': 'assets/imgs/a3.jpg',
+      'bannerImage': 'assets/imgs/a4.jpg',
+    },
+     //----------------------------------
+    {
+      'id': 'F0019',
+      'imageUrl': 'assets/imgs/a5.webp',
+      'restaurantName': 'yy',
+      'description':
+          'สุกี้จินดา ร้านสุกี้หม่าล่าเสียบไม้แบบสายพาน มีทั้งแบบสุกี้น้ำ และสุกี้แห้ง คุณสามารถเลือกน้ำซุปเองได้ มีน้ำซุปหลายรสชาติ รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 4.5,
+      'isOpen': false,
+      'showMotorcycleIcon': true,
+      'details':
+          'คนรักสุกี้หม่าล่า พลาดไม่ได้เด็ดขาด สุกี้จินดา มีไลน์อาหารให้เลือก มากกว่า 80+ เมนู คุณสามารถทานได้ไม่อั้นกับเวลา 1:30 ชม. (90 นาที) ในราคา 388 บาท  จัดเต็มสุกี้หม่าล่า น้ำซุป น้ำจิ้ม ของหวาน ผลไม้ เครื่องดื่ม',
+      'openingHours': "เปิดทุกวัน 11:00 น. ถึง 04:00 น.  ",
+      'phoneNumber': "091-795-3839  ",
+      'location':
+          "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
+      'menuimage': 'assets/imgs/a3.jpg',
+      'bannerImage': 'assets/imgs/a4.jpg',
+    },
+     //----------------------------------
+    {
+      'id': 'F0020',
+      'imageUrl': 'assets/imgs/pama.png',
+      'restaurantName': 'oo',
+      'description':
+          'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
+      'rating': 5.0,
+      'isOpen': false,
+      'showMotorcycleIcon': false,
+      'details':
+          'Pasta AMA เป็นร้านอาหารอิตาเลียนที่เชี่ยวชาญด้านพาสต้าสดใหม่ ด้วยวัตถุดิบคุณภาพสูงและสูตรต้นตำรับ เมนูเด่นคือคาโบนาร่าที่เข้มข้น และเพสโต้ที่หอมกลิ่นใบโหระพาแท้ๆ บรรยากาศอบอุ่นเหมาะกับการมาทานกับครอบครัวหรือเพื่อนฝูง',
+      'openingHours': "เปิดทุกวัน 08:00 น. ถึง 24:00 น.",
+      'phoneNumber': "088-662-8244",
+      'location':
+          "503/3 ชั้น 1 ยิ้มแย้ม โฮสเทล ถ. เพชรบุรี \nแขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
+      'menuimage': 'assets/imgs/p1.png',
+      'bannerImage': 'assets/imgs/pomo.png',
+    },
+    
   ];
-  @override
+    @override
   Widget build(BuildContext context) {
     final ScrollpageController scrollpageController =
         Get.find<ScrollpageController>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              PreferredSize(
-                preferredSize: Size.fromHeight(8 * 12),
-                child: AppBar(
-                  backgroundColor: Colors.pink[200],
-                  title: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Image.asset(
-                      "assets/imgs/logoHome.png",
-                      height: 8 * 10,
-                      fit: BoxFit.contain,
+      child: Scaffold(
+        backgroundColor: Colors.pink[200],
+        appBar: AppBar(
+          backgroundColor: Colors.pink[200],
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: Image.asset(
+              "assets/imgs/logoHome.png",
+              height: 8 * 10,
+              fit: BoxFit.contain,
+            ),
+          ),
+          toolbarHeight: 8 * 12,
+          automaticallyImplyLeading: false,
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.offAll(LoginUi());
+              },
+              child: const Text(
+                "ล็อคอิน",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+          ],
+        ),
+        body: Stack(
+          children: [
+            Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0),
+                      ),
                     ),
-                  ),
-                  toolbarHeight: 8 * 12,
-                  automaticallyImplyLeading: false,
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Get.offAll(LoginUi());
-                      },
-                      child: const Text(
-                        "ล็อคอิน",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: SingleChildScrollView(
+                        controller: scrollpageController.scrollController,
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Formsearch(),
+                            const LocationFilterBar(),
+
+                            const SizedBox(height: 8),
+                            Slideim(),
+                            const SizedBox(height: 8),
+                            // ใช้ .map เพื่อสร้าง RestaurantCard จาก restaurantList
+                            ...restaurantList.map((restaurantData) {
+                              return RestaurantCard(
+                                imageUrl: restaurantData['imageUrl']!,
+                                restaurantName:
+                                    restaurantData['restaurantName']!,
+                                description: restaurantData['description']!,
+                                rating: restaurantData['rating']!,
+                                isOpen: restaurantData['isOpen']!,
+                                showMotorcycleIcon:
+                                    restaurantData['showMotorcycleIcon']!,
+                                onTap: () {
+                                  // ใช้ Get.to พร้อม BindingsBuilder เพื่อจัดการ Controller lifecycle
+                                  Get.to(
+                                    () => RestaurantDetailPageUi(
+                                          restaurantId: restaurantData['id']!,
+                                        ),
+                                    binding: BindingsBuilder(() {
+                                      // Get.put() จะถูกเรียกเมื่อหน้านั้นถูกสร้างขึ้น
+                                      // และจะถูก dispose เมื่อหน้านั้นถูก pop ออกจาก stack
+                                      Get.put(
+                                        RestaurantDetailController(
+                                          restaurantId: restaurantData['id']!,
+                                        ),
+                                        tag: restaurantData['id']!, // ใช้ ID เป็น tag
+                                      );
+                                    }),
+                                  );
+                                },
+                              );
+                            }),
+                            const SizedBox(height: 50),
+                          ],
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30.0),
-                      topRight: Radius.circular(30.0),
-                    ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: SingleChildScrollView(
-                      controller: scrollpageController.scrollController,
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Formsearch(),
-                          const LocationFilterBar(),
-                          const SizedBox(height: 8),
-                          Slideim(),
-                          const SizedBox(height: 8),
-                          ...restaurantList.map((restaurantData) {
-                            final String restaurantId =
-                                restaurantData['id'] as String? ?? 'default_id';
-                            final String imageUrl =
-                                restaurantData['imageUrl'] as String? ??
-                                'assets/imgs/placeholder.png';
-                            final String restaurantName =
-                                restaurantData['restaurantName'] as String? ??
-                                'ชื่อร้านไม่ระบุ';
-                            final String description =
-                                restaurantData['description'] as String? ??
-                                'ไม่มีรายละเอียดร้านอาหาร';
-                            final double rating =
-                                (restaurantData['rating'] as double?) ?? 0.0;
-                            final bool isOpen =
-                                (restaurantData['isOpen'] as bool?) ?? false;
-                            final bool showMotorcycleIcon =
-                                (restaurantData['showMotorcycleIcon']
-                                    as bool?) ??
-                                false;
-                            return RestaurantCard(
-                              imageUrl: imageUrl,
-                              restaurantName: restaurantName,
-                              description: description,
-                              rating: rating,
-                              isOpen: isOpen,
-                              showMotorcycleIcon: showMotorcycleIcon,
-                              onTap: () {
-                                Get.to(
-                                  () => RestaurantDetailPageUi(
-                                    restaurantId: restaurantId,
-                                  ),
-                                  binding: BindingsBuilder(() {
-                                    Get.put(
-                                      RestaurantDetailController(
-                                        restaurantId: restaurantId,
-                                      ),
-                                      tag: restaurantId,
-                                    );
-                                  }),
-                                );
-                              },
-                            );
-                          }).toList(),
-                          const SizedBox(height: 50),
-                        ],
+                ),
+              ],
+            ),
+            Obx(
+              () => scrollpageController.showScrollToTopButton.value
+                  ? Positioned(
+                      right: 20.0,
+                      bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                      child: ScrollToTopButton(
+                        onPressed: scrollpageController.scrollToTop,
                       ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Obx(
-            () => scrollpageController.showScrollToTopButton.value
-                ? Positioned(
-                    right: 20.0,
-                    bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                    child: ScrollToTopButton(
-                      onPressed: scrollpageController.scrollToTop,
-                    ),
-                  )
-                : Container(),
-          ),
-        ],
+                    )
+                  : Container(),
+            ),
+          ],
+        ),
       ),
     );
   }

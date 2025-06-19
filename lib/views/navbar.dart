@@ -1,17 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'controllers/pagectrl.dart';
-
-class Navbar extends StatelessWidget {
+import 'home_ui.dart'; 
+import 'myshop_ui.dart'; 
+import 'controllers/pagectrl.dart'; 
+import 'controllers/scrollctrl.dart'; 
+class Navbar extends StatefulWidget {
   const Navbar({super.key});
-
+  @override
+  State<Navbar> createState() => _NavbarState();
+}
+class _NavbarState extends State<Navbar> {
+  late MainController _mainController;
+  late ScrollpageController _scrollpageController;
+  @override
+  void initState() {
+    super.initState();
+    _mainController = Get.find<MainController>();
+    _scrollpageController = Get.find<ScrollpageController>();
+    _mainController.tabController.addListener(_onTabChanged);
+  }
+  @override
+  void dispose() {
+    _mainController.tabController.removeListener(_onTabChanged);
+    super.dispose();
+  }
+  void _onTabChanged() {
+    if (_mainController.tabController.previousIndex != _mainController.tabController.index) {
+      _scrollpageController.resetScrollButtonState();
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    final MainController controller = Get.find<MainController>();
     return PersistentTabView(
-      controller: controller.tabController,
-      tabs: controller.tabs,
+      controller: _mainController.tabController,
+      tabs: _mainController.tabs,
       navBarBuilder: (navBarConfig) => Style6BottomNavBar(
         navBarConfig: navBarConfig,
         navBarDecoration: NavBarDecoration(
@@ -26,19 +49,18 @@ class Navbar extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: controller.goToHomeTab,
+        onPressed: _mainController.goToHomeTab,
         backgroundColor: const Color.fromARGB(255, 204, 187, 255),
         shape: const CircleBorder(),
         elevation: 0,
         child: const Icon(Icons.home, color: Colors.white, size: 35),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
       screenTransitionAnimation: const ScreenTransitionAnimation(
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      stateManagement: true,
+      stateManagement: false, 
     );
   }
 }

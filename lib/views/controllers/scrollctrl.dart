@@ -12,22 +12,27 @@ class ScrollpageController extends GetxController {
   @override
   void onClose() {
     scrollController.removeListener(_scrollListener);
-    scrollController.dispose();
+    scrollController.dispose(); 
     super.onClose();
   }
   void _scrollListener() {
+    if (!scrollController.hasClients) return; 
     if (scrollController.offset >= 200 && !showScrollToTopButton.value) {
-      showScrollToTopButton.value = true; 
-    }
-    else if (scrollController.offset < 200 && showScrollToTopButton.value) {
+      showScrollToTopButton.value = true;
+    } else if (scrollController.offset < 200 && showScrollToTopButton.value) {
       showScrollToTopButton.value = false;
     }
   }
   void scrollToTop() {
-    scrollController.animateTo(
-      0.0, // ตำแหน่งบนสุด
-      duration: const Duration(milliseconds: 500), 
-      curve: Curves.easeInOut, 
-    );
+    if (scrollController.hasClients) {
+      scrollController.animateTo(
+        0.0,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+  void resetScrollButtonState() {
+    showScrollToTopButton.value = false;
   }
 }

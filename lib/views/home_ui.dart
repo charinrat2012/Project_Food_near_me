@@ -1,19 +1,19 @@
+
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/details_ui.dart';
-<<<<<<< HEAD
-import 'package:food_near_me_app/widgets/homewid/LocationFilterBar.dart';
-import 'package:food_near_me_app/widgets/homewid/reslist.dart';
-=======
-import 'package:food_near_me_app/views/myprofile_ui.dart';
->>>>>>> 7d2d1d29b6a931cab58b421591724489bd3bd848
 import 'package:get/get.dart';
-import 'package:food_near_me_app/widgets/homewid/formsearch.dart';
-import 'package:food_near_me_app/widgets/homewid/rescard.dart';
-import 'package:food_near_me_app/widgets/homewid/slideim.dart';
-import 'package:food_near_me_app/views/login_ui.dart';
-import 'package:food_near_me_app/controllers/scrollctrl.dart';
+
 import '../controllers/detailctrl.dart';
+import '../controllers/scrollctrl.dart';
+import '../widgets/homewid/LocationFilterBar.dart';
+import '../widgets/homewid/formsearch.dart';
+import '../widgets/homewid/rescard.dart';
+import '../widgets/homewid/reslist.dart';
+import '../widgets/homewid/slideim.dart';
 import '../widgets/matwid/scrolltotop_bt.dart';
+import 'details_ui.dart';
+import 'login_ui.dart';
+import 'myprofile_ui.dart';
+
 class HomeUi extends StatelessWidget {
    HomeUi({super.key});
 

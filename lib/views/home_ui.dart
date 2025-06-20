@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/details_ui.dart';
+import 'package:food_near_me_app/views/myprofile_ui.dart';
 import 'package:food_near_me_app/views/widgets/homewid/LocationFilterBar.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/views/widgets/homewid/formsearch.dart';
@@ -465,6 +466,13 @@ class HomeUi extends StatelessWidget {
           toolbarHeight: 8 * 12,
           automaticallyImplyLeading: false,
           actions: [
+            IconButton(
+              icon: Icon(Icons.settings, color: Colors.white, size: 30), // ไอคอนรูปฟันเฟือง
+              onPressed: () {
+                Get.offAll(() => MyprofileUi()); // <<< นำทางไป MyProfileUI
+              },
+            ),
+            const SizedBox(width: 10), // เพิ่มระยะห่างเล็กน้อย
             TextButton(
               onPressed: () {
                 Get.offAll(LoginUi());

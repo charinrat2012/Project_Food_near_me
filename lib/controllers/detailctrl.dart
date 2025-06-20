@@ -1,7 +1,12 @@
+import 'package:food_near_me_app/widgets/homewid/reslist.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/reviewctrl.dart';
-import 'package:food_near_me_app/views/home_ui.dart'; 
+import 'package:food_near_me_app/controllers/reviewctrl.dart';
+import 'package:food_near_me_app/views/home_ui.dart';
+
+import '../widgets/homewid/reslist.dart' as ResList;
+
+
 class RestaurantDetailController extends GetxController {
   final TextEditingController commentController = TextEditingController();
   final RxDouble userRating = 0.0.obs;
@@ -11,10 +16,13 @@ class RestaurantDetailController extends GetxController {
   final RxList<Map<String, dynamic>> reviews = <Map<String, dynamic>>[].obs;
   RestaurantDetailController({required this.restaurantId});
   @override
+
+
+
   void onInit() {
     super.onInit();
     _reviewController = Get.find<ReviewController>();
-    final foundRestaurant = HomeUi.restaurantList.firstWhereOrNull(
+    final foundRestaurant = ResList.restaurantList.firstWhereOrNull(
       (restaurant) => restaurant['id'] == restaurantId,
     );
     if (foundRestaurant != null) {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
-import 'controllers/detailctrl.dart';
-import 'widgets/matwid/back_bt.dart';
-import 'widgets/matwid/dotline.dart';
-import 'widgets/matwid/star_rating.dart';
-import 'widgets/matwid/statustag.dart';
+import '../controllers/detailctrl.dart';
+import '../widgets/matwid/back_bt.dart';
+import '../widgets/matwid/dotline.dart';
+import '../widgets/matwid/star_rating.dart';
+import '../widgets/matwid/statustag.dart';
 
 class RestaurantDetailPageUi extends StatelessWidget {
   final String restaurantId;
@@ -141,14 +141,7 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                   ),
                                                 ),
                                                 const SizedBox(width: 8),
-                                                StatusTag(
-                                                  isOpen:
-                                                      restaurantData['isOpen']!,
-                                                  showMotorcycleIcon:
-                                                      restaurantData['showMotorcycleIcon']!,
-                                                  fontSize: 14,
-                                                  showOpenStatus: false,
-                                                ),
+                                               
                                               ],
                                             ),
                                           ),
@@ -208,11 +201,25 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                 ),
                                               ),
                                               const SizedBox(height: 15.0),
-                                              StarRating(
-                                                rating:
-                                                    restaurantData['rating']!,
-                                                size: 20,
+                                              Row(
+                                                children: [
+                                                  StarRating(
+                                                    rating:
+                                                        restaurantData['rating']!,
+                                                    size: 20,
+                                                  ),
+                                                   StatusTag(
+                                                  isOpen:
+                                                      restaurantData['isOpen']!,
+                                                  showMotorcycleIcon:
+                                                      restaurantData['showMotorcycleIcon']!,
+                                                  fontSize: 14,
+                                                  iconSize: 32,
+                                                  showOpenStatus: false,
+                                                ),
+                                                ],
                                               ),
+                                              
                                               const SizedBox(height: 10.0),
                                               Text(
                                                 "เมนูแนะนำ:",

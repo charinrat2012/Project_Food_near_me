@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/checkctrl.dart';
+import 'package:food_near_me_app/controllers/checkctrl.dart';
 import 'package:get/get.dart';
 
 class CustomCheckboxWidget extends GetView<CheckboxController> {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/widgets/matwid/back_bt.dart';
-import 'package:food_near_me_app/views/widgets/matwid/backgoundlogin.dart';
-import 'package:food_near_me_app/views/widgets/matwid/blurcontainer.dart';
-import 'package:food_near_me_app/views/widgets/otpwid/form_otp.dart';
-import 'package:food_near_me_app/views/widgets/matwid/iconperson.dart';
-import 'package:food_near_me_app/views/widgets/otpwid/otp_head.dart';
-import 'package:food_near_me_app/views/widgets/otpwid/otp_logo.dart';
-import 'widgets/otpwid/otp_bt.dart';
+import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
+import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
+import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
+import 'package:food_near_me_app/widgets/otpwid/form_otp.dart';
+import 'package:food_near_me_app/widgets/matwid/iconperson.dart';
+import 'package:food_near_me_app/widgets/otpwid/otp_head.dart';
+import 'package:food_near_me_app/widgets/otpwid/otp_logo.dart';
+import '../widgets/otpwid/otp_bt.dart';
 
 class OtpUi extends StatelessWidget {
   const OtpUi({super.key});

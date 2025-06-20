@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/home_ui.dart';
 import 'package:get/get.dart';
-import '../navbar.dart';
+import '../views/navbar.dart';
 class LoginController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final passwordController = TextEditingController();

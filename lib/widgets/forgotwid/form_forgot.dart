@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/fogotpassctrl.dart';
+import 'package:food_near_me_app/controllers/fogotpassctrl.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 class FormForgot extends StatelessWidget {

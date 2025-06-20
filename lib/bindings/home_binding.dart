@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:food_near_me_app/views/controllers/scrollctrl.dart';
-import '../views/controllers/slidectrl.dart'; 
+import 'package:food_near_me_app/controllers/scrollctrl.dart';
+import '../controllers/slidectrl.dart'; 
 class HomeBinding extends Bindings {
   @override
   void dependencies() {

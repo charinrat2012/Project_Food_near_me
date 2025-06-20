@@ -6,11 +6,13 @@ class StatusTag extends StatelessWidget {
   final bool showMotorcycleIcon;
   final double fontSize;
   final bool showOpenStatus;
+  final double iconSize;
   const StatusTag({
     super.key,
     required this.isOpen,
     this.showMotorcycleIcon = false,
     this.fontSize = 12,
+    this.iconSize = 24,
     this.showOpenStatus = true,
   });
   @override
@@ -21,10 +23,21 @@ class StatusTag extends StatelessWidget {
         if (showMotorcycleIcon)
           Padding(
             padding: const EdgeInsets.only(right: 4.0),
-            child: Icon(
-              Icons.two_wheeler,
-              size: 8 * 3,
-              color: Colors.orangeAccent,
+            child: Row(
+              children: [
+                Icon(
+                  Icons.delivery_dining,
+                  size: iconSize,
+                  color: Colors.green,
+                ),
+                Text(
+                  'Has Delivery',
+                  style: GoogleFonts.charmonman(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                    fontSize: fontSize,
+                  ))
+              ],
             ),
           ),
         if (showOpenStatus)

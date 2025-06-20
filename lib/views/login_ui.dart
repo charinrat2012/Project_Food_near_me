@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/loginctrl.dart';
-import 'package:food_near_me_app/views/widgets/matwid/backgoundlogin.dart';
-import 'package:food_near_me_app/views/widgets/matwid/blurcontainer.dart';
-import 'package:food_near_me_app/views/widgets/loginwid/form_login.dart';
-import 'package:food_near_me_app/views/widgets/loginwid/login_with.dart';
-import 'package:food_near_me_app/views/widgets/loginwid/path_bt.dart';
-import 'package:food_near_me_app/views/widgets/loginwid/login_bt.dart';
+import 'package:food_near_me_app/controllers/loginctrl.dart';
+import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
+import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
+import 'package:food_near_me_app/widgets/loginwid/form_login.dart';
+import 'package:food_near_me_app/widgets/loginwid/login_with.dart';
+import 'package:food_near_me_app/widgets/loginwid/path_bt.dart';
+import 'package:food_near_me_app/widgets/loginwid/login_bt.dart';
 import 'package:get/get.dart';
-import 'widgets/loginwid/backhome_bt.dart';
-import 'widgets/matwid/iconperson.dart';
-import 'widgets/loginwid/login_head.dart';
+import '../widgets/loginwid/backhome_bt.dart';
+import '../widgets/matwid/iconperson.dart';
+import '../widgets/loginwid/login_head.dart';
 
 class LoginUi extends StatelessWidget {
   LoginUi({super.key});

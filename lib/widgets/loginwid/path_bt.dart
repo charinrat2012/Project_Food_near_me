@@ -3,7 +3,7 @@ import 'package:food_near_me_app/views/forgotpass_ui.dart';
 import 'package:food_near_me_app/views/register_ui.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:food_near_me_app/views/controllers/loginctrl.dart';
+import 'package:food_near_me_app/controllers/loginctrl.dart';
 
 class PathBt extends StatelessWidget {
   PathBt({super.key});

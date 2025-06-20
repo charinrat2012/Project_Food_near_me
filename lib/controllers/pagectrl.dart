@@ -1,4 +1,4 @@
-import 'package:food_near_me_app/views/controllers/slidectrl.dart';
+import 'package:food_near_me_app/controllers/slidectrl.dart';
 import 'package:food_near_me_app/views/favorite_ui.dart';
 import 'package:food_near_me_app/views/myshop_ui.dart';
 import 'package:get/get.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:food_near_me_app/views/home_ui.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
-import 'package:food_near_me_app/views/controllers/scrollctrl.dart'; 
+import 'package:food_near_me_app/controllers/scrollctrl.dart'; 
 
 class MainController extends GetxController {
   late PersistentTabController tabController;

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_near_me_app/views/controllers/fogotpassctrl.dart';
-import 'package:food_near_me_app/views/controllers/otpctrl.dart';
-import 'package:food_near_me_app/views/controllers/splashctrl.dart';
+import 'package:food_near_me_app/controllers/fogotpassctrl.dart';
+import 'package:food_near_me_app/controllers/otpctrl.dart';
+import 'package:food_near_me_app/controllers/splashctrl.dart';
 import 'package:food_near_me_app/views/splash_ui.dart';
 import 'package:get/get.dart';
-import 'views/controllers/loginctrl.dart';
-import 'views/controllers/pagectrl.dart';
-import 'views/controllers/registerctrl.dart';
-import 'views/controllers/resetpassctrl.dart';
-import 'views/controllers/reviewctrl.dart';
-import 'views/controllers/scrollctrl.dart';
-import 'views/controllers/slidectrl.dart';
+import 'controllers/loginctrl.dart';
+import 'controllers/pagectrl.dart';
+import 'controllers/registerctrl.dart';
+import 'controllers/resetpassctrl.dart';
+import 'controllers/reviewctrl.dart';
+import 'controllers/scrollctrl.dart';
+import 'controllers/slidectrl.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

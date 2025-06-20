@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/controllers/resetpassctrl.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:food_near_me_app/views/controllers/loginctrl.dart';
 
-class LoginBt extends StatelessWidget {
-  LoginBt({super.key});
-  final LoginController controller = Get.find<LoginController>();
+
+class ResetpassBt extends StatelessWidget {
+  ResetpassBt({super.key});
+  final ResetpassController controller = Get.find<ResetpassController>();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,23 +15,17 @@ class LoginBt extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: ElevatedButton(
-            onPressed: () {
-              controller.fetchLogin();
-            },
+            onPressed: controller.fetchReset,
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(double.infinity, 50),
+              minimumSize: Size(double.infinity, 50), // Full width
               backgroundColor: Colors.pink.withValues(alpha: 8 * 0.03),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
             ),
             child: Text(
-              'Login',
-              style: GoogleFonts.charmonman(
-                fontSize: 24,
-                color: const Color.fromARGB(255, 224, 223, 223),
-                // fontWeight: FontWeight.bold, ทำให้ตัวหนังหนา
-              ),
+              'Reset Password',
+              style: GoogleFonts.charmonman(fontSize: 24, color: Colors.white),
             ),
           ),
         ),

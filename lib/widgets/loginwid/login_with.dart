@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:food_near_me_app/views/controllers/loginctrl.dart';
+import 'package:food_near_me_app/controllers/loginctrl.dart';
 class LoginWith extends StatelessWidget {
   LoginWith({super.key});
   final LoginController controller = Get.put(LoginController());

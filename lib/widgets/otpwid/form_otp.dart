@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/controllers/otpctrl.dart';
+import 'package:food_near_me_app/controllers/otpctrl.dart';
 import 'package:get/get.dart';
 
 class FormOtp extends StatelessWidget {

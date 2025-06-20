@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'home_ui.dart'; 
 import 'myshop_ui.dart'; 
-import 'controllers/pagectrl.dart'; 
-import 'controllers/scrollctrl.dart'; 
+import '../controllers/pagectrl.dart'; 
+import '../controllers/scrollctrl.dart'; 
 class Navbar extends StatefulWidget {
   const Navbar({super.key});
   @override

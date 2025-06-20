@@ -23,67 +23,97 @@ class RestaurantCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0),),
+
       elevation: 3,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(15.0),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                    image: AssetImage(imageUrl),
-                    fit: BoxFit.cover,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          
+          // gradient:  LinearGradient(
+          //   colors: [
+          //     // Colors.blue[100]!,
+          //     // Colors.red[100]!,
+          //     // Colors.pink[50]!,
+              
+          //     Colors.lightBlue[100]!,
+          //     // Colors.amber[50]!,
+          //     Colors.white,
+          //   ]
+           
+          // ),
+          // boxShadow:  [
+          //   BoxShadow(
+              
+          //     // color: Colors.pink.withValues(alpha: 8 * 0.03),
+          //     spreadRadius: 2,
+          //     blurRadius: 5,
+          //     offset: Offset(0, 3),
+          //   )
+          // ]
+          
+          ),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(15.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                   
+                    image: DecorationImage(
+                      image: AssetImage(imageUrl),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 12.0),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      restaurantName,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                const SizedBox(width: 12.0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        restaurantName,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 4.0),
-                    Text(
-                      description,
-                      style: TextStyle(fontSize: 10, color: Colors.grey[700]),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 8.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        StarRating(
-                          rating: rating,
-                          size: 10,
-                          onRatingChanged: (newRating) {},
-                        ),
-                        StatusTag(
-                          isOpen: isOpen,
-                          showMotorcycleIcon: showMotorcycleIcon,
-                          fontSize: 12,
-                        ),
-                      ],
-                    ),
-                  ],
+                      const SizedBox(height: 4.0),
+                      Text(
+                        description,
+                        style: TextStyle(fontSize: 10, color: Colors.grey[700]),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 8.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          StarRating(
+                            rating: rating,
+                            size: 10,
+                            onRatingChanged: (newRating) {},
+                          ),
+                          StatusTag(
+                            isOpen: isOpen,
+                            showMotorcycleIcon: showMotorcycleIcon,
+                            fontSize: 12,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

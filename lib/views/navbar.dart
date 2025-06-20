@@ -37,7 +37,9 @@ class _NavbarState extends State<Navbar> {
       tabs: _mainController.tabs,
       navBarBuilder: (navBarConfig) => Style6BottomNavBar(
         navBarConfig: navBarConfig,
+        height: 60,
         navBarDecoration: NavBarDecoration(
+          
           color: Colors.pink[200],
           boxShadow: [
             BoxShadow(
@@ -46,15 +48,23 @@ class _NavbarState extends State<Navbar> {
               offset: const Offset(0, -5),
             ),
           ],
+          gradient: LinearGradient(colors: [
+            Colors.pink[200]!,
+            Colors.blue[300]!,
+          ])
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _mainController.goToHomeTab,
-        backgroundColor: const Color.fromARGB(255, 204, 187, 255),
-        shape: const CircleBorder(),
-        elevation: 0,
-        child: const Icon(Icons.home, color: Colors.white, size: 35),
-      ),
+        ),
+      
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _mainController.goToHomeTab,
+      //   // backgroundColor: Colors.purple[100],
+        
+        
+        
+      //   shape: const CircleBorder(),
+      //   elevation: 0,
+      //   child: const Icon(Icons.home, color: Colors.white, size: 35),
+      // ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       screenTransitionAnimation: const ScreenTransitionAnimation(
         curve: Curves.ease,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 class LocationFilterBar extends StatefulWidget {
   const LocationFilterBar({super.key});
   @override
   State<LocationFilterBar> createState() => _LocationFilterBarState();
 }
+
 class _LocationFilterBarState extends State<LocationFilterBar> {
   String? selectedProvince;
   String? selectedDistrict;
@@ -255,20 +257,19 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
   final List<String> foodTypes = [
     //ประเภทอาหาร
     "อาหารไทย",
+    "อาหารตามสั่ง",
+    "อาหารอีสาน",
     "อาหารญี่ปุ่น",
     "อาหารเกาหลี",
     "อาหารจีน",
     "อาหารยุโรป",
     "อาหารอิตาเลียน",
-    "อาหารฝรั่งเศส",
     "อาหารอินเดีย",
-    "อาหารตะวันออกกลาง",
-    "อาหารตามสั่ง",
-    "อาหารอีสาน",
     "อาหารเจ/มังสวิรัติ",
     "อาหารทะเล",
-    "ของหวานและเครื่องดื่ม",
+    "คาเฟ่/ของหวาน",
     "ของทานเล่น/ขนม",
+    "อื่นๆ",
   ];
   @override
   Widget build(BuildContext context) {
@@ -295,6 +296,7 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
       ),
     );
   }
+
   Widget _buildProvinceDropdown() {
     return _buildContainer(
       SizedBox(
@@ -324,6 +326,7 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
       ),
     );
   }
+
   Widget _buildDistrictDropdown() {
     final districts = districtsByProvince[selectedProvince] ?? [];
     return _buildContainer(
@@ -353,6 +356,7 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
       ),
     );
   }
+
   Widget _buildCategoryDropdown() {
     return Container(
       height: 35,
@@ -385,6 +389,7 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
       ),
     );
   }
+
   Widget _buildLocationButton() {
     return _buildContainer(
       SizedBox(
@@ -402,6 +407,7 @@ class _LocationFilterBarState extends State<LocationFilterBar> {
       ),
     );
   }
+
   Widget _buildContainer(Widget child) {
     return Container(
       height: 35,

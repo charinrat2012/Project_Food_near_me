@@ -24,27 +24,28 @@ class MainController extends GetxController {
       PersistentTabConfig(
         screen: FavoriteUi(), 
         item: ItemConfig(
-          icon: Icon(Icons.star),
+          icon: Icon(Icons.star, color: Colors.amber),
           title: "รายการโปรด",
-          activeForegroundColor: Colors.deepPurple,
+          
+          activeForegroundColor: Colors.white,
           inactiveForegroundColor: Colors.white,
         ),
       ),
       PersistentTabConfig(
         screen: HomeUi(), 
         item: ItemConfig(
-          icon: Icon(Icons.person_2),
+          icon: Icon(Icons.home, color: Colors.teal.shade200),
           title: "หน้าแรก",
-          activeForegroundColor: Colors.deepPurple,
+          activeForegroundColor: Colors.white,
           inactiveForegroundColor: Colors.white,
         ),
       ),
       PersistentTabConfig(
         screen: MyshopUi(), 
         item: ItemConfig(
-          icon: Icon(Icons.storefront), 
+          icon: Icon(Icons.backup_table, color: Colors.limeAccent), 
           title: "ร้านค้าของฉัน",
-          activeForegroundColor: Colors.deepPurple,
+          activeForegroundColor: Colors.white,
           inactiveForegroundColor: Colors.white,
         ),
       ),

@@ -34,5 +34,6 @@ class ScrollpageController extends GetxController {
   }
   void resetScrollButtonState() {
     showScrollToTopButton.value = false;
+    
   }
 }

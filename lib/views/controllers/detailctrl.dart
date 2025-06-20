@@ -27,7 +27,8 @@ class RestaurantDetailController extends GetxController {
     _loadReviews();
   }
   void _loadReviews() {
-    reviews.value = _reviewController.getReviewsForRestaurant(restaurantId);
+    // reviews.value = _reviewController.getReviewsForRestaurant(restaurantId);
+    reviews.assignAll(_reviewController.getReviewsForRestaurant(restaurantId));
     print('RestaurantDetailController: Loaded reviews for ID: $restaurantId, count: ${reviews.length}');
   }
   @override

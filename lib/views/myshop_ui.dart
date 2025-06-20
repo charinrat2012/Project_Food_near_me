@@ -8,11 +8,10 @@ import 'login_ui.dart';
 import 'widgets/homewid/item.dart';
 import 'widgets/matwid/scrolltotop_bt.dart';
 
-
 class MyshopUi extends StatelessWidget {
   const MyshopUi({super.key});
   @override
- @override
+  @override
   Widget build(BuildContext context) {
     final ScrollpageController scrollpageController =
         Get.find<ScrollpageController>();
@@ -73,34 +72,30 @@ class MyshopUi extends StatelessWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                                     
-                     
+                          children: [],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                Obx(
+                  () => scrollpageController.showScrollToTopButton.value
+                      ? Positioned(
+                          right: 20.0,
+                          bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                          child: ScrollToTopButton(
+                            onPressed: scrollpageController.scrollToTop,
+                          ),
+                        )
+                      : Container(),
+                ),
               ],
             ),
-          ),
-        ),
-      ),
-    ),
-            
-            Obx(
-              () => scrollpageController.showScrollToTopButton.value
-                  ? Positioned(
-                      right: 20.0,
-                      bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                      child: ScrollToTopButton(
-                        onPressed: scrollpageController.scrollToTop,
-                      ),
-                    )
-                  : Container(),
-    ),
-          ],
-        ),
           ],
         ),
       ),
-    );    
-
+    );
   }
 }
 

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/views/otp_ui.dart';
 import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
+import 'package:food_near_me_app/widgets/otpwid/otp_bt.dart';
 import 'package:food_near_me_app/widgets/resetwid/from_reset.dart';
 import 'package:food_near_me_app/widgets/matwid/iconperson.dart';
 import 'package:food_near_me_app/widgets/resetwid/resetpass_bt.dart';
 import 'package:food_near_me_app/widgets/resetwid/resetpass_head.dart';
+
+import 'navbar.dart';
 
 class ResetpassUi extends StatelessWidget {
   const ResetpassUi({super.key});
@@ -38,7 +42,7 @@ class ResetpassUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [BackBt(), Iconperson()]),
+                          Stack(children: [BackBt(srcp: () =>  OtpUi(),), Iconperson()]),
                           ResetpassHead(),
                           FormReset(),
                           // SizedBox(height: 8*20),

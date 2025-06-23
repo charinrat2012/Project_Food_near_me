@@ -1,27 +1,31 @@
 
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/controllers/filterctrl.dart';
 import 'package:get/get.dart';
 
 import '../controllers/detailctrl.dart';
 import '../controllers/scrollctrl.dart';
 import '../widgets/homewid/LocationFilterBar.dart';
-import '../widgets/homewid/formsearch.dart';
+import '../widgets/matwid/formsearch.dart';
 import '../widgets/homewid/rescard.dart';
 import '../widgets/homewid/reslist.dart';
 import '../widgets/homewid/slideim.dart';
+
+import '../widgets/matwid/appbarA.dart';
 import '../widgets/matwid/scrolltotop_bt.dart';
 import 'details_ui.dart';
 import 'login_ui.dart';
 import 'myprofile_ui.dart';
 
 class HomeUi extends StatelessWidget {
-   HomeUi({super.key});
+   const HomeUi({super.key});
 
   
     @override
   Widget build(BuildContext context) {
     final ScrollpageController scrollpageController =
         Get.find<ScrollpageController>();
+    final FilterController filterController = Get.find<FilterController>();
 
     return GestureDetector(
       onTap: () {
@@ -29,57 +33,8 @@ class HomeUi extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: Colors.pink[200],
-        appBar: AppBar(
-          backgroundColor: Colors.pink[200],
-          title: Align(
-            alignment: Alignment.centerLeft,
-            child: Image.asset(
-              "assets/imgs/logoHome.png",
-              height: 8 *10,
-              fit: BoxFit.contain,
-            ),
-          ),
-          toolbarHeight: 8 * 12,
-          automaticallyImplyLeading: false,
-          actions: [
-            IconButton(
-              icon: Icon(Icons.settings, color: Colors.white, size: 30), // ไอคอนรูปฟันเฟือง
-              onPressed: () {
-                Get.offAll(() => MyprofileUi()); // <<< นำทางไป MyProfileUI
-              },
-            ),
-            const SizedBox(width: 10), // เพิ่มระยะห่างเล็กน้อย
-            TextButton(
-              onPressed: () {
-                Get.offAll(LoginUi());
-              },
-              child: const Text(
-                "ล็อคอิน",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(width: 10),
-          ],
-           
-        flexibleSpace: Container( // ใช้ flexibleSpace เพื่อใส่ Gradient
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.pink[200]!, // สีชมพูอ่อน
-                  Colors.blue[200]!, // สีชมพูอ่อน
-                  
-                ],
-                begin: Alignment.centerLeft,
-                transform: GradientRotation( 3.0),
-                end: Alignment.centerRight,
-              ),
-            ),
-          ),
-        ),
+        appBar: const AppbarA(),
+        
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
@@ -117,35 +72,44 @@ class HomeUi extends StatelessWidget {
                               Slideim(),
                               const SizedBox(height: 8),
                               // ใช้ .map เพื่อสร้าง RestaurantCard จาก restaurantList
-                             ...Reslist.restaurantList.map((restaurantData) {
+                            Obx(() {
+                            if (filterController.filteredRestaurantList.isEmpty) {
+                              return const Center(
+                                child: Text(
+                                  'ไม่พบร้านอาหารที่ตรงกับการค้นหา',
+                                  style: TextStyle(fontSize: 18, color: Colors.grey),
+                                ),
+                              );
+                            }
+                            return Column(
+                              children: filterController.filteredRestaurantList.map((restaurantData) {
                                 return RestaurantCard(
                                   imageUrl: restaurantData['imageUrl']!,
-                                  restaurantName:
-                                      restaurantData['restaurantName']!,
+                                  restaurantName: restaurantData['restaurantName']!,
                                   description: restaurantData['description']!,
                                   rating: restaurantData['rating']!,
                                   isOpen: restaurantData['isOpen']!,
-                                  showMotorcycleIcon:
-                                      restaurantData['showMotorcycleIcon']!,
+                                  showMotorcycleIcon: restaurantData['showMotorcycleIcon']!,
                                   onTap: () {
-                                    // ใช้ Get.to พร้อม BindingsBuilder เพื่อจัดการ Controller lifecycle
-                                    Get.to(
+                                    // Use Get.to instead of Get.offAll to allow going back
+                                    Get.offAll(
                                       () => RestaurantDetailPageUi(
-                                            restaurantId: restaurantData['id']!,
-                                          ),
+                                        restaurantId: restaurantData['id']!,
+                                      ),
                                       binding: BindingsBuilder(() {
-                                        // Get.put() จะถูกเรียกเมื่อหน้านั้นถูกสร้างขึ้น
-                                        // และจะถูก dispose เมื่อหน้านั้นถูก pop ออกจาก stack
                                         Get.put(
                                           RestaurantDetailController(
                                             restaurantId: restaurantData['id']!,
                                           ),
-                                          tag: restaurantData['id']!, // ใช้ ID เป็น tag
+                                          tag: restaurantData['id']!,
                                         );
                                       }),
                                     );
                                   },
-                                );
+                                
+                                );  
+                              }).toList(),
+                            );
                               }),
                               const SizedBox(height: 50),
                             ],

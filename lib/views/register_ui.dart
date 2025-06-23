@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/registerctrl.dart';
+import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
@@ -8,6 +9,7 @@ import 'package:food_near_me_app/widgets/regiswid/register_head.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/widgets/regiswid/form_register.dart';
 import '../widgets/matwid/iconperson.dart';
+import 'navbar.dart';
 
 class RegisterUi extends StatelessWidget {
   RegisterUi({super.key});
@@ -42,7 +44,7 @@ class RegisterUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [BackBt(), Iconperson()]),
+                          Stack(children: [BackBt(srcp: () =>  LoginUi(),), Iconperson()]),
                           Expanded(child: SizedBox()),
                           RegisterHead(),
                           Expanded(child: SizedBox()),

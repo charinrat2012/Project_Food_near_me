@@ -57,8 +57,8 @@ class StatusTag extends StatelessWidget {
               ),
             ),
             child: Text(
-              isOpen ? 'OPEN' : 'CLOSE',
-              style: GoogleFonts.nosifer(
+              isOpen ? 'เปิดอยู่' : 'ปิดอยู่',
+              style: GoogleFonts.alegreya(
                 color: isOpen
                     ? const Color.fromARGB(255, 255, 255, 255)
                     : const Color.fromARGB(255, 255, 255, 255),

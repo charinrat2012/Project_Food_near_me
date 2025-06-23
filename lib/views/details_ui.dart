@@ -6,6 +6,7 @@ import '../widgets/matwid/back_bt.dart';
 import '../widgets/matwid/dotline.dart';
 import '../widgets/matwid/star_rating.dart';
 import '../widgets/matwid/statustag.dart';
+import 'navbar.dart';
 
 class RestaurantDetailPageUi extends StatelessWidget {
   final String restaurantId;
@@ -21,7 +22,7 @@ class RestaurantDetailPageUi extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.pink[200],
-          title: const Align(alignment: Alignment.centerLeft, child: BackBt()),
+          title:  Align(alignment: Alignment.centerLeft, child: BackBt(srcp: () =>  Navbar(),)),
           toolbarHeight: 8 * 10,
           automaticallyImplyLeading: false,
           actions: [

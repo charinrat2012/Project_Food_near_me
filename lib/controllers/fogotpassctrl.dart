@@ -50,7 +50,7 @@ class ForgotpassController extends GetxController {
     emailController.clear();
     FocusScope.of(Get.context!).unfocus(); 
     checkboxController.isChecked.value = false;
-    Get.to(() => OtpUi());
+    Get.offAll(() => OtpUi());
     return;
   }
 }

@@ -4,10 +4,10 @@ import 'package:food_near_me_app/views/navbar.dart';
 import 'package:get/get.dart';
 
 
-import 'controllers/scrollctrl.dart'; // ตรวจสอบว่า controller เหล่านี้มีอยู่จริง
+import '../controllers/scrollctrl.dart';
+import '../widgets/matwid/back_bt.dart';
+import '../widgets/matwid/scrolltotop_bt.dart';
 
-import 'widgets/matwid/back_bt.dart';
-import 'widgets/matwid/scrolltotop_bt.dart'; // ตรวจสอบว่าไฟล์นี้มีอยู่จริง
 
 class MyprofileUi extends StatelessWidget {
   const MyprofileUi({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class MyprofileUi extends StatelessWidget {
         // backgroundColor: Colors.pink[200],
         appBar: AppBar(
           backgroundColor: Colors.pink[200],
-          title: const Align(alignment: Alignment.centerLeft, child: BackBt()),
+          title: Align(alignment: Alignment.centerLeft, child: BackBt(srcp: () => const Navbar(),)),
           toolbarHeight: 8 * 10,
           automaticallyImplyLeading: false,
           actions: [

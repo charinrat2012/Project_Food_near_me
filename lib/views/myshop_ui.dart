@@ -123,7 +123,7 @@ class MyshopUi extends StatelessWidget {
                                   isOpen: restaurantData['isOpen']!, // *** ส่ง RxBool เข้าไปตรงๆ ***
                                   showMotorcycleIcon: restaurantData['showMotorcycleIcon']!,
                                   onTap: () {
-                                    Get.to(
+                                    Get.offAll(
                                       () => RestaurantDetailPageUi(
                                         restaurantId: restaurantData['id']!,
                                       ),

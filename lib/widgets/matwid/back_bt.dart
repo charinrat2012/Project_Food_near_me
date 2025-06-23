@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../navbar.dart';
+
+import '../../views/navbar.dart';
 class BackBt extends StatelessWidget {
-  const BackBt({super.key});
+  const BackBt({super.key, required this.srcp});
+  // final String srcp = "Navbar"; 
+   final Widget Function() srcp;
    @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +16,7 @@ class BackBt extends StatelessWidget {
           child: IconButton(
             onPressed: () {
               FocusScope.of(Get.context!).unfocus();
-              Get.offAll(() => Navbar());
+              Get.offAll(srcp);
             },
             icon: Image.asset( 
               "assets/ics/backicon.png", 

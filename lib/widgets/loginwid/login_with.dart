@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 class LoginWith extends StatelessWidget {
   LoginWith({super.key});
-  final LoginController controller = Get.put(LoginController());
+  final LoginController loginController = Get.find<LoginController>();
   @override
   Widget build(BuildContext context) {
     return Column(

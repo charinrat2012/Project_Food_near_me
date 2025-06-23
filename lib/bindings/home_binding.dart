@@ -6,5 +6,6 @@ class HomeBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<ScrollpageController>(() => ScrollpageController());
     Get.lazyPut<SlideController>(() => SlideController());
+
   }
 }

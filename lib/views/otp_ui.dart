@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/views/forgotpass_ui.dart';
 import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
@@ -7,6 +8,7 @@ import 'package:food_near_me_app/widgets/matwid/iconperson.dart';
 import 'package:food_near_me_app/widgets/otpwid/otp_head.dart';
 import 'package:food_near_me_app/widgets/otpwid/otp_logo.dart';
 import '../widgets/otpwid/otp_bt.dart';
+import 'navbar.dart';
 
 class OtpUi extends StatelessWidget {
   const OtpUi({super.key});
@@ -39,7 +41,7 @@ class OtpUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [BackBt(), Iconperson()]),
+                          Stack(children: [BackBt(srcp: () =>  ForgotPassUi(),), Iconperson()]),
                           OtpHead(),
                           FormOtp(),
                           // Expanded(child: SizedBox()),

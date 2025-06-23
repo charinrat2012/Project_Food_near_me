@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:food_near_me_app/controllers/filterctrl.dart';
 import 'package:food_near_me_app/controllers/fogotpassctrl.dart';
 import 'package:food_near_me_app/controllers/otpctrl.dart';
 import 'package:food_near_me_app/controllers/splashctrl.dart';
@@ -30,6 +31,7 @@ void main() {
   Get.put(OtpCotroller());
   Get.put(SplashContrller());
   Get.put(ForgotpassController());
+  Get.put(FilterController());
 
   runApp(const MyApp());
 }

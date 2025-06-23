@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:food_near_me_app/widgets/forgotwid/form_forgot.dart';
 import 'package:get/get.dart';
 import '../controllers/fogotpassctrl.dart';
@@ -9,6 +10,7 @@ import '../widgets/matwid/backgoundlogin.dart';
 import '../widgets/matwid/blurcontainer.dart';
 import '../widgets/matwid/checkbox.dart';
 import '../widgets/matwid/iconperson.dart';
+import 'navbar.dart';
 
 class ForgotPassUi extends StatelessWidget {
   ForgotPassUi({super.key});
@@ -37,7 +39,7 @@ class ForgotPassUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [BackBt(), Iconperson()]),
+                          Stack(children: [BackBt(srcp: () =>  LoginUi(),), Iconperson()]),
                           ForgotHead(),
                           SizedBox(height: 5),
                           FormForgot(),

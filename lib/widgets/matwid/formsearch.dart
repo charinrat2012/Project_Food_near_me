@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../controllers/filterctrl.dart';
 class Formsearch extends StatelessWidget {
   const Formsearch({super.key});
   @override
   Widget build(BuildContext context) {
+     final FilterController filterController = Get.find<FilterController>();
     return Column(
       children: [
         Padding(
@@ -23,11 +27,22 @@ class Formsearch extends StatelessWidget {
               ],
             ),
             child: TextField(
+               controller: filterController.searchInputController,
               decoration: InputDecoration(
-                hintText: 'Search...',
+                hintText: 'ค้นหา...',
                 border: InputBorder.none,
                 suffixIcon: Icon(Icons.search, color: Colors.grey[600]),
               ),
+               onSubmitted: (value) {
+                
+                filterController.filterRestaurantList(value);
+                filterController.filterfavoriteList(value); 
+                FocusScope.of(context).unfocus(); 
+              },
+              onChanged: (value) {
+                 filterController.filterRestaurantList(value);
+                filterController.filterfavoriteList(value); 
+              },
             ),
           ),
         ),

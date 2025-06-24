@@ -34,14 +34,16 @@ class Formsearch extends StatelessWidget {
                 suffixIcon: Icon(Icons.search, color: Colors.grey[600]),
               ),
                onSubmitted: (value) {
-                
-                filterController.filterRestaurantList(value);
-                filterController.filterfavoriteList(value); 
+                // filterController.searchQuery.value = value;
+                // filterController.filterRestaurantList(value);
+                // filterController.filterfavoriteList(value); 
+                filterController.applyFilters();
                 FocusScope.of(context).unfocus(); 
               },
               onChanged: (value) {
-                 filterController.filterRestaurantList(value);
-                filterController.filterfavoriteList(value); 
+                //  filterController.filterRestaurantList(value);
+                // filterController.filterfavoriteList(value); 
+                filterController.applyFilters();
               },
             ),
           ),

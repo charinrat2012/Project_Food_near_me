@@ -22,7 +22,7 @@ class RestaurantDetailController extends GetxController {
   void onInit() {
     super.onInit();
     _reviewController = Get.find<ReviewController>();
-    final foundRestaurant = ResList.restaurantList.firstWhereOrNull(
+    final foundRestaurant = Reslist.restaurantList.firstWhereOrNull(
       (restaurant) => restaurant['id'] == restaurantId,
     );
     if (foundRestaurant != null) {

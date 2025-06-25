@@ -17,9 +17,9 @@ class ScrollpageController extends GetxController {
   }
   void _scrollListener() {
     if (!scrollController.hasClients) return; 
-    if (scrollController.offset >= 200 && !showScrollToTopButton.value) {
+    if (scrollController.offset >= 300 && !showScrollToTopButton.value) {
       showScrollToTopButton.value = true;
-    } else if (scrollController.offset < 200 && showScrollToTopButton.value) {
+    } else if (scrollController.offset < 300 && showScrollToTopButton.value) {
       showScrollToTopButton.value = false;
     }
   }

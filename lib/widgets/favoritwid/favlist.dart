@@ -7,7 +7,7 @@ class Favlist {
   static final List<Map<String, dynamic>> favlist = [
     {
       'id': 'F001',
-      'imageUrl': 'assets/imgs/pama.png',
+      'imageUrl': 'assets/imgs/im1.png',
       'restaurantName': 'Pasta AMA',
       'description':
           'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -20,13 +20,13 @@ class Favlist {
       'phoneNumber': "088-662-8244",
       'location':
           "503/3 ชั้น 1 ยิ้มแย้ม โฮสเทล ถ. เพชรบุรี \nแขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
-      'menuimage': 'assets/imgs/p1.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu1.png',
+      'bannerImage': 'assets/imgs/po1.png',
     },
     
     {
       'id': 'F002',
-      'imageUrl': 'assets/imgs/im1.jpg',
+      'imageUrl': 'assets/imgs/im2.jpg',
       'restaurantName': 'UMENOHANA นิฮอนมูระมอลล์',
       'description':
           'ร้านนี้โดดเด่นที่เมนูเต้าหู้ มาแล้วต้องลองกับฟองเต้าหู้สดที่เราต้มเองกับมือ! รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -40,13 +40,13 @@ class Favlist {
       'phoneNumber': "084-438-3892",
       'location':
           "Nihonmura Mall ถ. ทองหล่อ แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
-      'menuimage': 'assets/imgs/u1.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu2.png',
+      'bannerImage': 'assets/imgs/po1.png',
     },
     
     {
       'id': 'F003',
-      'imageUrl': 'assets/imgs/im2.jpg',
+      'imageUrl': 'assets/imgs/im3.jpg',
       'restaurantName': 'Simple Day Gelato',
       'description':
           'ร้านเล็กๆสำหรับคนรักขนมหวานที่เรานำทุกเมนูโปรด ชนิดที่เรียกว่าเป็นขนมที่ต้องมีติดบ้านไว้เสมอ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -59,13 +59,13 @@ class Favlist {
       'phoneNumber': "086-555-8789 ",
       'location':
           "94 ถนนราชพฤกษ์ แขวงบางระมาด เขตตลิ่งชัน กรุงเทพมหานคร 10170. ร้านอยู่ในโครงการ The Bloc ราชพฤกษ์",
-      'menuimage': 'assets/imgs/s1.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu3.png',
+      'bannerImage': 'assets/imgs/po1.png',
     },
     
     {
       'id': 'F0010', 
-      'imageUrl': 'assets/imgs/a5.webp',
+      'imageUrl': 'assets/imgs/im10.webp',
       'restaurantName': 'สุกี้จินดา',
       'description':
           'สุกี้จินดา ร้านสุกี้หม่าล่าเสียบไม้แบบสายพาน มีทั้งแบบสุกี้น้ำ และสุกี้แห้ง คุณสามารถเลือกน้ำซุปเองได้ มีน้ำซุปหลายรสชาติ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -78,12 +78,12 @@ class Favlist {
       'phoneNumber': "091-795-3839  ",
       'location':
           "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
-      'menuimage': 'assets/imgs/a3.jpg',
-      'bannerImage': 'assets/imgs/a4.jpg',
+      'menuimage': 'assets/imgs/mu10.jpg',
+      'bannerImage': 'assets/imgs/po10.jpg',
     },
     {
       'id': 'F007', 
-      'imageUrl': 'assets/imgs/im8.jpg',
+      'imageUrl': 'assets/imgs/im7.jpg',
       'restaurantName': 'ก๋วยเตี๋ยวเรือทองสมิทธ์',
       'description':
           'ร้านก๋วยเตี๋ยวเรือเจ้าดังที่มีเอกลักษณ์เฉพาะตัว รสชาติเข้มข้น ครบเครื่อง เส้นเหนียวนุ่ม รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -96,8 +96,8 @@ class Favlist {
       'phoneNumber': " 065-937-7386 ",
       'location':
           "518 , กรุงเทพมหานคร (ทองสมิทธ์ The Mall Lifestore Bangkae ร้านอยู่ชั้น G ใกล้กับ Gourmet) ",
-      'menuimage': 'assets/imgs/t2.jpg',
-      'bannerImage': 'assets/imgs/t3.jpg',
+      'menuimage': 'assets/imgs/mu7.jpg',
+      'bannerImage': 'assets/imgs/po7.jpg',
     },
   ];
 }

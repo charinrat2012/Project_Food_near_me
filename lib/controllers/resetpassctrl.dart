@@ -19,7 +19,7 @@ class ResetpassController extends GetxController {
           'กรูณากรอกข้อมูลให้ครบถ้วน',
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 140, 131),
+          backgroundColor: Colors.red.shade200,
       );
       return;
     }   else if (passwordController.text.length < 6) {
@@ -29,7 +29,7 @@ class ResetpassController extends GetxController {
           'กรูณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร',
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 140, 131),
+          backgroundColor: Colors.red.shade200,
       );
       return;
     } else if (passwordController.text != confirmPasswordController.text) {
@@ -39,7 +39,7 @@ class ResetpassController extends GetxController {
           'รหัสผ่านไม่ตรงกัน',
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 140, 131),
+          backgroundColor: Colors.red.shade200,
       );
       return;
     }else if (passwordController.text == oldpassword || confirmPasswordController.text == oldpassword) {
@@ -49,7 +49,7 @@ class ResetpassController extends GetxController {
           'รหัสผ่านนี้เคยใช้ไปแล้ว',
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 140, 131),
+          backgroundColor: Colors.red.shade200,
       );
       return;
     }

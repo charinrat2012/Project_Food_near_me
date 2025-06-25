@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
+import 'package:food_near_me_app/views/aboutapp_ui.dart';
+import 'package:food_near_me_app/views/contact_us_ui.dart';
+import 'package:food_near_me_app/views/privacypolicy_ui.dart';
+import 'package:food_near_me_app/views/terms_conditions_ui.dart';
 import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/logo.dart';
 import 'package:get/get.dart';
@@ -68,7 +72,9 @@ class SettingUi extends StatelessWidget {
                   CrossAxisAlignment.stretch, // ทำให้ Column ยืดเต็มความกว้าง
               children: [
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAll(PrivacyPolicyUi());
+                  },
                   style: OutlinedButton.styleFrom(
                     // ใช้ OutlinedButton.styleFrom แทน ElevatedButton.styleFrom
                     backgroundColor: Colors.white,
@@ -103,7 +109,9 @@ class SettingUi extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAll(TermsConditionsUi());
+                  },
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.white,
                     minimumSize: Size.fromHeight(8 * 7),
@@ -133,7 +141,9 @@ class SettingUi extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAll(AboutAppUi());
+                  },
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.white,
                     minimumSize: Size.fromHeight(8 * 7),
@@ -163,7 +173,9 @@ class SettingUi extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAll(ContactUsUi());
+                  },
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Row(
@@ -190,35 +202,35 @@ class SettingUi extends StatelessWidget {
                     side: BorderSide(color: Colors.grey[300]!),
                   ),
                 ),
-                SizedBox(height: 8),
-                OutlinedButton(
-                  onPressed: () {},
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      children: [
-                        Text(
-                          'เปลี่ยนรหัสผ่าน',
-                          style: TextStyle(color: Colors.black87),
-                        ),
-                        Spacer(),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 16,
-                          color: Colors.black87,
-                        ),
-                      ],
-                    ),
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    minimumSize: Size.fromHeight(8 * 7),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    side: BorderSide(color: Colors.grey[300]!),
-                  ),
-                ),
+                // SizedBox(height: 8),
+                // OutlinedButton(
+                //   onPressed: () {},
+                //   child: Align(
+                //     alignment: Alignment.centerLeft,
+                //     child: Row(
+                //       children: [
+                //         Text(
+                //           'เปลี่ยนรหัสผ่าน',
+                //           style: TextStyle(color: Colors.black87),
+                //         ),
+                //         Spacer(),
+                //         Icon(
+                //           Icons.arrow_forward_ios,
+                //           size: 16,
+                //           color: Colors.black87,
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                //   style: OutlinedButton.styleFrom(
+                //     backgroundColor: Colors.white,
+                //     minimumSize: Size.fromHeight(8 * 7),
+                //     shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(8.0),
+                //     ),
+                //     side: BorderSide(color: Colors.grey[300]!),
+                //   ),
+                // ),
                 SizedBox(height: 8),
                 Container(
                   width: double.infinity,

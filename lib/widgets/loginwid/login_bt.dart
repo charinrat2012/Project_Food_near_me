@@ -27,7 +27,7 @@ class LoginBt extends StatelessWidget {
               'Login',
               style: GoogleFonts.charmonman(
                 fontSize: 24,
-                color: const Color.fromARGB(255, 224, 223, 223),
+                color: Colors.white,
                 // fontWeight: FontWeight.bold, ทำให้ตัวหนังหนา
               ),
             ),

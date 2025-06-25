@@ -31,10 +31,10 @@ class StatusTag extends StatelessWidget {
                   color: Colors.green,
                 ),
                 Text(
-                  'Has Delivery',
-                  style: GoogleFonts.charmonman(
+                  'มีบริการส่งอาหาร',
+                  style: GoogleFonts.kanit(
                     color: Colors.green,
-                    fontWeight: FontWeight.bold,
+                   
                     fontSize: fontSize,
                   ))
               ],
@@ -47,21 +47,21 @@ class StatusTag extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: isOpen
-                  ? const Color.fromARGB(255, 255, 204, 229)
-                  : const Color.fromARGB(255, 255, 204, 229),
+                  ?  Colors.pink.shade200
+                  :  Colors.blue.shade200,
               borderRadius: BorderRadius.circular(5.0),
               border: Border.all(
                 color: isOpen
-                    ? const Color.fromARGB(255, 255, 153, 204)
-                    : const Color.fromARGB(255, 255, 153, 204),
+                    ? Colors.pink.shade300
+                    : Colors.blue.shade300,
               ),
             ),
             child: Text(
               isOpen ? 'เปิดอยู่' : 'ปิดอยู่',
-              style: GoogleFonts.alegreya(
+              style: GoogleFonts.kanit(
                 color: isOpen
-                    ? const Color.fromARGB(255, 255, 255, 255)
-                    : const Color.fromARGB(255, 255, 255, 255),
+                    ? Colors.white
+                    : Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: fontSize,
               ),

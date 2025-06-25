@@ -19,20 +19,23 @@ class LocationFilterBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Obx(() => _buildProvinceDropdown(filterController)),
-                const SizedBox(width: 8),
-                Obx(() => _buildDistrictDropdown(filterController)),
-                const SizedBox(width: 8),
-                _buildLocationButton(),
-              ],
-            ),
-          ),
-          const SizedBox(height: 8),
-          SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterController))),
+        SingleChildScrollView(
+  scrollDirection: Axis.horizontal,
+  child: Row(
+    children: [
+      Obx(() => _buildProvinceDropdown(filterController)),
+      const SizedBox(width: 8),
+      Obx(() => _buildDistrictDropdown(filterController)),
+      const SizedBox(width: 8),
+       _buildLocationButton(),
+
+      
+    ],
+  ),
+),
+  const SizedBox(height: 8),
+
+SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterController))),
         ],
       ),
     );
@@ -47,8 +50,12 @@ class LocationFilterBar extends StatelessWidget {
           value: filterController.selectedProvince.value.isEmpty
               ? null
               : filterController.selectedProvince.value,
-          hint: const Text('กรุณาเลือกจังหวัด', style: TextStyle(color: Colors.white)),
-          dropdownColor: Colors.pink[200],
+          hint: const Text('เลือกจังหวัด', style: TextStyle(color: Colors.white)),
+          // dropdownColor: Colors.purple[200],
+          dropdownColor: Colors.purple[200],
+          iconEnabledColor: Colors.white,
+          menuMaxHeight: 400,
+        menuWidth: 200,
           style: const TextStyle(color: Colors.white),
           items: [
             const DropdownMenuItem<String>(
@@ -76,14 +83,17 @@ class LocationFilterBar extends StatelessWidget {
     final List<String> districts = Localist.districtsByProvince[filterController.selectedProvince.value] ?? [];
     return _buildContainer(
       SizedBox(
-        width: 175,
+        width: 143,
         child: DropdownButton<String>(
           isExpanded: true,
           value: filterController.selectedDistrict.value.isEmpty
               ? null
               : filterController.selectedDistrict.value,
-          hint: const Text('กรุณาเลือกเขตหรืออำเภอ', style: TextStyle(color: Colors.white)),
-          dropdownColor: Colors.pink[200],
+          hint: const Text('เลือกเขต/อำเภอ', style: TextStyle(color: Colors.white)),
+          dropdownColor: Colors.purple[200],
+          iconEnabledColor: Colors.white,
+          menuMaxHeight: 400,
+        menuWidth: 200,
           style: const TextStyle(color: Colors.white),
           items: [
             const DropdownMenuItem<String>(
@@ -110,7 +120,8 @@ class LocationFilterBar extends StatelessWidget {
       height: 35,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        color: Colors.pink[300],
+        // color: Colors.pink[300],
+        gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
         borderRadius: BorderRadius.circular(20),
       ),
       child: DropdownButton<String>(
@@ -119,9 +130,12 @@ class LocationFilterBar extends StatelessWidget {
             ? null
             : filterController.selectedCategory.value,
         hint: const Text('ตัวกรองประเภทอาหาร', style: TextStyle(color: Colors.white)),
-        dropdownColor: Colors.pink[200],
+        dropdownColor: Colors.purple[200],
         style: const TextStyle(color: Colors.white),
         iconEnabledColor: Colors.white,
+        menuMaxHeight: 400,
+        menuWidth: 200,
+        // alignment: Alignment.bottomCenter,
         items: [
           const DropdownMenuItem<String>(
             value: '',
@@ -144,25 +158,31 @@ class LocationFilterBar extends StatelessWidget {
 
   // ... (ส่วน _buildLocationButton และ _buildContainer เหมือนเดิม)
   Widget _buildLocationButton() {
-    return _buildContainer(
-      SizedBox(
-        width: 150,
-        child: TextButton.icon(
-          onPressed: () {
-            Get.snackbar(
-              'ตำแหน่งปัจจุบัน',
-              'ฟังก์ชันนี้ยังไม่ได้ถูกพัฒนา',
-              snackPosition: SnackPosition.BOTTOM,
-              backgroundColor: Colors.blueAccent,
-              colorText: Colors.white,
-            );
-          },
-          icon: const Icon(Icons.my_location, color: Colors.white),
-          label: const Text(
-            "ตำแหน่งปัจจุบัน",
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
+    const double iconSize = 20.0;
+    const double buttonPadding = 8.0; // Padding รอบไอคอนด้านใน
+
+    return Container( // ใช้ Container เองสำหรับปุ่มนี้
+      height: iconSize + buttonPadding * 2, // ขนาดความสูงของพื้นหลัง
+      width: iconSize + buttonPadding * 2,  // ขนาดความกว้างของพื้นหลัง (ทำให้เป็นสี่เหลี่ยมจัตุรัส)
+      decoration: BoxDecoration(
+        // color: Colors.pink[300], // สีพื้นหลังของปุ่ม
+        gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
+        borderRadius: BorderRadius.circular((iconSize + buttonPadding * 2) / 2), // ทำให้เป็นวงกลม
+      ),
+      child: IconButton(
+        iconSize: iconSize,
+        padding: EdgeInsets.zero, // ลบ padding เริ่มต้นของ IconButton
+        alignment: Alignment.center, // จัดไอคอนให้อยู่ตรงกลางของพื้นที่ที่ Container ให้มา
+        onPressed: () {
+          Get.snackbar(
+            'ตำแหน่งปัจจุบัน',
+            'ฟังก์ชันนี้ยังไม่ได้ถูกพัฒนา',
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.blueAccent,
+            colorText: Colors.white,
+          );
+        },
+        icon: const Icon(Icons.my_location, color: Colors.white),
       ),
     );
   }
@@ -170,9 +190,10 @@ class LocationFilterBar extends StatelessWidget {
   Widget _buildContainer(Widget child) {
     return Container(
       height: 35,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: Colors.pink[300],
+        // color: Colors.blue[300],
+        gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
         borderRadius: BorderRadius.circular(20),
       ),
       child: child,

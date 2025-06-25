@@ -9,7 +9,7 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
   static final List<Map<String, dynamic>> restaurantList = [
     {
       'id': 'F001',
-      'imageUrl': 'assets/imgs/pama.png',
+      'imageUrl': 'assets/imgs/im1.png',
       'restaurantName': 'Pasta AMA',
       'description':
           'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -22,14 +22,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "088-662-8244",
       'location':
           "503/3 ชั้น 1 ยิ้มแย้ม โฮสเทล ถ. เพชรบุรี \nแขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
-      'menuimage': 'assets/imgs/p1.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu1.png',
+      'bannerImage': 'assets/imgs/po1.png',
       'type': 'อาหารอิตาเลียน', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F002',
-      'imageUrl': 'assets/imgs/im1.jpg',
+      'imageUrl': 'assets/imgs/im2.jpg',
       'restaurantName': 'UMENOHANA นิฮอนมูระมอลล์',
       'description':
           'ร้านนี้โดดเด่นที่เมนูเต้าหู้ มาแล้วต้องลองกับฟองเต้าหู้สดที่เราต้มเองกับมือ! รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -43,14 +43,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "084-438-3892",
       'location':
           "Nihonmura Mall ถ. ทองหล่อ แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
-      'menuimage': 'assets/imgs/u1.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu2.png',
+      'bannerImage': 'assets/imgs/po1.png',
       'type': 'อาหารญี่ปุ่น', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F003',
-      'imageUrl': 'assets/imgs/im2.jpg',
+      'imageUrl': 'assets/imgs/im3.jpg',
       'restaurantName': 'Simple Day Gelato',
       'description':
           'ร้านเล็กๆสำหรับคนรักขนมหวานที่เรานำทุกเมนูโปรด ชนิดที่เรียกว่าเป็นขนมที่ต้องมีติดบ้านไว้เสมอ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -63,14 +63,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "086-555-8789 ",
       'location':
           "94 ถนนราชพฤกษ์ แขวงบางระมาด เขตตลิ่งชัน กรุงเทพมหานคร 10170. ร้านอยู่ในโครงการ The Bloc ราชพฤกษ์",
-      'menuimage': 'assets/imgs/s1.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu3.png',
+      'bannerImage': 'assets/imgs/po1.png',
       'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F004',
-      'imageUrl': 'assets/imgs/im3.jpg',
+      'imageUrl': 'assets/imgs/im4.jpg',
       'restaurantName': 'มิตรโกหย่วน',
       'description':
           'ร้านอาหารตามสั่ง เจ้าเด็ดที่ต่อมา เราขอพาทุกคนไปอิ่มกับร้าน มิตรโกหย่วน แถวย่านย่านเสาชิงช้า รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -84,14 +84,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "092-434-9996",
       'location':
           "ถนนดินสอ แขวงบวรนิเวศ เขตพระนคร กรุงเทพมหานคร (ใกล้ศาลาว่าการกรุงเทพมหานคร)",
-      'menuimage': 'assets/imgs/menu.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu4.png',
+      'bannerImage': 'assets/imgs/po1.png',
       'type': 'อาหารไทย', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F005',
-      'imageUrl': 'assets/imgs/im4.jpg',
+      'imageUrl': 'assets/imgs/im5.jpg',
       'restaurantName': 'ส้มตำหม่องปลาแดก',
       'description':
           'ร้านส้มตำที่ขึ้นชื่อเรื่องความจัดจ้านแบบไม่เป็นสองรองใครในย่านลาดกระบัง สารพัดเมนูตำแซ่บๆ มาเพียบ! รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -104,14 +104,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "098-765-4321",
       'location':
           "โครงการ The O-Zone Airport ตรงข้ามสน.ลาดกระบัง, 1529 ถนนลาดกระบัง แขวง/เขตลาดกระบัง กรุงเทพฯ 10520",
-      'menuimage': 'assets/imgs/a1.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu5.png',
+      'bannerImage': 'assets/imgs/po1.png',
       'type': 'อาหารอีสาน', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F006',
-      'imageUrl': 'assets/imgs/im7.avif',
+      'imageUrl': 'assets/imgs/im6.avif',
       'restaurantName': 'เหมยหมึกเป็นซาชิมิ',
       'description':
           'ร้านของเราคือการคัดสรรวัตถุดิบคุณภาพ เมนูอาหารทะเลที่หลากหลายไม่ต้องไปไกลถึงทะเล ร้านเราก็มีขาย! รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -124,14 +124,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "085-336-7631",
       'location':
           "249 หมู่9 ร้านเหมย หมึกเป็นซาชิมิ \nแขวงทวีวัฒนา เขตทวีวัฒนา กรุงเทพมหานคร 10170",
-      'menuimage': 'assets/imgs/a2.png',
-      'bannerImage': 'assets/imgs/pomo.png',
+      'menuimage': 'assets/imgs/mu6.png',
+      'bannerImage': 'assets/imgs/po1.png',
       'type': 'อาหารทะเล', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F007',
-      'imageUrl': 'assets/imgs/im8.jpg',
+      'imageUrl': 'assets/imgs/im7.jpg',
       'restaurantName': 'ก๋วยเตี๋ยวเรือทองสมิทธ์',
       'description':
           'ร้านก๋วยเตี๋ยวเรือเจ้าดังที่มีเอกลักษณ์เฉพาะตัว รสชาติเข้มข้น ครบเครื่อง เส้นเหนียวนุ่ม รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -144,14 +144,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': " 065-937-7386 ",
       'location':
           "518 , กรุงเทพมหานคร (ทองสมิทธ์ The Mall Lifestore Bangkae ร้านอยู่ชั้น G ใกล้กับ Gourmet) ",
-      'menuimage': 'assets/imgs/t2.jpg',
-      'bannerImage': 'assets/imgs/t3.jpg',
+      'menuimage': 'assets/imgs/mu7.jpg',
+      'bannerImage': 'assets/imgs/po7.jpg',
       'type': 'อาหารไทย', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F008',
-      'imageUrl': 'assets/imgs/im9.jpg',
+      'imageUrl': 'assets/imgs/im8.jpg',
       'restaurantName': 'มีตังค์ สเต็ก',
       'description':
           'มีตังค์ สเต็ก อร่อยคุ้มค่าเกินราคา! สัมผัสสเต็กเนื้อนุ่ม ชุ่มฉ่ำ รสชาติเข้มข้น ปรุงจากวัตถุดิบคุณภาพดี รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -164,14 +164,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "095-862-0481 ",
       'location':
           "91/6 ข้างร้านซ่อมมอเตอร์ไซค์ ก่อนถึงซอย19, บางรักพัฒนา, บางบัวทอง, จ.นนทบุรี, 11110, ประเทศไทย นนทบุรี (ถนนเมน ระหว่างซอย​ 19 ก่อนถึงซอย19 ข้างร้านแชมป์มอไซด์) ",
-      'menuimage': 'assets/imgs/m1.jpg',
-      'bannerImage': 'assets/imgs/m2.jpg',
+      'menuimage': 'assets/imgs/mu8.jpg',
+      'bannerImage': 'assets/imgs/po8.jpg',
       'type': 'อาหารยุโรป', // เพิ่ม key 'type' (สเต็ก)
     },
     //----------------------------------
     {
       'id': 'F009',
-      'imageUrl': 'assets/imgs/im10.jpg',
+      'imageUrl': 'assets/imgs/im9.jpg',
       'restaurantName': 'Jones Salad',
       'description':
           'สุขภาพดีสร้างได้เริ่มต้นที่สลัดคุณให้ทุกมื้อเป็นเรื่องง่ายและดีต่อสุขภาพ กับสลัดที่คุณเลือกเองได้ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -184,14 +184,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "094-555-6430 ",
       'location':
           "518/1 ชั้น G, บางแคเหนือ บางแค กรุงเทพมหานคร กรุงเทพมหานคร ",
-      'menuimage': 'assets/imgs/s1.jpg',
-      'bannerImage': 'assets/imgs/s2.jpg',
+      'menuimage': 'assets/imgs/mu9.jpg',
+      'bannerImage': 'assets/imgs/po9.jpg',
       'type': 'อาหารเจ/มังสวิรัติ', // เพิ่ม key 'type' (สลัด)
     },
     //----------------------------------
     {
       'id': 'F0010',
-      'imageUrl': 'assets/imgs/a5.webp',
+      'imageUrl': 'assets/imgs/im10.webp',
       'restaurantName': 'สุกี้จินดา',
       'description':
           'สุกี้จินดา ร้านสุกี้หม่าล่าเสียบไม้แบบสายพาน มีทั้งแบบสุกี้น้ำ และสุกี้แห้ง คุณสามารถเลือกน้ำซุปเองได้ มีน้ำซุปหลายรสชาติ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -204,14 +204,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "091-795-3839 ",
       'location':
           "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
-      'menuimage': 'assets/imgs/a3.jpg',
-      'bannerImage': 'assets/imgs/a4.jpg',
+      'menuimage': 'assets/imgs/mu10.jpg',
+      'bannerImage': 'assets/imgs/po10.jpg',
       'type': 'อาหารจีน', // เพิ่ม key 'type' (สุกี้หม่าล่า)
     },
     //----------------------------------
     {
       'id': 'F0011',
-      'imageUrl': 'assets/imgs/im13.jpg',
+      'imageUrl': 'assets/imgs/im11.jpg',
       'restaurantName': 'petrichor เพทริเคอร์ คาเฟ่',
       'description':
           'petrichorที่ซึ่งกลิ่นไอธรรมชาติโอบกอดความสุขของคนรักสัตว์ เพลิดเพลินกับเครื่องดื่มและของว่างแสนอร่อย พร้อมบริการ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -224,14 +224,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "064-624-3559",
       'location':
           "88 หมู่2 ถนน ทวีวัฒนา แขวงทวีวัฒนา เขตทวีวัฒนา กรุงเทพมหานคร 10170",
-      'menuimage': 'assets/imgs/a6.jpg',
-      'bannerImage': 'assets/imgs/a7.jpg',
+      'menuimage': 'assets/imgs/mu11.jpg',
+      'bannerImage': 'assets/imgs/po11.jpg',
       'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F0012',
-      'imageUrl': 'assets/imgs/im14.png',
+      'imageUrl': 'assets/imgs/im23.png',
       'restaurantName': 'SHU DAXIA Hotpot ',
       'description':
           'ร้านชาบูหม่าล่าอร่อยๆ ในกรุงเทพฯ หลายคนจะต้องนึกถึงร้านนี้ SHU DAXIA Hotpot เพราะที่นี่คือร้านหม่าล่าหม้อไฟหัวมังกร รสชาติต้นตำรับจากเมืองเฉิงตู ประเทศจีน รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -244,14 +244,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "094-491-3900",
       'location':
           "ถ. ประดิษฐ์มนูธรรม 19 แขวงคลองจั่น บางกะปิ กรุงเทพมหานคร 10240",
-      'menuimage': 'assets/imgs/a9.jpg',
-      'bannerImage': 'assets/imgs/a8.jpg',
+      'menuimage': 'assets/imgs/mu12.jpg',
+      'bannerImage': 'assets/imgs/po12.jpg',
       'type': 'อาหารจีน', // เพิ่ม key 'type' (หม่าล่า)
     },
     //----------------------------------
     {
       'id': 'F0013',
-      'imageUrl': 'assets/imgs/im15.jpg',
+      'imageUrl': 'assets/imgs/im13.jpg',
       'restaurantName': 'Hongdae Buffet ',
       'description':
           'ปิ้งย่างเกาหลีต้นตำรับ วัตถุดิบคุณภาพแน่นๆ ที่ Hongdae Buffet ทุกคำคือความสุข รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -264,14 +264,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "064-165-7175",
       'location':
           "Siam Square One ชั้น 5 และ Future Park รังสิต ชั้น G",
-      'menuimage': 'assets/imgs/a10.jpg',
-      'bannerImage': 'assets/imgs/a11.jpg',
+      'menuimage': 'assets/imgs/mu13.jpg',
+      'bannerImage': 'assets/imgs/po13.jpg',
       'type': 'อาหารเกาหลี', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F0014',
-      'imageUrl': 'assets/imgs/im16.jpg',
+      'imageUrl': 'assets/imgs/im14.jpg',
       'restaurantName': 'KFC',
       'description':
           'KFC กรอบนอก นุ่มใน...อร่อยทุกคำ ที่ทุกคนหลงรัก รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -284,14 +284,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "020-290-700",
       'location':
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
-      'menuimage': 'assets/imgs/k1.jpg',
-      'bannerImage': 'assets/imgs/k2.jpg',
+      'menuimage': 'assets/imgs/mu14.jpg',
+      'bannerImage': 'assets/imgs/po14.jpg',
       'type': 'อาหารยุโรป', // เพิ่ม key 'type' (ฟาสต์ฟู้ด)
     },
     //----------------------------------
     {
       'id': 'F0015',
-      'imageUrl': 'assets/imgs/im17.jpg',
+      'imageUrl': 'assets/imgs/im15.jpg',
       'restaurantName': 'Mister Donut',
       'description':
           'Mister Donut เติมความสุขให้ทุกวัน ด้วยโดนัทหลากหลายสไตล์ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -304,14 +304,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "091-795-3839 ",
       'location':
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
-      'menuimage': 'assets/imgs/a14.jpg',
-      'bannerImage': 'assets/imgs/a12.jpg',
+      'menuimage': 'assets/imgs/mu15.jpg',
+      'bannerImage': 'assets/imgs/po15.jpg',
       'type': 'ของทานเล่น/ขนม', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F0016',
-      'imageUrl': 'assets/imgs/im18.jpg',
+      'imageUrl': 'assets/imgs/im16.jpg',
       'restaurantName': 'สุกี้ตี๋น้อย',
       'description':
           'สุกี้ตี๋น้อย” บุฟเฟ่ต์ชาบูราคาหลักร้อยอร่อยไม่อั้น รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -324,14 +324,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "091-795-3839 ",
       'location':
           "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
-      'menuimage': 'assets/imgs/a16.jpg',
-      'bannerImage': 'assets/imgs/a15.jpg',
+      'menuimage': 'assets/imgs/mu16.jpg',
+      'bannerImage': 'assets/imgs/po16.jpg',
       'type': 'อาหารจีน', // เพิ่ม key 'type' (สุกี้/ชาบู)
     },
     //----------------------------------
     {
       'id': 'F0017',
-      'imageUrl': 'assets/imgs/im19.jpg',
+      'imageUrl': 'assets/imgs/im17.jpg',
       'restaurantName': 'Yoguruto โยกุรุโตะ ',
       'description':
           'ร้านโยเกิร์ตสดปั่นสไตล์ญี่ปุ่น ที่กำลังได้รับความนิยมอย่างมากในหมู่คนรักสุขภาพและผู้ที่ชื่นชอบเครื่องดื่มสดชื่นชอบ รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -344,14 +344,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "088-662-8244",
       'location':
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
-      'menuimage': 'assets/imgs/y2.jpg',
-      'bannerImage': 'assets/imgs/y1.jpg',
+      'menuimage': 'assets/imgs/mu17.jpg',
+      'bannerImage': 'assets/imgs/po17.jpg',
       'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F0018',
-      'imageUrl': 'assets/imgs/im20.jpg',
+      'imageUrl': 'assets/imgs/im18.jpg',
       'restaurantName': 'Swensen \'s',
       'description':
           'ร้านไอศกรีมและเค้กที่มีสาขาอยู่ทั่วประเทศไทย ด้วยรสชาติที่เป็นเลิศ เมนูที่หลากหลาย มีสินค้าใหม่มาให้ลิ้มลองตลอดปี พร้อมทั้งโปรโมชั่นมากมายให้ลูกค้าได้ชื่นใจไปกับสเวนเซ่น รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -364,14 +364,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "091-795-3839 ",
       'location':
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
-      'menuimage': 'assets/imgs/a17.png',
-      'bannerImage': 'assets/imgs/a18.jpg',
+      'menuimage': 'assets/imgs/mu18.png',
+      'bannerImage': 'assets/imgs/po18.jpg',
       'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F0019',
-      'imageUrl': 'assets/imgs/im21.jpg',
+      'imageUrl': 'assets/imgs/im19.jpg',
       'restaurantName': 'ส้มตำนัว',
       'description':
           'ร้านส้มตำนัวเป็นที่รู้จักกันดีในเรื่องของเมนูส้มตำและอาหารอีสานรสชาติจัดจ้านถึงเครื่อง รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -384,14 +384,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': " 084-356-0080 ",
       'location':
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
-      'menuimage': 'assets/imgs/a19.jpg',
-      'bannerImage': 'assets/imgs/a20.jpg',
+      'menuimage': 'assets/imgs/mu19.jpg',
+      'bannerImage': 'assets/imgs/po19.jpg',
       'type': 'อาหารอีสาน', // เพิ่ม key 'type'
     },
     //----------------------------------
     {
       'id': 'F0020',
-      'imageUrl': 'assets/imgs/im22.jpg',
+      'imageUrl': 'assets/imgs/im20.jpg',
       'restaurantName': 'ฉันจะกินชาเย็นทุกวัน ',
       'description':
           'ทุกวันคือวันชาเย็น! พบกับความสดชื่นหลากหลายสไตล์ที่ BEAMS CHA รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -404,15 +404,15 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "0000-0000-0000",
       'location':
           "ชั้น G ใน The Mall Lifestore Bangkae ใกล้กับ Gourmet Market และ EVEANDBOY",
-      'menuimage': 'assets/imgs/b2.jpg',
-      'bannerImage': 'assets/imgs/b1.jpg',
+      'menuimage': 'assets/imgs/mu20.jpg',
+      'bannerImage': 'assets/imgs/po20.jpg',
       'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type' (เครื่องดื่ม)
     },
     //----------------------------------
     {
       'id': 'F0021',
-      'imageUrl': 'assets/imgs/im23.jpg',
-      'restaurantName': 'ผักฉ่ําคําหอม ',
+      'imageUrl': 'assets/imgs/im21.jpg',
+      'restaurantName': 'ผักฉ่ำคำหอม ',
       'description':
           'ร้านพาสต้าสไตล์อิตาลีแท้ๆ ราคาไม่แพง ที่อยู่ กรุงเทพฯ รายละเอียดเพิ่มเติม คลิกได้เลย',
       'rating': 3.5,
@@ -424,14 +424,14 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "088-662-8244",
       'location':
           "503/3 ชั้น 1 ยิ้มแย้ม โฮสเทล ถ. เพชรบุรี \nแขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
-      'menuimage': 'assets/imgs/a21.jpg',
-      'bannerImage': 'assets/imgs/a23.jpg',
+      'menuimage': 'assets/imgs/mu21.jpg',
+      'bannerImage': 'assets/imgs/po21.jpg',
       'type': 'อาหารไทย', // เพิ่ม key 'type' (สมมติว่าเป็นอาหารไทย เนื่องจากเป็นร้าน "ผักฉ่ำคำหอม")
     },
     //----------------------------------
     {
       'id': 'F0022',
-      'imageUrl': 'assets/imgs/im24.png',
+      'imageUrl': 'assets/imgs/im22.png',
       'restaurantName': 'Saint Etoile by Yamazaki ',
       'description':
           'ร้านขนมปังสำหรับทุกเพศทุกวัยพร้อมเสิร์ฟความอร่อยด้วยขนมปังอบสดใหม่ทุกวัน รายละเอียดเพิ่มเติม คลิกได้เลย',
@@ -444,8 +444,8 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'phoneNumber': "024-549-678",
       'location':
           " The Mall Lifestore", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
-      'menuimage': 'assets/imgs/a24.jpg',
-      'bannerImage': 'assets/imgs/a25.jpg',
+      'menuimage': 'assets/imgs/mu22.jpg',
+      'bannerImage': 'assets/imgs/po22.jpg',
       'type': 'ของทานเล่น/ขนม', // เพิ่ม key 'type' (เบเกอรี่)
     },
   ];

@@ -10,6 +10,7 @@ import '../controllers/scrollctrl.dart';
 
 
 // Import Widgets
+import '../widgets/matwid/appbarA.dart';
 import 'details_ui.dart';
 import 'login_ui.dart';
 
@@ -39,49 +40,7 @@ class MyshopUi extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: Colors.pink[200],
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Align(
-            alignment: Alignment.centerLeft,
-            child: Image.asset(
-              "assets/imgs/logoHome.png",
-              height: 8 * 10,
-              fit: BoxFit.contain,
-            ),
-          ),
-          toolbarHeight: 8 * 12,
-          automaticallyImplyLeading: false,
-          actions: [
-            TextButton(
-              onPressed: () {
-                Get.offAll(LoginUi());
-              },
-              child: const Text(
-                "ล็อคอิน",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(width: 10),
-          ],
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.pink[200]!,
-                  Colors.blue[200]!,
-                ],
-                begin: Alignment.centerLeft,
-                transform: GradientRotation(3.0),
-                end: Alignment.centerRight,
-              ),
-            ),
-          ),
-        ),
+         appBar: const AppbarA(),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [

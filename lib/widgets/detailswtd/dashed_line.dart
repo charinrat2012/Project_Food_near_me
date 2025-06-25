@@ -7,7 +7,7 @@ class DashedLine extends StatelessWidget {
   const DashedLine({
     super.key,
     this.height = 3.0, // ความสูง
-    this.color = const Color.fromARGB(255, 254, 252, 252), // ค่าเริ่มต้น
+    this.color = Colors.white, // ค่าเริ่มต้น
     this.dashWidth = 20.0, // ความยาว
     this.dashSpace = 10.0, // ความห่าง
   });

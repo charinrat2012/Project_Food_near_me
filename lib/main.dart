@@ -14,6 +14,7 @@ import 'controllers/reviewctrl.dart';
 import 'controllers/scrollctrl.dart';
 import 'controllers/slidectrl.dart';
 
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([

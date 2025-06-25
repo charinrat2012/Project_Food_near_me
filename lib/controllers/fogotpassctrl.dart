@@ -14,7 +14,7 @@ class ForgotpassController extends GetxController {
           'กรุณากรอกข้อมูลให้ครบถ้วน',
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 140, 131),
+          backgroundColor: Colors.red.shade200,
       );
       return;
     } else if (!emailController.text.isEmail) {
@@ -24,7 +24,7 @@ class ForgotpassController extends GetxController {
           'กรุณากรอกอีเมลให้ถูกต้อง',
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 140, 131),
+          backgroundColor: Colors.red.shade200,
       );
       return;
     }else if (emailController.text != email) {
@@ -34,7 +34,7 @@ class ForgotpassController extends GetxController {
           'ไม่พบอีเมลนี้ในระบบ',
           snackPosition: SnackPosition.TOP,
           colorText: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 140, 131),
+          backgroundColor: Colors.red.shade200,
       );
       return;
     }else if (checkboxController.isChecked.value == false) {
@@ -43,7 +43,7 @@ class ForgotpassController extends GetxController {
           'System',
           'กรุณายืนยันตัวตน',
           colorText: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 140, 131),
+          backgroundColor: Colors.red.shade200,
       );
       return;
     }

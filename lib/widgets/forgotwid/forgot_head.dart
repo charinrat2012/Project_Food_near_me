@@ -10,7 +10,7 @@ class ForgotHead extends StatelessWidget {
           "Forgot Password",
           style: GoogleFonts.charmonman(
             fontSize: 40,
-            color: const Color.fromARGB(255, 224, 223, 223),
+            color: Colors.white,
           ),
         ),
         SizedBox(height: 10),

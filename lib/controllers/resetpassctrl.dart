@@ -13,7 +13,7 @@ class ResetpassController extends GetxController {
   String oldpassword = '123456';
   void fetchReset() {
     if (passwordController.text.isEmpty|| confirmPasswordController.text.isEmpty ) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
       Get.snackbar(
           'System',
           'กรูณากรอกข้อมูลให้ครบถ้วน',
@@ -23,7 +23,7 @@ class ResetpassController extends GetxController {
       );
       return;
     }   else if (passwordController.text.length < 6) {
-     Get.closeAllSnackbars();
+     Get.closeCurrentSnackbar();
      Get.snackbar(
           'System',
           'กรูณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร',
@@ -33,7 +33,7 @@ class ResetpassController extends GetxController {
       );
       return;
     } else if (passwordController.text != confirmPasswordController.text) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
       Get.snackbar(
           'System',
           'รหัสผ่านไม่ตรงกัน',
@@ -43,7 +43,7 @@ class ResetpassController extends GetxController {
       );
       return;
     }else if (passwordController.text == oldpassword || confirmPasswordController.text == oldpassword) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
       Get.snackbar(
           'System',
           'รหัสผ่านนี้เคยใช้ไปแล้ว',

@@ -1,49 +1,47 @@
-
+// lib/views/home_ui.dart
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/filterctrl.dart';
 import 'package:get/get.dart';
+
 
 import '../controllers/detailctrl.dart';
 import '../controllers/scrollctrl.dart';
 import '../widgets/homewid/LocationFilterBar.dart';
 import '../widgets/matwid/formsearch.dart';
 import '../widgets/homewid/rescard.dart';
-import '../widgets/homewid/reslist.dart';
+// import '../widgets/matwid/reslist.dart'; // ไม่จำเป็นต้อง import reslist โดยตรงแล้วที่นี่
 import '../widgets/homewid/slideim.dart';
 
 import '../widgets/matwid/appbarA.dart';
 import '../widgets/matwid/scrolltotop_bt.dart';
 import 'details_ui.dart';
-import 'login_ui.dart';
-import 'myprofile_ui.dart';
+// import 'login_ui.dart'; // ไม่จำเป็นต้อง import ที่นี่
+// import 'myprofile_ui.dart'; // ไม่จำเป็นต้อง import ที่นี่
 
 class HomeUi extends StatelessWidget {
-   const HomeUi({super.key});
+  const HomeUi({super.key});
 
-  
-    @override
+  @override
   Widget build(BuildContext context) {
-    final ScrollpageController scrollpageController =
-        Get.find<ScrollpageController>();
+    final ScrollpageController scrollpageController = Get.find<ScrollpageController>();
     final FilterController filterController = Get.find<FilterController>();
 
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
+        Get.closeCurrentSnackbar();
       },
       child: Scaffold(
         backgroundColor: Colors.pink[200],
         appBar: const AppbarA(),
-        
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
-            Colors.blue[200]!,
-            Colors.pink[200]!,
-          ])
+              Colors.blue[200]!,
+              Colors.pink[200]!,
+            ]),
           ),
           child: Stack(
-            
             children: [
               Column(
                 children: [
@@ -67,49 +65,46 @@ class HomeUi extends StatelessWidget {
                             children: [
                               const Formsearch(),
                               const LocationFilterBar(),
-          
                               const SizedBox(height: 8),
                               Slideim(),
                               const SizedBox(height: 8),
-                              // ใช้ .map เพื่อสร้าง RestaurantCard จาก restaurantList
-                            Obx(() {
-                            if (filterController.filteredRestaurantList.isEmpty) {
-                              return const Center(
-                                child: Text(
-                                  'ไม่พบร้านอาหารที่ตรงกับการค้นหา',
-                                  style: TextStyle(fontSize: 18, color: Colors.grey),
-                                ),
-                              );
-                            }
-                            return Column(
-                              children: filterController.filteredRestaurantList.map((restaurantData) {
-                                return RestaurantCard(
-                                  imageUrl: restaurantData['imageUrl']!,
-                                  restaurantName: restaurantData['restaurantName']!,
-                                  description: restaurantData['description']!,
-                                  rating: restaurantData['rating']!,
-                                  isOpen: restaurantData['isOpen']!,
-                                  showMotorcycleIcon: restaurantData['showMotorcycleIcon']!,
-                                  onTap: () {
-                                    // Use Get.to instead of Get.offAll to allow going back
-                                    Get.offAll(
-                                      () => RestaurantDetailPageUi(
-                                        restaurantId: restaurantData['id']!,
-                                      ),
-                                      binding: BindingsBuilder(() {
-                                        Get.put(
-                                          RestaurantDetailController(
-                                            restaurantId: restaurantData['id']!,
+                              Obx(() {
+                                if (filterController.filteredRestaurantList.isEmpty) {
+                                  return const Center(
+                                    child: Text(
+                                      'ไม่พบร้านอาหารที่ตรงกับการค้นหา',
+                                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                                    ),
+                                  );
+                                }
+                                return Column(
+                                  children: filterController.filteredRestaurantList.map((restaurant) {
+                                    // *** แก้ไขตรงนี้ทั้งหมด: ใช้ . (dot operator) แทน [] (bracket operator) ***
+                                    return RestaurantCard(
+                                      imageUrl: restaurant.imageUrl,
+                                      restaurantName: restaurant.restaurantName,
+                                      description: restaurant.description,
+                                      rating: restaurant.rating,
+                                      isOpen: restaurant.isOpen.value,
+                                      showMotorcycleIcon: restaurant.showMotorcycleIcon,
+                                      onTap: () {
+                                        Get.offAll(
+                                          () => RestaurantDetailPageUi(
+                                            restaurantId: restaurant.id, // ใช้ .id
                                           ),
-                                          tag: restaurantData['id']!,
+                                          binding: BindingsBuilder(() {
+                                            Get.put(
+                                              RestaurantDetailController(
+                                                restaurantId: restaurant.id, // ใช้ .id
+                                              ),
+                                              tag: restaurant.id, // ใช้ .id
+                                            );
+                                          }),
                                         );
-                                      }),
+                                      },
                                     );
-                                  },
-                                
-                                );  
-                              }).toList(),
-                            );
+                                  }).toList(),
+                                );
                               }),
                               const SizedBox(height: 50),
                             ],

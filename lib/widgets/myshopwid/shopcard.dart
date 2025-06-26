@@ -137,7 +137,7 @@ class MyShopCard extends StatelessWidget {
                                   value: isOpen.value,
                                   onChanged: (newValue) {
                                     isOpen.value = newValue; // เปลี่ยนค่าของ RxBool ที่ส่งเข้ามาโดยตรง
-                                    // Get.closeAllSnackbars();
+                                    // Get.closeCurrentSnackbar();
                                     Get.snackbar(
                                       'สถานะร้านค้า',
                                       isOpen.value ? 'ร้าน ${restaurantName} เปิดแล้ว!' : 'ร้าน ${restaurantName} ปิดแล้ว!',

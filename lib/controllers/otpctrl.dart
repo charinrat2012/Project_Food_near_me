@@ -41,9 +41,9 @@ class OtpCotroller extends GetxController {
   }
   void verifyOtp() {
     String enteredOtp = getOtpValue();
-    print("Entered OTP from OtpController: $enteredOtp");
+   
     if (enteredOtp.isEmpty || enteredOtp.length < fields) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
       Get.snackbar(
         'System',
         'กรุณากรอกข้อมูลให้ครบถ้วน',
@@ -52,7 +52,7 @@ class OtpCotroller extends GetxController {
         backgroundColor: Colors.red.shade200,
       );
     } else if (enteredOtp != otp) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
       Get.snackbar(
         'System',
         'รหัสผ่านไม่ถูกต้อง',
@@ -63,7 +63,7 @@ class OtpCotroller extends GetxController {
       return;
     }
     // else {
-    //   Get.closeAllSnackbars();
+    //   Get.closeCurrentSnackbar();
     //   Get.snackbar(
     //     'System',
     //     'OTP ถูกต้อง',
@@ -74,7 +74,7 @@ class OtpCotroller extends GetxController {
     clearOtpFields();
     if (Get.context != null) {
       FocusScope.of(Get.context!).unfocus();
-     Get.to(() => ResetpassUi());
+     Get.offAll(() => ResetpassUi());
     }
   }
 }

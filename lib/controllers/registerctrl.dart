@@ -14,7 +14,7 @@ class RegisterController extends GetxController {
   set obscureText2(value) => _obscureText2.value = value;
   void fetchRegister() {
     if (emailController.text.isEmpty || passwordController.text.isEmpty || usernameController.text.isEmpty || confirmPasswordController.text.isEmpty ) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
       Get.snackbar(
           'System',
           'กรูณากรอกข้อมูลให้ครบถ้วน',
@@ -24,7 +24,7 @@ class RegisterController extends GetxController {
       );
       return;
     } else if (!emailController.text.isEmail) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
       Get.snackbar(
           'System',
           'กรูณากรอกอีเมลให้ถูกต้อง',
@@ -34,7 +34,7 @@ class RegisterController extends GetxController {
       );
       return;
     }  else if (passwordController.text.length < 6) {
-     Get.closeAllSnackbars();
+     Get.closeCurrentSnackbar();
      Get.snackbar(
           'System',
           'กรูณากรอกรหัสผ่านอย่างน้อย 6 ตัวอักษร',
@@ -44,7 +44,7 @@ class RegisterController extends GetxController {
       );
       return;
     } else if (passwordController.text != confirmPasswordController.text) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
       Get.snackbar(
           'System',
           'รหัสผ่านไม่ตรงกัน',

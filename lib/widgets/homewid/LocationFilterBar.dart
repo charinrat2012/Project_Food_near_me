@@ -177,7 +177,7 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
           Get.snackbar(
             'ตำแหน่งปัจจุบัน',
             'ฟังก์ชันนี้ยังไม่ได้ถูกพัฒนา',
-            snackPosition: SnackPosition.BOTTOM,
+            snackPosition: SnackPosition.TOP,
             backgroundColor: Colors.blueAccent,
             colorText: Colors.white,
           );

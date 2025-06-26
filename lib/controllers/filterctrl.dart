@@ -1,100 +1,160 @@
-// lib/controllers/filter_controller.dart
+// lib/controllers/filterctrl.dart
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/widgets/favoritwid/favlist.dart';
 import 'package:food_near_me_app/widgets/homewid/localist.dart';
-import 'package:get/get.dart';
-import 'package:food_near_me_app/widgets/homewid/reslist.dart'; // *** นำเข้า Reslist ที่เก็บข้อมูลของคุณ ***
+import 'package:get/get.dart'; // *** ตรวจสอบให้แน่ใจว่า import นี้มีอยู่และถูกต้อง ***
+import 'package:food_near_me_app/widgets/matwid/reslist.dart';
+
+import 'package:food_near_me_app/controllers/loginctrl.dart';
+import 'package:get/get_state_manager/src/simple/list_notifier.dart';
+
+import '../model/restaurant.dart';
 
 class FilterController extends GetxController {
   final TextEditingController searchInputController = TextEditingController();
   final RxString searchQuery = ''.obs;
-final RxString selectedProvince = ''.obs; // สำหรับจังหวัดที่เลือก
-  final RxString selectedDistrict = ''.obs; // สำหรับเขต/อำเภอที่เลือก
-  final RxString selectedCategory = ''.obs; // สำหรับประเภทอาหารที่เลือก
+  final RxString selectedProvince = ''.obs;
+  final RxString selectedDistrict = ''.obs;
+  final RxString selectedCategory = ''.obs;
 
-  // รายการร้านอาหารต้นฉบับทั้งหมด (จะถูกดึงมาจาก Reslist)
-  // กำหนดเป็น private เนื่องจากเป็นแหล่งข้อมูลภายใน
-  late final List<Map<String, dynamic>> _originalRestaurantList;
-  late final List<Map<String, dynamic>> _favRestaurantList;
+  late final LoginController _loginController;
 
-  // รายการที่จะถูกแสดงผลใน UI ซึ่งจะอัปเดตตามการค้นหา/กรอง
-  final RxList<Map<String, dynamic>> filteredRestaurantList = <Map<String, dynamic>>[].obs;
-  final RxList<Map<String, dynamic>> filteredfavoriteList = <Map<String, dynamic>>[].obs;
+  final RxList<Restaurant> allRestaurantsObservable = <Restaurant>[].obs;
+
+  final RxList<Restaurant> filteredRestaurantList = <Restaurant>[].obs;
+  final RxList<Restaurant> filteredFavoriteList = <Restaurant>[].obs;
+
+  // สำหรับเก็บ ReactionDisposer เพื่อป้องกัน memory leaks
+  // ReactionDisposer เป็น Type ที่มาจาก GetX
+   final List<Function()> _disposers = []; 
+
 
   @override
   void onInit() {
     super.onInit();
-    // เริ่มต้น _originalRestaurantList จาก Reslist.restaurantList
-    // ใช้ List.from() เพื่อสร้างสำเนาที่แก้ไขได้ ไม่ใช่การอ้างอิงตรงๆ
-    _originalRestaurantList = List.from(Reslist.restaurantList);
-    _favRestaurantList = List.from(Favlist.favlist);
+    _loginController = Get.find<LoginController>();
 
-    // เพิ่ม listener ให้กับ searchInputController
+    _initializeAllRestaurants(); // โหลดและตั้งค่า isFavorite เริ่มต้น
+
     searchInputController.addListener(_onSearchInputChanged);
 
-    // กำหนด filteredRestaurantList เริ่มต้นให้แสดงร้านอาหารทั้งหมด
-    // filterRestaurantList('');
+    // เมื่อ userId หรือ userFavoriteList เปลี่ยน ให้เรียก _initializeAllRestaurants ใหม่
+    ever(_loginController.userId, (_) {
+      _initializeAllRestaurants(); // Re-initialize เพื่ออัปเดต isFavorite ตามผู้ใช้ใหม่
+      applyFilters();
+    });
+    ever(_loginController.userFavoriteList, (_) {
+      _initializeAllRestaurants(); // Re-initialize all restaurants because user favorite list has changed
+      applyFilters(); // Re-apply filters after the base list is initialized
+    });
+    
+    applyFilters(); // เรียก applyFilters ครั้งแรก
+  }
 
-    // filterfavoriteList('');
-    applyFilters();
+  void _initializeAllRestaurants() {
+    // กำจัด listeners เก่าทั้งหมดก่อนสร้างใหม่ เพื่อป้องกัน memory leaks และ listener ซ้ำซ้อน
+    _disposers.forEach((disposer) => disposer()); // disposer() คือการเรียก ReactionDisposer ให้ทำงาน
+    _disposers.clear();
+
+    final List<Restaurant> tempRestaurants = Reslist.restaurantList.map((map) {
+        final bool isCurrentlyFavorite = _loginController.isLoggedIn.value &&
+                                         _loginController.userFavoriteList.contains(map['id']);
+        return Restaurant.fromMap({...map, 'isFavorite': isCurrentlyFavorite});
+    }).toList();
+
+    allRestaurantsObservable.assignAll(tempRestaurants);
+
+    // Setup new listeners for the newly assigned Restaurant objects
+    allRestaurantsObservable.forEach((restaurant) {
+      _disposers.add(ever(restaurant.isFavorite, (_) {
+        print("Restaurant ${restaurant.restaurantName} isFavorite changed to ${restaurant.isFavorite.value}. Re-applying filters...");
+        applyFilters(); // การอัปเดต isFavorite จะส่งผลให้ userFavoriteList เปลี่ยนและ trigger applyFilters() อยู่แล้ว
+                        // แต่การเรียกตรงนี้อีกครั้งเป็นการยืนยันและทำให้แน่ใจว่า UI อัปเดต
+      }));
+      _disposers.add(ever(restaurant.isOpen, (_) {
+          print("Restaurant ${restaurant.restaurantName} isOpen changed to ${restaurant.isOpen.value}. Re-applying filters...");
+          applyFilters();
+      }));
+    });
   }
 
   @override
   void onClose() {
     searchInputController.removeListener(_onSearchInputChanged);
     searchInputController.dispose();
+    _disposers.forEach((disposer) => disposer()); // กำจัด listeners เมื่อ Controller ปิด
     super.onClose();
   }
 
   void _onSearchInputChanged() {
     searchQuery.value = searchInputController.text;
-    // filterRestaurantList(searchQuery.value); 
-     applyFilters();
-  }
-void setSelectedProvince(String province) {
-    selectedProvince.value = province;
-    // เมื่อจังหวัดเปลี่ยน ให้รีเซ็ตเขต/อำเภอที่เลือก (ถ้ามี)
-    // เพื่อป้องกันการเลือกเขต/อำเภอที่ไม่อยู่ในจังหวัดใหม่
-    if (!province.isEmpty && !(Localist.districtsByProvince[province]?.contains(selectedDistrict.value) ?? false)) {
-        selectedDistrict.value = ''; // รีเซ็ตเขต/อำเภอถ้าจังหวัดเปลี่ยนและเขตเดิมไม่อยู่ในจังหวัดใหม่
-    } else if (province.isEmpty) { // ถ้าเลือก "ทั้งหมด" สำหรับจังหวัด
-      selectedDistrict.value = ''; // รีเซ็ตเขต/อำเภอ
-    }
+    applyFilters();
   }
 
-  // --- ฟังก์ชันใหม่สำหรับเปลี่ยนประเภทอาหารที่เลือก ---
+  void setSelectedProvince(String province) {
+    selectedProvince.value = province;
+    if (!province.isEmpty && !(Localist.districtsByProvince[province]?.contains(selectedDistrict.value) ?? false)) {
+      selectedDistrict.value = '';
+    } else if (province.isEmpty) {
+      selectedDistrict.value = '';
+    }
+    applyFilters();
+  }
+
   void setSelectedDistrict(String district) {
     selectedDistrict.value = district;
     applyFilters();
   }
-   void setSelectedCategory(String category) {
+
+  void setSelectedCategory(String category) {
     selectedCategory.value = category;
     applyFilters();
   }
-void applyFilters() {
-    // กรองสำหรับรายการร้านอาหารทั่วไป
-    List<Map<String, dynamic>> tempFilteredRestaurants = List.from(_originalRestaurantList);
 
-    // กรองตามข้อความค้นหา (Search Query)
+  void toggleFavorite(String restaurantId) {
+    final int index = allRestaurantsObservable.indexWhere((res) => res.id == restaurantId);
+    if (index != -1) {
+      final Restaurant restaurantToUpdate = allRestaurantsObservable[index];
+      restaurantToUpdate.isFavorite.value = !restaurantToUpdate.isFavorite.value;
+      
+      print("Favorite status of ${restaurantToUpdate.restaurantName} changed to ${restaurantToUpdate.isFavorite.value}");
+      
+      // อัปเดต userFavoriteList ใน LoginController ด้วย
+      if (restaurantToUpdate.isFavorite.value) {
+        _loginController.userFavoriteList.addIf(!_loginController.userFavoriteList.contains(restaurantId), restaurantId);
+      } else {
+        _loginController.userFavoriteList.remove(restaurantId);
+      }
+      // applyFilters() จะถูกเรียกอัตโนมัติจาก ever listener ของ _loginController.userFavoriteList
+    }
+  }
+
+  void updateRestaurantStatus(String id, bool newStatus) {
+    final int index = allRestaurantsObservable.indexWhere((res) => res.id == id);
+    if (index != -1) {
+      allRestaurantsObservable[index].isOpen.value = newStatus;
+      // applyFilters() จะถูกเรียกอัตโนมัติจาก ever listener ของ isOpen
+    }
+  }
+
+  void applyFilters() {
+    List<Restaurant> tempFilteredRestaurants = List.from(allRestaurantsObservable);
+
+    // การกรองตาม Search Query
     if (searchQuery.value.isNotEmpty) {
       tempFilteredRestaurants = tempFilteredRestaurants
           .where((restaurant) =>
-              (restaurant['restaurantName']?.toLowerCase().contains(searchQuery.value.toLowerCase()) ?? false) ||
-              (restaurant['description']?.toLowerCase().contains(searchQuery.value.toLowerCase()) ?? false))
+              restaurant.restaurantName.toLowerCase().contains(searchQuery.value.toLowerCase()) ||
+              restaurant.description.toLowerCase().contains(searchQuery.value.toLowerCase()))
           .toList();
     }
 
-    // กรองตามทำเล: จังหวัด (selectedProvince) และ เขต/อำเภอ (selectedDistrict)
-    // การกรองควรเป็น "จังหวัด" AND "เขต/อำเภอ" (ถ้ามีเขต/อำเภอถูกเลือก)
+    // การกรองตามทำเล
     if (selectedProvince.value.isNotEmpty) {
         tempFilteredRestaurants = tempFilteredRestaurants
             .where((restaurant) {
-                // สมมติว่า 'location' ในข้อมูลร้านอาหารมีทั้งจังหวัดและเขต/อำเภออยู่ใน String เดียวกัน
-                // เช่น "กรุงเทพมหานคร เขตราชเทวี"
-                final restaurantLocation = restaurant['location']?.toLowerCase() ?? '';
+                final restaurantLocation = restaurant.location.toLowerCase();
                 final isProvinceMatch = restaurantLocation.contains(selectedProvince.value.toLowerCase());
                 
-                // ถ้ามี district ถูกเลือก ให้กรองตาม district ด้วย
                 if (selectedDistrict.value.isNotEmpty) {
                     final isDistrictMatch = restaurantLocation.contains(selectedDistrict.value.toLowerCase());
                     return isProvinceMatch && isDistrictMatch;
@@ -104,70 +164,30 @@ void applyFilters() {
             .toList();
     }
 
-    // กรองตามประเภทอาหาร (selectedCategory)
+    // การกรองตามประเภท
     if (selectedCategory.value.isNotEmpty) {
       tempFilteredRestaurants = tempFilteredRestaurants
           .where((restaurant) =>
-              (restaurant['type']?.toLowerCase().contains(selectedCategory.value.toLowerCase()) ?? false))
+              restaurant.type.toLowerCase().contains(selectedCategory.value.toLowerCase()))
           .toList();
     }
     filteredRestaurantList.value = tempFilteredRestaurants;
 
- List<Map<String, dynamic>> tempFilteredFavorites = List.from(_favRestaurantList);
+
+    // การกรองสำหรับรายการร้านอาหารที่ชื่นชอบ (filteredFavoriteList)
+    List<Restaurant> tempFilteredFavorites = allRestaurantsObservable.where((restaurant) {
+      return _loginController.isLoggedIn.value &&
+             _loginController.userFavoriteList.contains(restaurant.id); // กรองตาม ID ใน userFavoriteList
+    }).toList();
 
     if (searchQuery.value.isNotEmpty) {
       tempFilteredFavorites = tempFilteredFavorites
           .where((restaurant) =>
-              restaurant['restaurantName']
-                  .toLowerCase()
-                  .contains(searchQuery.value.toLowerCase()) ||
-              restaurant['description']
-                  .toLowerCase()
-                  .contains(searchQuery.value.toLowerCase()))
+              restaurant.restaurantName.toLowerCase().contains(searchQuery.value.toLowerCase()) ||
+              restaurant.description.toLowerCase().contains(searchQuery.value.toLowerCase()))
           .toList();
     }
-
     
-    filteredfavoriteList.value = tempFilteredFavorites;
+    filteredFavoriteList.value = tempFilteredFavorites;
   }
-
-
-  // void filterRestaurantList(String query) {
-  //   if (query.isEmpty) {
-  //     // ถ้า query ว่างเปล่า ให้แสดงร้านอาหารต้นฉบับทั้งหมด
-  //     filteredRestaurantList.value = List.from(_originalRestaurantList);
-  //   } else {
-  //     // กรองข้อมูลจากรายการต้นฉบับ
-  //     filteredRestaurantList.value = _originalRestaurantList
-  //         .where((restaurant) =>
-  //             restaurant['restaurantName']
-  //                 .toLowerCase()
-  //                 .contains(query.toLowerCase()) ||
-  //             restaurant['description']
-  //                 .toLowerCase()
-  //                 .contains(query.toLowerCase()))
-  //         .toList();
-  //   }
-  // }
-  //  void filterfavoriteList(String query) {
-  //   if (query.isEmpty) {
-  //     // ถ้า query ว่างเปล่า ให้แสดงร้านอาหารต้นฉบับทั้งหมด
-  //     filteredfavoriteList.value = List.from(_favRestaurantList);
-  //   } else {
-  //     // กรองข้อมูลจากรายการต้นฉบับ
-  //     filteredfavoriteList.value = _favRestaurantList
-  //         .where((restaurant) =>
-  //             restaurant['restaurantName']
-  //                 .toLowerCase()
-  //                 .contains(query.toLowerCase()) ||
-  //             restaurant['description']
-  //                 .toLowerCase()
-  //                 .contains(query.toLowerCase()))
-  //         .toList();
-  //   }
-  // }
-
-  // คุณสามารถเพิ่ม logic การกรองอื่นๆ ได้ที่นี่ เช่น กรองตามทำเล หรือประเภทอาหาร
-  // void filterByLocation(String location) { ... }
-  // void filterByType(String type) { ... }
 }

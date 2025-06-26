@@ -1,6 +1,6 @@
 // lib/views/myshop_ui.dart
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/widgets/myshopwid/shoplist.dart';
+
 import 'package:get/get.dart';
 
 // Import Controllers
@@ -33,6 +33,7 @@ class MyshopUi extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScrollpageController scrollpageController = Get.find<ScrollpageController>();
     // Get.put(MyshopController()); // ไม่ต้อง Get.put MyShopController ที่นี่แล้ว
+    final MyShopController myshopController = Get.find<MyShopController>();
 
     return GestureDetector(
       onTap: () {
@@ -73,31 +74,31 @@ class MyshopUi extends StatelessWidget {
                               
 
                               // *** วนลูป Shoplist.shopList และส่งค่าที่ถูกต้องให้ MyShopCard ***
-                              ...Shoplist.shopList.map((restaurantData) {
-                                return MyShopCard(
-                                  imageUrl: restaurantData['imageUrl']!,
-                                  restaurantName: restaurantData['restaurantName']!,
-                                  description: restaurantData['description']!,
-                                  rating: restaurantData['rating']!,
-                                  isOpen: restaurantData['isOpen']!, // *** ส่ง RxBool เข้าไปตรงๆ ***
-                                  showMotorcycleIcon: restaurantData['showMotorcycleIcon']!,
-                                  onTap: () {
-                                    Get.offAll(
-                                      () => RestaurantDetailPageUi(
-                                        restaurantId: restaurantData['id']!,
-                                      ),
-                                      binding: BindingsBuilder(() {
-                                        Get.put(
-                                          RestaurantDetailController(
-                                            restaurantId: restaurantData['id']!,
+                              ...myshopController.myOwnerShopList.map((restaurant) {
+                               return MyShopCard(
+                                      imageUrl: restaurant.imageUrl,
+                                      restaurantName: restaurant.restaurantName,
+                                      description: restaurant.description,
+                                      rating: restaurant.rating,
+                                      isOpen: restaurant.isOpen, // ส่ง RxBool ไปตรงๆ
+                                      showMotorcycleIcon: restaurant.showMotorcycleIcon,
+                                      onTap: () {
+                                        Get.offAll(
+                                          () => RestaurantDetailPageUi(
+                                            restaurantId: restaurant.id,
                                           ),
-                                          tag: restaurantData['id']!,
+                                          binding: BindingsBuilder(() {
+                                            Get.put(
+                                              RestaurantDetailController(
+                                                restaurantId: restaurant.id,
+                                              ),
+                                              tag: restaurant.id,
+                                            );
+                                          }),
                                         );
-                                      }),
+                                      },
                                     );
-                                  },
-                                );
-                              }).toList(),
+                                  }).toList(),
                               const SizedBox(height: 80), // เพิ่มระยะห่างด้านล่างสุด
                             ],
                           ),

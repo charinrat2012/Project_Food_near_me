@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/controllers/loginctrl.dart';
+import 'package:food_near_me_app/views/editeprofile_ui.dart';
 
 import 'package:food_near_me_app/views/navbar.dart';
 import 'package:get/get.dart';
 
-
 import '../controllers/scrollctrl.dart';
 import '../widgets/matwid/back_bt.dart';
 import '../widgets/matwid/scrolltotop_bt.dart';
-
 
 class MyprofileUi extends StatelessWidget {
   const MyprofileUi({Key? key}) : super(key: key);
@@ -18,10 +18,12 @@ class MyprofileUi extends StatelessWidget {
     final double appBarHeight = AppBar().preferredSize.height;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final double profileCircleSize = 100.0; // ขนาดของวงกลมรูปโปรไฟล์
+    final LoginController loginController = Get.find<LoginController>();
 
     // Note: If ScrollpageController is not truly needed for this specific UI,
     // you might consider removing Get.find() if it causes issues or is unused.
-    final ScrollpageController scrollpageController = Get.find<ScrollpageController>();
+    final ScrollpageController scrollpageController =
+        Get.find<ScrollpageController>();
 
     return GestureDetector(
       onTap: () {
@@ -31,7 +33,10 @@ class MyprofileUi extends StatelessWidget {
         // backgroundColor: Colors.pink[200],
         appBar: AppBar(
           backgroundColor: Colors.pink[200],
-          title: Align(alignment: Alignment.centerLeft, child: BackBt(srcp: () => const Navbar(),)),
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: BackBt(srcp: () => const Navbar()),
+          ),
           toolbarHeight: 8 * 10,
           automaticallyImplyLeading: false,
           actions: [
@@ -63,9 +68,7 @@ class MyprofileUi extends StatelessWidget {
             // Container หลักที่ทำหน้าที่เป็นพื้นหลังสีขาวโค้งมน
             Container(
               decoration: BoxDecoration(
-                      
-                   
-                     gradient: LinearGradient(
+                gradient: LinearGradient(
                   colors: [
                     Colors.pink[200]!, // สีชมพูอ่อน
                     Colors.blue[200]!, // สีชมพูอ่อน
@@ -73,24 +76,26 @@ class MyprofileUi extends StatelessWidget {
                   begin: Alignment.centerLeft,
                   transform: GradientRotation(3.0),
                   end: Alignment.centerRight,
-                ), ),
-              child: Column( // ใช้ Column เพื่อจัดการส่วนบนสีชมพูและส่วนล่างสีขาว
+                ),
+              ),
+              child: Column(
+                // ใช้ Column เพื่อจัดการส่วนบนสีชมพูและส่วนล่างสีขาว
                 children: [
                   // พื้นที่สีชมพูด้านบน
                   Container(
-                    height: 50.0, // ปรับความสูงนี้เพื่อกำหนดว่าส่วนสีขาวจะเริ่มที่ไหน
+                    height:
+                        50.0, // ปรับความสูงนี้เพื่อกำหนดว่าส่วนสีขาวจะเริ่มที่ไหน
                     decoration: BoxDecoration(
-                      
-                   
-                     gradient: LinearGradient(
-                  colors: [
-                    Colors.pink[200]!, // สีชมพูอ่อน
-                    Colors.blue[200]!, // สีชมพูอ่อน
-                  ],
-                  begin: Alignment.centerLeft,
-                  transform: GradientRotation(3.0),
-                  end: Alignment.centerRight,
-                ), ),
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.pink[200]!, // สีชมพูอ่อน
+                          Colors.blue[200]!, // สีชมพูอ่อน
+                        ],
+                        begin: Alignment.centerLeft,
+                        transform: GradientRotation(3.0),
+                        end: Alignment.centerRight,
+                      ),
+                    ),
                   ),
                   // พื้นที่สีขาวโค้งมน
                   Expanded(
@@ -111,7 +116,7 @@ class MyprofileUi extends StatelessWidget {
                             // ชื่อผู้ใช้ (ไก่)
                             Expanded(child: SizedBox()),
                             Text(
-                              'ไก่',
+                              'โปรไฟล์',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -119,25 +124,40 @@ class MyprofileUi extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 10), // ระยะห่างระหว่างชื่อกับฟอร์ม
-                                    
                             // ฟอร์มข้อมูลส่วนตัว
-                            _buildTextFieldWithLabel('ชื่อเล่น', 'ไก่', false),
-                            _buildTextFieldWithLabel('เบอร์โทรศัพท์', '0894563258', false),
-                            _buildTextFieldWithLabel('อีเมล', 'Chicken1123@gmail.com', false),
-                            _buildTextFieldWithLabel('รหัสผ่าน', '********', true), // isObscureText: true
-                                    
+                            _buildTextFieldWithLabel(
+                              'ชื่อเล่น',
+                              loginController.userName.value,
+                              false,
+                            ),
+                            _buildTextFieldWithLabel(
+                              'เบอร์โทรศัพท์',
+                             loginController.userPhoneNumber.value,
+                              false,
+                            ),
+                            _buildTextFieldWithLabel(
+                              'อีเมล',
+                              loginController.userEmail.value,
+                              false,
+                            ),
+                            _buildTextFieldWithLabel(
+                              'รหัสผ่าน',
+                              loginController.userPassword.value,
+                              true,
+                            ), // isObscureText: true
+
                             SizedBox(height: 30), // ระยะห่างก่อนปุ่ม
-                                    
                             // ปุ่ม "แก้ไขข้อมูล"
                             SizedBox(
                               width: double.infinity, // ทำให้ปุ่มเต็มความกว้าง
                               child: ElevatedButton(
                                 onPressed: () {
                                   // Logic สำหรับแก้ไขข้อมูล
-                                  print('แก้ไขข้อมูล');
+                                  Get.offAll(() => EditProfileUi());
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.pink[400], // สีปุ่มตามตัวอย่าง
+                                  backgroundColor:
+                                      Colors.pink[400], // สีปุ่มตามตัวอย่าง
                                   padding: EdgeInsets.symmetric(vertical: 12.0),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -145,18 +165,20 @@ class MyprofileUi extends StatelessWidget {
                                 ),
                                 child: Text(
                                   'แก้ไขข้อมูล',
-                                  style: TextStyle(fontSize: 18, color: Colors.white),
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                             SizedBox(height: 15), // ระยะห่างระหว่างปุ่ม
-                                    
                             // ปุ่ม "ออกจากระบบ"
                             TextButton(
                               onPressed: () {
                                 Get.offAll(() => Navbar());
                                 // Logic สำหรับออกจากระบบ
-                                print('ออกจากระบบ');
+
                                 // Get.offAll(() => LoginPage()); // ตัวอย่างการไปหน้า Login
                               },
                               child: Text(
@@ -164,7 +186,8 @@ class MyprofileUi extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey[600],
-                                  decoration: TextDecoration.underline, // ขีดเส้นใต้
+                                  decoration:
+                                      TextDecoration.underline, // ขีดเส้นใต้
                                 ),
                               ),
                             ),
@@ -202,7 +225,7 @@ class MyprofileUi extends StatelessWidget {
                   ),
                   child: ClipOval(
                     child: Image.asset(
-                      "assets/imgs/pofile.jpg", // **เปลี่ยนเป็น path รูปโปรไฟล์ของคุณ**
+                      loginController.userProfileImageUrl.value, // **เปลี่ยนเป็น path รูปโปรไฟล์ของคุณ**
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -244,7 +267,7 @@ class MyprofileUi extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8),
-              TextField(
+          TextField(
             decoration: InputDecoration(
               hintText: hint,
               border: OutlineInputBorder(
@@ -253,7 +276,10 @@ class MyprofileUi extends StatelessWidget {
               ),
               filled: true,
               fillColor: Colors.grey[100], // พื้นหลัง TextField สีเทาอ่อน
-              contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 12.0,
+              ),
             ),
             obscureText: isObscure, // สำหรับรหัสผ่าน
             readOnly: true, // ทำให้ TextField ไม่สามารถแก้ไขได้

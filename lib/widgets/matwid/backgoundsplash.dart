@@ -7,12 +7,13 @@ class Backgoundsplash extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        // gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
         image: DecorationImage(
-          image: AssetImage('./assets/imgs/bgLogin.png'),
+          image: AssetImage('./assets/imgs/town2.png'),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withValues(alpha: 8 * 50),
-            BlendMode.darken,
+            BlendMode.dstATop,
           ),
         ),
       ),

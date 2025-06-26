@@ -8,7 +8,7 @@ class ForgotpassController extends GetxController {
   final CheckboxController checkboxController = Get.put(CheckboxController());
   void fetchfogotpass() {
      if (emailController.text.isEmpty ) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
        Get.snackbar(
           'System',
           'กรุณากรอกข้อมูลให้ครบถ้วน',
@@ -18,7 +18,7 @@ class ForgotpassController extends GetxController {
       );
       return;
     } else if (!emailController.text.isEmail) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
        Get.snackbar(
           'System',
           'กรุณากรอกอีเมลให้ถูกต้อง',
@@ -28,7 +28,7 @@ class ForgotpassController extends GetxController {
       );
       return;
     }else if (emailController.text != email) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
        Get.snackbar(
           'System',
           'ไม่พบอีเมลนี้ในระบบ',
@@ -38,7 +38,7 @@ class ForgotpassController extends GetxController {
       );
       return;
     }else if (checkboxController.isChecked.value == false) {
-      Get.closeAllSnackbars();
+      Get.closeCurrentSnackbar();
        Get.snackbar(
           'System',
           'กรุณายืนยันตัวตน',

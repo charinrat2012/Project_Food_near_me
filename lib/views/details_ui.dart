@@ -1,19 +1,28 @@
+// lib/views/details_ui.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import '../controllers/detailctrl.dart';
+import '../controllers/filterctrl.dart'; // Import FilterController
+import '../controllers/loginctrl.dart';
 import '../widgets/matwid/back_bt.dart';
 import '../widgets/matwid/dotline.dart';
 import '../widgets/matwid/star_rating.dart';
 import '../widgets/matwid/statustag.dart';
+// import '../models/restaurant_model.dart'; // Import Restaurant Model
 import 'navbar.dart';
 
 class RestaurantDetailPageUi extends StatelessWidget {
   final String restaurantId;
   const RestaurantDetailPageUi({super.key, required this.restaurantId});
+
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<RestaurantDetailController>(tag: restaurantId);
+    final LoginController loginController = Get.find<LoginController>();
+    final FilterController filterController = Get.find<FilterController>();
+    final RestaurantDetailController controller =
+        Get.find<RestaurantDetailController>(tag: restaurantId);
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -22,10 +31,14 @@ class RestaurantDetailPageUi extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.pink[200],
-          title:  Align(alignment: Alignment.centerLeft, child: BackBt(srcp: () =>  Navbar(),)),
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: BackBt(srcp: () => Navbar()),
+          ),
           toolbarHeight: 8 * 10,
           automaticallyImplyLeading: false,
           actions: [
+            // โค้ดเดิมสำหรับ Image.asset ("assets/imgs/logoHome.png")
             Image.asset(
               "assets/imgs/logoHome.png",
               height: 8 * 10,
@@ -33,15 +46,10 @@ class RestaurantDetailPageUi extends StatelessWidget {
             ),
             const SizedBox(width: 10),
           ],
-
           flexibleSpace: Container(
-            // ใช้ flexibleSpace เพื่อใส่ Gradient
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  Colors.pink[200]!, // สีชมพูอ่อน
-                  Colors.blue[200]!, // สีชมพูอ่อน
-                ],
+                colors: [Colors.pink[200]!, Colors.blue[200]!],
                 begin: Alignment.centerLeft,
                 transform: GradientRotation(3.0),
                 end: Alignment.centerRight,
@@ -77,13 +85,16 @@ class RestaurantDetailPageUi extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Obx(() {
-                                if (controller.restaurantData.isEmpty) {
+                                // ตรวจสอบว่า restaurant object โหลดเสร็จแล้ว
+                                if (controller.restaurant.value == null) {
                                   return const Center(
                                     child: CircularProgressIndicator(),
                                   );
                                 }
-                                final restaurantData =
-                                    controller.restaurantData;
+                                final restaurant = controller
+                                    .restaurant
+                                    .value!; // รับ Restaurant object
+
                                 return SingleChildScrollView(
                                   child: Center(
                                     child: Column(
@@ -100,18 +111,20 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                               width: double.infinity,
                                               decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.vertical(top: Radius.circular(30),),
-                                              
-                                              image: DecorationImage(
-                                                image:AssetImage(restaurantData['imageUrl']!,),
-                                                fit: BoxFit.cover,
-                                              ),
+                                                    const BorderRadius.vertical(
+                                                      top: Radius.circular(30),
+                                                    ),
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                    restaurant.imageUrl,
+                                                  ),
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
                                         Dotline(
-                                          // color: Colors.pink.shade50,
                                           gradientColors: LinearGradient(
                                             colors: [
                                               Colors.blue.shade50,
@@ -121,32 +134,125 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                           height: 4,
                                           dashWidth: 6,
                                         ),
+                                        // *** ส่วนของพื้นหลังตรงชื่อร้านและ StatusTag ที่หายไป (นำกลับมา) ***
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
-                                            horizontal: 0.0,
+                                            horizontal: 0.0, // เดิมเป็น 0.0
                                           ),
                                           child: Container(
                                             height: 8 * 7,
-                                            color: Colors.pink.shade50,
+                                            color: Colors
+                                                .pink
+                                                .shade50, // สีพื้นหลังชื่อร้าน
                                             alignment: Alignment.center,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                            child: Stack(
+                                              alignment: Alignment.center,
                                               children: [
-                                                Text(
-                                                  restaurantData['restaurantName']!,
-                                                  style: GoogleFonts.poppins(
-                                                    fontSize: 16,
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
+                                                Align(
+                                                  alignment: Alignment.center,
+                                                  child: Text(
+                                                    restaurant
+                                                        .restaurantName, // ใช้ .restaurantName
+                                                    style: GoogleFonts.poppins(
+                                                      fontSize:
+                                                          16, // ปรับขนาดตามที่เคยเป็น
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
                                                   ),
                                                 ),
                                                 const SizedBox(width: 8),
-                                               
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                        horizontal: 8.0,
+                                                      ),
+                                                  child: Align(
+                                                    alignment:
+                                                        Alignment.centerRight,
+                                                    child: Obx(() {
+                                                      if (controller
+                                                              .restaurant
+                                                              .value ==
+                                                          null) {
+                                                        return const SizedBox.shrink();
+                                                      }
+                                                      final restaurant =
+                                                          controller
+                                                              .restaurant
+                                                              .value!;
+
+                                                      // *** เพิ่มเงื่อนไขการล็อกอินสำหรับปุ่ม Favorite ***
+                                                      return IconButton(
+                                                        icon: Icon(
+                                                          restaurant.isFavorite.value ? Icons.bookmark_rounded : Icons.bookmark_outline_rounded,
+                                                                      color: restaurant.isFavorite.value ? Colors.amber : Colors.black,
+                                                        ),
+                                                        onPressed:
+                                                            loginController
+                                                                .isLoggedIn
+                                                                .value
+                                                            ? () {
+                                                                // ถ้าล็อกอินอยู่ ให้ทำงานปกติ
+                                                                filterController
+                                                                    .toggleFavorite(
+                                                                      restaurant
+                                                                          .id,
+                                                                    );
+                                                                Get.snackbar(
+                                                                  'รายการโปรด',
+                                                                  restaurant
+                                                                          .isFavorite
+                                                                          .value
+                                                                      ? 'เพิ่ม ${restaurant.restaurantName} ในรายการโปรดแล้ว'
+                                                                      : 'ลบ ${restaurant.restaurantName} ออกจากรายการโปรดแล้ว',
+                                                                  snackPosition:
+                                                                      SnackPosition
+                                                                          .TOP,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .blueGrey,
+                                                                  colorText:
+                                                                      Colors
+                                                                          .white,
+                                                                  duration:
+                                                                      const Duration(
+                                                                        milliseconds:
+                                                                            1000,
+                                                                      ),
+                                                                );
+                                                              }
+                                                            : () {
+                                                                // ถ้าไม่ได้ล็อกอินอยู่
+                                                                Get.snackbar(
+                                                                  'System',
+                                                                  'กรุณาเข้าสู่ระบบเพื่อเพิ่มร้านค้าในรายการโปรด',
+                                                                  snackPosition:
+                                                                      SnackPosition
+                                                                          .TOP,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .orange,
+                                                                  colorText:
+                                                                      Colors
+                                                                          .white,
+                                                                  duration:
+                                                                      const Duration(
+                                                                        seconds:
+                                                                            2,
+                                                                      ),
+                                                                );
+                                                              },
+                                                      );
+                                                    }),
+                                                  ),
+                                                ),
                                               ],
                                             ),
                                           ),
                                         ),
+                                        // *** สิ้นสุดส่วนที่นำกลับมา ***
                                         Dotline(
                                           gradientColors: LinearGradient(
                                             colors: [
@@ -164,7 +270,8 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                restaurantData['details']!,
+                                                restaurant
+                                                    .details, // ใช้ .details
                                                 style: TextStyle(
                                                   fontSize: 14.0,
                                                   color: Colors.grey[700],
@@ -172,59 +279,71 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                               ),
                                               const SizedBox(height: 10.0),
                                               Text(
-                                                "เวลาเปิดร้าน:",
+                                                "เวลาเปิดร้าน: ${restaurant.openingHours}", // ใช้ .openingHours
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15.0,
                                                 ),
                                               ),
+                                              const SizedBox(height: 5.0),
                                               Text(
-                                                restaurantData['openingHours']!,
+                                                "เบอร์โทร: ${restaurant.phoneNumber}", // ใช้ .phoneNumber
                                                 style: TextStyle(
                                                   fontSize: 14.0,
                                                   color: Colors.grey[700],
                                                 ),
                                               ),
-                                              const SizedBox(height: 10.0),
+                                              const SizedBox(height: 5.0),
                                               Text(
-                                                "เบอร์โทร: ${restaurantData['phoneNumber']!}",
+                                                "พิกัดที่ตั้ง: ${restaurant.location}", // ใช้ .location
                                                 style: TextStyle(
                                                   fontSize: 14.0,
                                                   color: Colors.grey[700],
                                                 ),
                                               ),
-                                              const SizedBox(height: 10.0),
-                                              Text(
-                                                "พิกัดที่ตั้ง: ${restaurantData['location']!}",
-                                                style: TextStyle(
-                                                  fontSize: 14.0,
-                                                  color: Colors.grey[700],
+                                              const SizedBox(width: 8),
+                                              Obx(
+                                                () => StatusTag(
+                                                  // Obx สำหรับ StatusTag
+                                                  isOpen: restaurant
+                                                      .isOpen
+                                                      .value, // ใช้ .isOpen.value
+                                                  showMotorcycleIcon: restaurant
+                                                      .showMotorcycleIcon, // ใช้ .showMotorcycleIcon
+                                                  fontSize:
+                                                      14, // ปรับขนาดตามที่เคยเป็น
+                                                  iconSize:
+                                                      32, // ปรับขนาดตามที่เคยเป็น
+                                                  showOpenStatus:
+                                                      false, // *** สำคัญ: ตั้งค่านี้ตามเดิมของคุณ ***
                                                 ),
                                               ),
-                                              const SizedBox(height: 15.0),
+                                              const SizedBox(height: 8.0),
                                               Row(
                                                 children: [
                                                   StarRating(
-                                                    rating:
-                                                        restaurantData['rating']!,
+                                                    rating: restaurant
+                                                        .rating, // ใช้ .rating
                                                     size: 20,
+                                                    onRatingChanged:
+                                                        (newRating) {},
                                                   ),
-                                                   StatusTag(
-                                                  isOpen:
-                                                      restaurantData['isOpen']!,
-                                                  showMotorcycleIcon:
-                                                      restaurantData['showMotorcycleIcon']!,
-                                                  fontSize: 14,
-                                                  iconSize: 32,
-                                                  showOpenStatus: false,
-                                                ),
+                                                  const SizedBox(width: 10),
+                                                  Text(
+                                                    "ประเภท: ${restaurant.type}", // ใช้ .type
+                                                    style: TextStyle(
+                                                      fontSize: 14.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.pink[700],
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
-                                              
-                                              const SizedBox(height: 10.0),
+                                              const SizedBox(height: 20),
                                               Text(
                                                 "เมนูแนะนำ:",
-                                                style: TextStyle(
+                                                style: GoogleFonts.poppins(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 18.0,
                                                 ),
@@ -236,14 +355,15 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                 ),
                                                 child: Center(
                                                   child: Image.asset(
-                                                    restaurantData['menuimage']!,
+                                                    restaurant
+                                                        .menuImage, // ใช้ .menuImage
                                                   ),
                                                 ),
                                               ),
                                               const SizedBox(height: 20),
                                               Text(
                                                 "โปรโมชั่น:",
-                                                style: TextStyle(
+                                                style: GoogleFonts.poppins(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 18.0,
                                                 ),
@@ -255,7 +375,8 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                       horizontal: 8.0,
                                                     ),
                                                 child: Image.asset(
-                                                  restaurantData['bannerImage']!,
+                                                  restaurant
+                                                      .bannerImage, // ใช้ .bannerImage
                                                   height: 8 * 11,
                                                   width: double.infinity,
                                                   fit: BoxFit.cover,
@@ -263,7 +384,6 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                               ),
                                               const SizedBox(height: 30.0),
                                               Dotline(
-                                                // color: Colors.pink.shade200,
                                                 gradientColors: LinearGradient(
                                                   colors: [
                                                     Colors.blue.shade200,
@@ -289,7 +409,6 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                 ),
                                               ),
                                               Dotline(
-                                                // color: Colors.pink.shade200,
                                                 gradientColors: LinearGradient(
                                                   colors: [
                                                     Colors.blue.shade200,

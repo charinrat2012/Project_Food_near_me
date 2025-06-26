@@ -18,7 +18,7 @@ class Blurcontainer extends StatelessWidget {
     this.padding,
     this.blurSigmaX = 30,
     this.blurSigmaY = 30,
-    this.backgroundColor = const Color.fromRGBO(255, 255, 255, 0.01),
+    this.backgroundColor = const Color.fromARGB(96, 97, 47, 114),
     this.borderRadius = const BorderRadius.all(Radius.circular(20)),
   });
   @override
@@ -32,6 +32,7 @@ class Blurcontainer extends StatelessWidget {
           height: height,
           padding: padding,
           decoration: BoxDecoration(
+            // gradient: LinearGradient(colors: [Colors.pink.withValues(alpha: 0.2)!, Colors.blue.withValues(alpha: 0.2)!]),
             color: backgroundColor,
             borderRadius: borderRadius,
           ),

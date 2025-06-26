@@ -29,7 +29,7 @@ class HomeUi extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
-        Get.closeCurrentSnackbar();
+        // Get.closeCurrentSnackbar();
       },
       child: Scaffold(
         backgroundColor: Colors.pink[200],

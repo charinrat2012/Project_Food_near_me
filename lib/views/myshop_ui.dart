@@ -68,39 +68,42 @@ class MyshopUi extends StatelessWidget {
                         child: SingleChildScrollView(
                           controller: scrollpageController.scrollController,
                           padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              
-
-                              // *** วนลูป Shoplist.shopList และส่งค่าที่ถูกต้องให้ MyShopCard ***
-                              ...myshopController.myOwnerShopList.map((restaurant) {
-                               return MyShopCard(
-                                      imageUrl: restaurant.imageUrl,
-                                      restaurantName: restaurant.restaurantName,
-                                      description: restaurant.description,
-                                      rating: restaurant.rating,
-                                      isOpen: restaurant.isOpen, // ส่ง RxBool ไปตรงๆ
-                                      showMotorcycleIcon: restaurant.showMotorcycleIcon,
-                                      onTap: () {
-                                        Get.offAll(
-                                          () => RestaurantDetailPageUi(
-                                            restaurantId: restaurant.id,
-                                          ),
-                                          binding: BindingsBuilder(() {
-                                            Get.put(
-                                              RestaurantDetailController(
-                                                restaurantId: restaurant.id,
-                                              ),
-                                              tag: restaurant.id,
-                                            );
-                                          }),
-                                        );
-                                      },
-                                    );
-                                  }).toList(),
-                              const SizedBox(height: 80), // เพิ่มระยะห่างด้านล่างสุด
-                            ],
+                          child: Obx(
+                           () => Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                
+                            
+                                // *** วนลูป Shoplist.shopList และส่งค่าที่ถูกต้องให้ MyShopCard ***
+                                ...myshopController.myOwnerShopList.map((restaurant) {
+                                 return MyShopCard(
+                                        imageUrl: restaurant.imageUrl,
+                                        restaurantName: restaurant.restaurantName,
+                                        description: restaurant.description,
+                                        rating: restaurant.rating,
+                                        isOpen: restaurant.isOpen,// ส่ง RxBool ไปตรงๆ
+                                        showMotorcycleIcon: restaurant.showMotorcycleIcon,
+                                         shopId: restaurant.id,
+                                        onTap: () {
+                                          Get.offAll(
+                                            () => RestaurantDetailPageUi(
+                                              restaurantId: restaurant.id,
+                                            ),
+                                            binding: BindingsBuilder(() {
+                                              Get.put(
+                                                RestaurantDetailController(
+                                                  restaurantId: restaurant.id,
+                                                ),
+                                                tag: restaurant.id,
+                                              );
+                                            }),
+                                          );
+                                        },
+                                      );
+                                    }).toList(),
+                                const SizedBox(height: 80), // เพิ่มระยะห่างด้านล่างสุด
+                              ],
+                            ),
                           ),
                         ),
                       ),

@@ -1,5 +1,7 @@
 // lib/views/details_ui.dart
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/views/home_ui.dart';
+import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import '../controllers/detailctrl.dart';
@@ -38,14 +40,76 @@ class RestaurantDetailPageUi extends StatelessWidget {
           toolbarHeight: 8 * 10,
           automaticallyImplyLeading: false,
           actions: [
-            // โค้ดเดิมสำหรับ Image.asset ("assets/imgs/logoHome.png")
-            Image.asset(
-              "assets/imgs/logoHome.png",
-              height: 8 * 10,
-              fit: BoxFit.contain,
-            ),
+            Obx(() {
+              // ตรวจสอบว่า restaurant object โหลดเสร็จแล้วก่อนเข้าถึง
+              if (controller.restaurant.value == null) {
+                return const SizedBox.shrink(); // ซ่อนปุ่มถ้าข้อมูลยังไม่โหลด
+              }
+              final restaurant =
+                  controller.restaurant.value!; // รับ Restaurant object
+
+              final appBarActions = <Widget>[];
+              if (loginController.isLoggedIn.value &&
+                  restaurant.ownerId == loginController.userId.value) {
+                appBarActions.add(
+                  // IconButton(
+                  //   icon: const Icon(Icons.edit, color: Colors.white),
+                  //   onPressed: () {
+                  //     // นำทางไปยังหน้าแก้ไขร้านค้า (MyShopUi หรือ EditShopUi)
+                  //     // Get.to(() => EditShopUi());
+                  //     Get.snackbar('จัดการร้านค้า', 'คุณสามารถแก้ไขร้าน ${restaurant.restaurantName} ได้', snackPosition: SnackPosition.BOTTOM);
+                  //   },
+                  Row(
+                    children: [
+                      TextButton(
+                        onPressed: () => Get.offAll(
+                          () => HomeUi(
+                            /**restaurantId: restaurant.id**/
+                          ),
+                        ),
+                        child: Text(
+                          "แก้ไขร้าน",
+                          style: GoogleFonts.kanit(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
+                       TextButton(
+                    onPressed: () => controller.loginController/*deleteShop(restaurant.id)*/,
+                    child: Text(
+                      "ลบร้าน",
+                      style: GoogleFonts.kanit(color: Colors.white, fontSize: 18),
+                    ),
+                  ),
+                    ],
+                  ),
+                 
+                );
+              } else {
+                appBarActions.add(
+                  Image.asset(
+                    "assets/imgs/logoHome.png",
+                    height: 8 * 10,
+                    fit: BoxFit.contain,
+                  ),
+                );
+              }
+
+              return Row(children: appBarActions);
+            }),
+
             const SizedBox(width: 10),
           ],
+          // if (loginController.isLoggedIn.value && restaurant.ownerId == loginController.userId.value) {
+          //       appBarActions.add(
+          //         IconButton(
+          //           icon: const Icon(Icons.edit, color: Colors.white),
+          //           onPressed: () {
+          //             // นำทางไปยังหน้าแก้ไขร้านค้า (MyShopUi หรือ EditShopUi)
+          //             Get.to(() => MyShopUi()); // หรือ Get.to(() => EditShopUi(restaurantId: restaurant.id));
+          //             Get.snackbar('จัดการร้านค้า', 'คุณสามารถแก้ไขร้าน ${restaurant.restaurantName} ได้', snackPosition: SnackPosition.BOTTOM);
+          //           },
+          //         ),
+          //       );
+          //     }
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -186,8 +250,19 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                       // *** เพิ่มเงื่อนไขการล็อกอินสำหรับปุ่ม Favorite ***
                                                       return IconButton(
                                                         icon: Icon(
-                                                          restaurant.isFavorite.value ? Icons.bookmark_rounded : Icons.bookmark_outline_rounded,
-                                                                      color: restaurant.isFavorite.value ? Colors.amber : Colors.black,
+                                                          restaurant
+                                                                  .isFavorite
+                                                                  .value
+                                                              ? Icons
+                                                                    .bookmark_rounded
+                                                              : Icons
+                                                                    .bookmark_outline_rounded,
+                                                          color:
+                                                              restaurant
+                                                                  .isFavorite
+                                                                  .value
+                                                              ? Colors.amber
+                                                              : Colors.black,
                                                         ),
                                                         onPressed:
                                                             loginController

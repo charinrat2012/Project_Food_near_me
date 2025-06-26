@@ -17,16 +17,16 @@ class MainController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    tabController = PersistentTabController(initialIndex: 1); // Start at the Home tab
+    tabController = PersistentTabController(initialIndex: 1);
     tabController.addListener(() {
       if ((tabController.index == 0 || tabController.index == 2) &&
           !_loginController.isLoggedIn.value) {
-        // If not logged in and trying to access a protected tab,
-        // show login dialog and jump back to the previous tab.
+       
+       
         _showLoginDialog();
         tabController.jumpToTab(_previousIndex);
       } else {
-        // Update the previous index if the tab change is allowed.
+       
         _previousIndex = tabController.index;
       }
     });
@@ -38,7 +38,7 @@ class MainController extends GetxController {
     super.onClose();
   }
 
-  // Function to show the dialog and navigate to LoginUi
+ 
   void _showLoginDialog() {
     Get.defaultDialog(
       title: 'แจ้งเตือน',
@@ -54,12 +54,12 @@ class MainController extends GetxController {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.back(); // Close dialog
-                      Get.offAll(() => LoginUi()); // Navigate to LoginUi and remove all previous routes
+                      Get.back();
+                      Get.offAll(() => LoginUi());
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white, // Background color of the button
-                      side: const BorderSide(color: Colors.green), // Border color
+                      backgroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.green),
                     ),
                     child: const Text(
                       "ตกลง",
@@ -67,16 +67,16 @@ class MainController extends GetxController {
                     ),
                   ),
                 ),
-                const SizedBox(width: 16), // Spacer between buttons
+                const SizedBox(width: 16),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.back(); // Close dialog
-                      // The user will stay on the previous tab because of the listener logic.
+                      Get.back();
+                     
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white, // Background color of the button
-                      side: const BorderSide(color: Colors.black), // Border color
+                      backgroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.black),
                     ),
                     child: const Text(
                       "ยกเลิก",

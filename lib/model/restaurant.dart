@@ -8,7 +8,7 @@ class Restaurant {
   final String restaurantName;
   final String description;
   final double rating;
-  final RxBool isOpen; // ยังคงเป็น RxBool
+  final RxBool isOpen;
   final bool showMotorcycleIcon;
   final String details;
   final String openingHours;
@@ -17,7 +17,7 @@ class Restaurant {
   final String menuImage;
   final String bannerImage;
   final String type;
-  final RxBool isFavorite; // *** เพิ่ม isFavorite เป็น final RxBool ***
+  final RxBool isFavorite;
 
 
   Restaurant({
@@ -27,7 +27,7 @@ class Restaurant {
     required this.restaurantName,
     required this.description,
     required this.rating,
-    required bool isOpen, // รับเป็น bool ธรรมดา
+    required bool isOpen,
     required this.showMotorcycleIcon,
     required this.details,
     required this.openingHours,
@@ -36,20 +36,20 @@ class Restaurant {
     required this.menuImage,
     required this.bannerImage,
     required this.type,
-    bool? isFavorite, // *** รับ isFavorite เป็น bool ธรรมดา และเป็น optional parameter ***
-  }) : this.isOpen = isOpen.obs, // Initializer สำหรับ isOpen
-       this.isFavorite = (isFavorite ?? false).obs; // *** Initializer สำหรับ isFavorite ***
+    bool? isFavorite,
+  }) : this.isOpen = isOpen.obs,
+       this.isFavorite = (isFavorite ?? false).obs;
 
-  // Factory constructor สำหรับสร้าง Object จาก Map (เช่นจาก Reslist)
+ 
   factory Restaurant.fromMap(Map<String, dynamic> map) {
     return Restaurant(
       id: map['id'] as String,
       imageUrl: map['imageUrl'] as String,
-      ownerId: map['ownerid'] as String, // ชื่อ key ใน Map คือ 'ownerid'
+      ownerId: map['ownerid'] as String,
       restaurantName: map['restaurantName'] as String,
       description: map['description'] as String,
       rating: (map['rating'] as num).toDouble(),
-      isOpen: map['isOpen'] as bool, // รับ bool จาก map
+      isOpen: map['isOpen'] as bool,
       showMotorcycleIcon: map['showMotorcycleIcon'] as bool,
       details: map['details'] as String,
       openingHours: map['openingHours'] as String,
@@ -58,11 +58,11 @@ class Restaurant {
       menuImage: map['menuimage'] as String,
       bannerImage: map['bannerImage'] as String,
       type: map['type'] as String,
-      isFavorite: map['isFavorite'] as bool? ?? false, // *** รับ isFavorite จาก map ถ้าไม่มีให้เป็น false ***
+      isFavorite: map['isFavorite'] as bool? ?? false,
     );
   }
 
-  // เมธอด copyWith เพื่อสร้าง Object ใหม่พร้อม Property ที่เปลี่ยนแปลง
+ 
   Restaurant copyWith({
     String? id,
     String? imageUrl,
@@ -70,7 +70,7 @@ class Restaurant {
     String? restaurantName,
     String? description,
     double? rating,
-    bool? isOpen, // ตรงนี้รับเป็น bool ธรรมดา
+    bool? isOpen,
     bool? showMotorcycleIcon,
     String? details,
     String? openingHours,
@@ -79,7 +79,7 @@ class Restaurant {
     String? menuImage,
     String? bannerImage,
     String? type,
-    bool? isFavorite, // *** เพิ่ม isFavorite เป็น bool ธรรมดา ***
+    bool? isFavorite,
   }) {
     return Restaurant(
       id: id ?? this.id,
@@ -88,7 +88,7 @@ class Restaurant {
       restaurantName: restaurantName ?? this.restaurantName,
       description: description ?? this.description,
       rating: rating ?? this.rating,
-      isOpen: isOpen ?? this.isOpen.value, // ใช้ .value เพื่อให้รับ bool
+      isOpen: isOpen ?? this.isOpen.value,
       showMotorcycleIcon: showMotorcycleIcon ?? this.showMotorcycleIcon,
       details: details ?? this.details,
       openingHours: openingHours ?? this.openingHours,
@@ -97,7 +97,7 @@ class Restaurant {
       menuImage: menuImage ?? this.menuImage,
       bannerImage: bannerImage ?? this.bannerImage,
       type: type ?? this.type,
-      isFavorite: isFavorite ?? this.isFavorite.value, // *** ใช้ .value เพื่อให้รับ bool ***
+      isFavorite: isFavorite ?? this.isFavorite.value,
     );
   }
 }

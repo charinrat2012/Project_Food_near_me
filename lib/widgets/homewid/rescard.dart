@@ -30,27 +30,27 @@ class RestaurantCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           
-          // gradient:  LinearGradient(
-          //   colors: [
-          //     // Colors.blue[100]!,
-          //     // Colors.red[100]!,
-          //     // Colors.pink[50]!,
+         
+         
+         
+         
+         
               
-          //     Colors.lightBlue[100]!,
-          //     // Colors.amber[50]!,
-          //     Colors.white,
-          //   ]
+         
+         
+         
+         
            
-          // ),
-          // boxShadow:  [
-          //   BoxShadow(
+         
+         
+         
               
-          //     // color: Colors.pink.withValues(alpha: 8 * 0.03),
-          //     spreadRadius: 2,
-          //     blurRadius: 5,
-          //     offset: Offset(0, 3),
-          //   )
-          // ]
+         
+         
+         
+         
+         
+         
           
           ),
         child: InkWell(

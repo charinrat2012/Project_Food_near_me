@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 
-import '../views/myprofile_ui.dart'; // Import LoginController
+import '../views/myprofile_ui.dart';
 
 class EditProfileController extends GetxController {
   final LoginController _loginController = Get.find<LoginController>();
@@ -14,23 +14,23 @@ class EditProfileController extends GetxController {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
-  // Observable เพื่อจัดการสถานะการโหลด/บันทึก (เป็นทางเลือก)
+ 
   final RxBool isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    // กำหนดค่าเริ่มต้นของ TextEditingController จาก LoginController
+   
     nicknameController.text = _loginController.userName.value;
     phoneController.text = _loginController.userPhoneNumber.value;
     emailController.text = _loginController.userEmail.value;
-    passwordController.text = _loginController.userPassword.value; // ดึงรหัสผ่านที่จัดเก็บไว้
+    passwordController.text = _loginController.userPassword.value;
     confirmPasswordController.text = _loginController.userPassword.value;
   }
 
   @override
   void onClose() {
-    // ต้อง dispose TextEditingController เมื่อ Controller ไม่ได้ใช้งานแล้ว
+   
     nicknameController.dispose();
     phoneController.dispose();
     emailController.dispose();
@@ -40,7 +40,7 @@ class EditProfileController extends GetxController {
   }
 
   void saveProfile() {
-    // ตรวจสอบรหัสผ่านตรงกัน
+   
     if (passwordController.text != confirmPasswordController.text) {
       Get.snackbar(
         "ข้อผิดพลาด",
@@ -51,7 +51,7 @@ class EditProfileController extends GetxController {
       return;
     }
 
-    // ตรวจสอบความถูกต้องของอีเมล
+   
     if (!GetUtils.isEmail(emailController.text)) {
       Get.snackbar(
         "ข้อผิดพลาด",
@@ -62,24 +62,25 @@ class EditProfileController extends GetxController {
       return;
     }
 
-    isLoading.value = true; // แสดงสถานะกำลังโหลด
-    // Simulate API call or update LoginController data
+    isLoading.value = true;
+   
     Future.delayed(const Duration(seconds: 1), () {
-      // อัปเดตข้อมูลใน LoginController
+     
       _loginController.userName.value = nicknameController.text;
       _loginController.userPhoneNumber.value = phoneController.text;
       _loginController.userEmail.value = emailController.text;
-      _loginController.userPassword.value = passwordController.text; // อัปเดตรหัสผ่าน
+      _loginController.userPassword.value = passwordController.text;
 
 
-      isLoading.value = false; // ซ่อนสถานะกำลังโหลด
+      isLoading.value = false;
       Get.snackbar(
         "สำเร็จ",
         "บันทึกข้อมูลเรียบร้อยแล้ว",
         backgroundColor: Colors.green[100],
         colorText: Colors.black,
       );
-      Get.offAll(() => MyprofileUi()); // กลับไปหน้า MyprofileUi
+      // Get.offAll(() => MyprofileUi());
+      Get.back();
     });
   }
 }

@@ -1,35 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'home_ui.dart'; 
-import 'myshop_ui.dart'; 
-import '../controllers/pagectrl.dart'; 
-import '../controllers/scrollctrl.dart'; 
+import '../controllers/pagectrl.dart';
+// ไม่จำเป็นต้อง import scrollctrl.dart ในไฟล์นี้อีกต่อไป
+
 class Navbar extends StatefulWidget {
   const Navbar({super.key});
   @override
   State<Navbar> createState() => _NavbarState();
 }
+
 class _NavbarState extends State<Navbar> {
   late MainController _mainController;
-  late ScrollpageController _scrollpageController;
+  // ไม่จำเป็นต้องมี ScrollpageController ที่นี่
+
   @override
   void initState() {
     super.initState();
     _mainController = Get.find<MainController>();
-    _scrollpageController = Get.find<ScrollpageController>();
-    _mainController.tabController.addListener(_onTabChanged);
+    // ไม่มีการเพิ่ม Listener ที่เกี่ยวกับ ScrollController ที่นี่
   }
-  @override
-  void dispose() {
-    _mainController.tabController.removeListener(_onTabChanged);
-    super.dispose();
-  }
-  void _onTabChanged() {
-    if (_mainController.tabController.previousIndex != _mainController.tabController.index) {
-      _scrollpageController.resetScrollButtonState();
-    }
-  }
+
+  // ไม่จำเป็นต้องมีเมธอด dispose() และ _onTabChanged() ที่เกี่ยวกับ scrollController
+
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
@@ -39,11 +32,10 @@ class _NavbarState extends State<Navbar> {
         navBarConfig: navBarConfig,
         height: 60,
         navBarDecoration: NavBarDecoration(
-          
           color: Colors.pink[200],
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.1),
+              color: Colors.black.withOpacity(0.1),
               blurRadius: 10,
               offset: const Offset(0, -5),
             ),
@@ -51,26 +43,17 @@ class _NavbarState extends State<Navbar> {
           gradient: LinearGradient(colors: [
             Colors.pink[200]!,
             Colors.blue[300]!,
-          ])
+          ]),
         ),
-        ),
-      
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _mainController.goToHomeTab,
-      //   // backgroundColor: Colors.purple[100],
-        
-        
-        
-      //   shape: const CircleBorder(),
-      //   elevation: 0,
-      //   child: const Icon(Icons.home, color: Colors.white, size: 35),
-      // ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       screenTransitionAnimation: const ScreenTransitionAnimation(
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      stateManagement: false, 
+      // เราจะใช้ stateManagement เป็น true เพื่อรักษา state ของแต่ละหน้าไว้
+      // ซึ่งตอนนี้ปลอดภัยแล้วเพราะแต่ละหน้ามี Controller ของตัวเอง
+      stateManagement: true,
     );
   }
 }

@@ -1,13 +1,11 @@
-// lib/controllers/detailctrl.dart
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 import 'package:food_near_me_app/controllers/reviewctrl.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
-
 import 'package:food_near_me_app/controllers/filterctrl.dart';
-
 import '../model/restaurant.dart';
+import '../views/navbar.dart';
 
 class RestaurantDetailController extends GetxController {
   final LoginController loginController = Get.find<LoginController>();
@@ -18,7 +16,8 @@ class RestaurantDetailController extends GetxController {
   final RxDouble userRating = 0.0.obs;
   final String restaurantId;
 
-  final Rx<Restaurant?> restaurant = Rx<Restaurant?>(null); // เก็บ Restaurant object ที่ reactive ได้
+  final Rx<Restaurant?> restaurant = Rx<Restaurant?>(null);
+  final RxBool isDeleting = false.obs;
 
   final RxList<Map<String, dynamic>> reviews = <Map<String, dynamic>>[].obs;
 
@@ -30,40 +29,102 @@ class RestaurantDetailController extends GetxController {
     _reviewController = Get.find<ReviewController>();
     _filterController = Get.find<FilterController>();
 
-    // *** ส่วนสำคัญ: เฝ้าดู allRestaurantsObservable ของ FilterController
-    // เพื่อให้แน่ใจว่า restaurant object ใน DetailController เป็น instance ล่าสุดเสมอ ***
-    ever(_filterController.allRestaurantsObservable, (_) {
-      _loadRestaurantDetails(); // โหลดข้อมูลร้านใหม่เมื่อ allRestaurantsObservable เปลี่ยน
-    });
-
-    _loadRestaurantDetails(); // โหลดข้อมูลครั้งแรก
+    // *** จุดแก้ไข: ลบ ever listeners ที่ไม่จำเป็นและอาจทำให้เกิดปัญหาออก ***
+    // การอัปเดต UI ควรจะเกิดขึ้นโดยตรงผ่าน Obx ในหน้า UI
+    // ซึ่งจะคอยดักฟังการเปลี่ยนแปลงของ restaurant.value.isFavorite อยู่แล้ว
     
-    // Listener สำหรับ isOpen และ isFavorite ของ Restaurant object ที่อยู่ใน DetailController
-    // (ใช้ Obx ใน UI แทน if (restaurant.value != null))
-    // Note: This ever listener ensures that if `restaurant.value` is updated (e.g., after `_loadRestaurantDetails`),
-    // and its internal RxBools change, the UI rebuilds. This is robust.
-    if (restaurant.value != null) {
-      ever(restaurant.value!.isOpen, (_) => restaurant.refresh());
-      ever(restaurant.value!.isFavorite, (_) => restaurant.refresh());
-    }
-    
+    loadRestaurantDetails(); // โหลดข้อมูลครั้งแรก
     _loadReviews();
   }
+  void restore() {
+    loadRestaurantDetails();
+  }
 
-  void _loadRestaurantDetails() {
-    // ดึง Restaurant object จาก allRestaurantsObservable ใน FilterController
-    // เพื่อให้แน่ใจว่าเป็น reference เดียวกันและ reactive ได้
-    final newRestaurantInstance = _filterController.allRestaurantsObservable.firstWhereOrNull((res) => res.id == restaurantId);
-    
-    // อัปเดต restaurant.value และ trigger UI update
+  // ทำให้เป็น public เพื่อให้เรียกจากภายนอกได้ (เช่นหลังแก้ไขข้อมูล)
+  void loadRestaurantDetails() {
+    final newRestaurantInstance = _filterController.allRestaurantsObservable
+        .firstWhereOrNull((res) => res.id == restaurantId);
+
     restaurant.value = newRestaurantInstance;
 
-    // อัปเดต isOpen และ isFavorite ด้วย
-
+    // จัดการกรณีที่อาจหาร้านไม่เจอ (เช่น ร้านถูกลบไปแล้ว)
+    if (restaurant.value == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Get.snackbar('ข้อผิดพลาด', 'ไม่พบข้อมูลร้านค้า',
+            snackPosition: SnackPosition.BOTTOM);
+        Get.back(); // กลับไปหน้าก่อนหน้าอย่างปลอดภัย
+      });
+    }
   }
 
   void _loadReviews() {
     reviews.assignAll(_reviewController.getReviewsForRestaurant(restaurantId));
+  }
+
+  void onRatingChanged(double newRating) {
+    userRating.value = newRating;
+  }
+
+  void deleteRestaurant() {
+    if (restaurant.value == null) {
+      Get.snackbar('ข้อผิดพลาด', 'ไม่สามารถลบ: ไม่พบข้อมูลร้านค้า',
+          snackPosition: SnackPosition.TOP);
+      return;
+    }
+
+    final String restaurantName = restaurant.value!.restaurantName;
+    final String currentRestaurantId = restaurant.value!.id;
+
+    Get.defaultDialog(
+      title: "ยืนยันการลบ",
+      titleStyle: const TextStyle(fontWeight: FontWeight.bold),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text("คุณแน่ใจหรือไม่ว่าต้องการลบร้าน\n'$restaurantName'?",
+              textAlign: TextAlign.center),
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TextButton(
+                  onPressed: () => Get.back(),
+                  child: const Text(
+                    "ยกเลิก",
+                    style: TextStyle(
+                        color: Colors.black87, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white),
+                  onPressed: () {
+                    isDeleting.value = true;
+                    Get.back();
+                    _filterController
+                        .removeRestaurantFromList(currentRestaurantId);
+                    Get.back();
+                    Get.snackbar(
+                      'สำเร็จ',
+                      'ลบร้านค้า "$restaurantName" เรียบร้อยแล้ว',
+                      snackPosition: SnackPosition.TOP,
+                      backgroundColor: Colors.green,
+                      colorText: Colors.white,
+                      duration: const Duration(seconds: 2),
+                    );
+                    isDeleting.value = false;
+                  },
+                  child: const Text("ยืนยัน"),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void submitReview() {
@@ -117,9 +178,5 @@ class RestaurantDetailController extends GetxController {
   void onClose() {
     commentController.dispose();
     super.onClose();
-  }
-
-  void onRatingChanged(double newRating) {
-    userRating.value = newRating;
   }
 }

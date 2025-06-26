@@ -6,9 +6,9 @@ class OtpLogo extends StatelessWidget {
     return 
         Column(
           children: [
-            // SizedBox(height: 8 *1),
+           
             Image.asset('assets/imgs/otp.png', width: 200),
-          //   SizedBox(height: 8 *2),
+         
           ],
         );
   }

@@ -1,10 +1,7 @@
 // lib/controllers/myshopctrl.dart
 import 'package:get/get.dart';
-// import 'package:food_near_me_app/models/restaurant_model.dart';
-import 'package:food_near_me_app/widgets/matwid/reslist.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 import 'package:food_near_me_app/controllers/filterctrl.dart';
-
 import '../model/restaurant.dart';
 
 class MyShopController extends GetxController {
@@ -19,19 +16,28 @@ class MyShopController extends GetxController {
     _loginController = Get.find<LoginController>();
     _filterController = Get.find<FilterController>();
 
+    // *** จุดแก้ไขที่ 1: เพิ่ม Listener ติดตามการเปลี่ยนแปลง ***
+    // ever() จะทำงานทุกครั้งที่ allRestaurantsObservable ใน FilterController เปลี่ยนแปลง
+    ever(_filterController.allRestaurantsObservable, (_) => filterMyShops());
+    
+    // ever() จะทำงานทุกครั้งที่ User ID เปลี่ยน (เช่น ตอน login/logout)
     ever(_loginController.userId, (_) => filterMyShops());
     
+    // เรียก filterMyShops() ครั้งแรกเพื่อแสดงผล
     filterMyShops();
   }
 
   void filterMyShops() {
     if (_loginController.isLoggedIn.value && _loginController.userId.value.isNotEmpty) {
       final String currentOwnerId = _loginController.userId.value;
-      myOwnerShopList.assignAll(
-        _filterController.allRestaurantsObservable // *** แก้ไขตรงนี้: ใช้ allRestaurantsObservable (ไม่มี _) ***
-            .where((restaurant) => restaurant.ownerId == currentOwnerId)
-            .toList(),
-      );
+      
+      // กรองร้านค้าที่เป็นของเจ้าของปัจจุบันจาก list กลาง
+      final filteredShops = _filterController.allRestaurantsObservable
+          .where((restaurant) => restaurant.ownerId == currentOwnerId)
+          .toList();
+          
+      myOwnerShopList.assignAll(filteredShops);
+
     } else {
       myOwnerShopList.clear();
     }
@@ -40,13 +46,8 @@ class MyShopController extends GetxController {
   void toggleShopStatus(String shopId, bool newStatus) {
     final shopIndex = myOwnerShopList.indexWhere((shop) => shop.id == shopId);
     if (shopIndex != -1) {
-      // อัปเดตค่า isOpen ของ Restaurant object นั้น
       myOwnerShopList[shopIndex].isOpen.value = newStatus;
-      
-      // เรียกเมธอดใน FilterController เพื่ออัปเดตสถานะใน allRestaurantsObservable ของ FilterController
-      _filterController.updateRestaurantStatus(shopId, newStatus); // *** แก้ไขตรงนี้: ใช้ updateRestaurantStatus ***
-      
-     
+      _filterController.updateRestaurantStatus(shopId, newStatus);
     }
   }
 }

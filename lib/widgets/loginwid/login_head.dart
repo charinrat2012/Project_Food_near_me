@@ -12,7 +12,7 @@ class LoginHead extends StatelessWidget {
           style: GoogleFonts.charmonman(
             fontSize: 40,
             color: Colors.white,
-            // fontWeight: FontWeight.bold, ทำให้ตัวหนังหนา
+           
           ),
         ),
         SizedBox(height: 10),

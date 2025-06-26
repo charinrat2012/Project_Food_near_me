@@ -10,7 +10,7 @@ class FormOtp extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
-        5, // สร้างช่อง OTP 5 ช่อง
+        5,
         (index) => Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(

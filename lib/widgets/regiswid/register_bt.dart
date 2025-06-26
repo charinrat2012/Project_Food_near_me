@@ -14,7 +14,7 @@ class RegisterBt extends StatelessWidget {
           child: ElevatedButton(
             onPressed: controller.fetchRegister,
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(double.infinity, 50), // Full width
+              minimumSize: Size(double.infinity, 50),
               backgroundColor: Colors.pink.withValues(alpha: 8 * 0.03),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),

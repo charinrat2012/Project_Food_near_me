@@ -32,7 +32,7 @@ class Blurcontainer extends StatelessWidget {
           height: height,
           padding: padding,
           decoration: BoxDecoration(
-            // gradient: LinearGradient(colors: [Colors.pink.withValues(alpha: 0.2)!, Colors.blue.withValues(alpha: 0.2)!]),
+           
             color: backgroundColor,
             borderRadius: borderRadius,
           ),

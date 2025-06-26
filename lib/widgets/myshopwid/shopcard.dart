@@ -1,9 +1,9 @@
 // lib/widgets/myshopwid/shopcard.dart
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; // จำเป็นต้องใช้ GetX สำหรับ RxBool และ Obx
+import 'package:get/get.dart';
 import '../matwid/star_rating.dart';
 import '../matwid/statustag.dart';
-import '../../controllers/myshopctrl.dart'; // *** เพิ่ม import MyShopController ***
+import '../../controllers/myshopctrl.dart';
 
 class MyShopCard extends StatelessWidget {
   final String imageUrl;
@@ -13,7 +13,7 @@ class MyShopCard extends StatelessWidget {
   final RxBool isOpen;
   final bool showMotorcycleIcon;
   final VoidCallback? onTap;
-  final String shopId; // *** เพิ่ม property shopId ***
+  final String shopId;
 
   const MyShopCard({
     super.key,
@@ -24,12 +24,12 @@ class MyShopCard extends StatelessWidget {
     required this.isOpen,
     this.showMotorcycleIcon = false,
     this.onTap,
-    required this.shopId, // *** กำหนดให้ shopId เป็น required ***
+    required this.shopId,
   });
 
   @override
   Widget build(BuildContext context) {
-    // ไม่จำเป็นต้อง Get.find MyShopController ที่นี่แล้ว เพราะจะเรียกเมื่อกด Switch
+   
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
@@ -86,22 +86,22 @@ class MyShopCard extends StatelessWidget {
                             size: 10,
                             onRatingChanged: (newRating) {},
                           ),
-                          // StatusTag อาจจะต้องอยู่ใน Obx ถ้ามันแสดงสถานะที่เปลี่ยนแปลงตาม isOpen
-                          // หรือแค่ StatusTag นี้ส่งค่า isOpen.value ก็พอ ถ้ามันไม่ได้มี widget ที่สังเกตการณ์เอง
-                          // ในที่นี้ ผมจะใส่ Obx แยกให้เพื่อให้มันอัปเดตเฉพาะส่วนนี้
+                         
+                         
+                         
                           Obx(
                             () => StatusTag(
-                              isOpen: isOpen.value, // ส่ง isOpen.value (bool) ไปให้ StatusTag
+                              isOpen: isOpen.value,
                               showMotorcycleIcon: showMotorcycleIcon,
                               iconSize: 16,
                               showOpenStatus: false,
                             ),
                           ),
-                          const SizedBox(width: 8.0), // ระยะห่างระหว่าง StatusTag กับ Toggle
+                          const SizedBox(width: 8.0),
 
-                          Obx( // ใช้ Obx ครอบ Row นี้เพื่อให้ทั้ง Text และ Toggle Switch อัปเดตพร้อมกัน
+                          Obx(
                             () => Row(
-                              mainAxisSize: MainAxisSize.min, // ให้ Row ใช้พื้นที่เท่าที่จำเป็น
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
                                   isOpen.value ? "เปิด" : "ปิด",
@@ -116,7 +116,7 @@ class MyShopCard extends StatelessWidget {
                                   child: Switch.adaptive(
                                     value: isOpen.value,
                                     onChanged: (newValue) {
-                                      // *** แก้ไขตรงนี้: เรียก Controller แทนการเปลี่ยนค่าโดยตรง ***
+                                     
                                       Get.find<MyShopController>().toggleShopStatus(shopId, newValue);
 
                                       Get.snackbar(

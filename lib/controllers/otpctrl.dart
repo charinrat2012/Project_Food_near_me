@@ -62,15 +62,15 @@ class OtpCotroller extends GetxController {
       );
       return;
     }
-    // else {
-    //   Get.closeCurrentSnackbar();
-    //   Get.snackbar(
-    //     'System',
-    //     'OTP ถูกต้อง',
-    //     snackPosition: SnackPosition.TOP,
-    //     colorText: Colors.white,
-    //     backgroundColor: Colors.green,
-    //   );
+   
+   
+   
+   
+   
+   
+   
+   
+   
     clearOtpFields();
     if (Get.context != null) {
       FocusScope.of(Get.context!).unfocus();

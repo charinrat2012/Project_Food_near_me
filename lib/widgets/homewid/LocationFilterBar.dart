@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/filterctrl.dart';
-import 'localist.dart'; // <<< เพิ่มบรรทัดนี้เข้ามา
+import 'localist.dart';
 
 class LocationFilterBar extends StatelessWidget {
   const LocationFilterBar({super.key});
 
-  // ลบรายการ provinces, districtsByProvince, foodTypes ออกจากตรงนี้
-  // เพราะเราจะไปดึงมาจาก Localist.provinces, Localist.districtsByProvince, Localist.foodTypes แทน
+ 
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
               ? null
               : filterController.selectedProvince.value,
           hint: const Text('เลือกจังหวัด', style: TextStyle(color: Colors.white)),
-          // dropdownColor: Colors.purple[200],
+         
           dropdownColor: Colors.purple[200],
           iconEnabledColor: Colors.white,
           menuMaxHeight: 400,
@@ -62,7 +62,7 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
               value: '',
               child: Text('ทั้งหมด', style: TextStyle(color: Colors.white)),
             ),
-            // ใช้ Localist.provinces ตรงนี้
+           
             ...Localist.provinces.map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -79,7 +79,7 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
   }
 
   Widget _buildDistrictDropdown(FilterController filterController) {
-    // ใช้ Localist.districtsByProvince ตรงนี้
+   
     final List<String> districts = Localist.districtsByProvince[filterController.selectedProvince.value] ?? [];
     return _buildContainer(
       SizedBox(
@@ -120,7 +120,7 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
       height: 35,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        // color: Colors.pink[300],
+       
         gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
         borderRadius: BorderRadius.circular(20),
       ),
@@ -135,13 +135,13 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
         iconEnabledColor: Colors.white,
         menuMaxHeight: 400,
         menuWidth: 200,
-        // alignment: Alignment.bottomCenter,
+       
         items: [
           const DropdownMenuItem<String>(
             value: '',
             child: Text('ทั้งหมด', style: TextStyle(color: Colors.white)),
           ),
-          // ใช้ Localist.foodTypes ตรงนี้
+         
           ...Localist.foodTypes.map((String value) {
             return DropdownMenuItem<String>(
               value: value,
@@ -156,23 +156,23 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
     );
   }
 
-  // ... (ส่วน _buildLocationButton และ _buildContainer เหมือนเดิม)
+ 
   Widget _buildLocationButton() {
     const double iconSize = 20.0;
-    const double buttonPadding = 8.0; // Padding รอบไอคอนด้านใน
+    const double buttonPadding = 8.0;
 
-    return Container( // ใช้ Container เองสำหรับปุ่มนี้
-      height: iconSize + buttonPadding * 2, // ขนาดความสูงของพื้นหลัง
-      width: iconSize + buttonPadding * 2,  // ขนาดความกว้างของพื้นหลัง (ทำให้เป็นสี่เหลี่ยมจัตุรัส)
+    return Container(
+      height: iconSize + buttonPadding * 2,
+      width: iconSize + buttonPadding * 2, 
       decoration: BoxDecoration(
-        // color: Colors.pink[300], // สีพื้นหลังของปุ่ม
+       
         gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
-        borderRadius: BorderRadius.circular((iconSize + buttonPadding * 2) / 2), // ทำให้เป็นวงกลม
+        borderRadius: BorderRadius.circular((iconSize + buttonPadding * 2) / 2),
       ),
       child: IconButton(
         iconSize: iconSize,
-        padding: EdgeInsets.zero, // ลบ padding เริ่มต้นของ IconButton
-        alignment: Alignment.center, // จัดไอคอนให้อยู่ตรงกลางของพื้นที่ที่ Container ให้มา
+        padding: EdgeInsets.zero,
+        alignment: Alignment.center,
         onPressed: () {
           Get.snackbar(
             'ตำแหน่งปัจจุบัน',
@@ -192,7 +192,7 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
       height: 35,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        // color: Colors.blue[300],
+       
         gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
         borderRadius: BorderRadius.circular(20),
       ),

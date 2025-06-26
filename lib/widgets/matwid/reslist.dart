@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart'; // อาจไม่จำเป็นต้อง import ถ้า Class นี้ไม่มี Widget
+import 'package:flutter/material.dart';
 
-class Reslist { // เปลี่ยนจาก StatelessWidget เป็น Class ธรรมดา
-  // ไม่ต้องมี const Reslist({super.key}); หรือ @override Widget build(BuildContext context)
-  // เพราะ Class นี้ไม่ใช่ Widget
+class Reslist {
+ 
+ 
 
   static final List<Map<String, dynamic>> restaurantList = [
     {
@@ -23,9 +23,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "503/3 ชั้น 1 ยิ้มแย้ม โฮสเทล ถ. เพชรบุรี \nแขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
       'menuimage': 'assets/imgs/mu1.png',
       'bannerImage': 'assets/imgs/po1.png',
-      'type': 'อาหารอิตาเลียน', // เพิ่ม key 'type'
+      'type': 'อาหารอิตาเลียน',
     },
-    //----------------------------------
+   
     {
       'id': '2',
       'imageUrl': 'assets/imgs/im2.jpg',
@@ -45,9 +45,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "Nihonmura Mall ถ. ทองหล่อ แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
       'menuimage': 'assets/imgs/mu2.png',
       'bannerImage': 'assets/imgs/po1.png',
-      'type': 'อาหารญี่ปุ่น', // เพิ่ม key 'type'
+      'type': 'อาหารญี่ปุ่น',
     },
-    //----------------------------------
+   
     {
       'id': '3',
       'imageUrl': 'assets/imgs/im3.jpg',
@@ -66,9 +66,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "94 ถนนราชพฤกษ์ แขวงบางระมาด เขตตลิ่งชัน กรุงเทพมหานคร 10170. ร้านอยู่ในโครงการ The Bloc ราชพฤกษ์",
       'menuimage': 'assets/imgs/mu3.png',
       'bannerImage': 'assets/imgs/po1.png',
-      'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type'
+      'type': 'คาเฟ่/ของหวาน',
     },
-    //----------------------------------
+   
     {
       'id': '4',
       'imageUrl': 'assets/imgs/im4.jpg',
@@ -88,9 +88,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "ถนนดินสอ แขวงบวรนิเวศ เขตพระนคร กรุงเทพมหานคร (ใกล้ศาลาว่าการกรุงเทพมหานคร)",
       'menuimage': 'assets/imgs/mu4.png',
       'bannerImage': 'assets/imgs/po1.png',
-      'type': 'อาหารไทย', // เพิ่ม key 'type'
+      'type': 'อาหารไทย',
     },
-    //----------------------------------
+   
     {
       'id': '5',
       'imageUrl': 'assets/imgs/im5.jpg',
@@ -109,9 +109,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "โครงการ The O-Zone Airport ตรงข้ามสน.ลาดกระบัง, 1529 ถนนลาดกระบัง แขวง/เขตลาดกระบัง กรุงเทพฯ 10520",
       'menuimage': 'assets/imgs/mu5.png',
       'bannerImage': 'assets/imgs/po1.png',
-      'type': 'อาหารอีสาน', // เพิ่ม key 'type'
+      'type': 'อาหารอีสาน',
     },
-    //----------------------------------
+   
     {
       'id': '6',
       'imageUrl': 'assets/imgs/im6.avif',
@@ -130,9 +130,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "249 หมู่9 ร้านเหมย หมึกเป็นซาชิมิ \nแขวงทวีวัฒนา เขตทวีวัฒนา กรุงเทพมหานคร 10170",
       'menuimage': 'assets/imgs/mu6.png',
       'bannerImage': 'assets/imgs/po1.png',
-      'type': 'อาหารทะเล', // เพิ่ม key 'type'
+      'type': 'อาหารทะเล',
     },
-    //----------------------------------
+   
     {
       'id': '7',
       'imageUrl': 'assets/imgs/im7.jpg',
@@ -151,9 +151,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "518 , กรุงเทพมหานคร (ทองสมิทธ์ The Mall Lifestore Bangkae ร้านอยู่ชั้น G ใกล้กับ Gourmet) ",
       'menuimage': 'assets/imgs/mu7.jpg',
       'bannerImage': 'assets/imgs/po7.jpg',
-      'type': 'อาหารไทย', // เพิ่ม key 'type'
+      'type': 'อาหารไทย',
     },
-    //----------------------------------
+   
     {
       'id': '8',
       'imageUrl': 'assets/imgs/im8.jpg',
@@ -172,9 +172,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "91/6 ข้างร้านซ่อมมอเตอร์ไซค์ ก่อนถึงซอย19, บางรักพัฒนา, บางบัวทอง, จ.นนทบุรี, 11110, ประเทศไทย นนทบุรี (ถนนเมน ระหว่างซอย​ 19 ก่อนถึงซอย19 ข้างร้านแชมป์มอไซด์) ",
       'menuimage': 'assets/imgs/mu8.jpg',
       'bannerImage': 'assets/imgs/po8.jpg',
-      'type': 'อาหารยุโรป', // เพิ่ม key 'type' (สเต็ก)
+      'type': 'อาหารยุโรป',
     },
-    //----------------------------------
+   
     {
       'id': '9',
       'imageUrl': 'assets/imgs/im9.jpg',
@@ -193,9 +193,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "518/1 ชั้น G, บางแคเหนือ บางแค กรุงเทพมหานคร กรุงเทพมหานคร ",
       'menuimage': 'assets/imgs/mu9.jpg',
       'bannerImage': 'assets/imgs/po9.jpg',
-      'type': 'อาหารเจ/มังสวิรัติ', // เพิ่ม key 'type' (สลัด)
+      'type': 'อาหารเจ/มังสวิรัติ',
     },
-    //----------------------------------
+   
     {
       'id': '10',
       'imageUrl': 'assets/imgs/im10.webp',
@@ -214,9 +214,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
       'menuimage': 'assets/imgs/mu10.jpg',
       'bannerImage': 'assets/imgs/po10.jpg',
-      'type': 'อาหารจีน', // เพิ่ม key 'type' (สุกี้หม่าล่า)
+      'type': 'อาหารจีน',
     },
-    //----------------------------------
+   
     {
       'id': '11',
       'imageUrl': 'assets/imgs/im11.jpg',
@@ -235,9 +235,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "88 หมู่2 ถนน ทวีวัฒนา แขวงทวีวัฒนา เขตทวีวัฒนา กรุงเทพมหานคร 10170",
       'menuimage': 'assets/imgs/mu11.jpg',
       'bannerImage': 'assets/imgs/po11.jpg',
-      'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type'
+      'type': 'คาเฟ่/ของหวาน',
     },
-    //----------------------------------
+   
     {
       'id': '12',
       'imageUrl': 'assets/imgs/im23.png',
@@ -256,9 +256,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "ถ. ประดิษฐ์มนูธรรม 19 แขวงคลองจั่น บางกะปิ กรุงเทพมหานคร 10240",
       'menuimage': 'assets/imgs/mu12.jpg',
       'bannerImage': 'assets/imgs/po12.jpg',
-      'type': 'อาหารจีน', // เพิ่ม key 'type' (หม่าล่า)
+      'type': 'อาหารจีน',
     },
-    //----------------------------------
+   
     {
       'id': '13',
       'imageUrl': 'assets/imgs/im13.jpg',
@@ -277,9 +277,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "Siam Square One ชั้น 5 และ Future Park รังสิต ชั้น G",
       'menuimage': 'assets/imgs/mu13.jpg',
       'bannerImage': 'assets/imgs/po13.jpg',
-      'type': 'อาหารเกาหลี', // เพิ่ม key 'type'
+      'type': 'อาหารเกาหลี',
     },
-    //----------------------------------
+   
     {
       'id': '14',
       'imageUrl': 'assets/imgs/im14.jpg',
@@ -298,9 +298,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
       'menuimage': 'assets/imgs/mu14.jpg',
       'bannerImage': 'assets/imgs/po14.jpg',
-      'type': 'อาหารยุโรป', // เพิ่ม key 'type' (ฟาสต์ฟู้ด)
+      'type': 'อาหารยุโรป',
     },
-    //----------------------------------
+   
     {
       'id': '15',
       'imageUrl': 'assets/imgs/im15.jpg',
@@ -319,9 +319,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
       'menuimage': 'assets/imgs/mu15.jpg',
       'bannerImage': 'assets/imgs/po15.jpg',
-      'type': 'ของทานเล่น/ขนม', // เพิ่ม key 'type'
+      'type': 'ของทานเล่น/ขนม',
     },
-    //----------------------------------
+   
     {
       'id': '16',
       'imageUrl': 'assets/imgs/im16.jpg',
@@ -340,9 +340,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "ปากซอยลาดพร้าววังหิน 26 ถนนลาดพร้าววังหิน แขวง/เขตลาดพร้าว กรุงเทพฯ",
       'menuimage': 'assets/imgs/mu16.jpg',
       'bannerImage': 'assets/imgs/po16.jpg',
-      'type': 'อาหารจีน', // เพิ่ม key 'type' (สุกี้/ชาบู)
+      'type': 'อาหารจีน',
     },
-    //----------------------------------
+   
     {
       'id': '17',
       'imageUrl': 'assets/imgs/im17.jpg',
@@ -361,9 +361,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
       'menuimage': 'assets/imgs/mu17.jpg',
       'bannerImage': 'assets/imgs/po17.jpg',
-      'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type'
+      'type': 'คาเฟ่/ของหวาน',
     },
-    //----------------------------------
+   
     {
       'id': '18',
       'imageUrl': 'assets/imgs/im18.jpg',
@@ -382,9 +382,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
       'menuimage': 'assets/imgs/mu18.png',
       'bannerImage': 'assets/imgs/po18.jpg',
-      'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type'
+      'type': 'คาเฟ่/ของหวาน',
     },
-    //----------------------------------
+   
     {
       'id': '19',
       'imageUrl': 'assets/imgs/im19.jpg',
@@ -403,9 +403,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "เดอะมอลล์ไลฟ์สโตร์ บางแค ชั้น G แขวงบางแคเหนือ บางแคเหนือ กรุงเทพมหานคร 10160",
       'menuimage': 'assets/imgs/mu19.jpg',
       'bannerImage': 'assets/imgs/po19.jpg',
-      'type': 'อาหารอีสาน', // เพิ่ม key 'type'
+      'type': 'อาหารอีสาน',
     },
-    //----------------------------------
+   
     {
       'id': '20',
       'imageUrl': 'assets/imgs/im20.jpg',
@@ -424,9 +424,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "ชั้น G ใน The Mall Lifestore Bangkae ใกล้กับ Gourmet Market และ EVEANDBOY",
       'menuimage': 'assets/imgs/mu20.jpg',
       'bannerImage': 'assets/imgs/po20.jpg',
-      'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type' (เครื่องดื่ม)
+      'type': 'คาเฟ่/ของหวาน',
     },
-    //----------------------------------
+   
     {
       'id': '21',
       'imageUrl': 'assets/imgs/im21.jpg',
@@ -445,9 +445,9 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
           "503/3 ชั้น 1 ยิ้มแย้ม โฮสเทล ถ. เพชรบุรี \nแขวงถนนพญาไท เขตราชเทวี กรุงเทพมหานคร 10400",
       'menuimage': 'assets/imgs/mu21.jpg',
       'bannerImage': 'assets/imgs/po21.jpg',
-      'type': 'อาหารไทย', // เพิ่ม key 'type' (สมมติว่าเป็นอาหารไทย เนื่องจากเป็นร้าน "ผักฉ่ำคำหอม")
+      'type': 'อาหารไทย',
     },
-    //----------------------------------
+   
     {
       'id': '22',
       'imageUrl': 'assets/imgs/im22.png',
@@ -463,12 +463,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวันเวลา 10:00 - 22:00 น",
       'phoneNumber': "024-549-678",
       'location':
-          " The Mall Lifestore", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          " The Mall Lifestore",
       'menuimage': 'assets/imgs/mu22.jpg',
       'bannerImage': 'assets/imgs/po22.jpg',
-      'type': 'ของทานเล่น/ขนม', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'ของทานเล่น/ขนม',
     },
-    //----------------------------------
+   
     {
       'id': '23',
       'imageUrl': 'assets/imgs/im23.jpg',
@@ -484,10 +484,10 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "มื้อกลางวัน เวลา 11:00 - 15:00 น.มื้อเย็น เวลา 17:00 - 21:30 น. ",
       'phoneNumber': "063-665-5838",
       'location':
-          "ถนนราชพฤกษ์ ตำบลหนองควาย อำเภอหางดง เชียงใหม่ 50230", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "ถนนราชพฤกษ์ ตำบลหนองควาย อำเภอหางดง เชียงใหม่ 50230",
       'menuimage': 'assets/imgs/mu23.jpg',
       'bannerImage': 'assets/imgs/po23.jpg',
-      'type': 'อาหารไทย', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'อาหารไทย',
     },
     {
       'id': '24',
@@ -506,12 +506,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวันเวลา เวลา 9:00 น. ถึง 19:00 น. ",
       'phoneNumber': "083-318-6444 ",
       'location':
-          "175 ม.2 ต.โป่งแยง แม่ริม เชียงใหม่ (ก่อนถึงม่อนแจ่ม 1.5 กม.) ", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "175 ม.2 ต.โป่งแยง แม่ริม เชียงใหม่ (ก่อนถึงม่อนแจ่ม 1.5 กม.) ",
       'menuimage': 'assets/imgs/mu24.jpg',
       'bannerImage': 'assets/imgs/po24.jpg',
-      'type': 'อาหารไทย''อาหารตามสั่ง', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'อาหารไทย''อาหารตามสั่ง',
     },
-   //----------------------------------
+  
     {
       'id': '25',
       'imageUrl': 'assets/imgs/im25.jpg',
@@ -527,12 +527,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวันเวลา เวลา 11:00 - 22:00 น. ",
       'phoneNumber': "095-669-6594",
       'location':
-          "81/16 ถนนสายเอเชีย แม่สอด จังหวัดตาก ", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "81/16 ถนนสายเอเชีย แม่สอด จังหวัดตาก ",
       'menuimage': 'assets/imgs/mu25.jpg',
       'bannerImage': 'assets/imgs/po25.jpg',
-      'type': 'อาหารทะเล', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'อาหารทะเล',
     },
-   //----------------------------------
+  
    {
       'id': '26',
       'imageUrl': 'assets/imgs/im26.jpg',
@@ -548,12 +548,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวันเวลา เวลา 8:00 น. - 18:00 น. ",
       'phoneNumber': "095-669-6594",
       'location':
-          "27/28 ถ. พหลโยธิน ตำบลไม้งาม เมืองตาก 63000 ", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "27/28 ถ. พหลโยธิน ตำบลไม้งาม เมืองตาก 63000 ",
       'menuimage': 'assets/imgs/mu26.jpg',
       'bannerImage': 'assets/imgs/po26.jpg',
-      'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'คาเฟ่/ของหวาน',
     },
-    //----------------------------------
+   
    {
       'id': '27',
       'imageUrl': 'assets/imgs/im27.jpg',
@@ -569,12 +569,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวันเวลา เวลา 8:00 น. - 16:00 น. ",
       'phoneNumber': "095-659-8928",
       'location':
-          "ตำบลน้ำรึม เมืองตาก จังหวัดตาก 63000 (บริเวณใกล้กับโรงเรียนอนุบาลตาก และสี่แยกไฟแดงโรงพยาบาลตากสิน)  ", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "ตำบลน้ำรึม เมืองตาก จังหวัดตาก 63000 (บริเวณใกล้กับโรงเรียนอนุบาลตาก และสี่แยกไฟแดงโรงพยาบาลตากสิน)  ",
       'menuimage': 'assets/imgs/mu27.jpg',
       'bannerImage': 'assets/imgs/po27.jpg',
-      'type': 'คาเฟ่/ของหวาน', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'คาเฟ่/ของหวาน',
     },
-    //----------------------------------
+   
    {
       'id': '28',
       'imageUrl': 'assets/imgs/im28.jpg',
@@ -590,12 +590,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวันเวลา เวลา 10:00 น. - 23:00 น. ",
       'phoneNumber': '080-044-1133',
       'location':
-          "102 แม่ท้อ ตำบลแม่ท้อ เมืองตาก ตาก 63000", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "102 แม่ท้อ ตำบลแม่ท้อ เมืองตาก ตาก 63000",
       'menuimage': 'assets/imgs/mu28.jpg',
       'bannerImage': 'assets/imgs/mu28.jpg',
-      'type': 'อาหารไทย', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'อาหารไทย',
     },
-    //----------------------------------
+   
    {
       'id': '29',
       'imageUrl': 'assets/imgs/im29.jpg',
@@ -611,12 +611,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวันเวลา เวลา 08:00 น. ถึง 17:00 น. ",
       'phoneNumber': "091-839-0454",
       'location':
-          "30 ตำบลเชียงทอง วังเจ้า ตาก 63180  ", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "30 ตำบลเชียงทอง วังเจ้า ตาก 63180  ",
       'menuimage': 'assets/imgs/mu29.jpg',
       'bannerImage': 'assets/imgs/po29.jpg',
-      'type': 'อาหารไทย', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'อาหารไทย',
     },
-    //----------------------------------
+   
    {
       'id': '30',
       'imageUrl': 'assets/imgs/im30.jpg',
@@ -632,12 +632,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดเวลา 8:00 น. - 15:00 น. หยุดทุกวันจันทร์",
       'phoneNumber': "081-817 -115",
       'location':
-          "4 1 ถนนมหาดไทยบำรุง ตำบล หนองหลวง เมืองตาก ตาก 63000 ", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "4 1 ถนนมหาดไทยบำรุง ตำบล หนองหลวง เมืองตาก ตาก 63000 ",
       'menuimage': 'assets/imgs/mu30.jpg',
       'bannerImage': 'assets/imgs/po30.jpg',
-      'type': 'ก๋วยเดี๋ยว', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'ก๋วยเดี๋ยว',
     },
-     //----------------------------------
+    
    {
       'id': '31',
       'imageUrl': 'assets/imgs/im31.jpg',
@@ -653,12 +653,12 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวัน เวลา10:00 - 22:00 น.",
       'phoneNumber': "062-591-3791",
       'location':
-          " 430 4 ถนน เจริญราษฎร์ ตำบล ฟ้าฮ่าม เมืองเชียงใหม่ เชียงใหม่ 50000 ", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          " 430 4 ถนน เจริญราษฎร์ ตำบล ฟ้าฮ่าม เมืองเชียงใหม่ เชียงใหม่ 50000 ",
       'menuimage': 'assets/imgs/mu30.jpg',
       'bannerImage': 'assets/imgs/po30.jpg',
-      'type': 'อาหารไทย', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'อาหารไทย',
     },
-     //----------------------------------
+    
    {
       'id': '32',
       'imageUrl': 'assets/imgs/im32.jpg',
@@ -674,10 +674,10 @@ class Reslist { // เปลี่ยนจาก StatelessWidget เป็น C
       'openingHours': "เปิดทุกวัน เวลา 17.00 น. 22.00 น. ",
       'phoneNumber': "062-626-5661",
       'location':
-          "231 ม.2 ต.หนองควาย หางดง จ.เชียงใหม่ ", // อาจจะต้องระบุ location ให้ชัดเจนขึ้น เช่น "เดอะมอลล์ไลฟ์สโตร์ บางแค"
+          "231 ม.2 ต.หนองควาย หางดง จ.เชียงใหม่ ",
       'menuimage': 'assets/imgs/mu32.jpg',
       'bannerImage': 'assets/imgs/po32.jpg',
-      'type': 'หมูกระทะ' 'สุกี้/ชาบู', // เพิ่ม key 'type' (เบเกอรี่)
+      'type': 'หมูกระทะ' 'สุกี้/ชาบู',
     },
   ];
     static Map<String, dynamic>? findRestaurantById(String id) {

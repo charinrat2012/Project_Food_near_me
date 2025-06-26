@@ -1,11 +1,10 @@
 // lib/controllers/filterctrl.dart
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/widgets/homewid/localist.dart';
-import 'package:get/get.dart'; // *** ตรวจสอบให้แน่ใจว่า import นี้มีอยู่และถูกต้อง ***
+import 'package:get/get.dart';
 import 'package:food_near_me_app/widgets/matwid/reslist.dart';
 
 import 'package:food_near_me_app/controllers/loginctrl.dart';
-import 'package:get/get_state_manager/src/simple/list_notifier.dart';
 
 import '../model/restaurant.dart';
 
@@ -18,58 +17,62 @@ class FilterController extends GetxController {
 
   late final LoginController _loginController;
 
+ 
   final RxList<Restaurant> allRestaurantsObservable = <Restaurant>[].obs;
 
   final RxList<Restaurant> filteredRestaurantList = <Restaurant>[].obs;
   final RxList<Restaurant> filteredFavoriteList = <Restaurant>[].obs;
 
-  // สำหรับเก็บ ReactionDisposer เพื่อป้องกัน memory leaks
-  // ReactionDisposer เป็น Type ที่มาจาก GetX
-   final List<Function()> _disposers = []; 
-
+ 
+  final List<Function()> _disposers = []; 
 
   @override
   void onInit() {
     super.onInit();
     _loginController = Get.find<LoginController>();
 
-    _initializeAllRestaurants(); // โหลดและตั้งค่า isFavorite เริ่มต้น
+    _initializeAllRestaurants();
 
     searchInputController.addListener(_onSearchInputChanged);
 
-    // เมื่อ userId หรือ userFavoriteList เปลี่ยน ให้เรียก _initializeAllRestaurants ใหม่
+   
     ever(_loginController.userId, (_) {
-      _initializeAllRestaurants(); // Re-initialize เพื่ออัปเดต isFavorite ตามผู้ใช้ใหม่
+      _initializeAllRestaurants();
       applyFilters();
     });
     ever(_loginController.userFavoriteList, (_) {
-      _initializeAllRestaurants(); // Re-initialize all restaurants because user favorite list has changed
-      applyFilters(); // Re-apply filters after the base list is initialized
+      _initializeAllRestaurants();
+      applyFilters();
     });
     
-    applyFilters(); // เรียก applyFilters ครั้งแรก
+    applyFilters();
   }
 
+ 
   void _initializeAllRestaurants() {
-    // กำจัด listeners เก่าทั้งหมดก่อนสร้างใหม่ เพื่อป้องกัน memory leaks และ listener ซ้ำซ้อน
-    _disposers.forEach((disposer) => disposer()); // disposer() คือการเรียก ReactionDisposer ให้ทำงาน
+   
+    _disposers.forEach((disposer) => disposer());
     _disposers.clear();
 
     final List<Restaurant> tempRestaurants = Reslist.restaurantList.map((map) {
+       
         final bool isCurrentlyFavorite = _loginController.isLoggedIn.value &&
                                          _loginController.userFavoriteList.contains(map['id']);
+       
         return Restaurant.fromMap({...map, 'isFavorite': isCurrentlyFavorite});
     }).toList();
 
     allRestaurantsObservable.assignAll(tempRestaurants);
 
-    // Setup new listeners for the newly assigned Restaurant objects
+   
     allRestaurantsObservable.forEach((restaurant) {
+     
       _disposers.add(ever(restaurant.isFavorite, (_) {
         print("Restaurant ${restaurant.restaurantName} isFavorite changed to ${restaurant.isFavorite.value}. Re-applying filters...");
-        applyFilters(); // การอัปเดต isFavorite จะส่งผลให้ userFavoriteList เปลี่ยนและ trigger applyFilters() อยู่แล้ว
-                        // แต่การเรียกตรงนี้อีกครั้งเป็นการยืนยันและทำให้แน่ใจว่า UI อัปเดต
+        applyFilters();
+                       
       }));
+     
       _disposers.add(ever(restaurant.isOpen, (_) {
           print("Restaurant ${restaurant.restaurantName} isOpen changed to ${restaurant.isOpen.value}. Re-applying filters...");
           applyFilters();
@@ -81,7 +84,7 @@ class FilterController extends GetxController {
   void onClose() {
     searchInputController.removeListener(_onSearchInputChanged);
     searchInputController.dispose();
-    _disposers.forEach((disposer) => disposer()); // กำจัด listeners เมื่อ Controller ปิด
+    _disposers.forEach((disposer) => disposer());
     super.onClose();
   }
 
@@ -110,6 +113,7 @@ class FilterController extends GetxController {
     applyFilters();
   }
 
+ 
   void toggleFavorite(String restaurantId) {
     final int index = allRestaurantsObservable.indexWhere((res) => res.id == restaurantId);
     if (index != -1) {
@@ -118,28 +122,43 @@ class FilterController extends GetxController {
       
       print("Favorite status of ${restaurantToUpdate.restaurantName} changed to ${restaurantToUpdate.isFavorite.value}");
       
-      // อัปเดต userFavoriteList ใน LoginController ด้วย
+     
       if (restaurantToUpdate.isFavorite.value) {
         _loginController.userFavoriteList.addIf(!_loginController.userFavoriteList.contains(restaurantId), restaurantId);
       } else {
         _loginController.userFavoriteList.remove(restaurantId);
       }
-      // applyFilters() จะถูกเรียกอัตโนมัติจาก ever listener ของ _loginController.userFavoriteList
+     
     }
   }
 
+ 
   void updateRestaurantStatus(String id, bool newStatus) {
     final int index = allRestaurantsObservable.indexWhere((res) => res.id == id);
     if (index != -1) {
       allRestaurantsObservable[index].isOpen.value = newStatus;
-      // applyFilters() จะถูกเรียกอัตโนมัติจาก ever listener ของ isOpen
+     
     }
   }
 
+ 
+  void updateRestaurantInList(Restaurant updatedRestaurant) {
+    final int index = allRestaurantsObservable.indexWhere((res) => res.id == updatedRestaurant.id);
+    if (index != -1) {
+     
+      allRestaurantsObservable[index] = updatedRestaurant;
+     
+     
+      applyFilters();
+    }
+  }
+
+ 
   void applyFilters() {
+   
     List<Restaurant> tempFilteredRestaurants = List.from(allRestaurantsObservable);
 
-    // การกรองตาม Search Query
+   
     if (searchQuery.value.isNotEmpty) {
       tempFilteredRestaurants = tempFilteredRestaurants
           .where((restaurant) =>
@@ -148,7 +167,7 @@ class FilterController extends GetxController {
           .toList();
     }
 
-    // การกรองตามทำเล
+   
     if (selectedProvince.value.isNotEmpty) {
         tempFilteredRestaurants = tempFilteredRestaurants
             .where((restaurant) {
@@ -164,7 +183,7 @@ class FilterController extends GetxController {
             .toList();
     }
 
-    // การกรองตามประเภท
+   
     if (selectedCategory.value.isNotEmpty) {
       tempFilteredRestaurants = tempFilteredRestaurants
           .where((restaurant) =>
@@ -174,10 +193,11 @@ class FilterController extends GetxController {
     filteredRestaurantList.value = tempFilteredRestaurants;
 
 
-    // การกรองสำหรับรายการร้านอาหารที่ชื่นชอบ (filteredFavoriteList)
+   
     List<Restaurant> tempFilteredFavorites = allRestaurantsObservable.where((restaurant) {
+     
       return _loginController.isLoggedIn.value &&
-             _loginController.userFavoriteList.contains(restaurant.id); // กรองตาม ID ใน userFavoriteList
+             _loginController.userFavoriteList.contains(restaurant.id);
     }).toList();
 
     if (searchQuery.value.isNotEmpty) {
@@ -189,5 +209,11 @@ class FilterController extends GetxController {
     }
     
     filteredFavoriteList.value = tempFilteredFavorites;
+  }
+    void removeRestaurantFromList(String id) {
+    print("FilterController: Attempting to remove restaurant with ID: $id");
+    allRestaurantsObservable.removeWhere((restaurant) => restaurant.id == id);
+    print("FilterController: Restaurants left after removal: ${allRestaurantsObservable.length}");
+    applyFilters();
   }
 }

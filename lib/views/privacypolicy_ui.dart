@@ -1,8 +1,8 @@
 // lib/screens/privacy_policy_ui.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../widgets/matwid/back_bt.dart'; // ตรวจสอบเส้นทางให้ถูกต้อง
-import 'setting_ui.dart'; // เพื่อกลับไปหน้า SettingUi
+import '../widgets/matwid/back_bt.dart';
+import 'setting_ui.dart';
 
 class PrivacyPolicyUi extends StatelessWidget {
   const PrivacyPolicyUi({super.key});
@@ -11,7 +11,7 @@ class PrivacyPolicyUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackBt(srcp: () => SettingUi()), // กลับไปหน้า SettingUi
+        leading: BackBt(srcp: () => SettingUi()),
         title: const Text('นโยบายความเป็นส่วนตัว'),
         backgroundColor: Colors.blue[200],
         automaticallyImplyLeading: false,
@@ -21,39 +21,39 @@ class PrivacyPolicyUi extends StatelessWidget {
           fontSize: 20,
         ),
         toolbarHeight: 8 * 9,
-        // ถ้าคุณต้องการ gradient บน AppBar ด้วย ก็สามารถเปิด flexibleSpace ตรงนี้ได้
-        // flexibleSpace: Container(
-        //   decoration: BoxDecoration(
-        //     gradient: LinearGradient(
-        //       colors: [
-        //         Colors.blue[200]!,
-        //         Colors.pink[200]!,
-        //       ],
-        //       begin: Alignment.topLeft,
-        //       transform: const GradientRotation(3.0),
-        //       end: Alignment.bottomRight,
-        //     ),
-        //   ),
-        // ),
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
       ),
       body: Container(
         color: const Color.fromARGB(255, 255, 255, 255),
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //     colors: [
-        //       Colors.pink[300]!,
-        //       Colors.purple[100]!,
-        //       Colors.blue[200]!,
-        //     ],
-        //     begin: Alignment.topCenter,
-        //     transform: const GradientRotation(3.0),
-        //     end: Alignment.bottomCenter,
-        //   ),
-        // ),
-        child: SingleChildScrollView( // ทำให้เนื้อหาสามารถเลื่อนได้
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // จัดข้อความให้ชิดซ้าย
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
                 'นโยบายความเป็นส่วนตัวของแอปพลิเคชัน "ร้านอาหารใกล้ฉัน"',

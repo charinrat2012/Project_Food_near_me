@@ -45,19 +45,19 @@ class ResetpassUi extends StatelessWidget {
                           Stack(children: [BackBt(srcp: () =>  OtpUi(),), Iconperson()]),
                           ResetpassHead(),
                           FormReset(),
-                          // SizedBox(height: 8*20),
+                         
                           Expanded(child: SizedBox()),
-                          // Stack(children: [
-                          //   Padding(
-                          //     padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          //     child: Image.asset('assets/imgs/robot.png', width: 300),
-                          //   ),
-                          //    Padding(
-                          //      padding: const EdgeInsets.symmetric(horizontal: 17.0 , vertical: 16.0),
-                          //      child: CustomCheckboxWidget(),
-                          //    ),
-                          // ]),
-                          // SizedBox(height: 8*10),
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
                           ResetpassBt(),
                         ],
                       ),

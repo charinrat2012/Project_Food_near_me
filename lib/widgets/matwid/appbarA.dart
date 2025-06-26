@@ -32,14 +32,14 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
               padding: const EdgeInsets.only(right: 16.0),
               child: PopupMenuButton<String>(
                 onSelected: (String result) async {
-                  await Future.delayed(const Duration(milliseconds: 100)); // 🛠️ ให้ popup ปิดก่อน
+                  await Future.delayed(const Duration(milliseconds: 100));
 
                   if (result == 'profile') {
                     Get.offAll(() => MyprofileUi());
                   } else if (result == 'setting') {
                     Get.offAll(() => SettingUi());
                   } else if (result == 'logout') {
-                    loginController.logout(); // ✅ รอให้ logout เสร็จ
+                    loginController.logout();
                   }
                 },
                 color: Colors.pink[50],

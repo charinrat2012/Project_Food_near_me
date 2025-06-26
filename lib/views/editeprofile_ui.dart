@@ -6,21 +6,22 @@ import 'package:food_near_me_app/views/myprofile_ui.dart';
 
 import '../controllers/editeprofilectrl.dart';
 import '../controllers/scrollctrl.dart';
+import '../widgets/matwid/back3_bt.dart';
 import '../widgets/matwid/back_bt.dart';
 import '../widgets/matwid/scrolltotop_bt.dart';
 
 class EditProfileUi extends StatelessWidget {
   EditProfileUi({Key? key}) : super(key: key);
-  // ไม่ต้องประกาศ TextEditingController ที่นี่แล้ว
+ 
 
   final ScrollpageController scrollpageController =
-      Get.find<ScrollpageController>();
+        Get.put(ScrollpageController(), tag: 'edit_profile_scroll');
 
   @override
   Widget build(BuildContext context) {
-    // *** ค้นหา EditProfileController ***
-    final EditProfileController editController = Get.put(EditProfileController()); // Get.put() เพื่อสร้างและจัดการ lifecycle ของ controller
-    final LoginController loginController = Get.find<LoginController>(); // เพื่อดึงรูปโปรไฟล์
+   
+    final EditProfileController editController = Get.put(EditProfileController());
+    final LoginController loginController = Get.find<LoginController>();
 
     final double appBarHeight = AppBar().preferredSize.height;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
@@ -33,7 +34,8 @@ class EditProfileUi extends StatelessWidget {
           backgroundColor: Colors.pink[200],
           title: Align(
             alignment: Alignment.centerLeft,
-            child: BackBt(srcp: () => const MyprofileUi()),
+            // child: BackBt(srcp: () => const MyprofileUi()),
+            child: Back3Bt(),
           ),
           toolbarHeight: 80,
           automaticallyImplyLeading: false,
@@ -99,7 +101,7 @@ class EditProfileUi extends StatelessWidget {
                             children: [
                               const SizedBox(height: 60),
                               Obx(() => Text(
-                                loginController.userName.value, // ดึงชื่อจาก LoginController
+                                loginController.userName.value,
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -109,35 +111,35 @@ class EditProfileUi extends StatelessWidget {
                               const SizedBox(height: 10),
                               _buildTextFieldWithLabel(
                                 'ชื่อเล่น',
-                                editController.nicknameController, // ใช้ controller จาก EditProfileController
+                                editController.nicknameController,
                                 false,
                               ),
                               _buildTextFieldWithLabel(
                                 'เบอร์โทรศัพท์',
-                                editController.phoneController, // ใช้ controller จาก EditProfileController
+                                editController.phoneController,
                                 false,
                               ),
                               _buildTextFieldWithLabel(
                                 'อีเมล',
-                                editController.emailController, // ใช้ controller จาก EditProfileController
+                                editController.emailController,
                                 false,
                               ),
                               _buildTextFieldWithLabel(
                                 'รหัสผ่าน',
-                                editController.passwordController, // ใช้ controller จาก EditProfileController
+                                editController.passwordController,
                                 false,
                               ),
                               _buildTextFieldWithLabel(
                                 'ยืนยันรหัสผ่าน',
-                                editController.confirmPasswordController, // ใช้ controller จาก EditProfileController
+                                editController.confirmPasswordController,
                                 false,
                               ),
 
                               const SizedBox(height: 30),
                               SizedBox(
                                 width: double.infinity,
-                                child: Obx(() => ElevatedButton( // ใช้ Obx เพื่อแสดง loading
-                                  onPressed: editController.isLoading.value ? null : () => editController.saveProfile(), // ปิดปุ่มตอนกำลังโหลด
+                                child: Obx(() => ElevatedButton(
+                                  onPressed: editController.isLoading.value ? null : () => editController.saveProfile(),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.pink[400],
                                     padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -146,7 +148,7 @@ class EditProfileUi extends StatelessWidget {
                                     ),
                                   ),
                                   child: editController.isLoading.value
-                                      ? const CircularProgressIndicator(color: Colors.white) // แสดง loading
+                                      ? const CircularProgressIndicator(color: Colors.white)
                                       : const Text(
                                           'บันทึกข้อมูล',
                                           style: TextStyle(
@@ -156,7 +158,7 @@ class EditProfileUi extends StatelessWidget {
                                         ),
                                 )),
                               ),
-                              const SizedBox(height: 30), // เพิ่มระยะห่างด้านล่าง
+                              const SizedBox(height: 30),
                             ],
                           ),
                         ),
@@ -189,7 +191,7 @@ class EditProfileUi extends StatelessWidget {
                   ),
                   child: ClipOval(
                     child: Image.asset(
-                      loginController.userProfileImageUrl.value, // ดึงจาก loginController
+                      loginController.userProfileImageUrl.value,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -213,10 +215,10 @@ class EditProfileUi extends StatelessWidget {
     );
   }
 
-  // Helper method เพื่อสร้าง TextField พร้อม Label
+ 
   Widget _buildTextFieldWithLabel(
     String label,
-    TextEditingController controller, // *** รับ TextEditingController โดยตรง ***
+    TextEditingController controller,
     bool isObscure,
   ) {
     return Padding(
@@ -234,7 +236,7 @@ class EditProfileUi extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           TextField(
-            controller: controller, // กำหนด controller ที่รับเข้ามา
+            controller: controller,
             obscureText: isObscure,
             decoration: InputDecoration(
               hintText: 'กรอก $label',

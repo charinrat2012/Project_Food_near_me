@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Dotline extends StatelessWidget {
-  // final Color color;
+ 
   final LinearGradient gradientColors;
   final double height;
   final double dashWidth;
@@ -28,11 +28,11 @@ class Dotline extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors:gradientColors.colors),
-                ), // ใช้ค่า 'color' ที่รับมา
+                ),
               ),
             );
           }),
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+         
           direction: Axis.horizontal,
         );
       },

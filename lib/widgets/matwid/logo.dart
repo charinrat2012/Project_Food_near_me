@@ -11,7 +11,7 @@ class Logo extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Image.asset('assets/imgs/logo.png', width: width),
         ),
-        // SizedBox(height: 8 *1),
+       
       ],
     );
   }

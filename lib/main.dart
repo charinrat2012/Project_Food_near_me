@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:food_near_me_app/controllers/detailctrl.dart';
+import 'package:food_near_me_app/controllers/editedetailctrl.dart';
 import 'package:food_near_me_app/controllers/filterctrl.dart';
 import 'package:food_near_me_app/controllers/fogotpassctrl.dart';
 import 'package:food_near_me_app/controllers/myshopctrl.dart';
@@ -29,10 +31,11 @@ void main() {
   Get.put(FilterController());
   Get.put(MyShopController());
   Get.put(RestaurantController());
+  
   Get.put(MainController());
   Get.put(ReviewController());
   Get.put(SlideController());
-  Get.put(ScrollpageController());
+  // Get.put(ScrollpageController());
   Get.put(RegisterController());
   Get.put(ResetpassController());
   Get.put(OtpCotroller());
@@ -51,7 +54,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true, // แนะนำให้ใช้ Material 3
+        useMaterial3: true,
       ),
       home: const SplashUi(),
     );

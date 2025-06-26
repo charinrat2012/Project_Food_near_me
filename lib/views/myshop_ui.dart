@@ -15,8 +15,8 @@ import 'details_ui.dart';
 import 'login_ui.dart';
 
 import '../widgets/matwid/scrolltotop_bt.dart';
-// import 'widgets/matwid/star_rating.dart'; // ไม่ใช้แล้วเพราะ MyShopCard จัดการเอง
-// import 'widgets/matwid/statustag.dart'; // ไม่ใช้แล้ว
+// import 'widgets/matwid/star_rating.dart';
+// import 'widgets/matwid/statustag.dart';
 
 // *** Import MyShopCard ที่สร้างใหม่ ***
 
@@ -31,8 +31,9 @@ class MyshopUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ScrollpageController scrollpageController = Get.find<ScrollpageController>();
-    // Get.put(MyshopController()); // ไม่ต้อง Get.put MyShopController ที่นี่แล้ว
+     final ScrollpageController scrollpageController =
+        Get.put(ScrollpageController(), tag: 'myshop_scroll');
+   
     final MyShopController myshopController = Get.find<MyShopController>();
 
     return GestureDetector(
@@ -74,7 +75,7 @@ class MyshopUi extends StatelessWidget {
                               children: [
                                 
                             
-                                // *** วนลูป Shoplist.shopList และส่งค่าที่ถูกต้องให้ MyShopCard ***
+                               
                                 ...myshopController.myOwnerShopList.map((restaurant) {
                                  return MyShopCard(
                                         imageUrl: restaurant.imageUrl,
@@ -85,7 +86,7 @@ class MyshopUi extends StatelessWidget {
                                         showMotorcycleIcon: restaurant.showMotorcycleIcon,
                                          shopId: restaurant.id,
                                         onTap: () {
-                                          Get.offAll(
+                                          Get.to(
                                             () => RestaurantDetailPageUi(
                                               restaurantId: restaurant.id,
                                             ),
@@ -101,7 +102,7 @@ class MyshopUi extends StatelessWidget {
                                         },
                                       );
                                     }).toList(),
-                                const SizedBox(height: 80), // เพิ่มระยะห่างด้านล่างสุด
+                                const SizedBox(height: 80),
                               ],
                             ),
                           ),

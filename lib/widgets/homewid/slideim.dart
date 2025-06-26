@@ -11,10 +11,10 @@ class Slideim extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column( // <--- เปลี่ยนจาก Container เป็น Column เพื่อรองรับ Page Indicator
+    return Column(
       children: [
         SizedBox(
-          height: 120, // ความสูงของสไลด์
+          height: 120,
           child: Obx(
             () => PageView.builder(
               controller: controller.pageController,
@@ -29,7 +29,7 @@ class Slideim extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15.0),
                     child: GestureDetector(
                       onTap: () {
-                        // เรียกเมธอดนำทางใน Controller เมื่อมีการแตะ
+                       
                         controller.navigateToRestaurantDetail(bannerItem.restaurantId);
                       },
                       child: Image.asset(
@@ -43,20 +43,20 @@ class Slideim extends StatelessWidget {
             ),
           ),
         ),
-        // Page Indicator
+       
         Obx(() {
           if (controller.originalBannerItems.length < 2) {
-            return const SizedBox.shrink(); // ซ่อน indicator ถ้ามีรูปไม่พอสำหรับ looping
+            return const SizedBox.shrink();
           }
-          // คำนวณ index จริงสำหรับ indicator (ไม่นับรูปปลอมสำหรับ loop)
+         
           int actualCurrentPage = controller.currentPage.value;
-          if (actualCurrentPage == 0) { // ถ้าอยู่หน้าปลอมแรก (รูปสุดท้ายจริง)
+          if (actualCurrentPage == 0) {
             actualCurrentPage = controller.originalBannerItems.length;
-          } else if (actualCurrentPage == controller.displayBannerItems.length - 1) { // ถ้าอยู่หน้าปลอมสุดท้าย (รูปแรกจริง)
+          } else if (actualCurrentPage == controller.displayBannerItems.length - 1) {
             actualCurrentPage = 1;
           }
-          // ปรับเป็น 0-based index สำหรับ Map.entries เพื่อให้ตรงกับ originalBannerItems
-          int indicatorIndex = (actualCurrentPage - 1); // ลบ 1 เพราะ originalBannerItems เป็น 0-based
+         
+          int indicatorIndex = (actualCurrentPage - 1);
 
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,

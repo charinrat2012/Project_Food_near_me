@@ -1,8 +1,8 @@
 // lib/screens/terms_conditions_ui.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../widgets/matwid/back_bt.dart'; // ตรวจสอบเส้นทางให้ถูกต้อง
-import 'setting_ui.dart'; // เพื่อกลับไปหน้า SettingUi
+import '../widgets/matwid/back_bt.dart';
+import 'setting_ui.dart';
 
 class TermsConditionsUi extends StatelessWidget {
   const TermsConditionsUi({super.key});
@@ -11,7 +11,7 @@ class TermsConditionsUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackBt(srcp: () => SettingUi()), // กลับไปหน้า SettingUi
+        leading: BackBt(srcp: () => SettingUi()),
         title: const Text('เงื่อนไขและข้อตกลง'),
         backgroundColor: Colors.blue[200],
         automaticallyImplyLeading: false,
@@ -24,18 +24,18 @@ class TermsConditionsUi extends StatelessWidget {
       ),
       body: Container(
         color: const Color.fromARGB(255, 255, 255, 255),
-        // decoration: BoxDecoration(
-        //   gradient: LinearGradient(
-        //     colors: [
-        //       Colors.pink[300]!,
-        //       Colors.purple[100]!,
-        //       Colors.blue[200]!,
-        //     ],
-        //     begin: Alignment.topCenter,
-        //     transform: const GradientRotation(3.0),
-        //     end: Alignment.bottomCenter,
-        //   ),
-        // ),
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(

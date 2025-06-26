@@ -48,13 +48,13 @@ class LoginUi extends StatelessWidget {
                         child: Column(
                           children: [
                             Stack(children: [BackBt(srcp: () =>  Navbar(),), Iconperson()]),
-                            // SizedBox(height: 10),
+                           
                             LoginHead(),
-                            // SizedBox(height: 10),
+                           
                             FormLogin(),
                             PathBt(),
                             LoginWith(),
-                            // SizedBox(height: 8 * 2),
+                           
                             LoginBt(),
                           ],
                         ),

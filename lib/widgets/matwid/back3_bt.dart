@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 
 
 import '../../views/navbar.dart';
-class BackBt extends StatelessWidget {
-  const BackBt({super.key, required this.srcp});
+class Back3Bt extends StatelessWidget {
+  const Back3Bt({super.key, });
  
-   final Widget Function() srcp;
+   
    @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,7 +16,7 @@ class BackBt extends StatelessWidget {
           child: IconButton(
             onPressed: () {
               FocusScope.of(Get.context!).unfocus();
-              Get.offAll(srcp);
+              Get.back();
             },
             icon: Image.asset( 
               "assets/ics/backicon.png", 

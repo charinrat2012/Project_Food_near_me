@@ -36,7 +36,7 @@ class LoginWith extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        //-----------ICON------------------
+       
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

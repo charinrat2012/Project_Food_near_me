@@ -9,27 +9,28 @@ import '../controllers/scrollctrl.dart';
 import '../widgets/homewid/LocationFilterBar.dart';
 import '../widgets/matwid/formsearch.dart';
 import '../widgets/homewid/rescard.dart';
-// import '../widgets/matwid/reslist.dart'; // ไม่จำเป็นต้อง import reslist โดยตรงแล้วที่นี่
+// import '../widgets/matwid/reslist.dart';
 import '../widgets/homewid/slideim.dart';
 
 import '../widgets/matwid/appbarA.dart';
 import '../widgets/matwid/scrolltotop_bt.dart';
 import 'details_ui.dart';
-// import 'login_ui.dart'; // ไม่จำเป็นต้อง import ที่นี่
-// import 'myprofile_ui.dart'; // ไม่จำเป็นต้อง import ที่นี่
+// import 'login_ui.dart';
+// import 'myprofile_ui.dart';
 
 class HomeUi extends StatelessWidget {
   const HomeUi({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ScrollpageController scrollpageController = Get.find<ScrollpageController>();
+     final ScrollpageController scrollpageController =
+        Get.put(ScrollpageController(), tag: 'home_scroll');
     final FilterController filterController = Get.find<FilterController>();
 
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
-        // Get.closeCurrentSnackbar();
+       
       },
       child: Scaffold(
         backgroundColor: Colors.pink[200],
@@ -79,7 +80,7 @@ class HomeUi extends StatelessWidget {
                                 }
                                 return Column(
                                   children: filterController.filteredRestaurantList.map((restaurant) {
-                                    // *** แก้ไขตรงนี้ทั้งหมด: ใช้ . (dot operator) แทน [] (bracket operator) ***
+                                   
                                     return RestaurantCard(
                                       imageUrl: restaurant.imageUrl,
                                       restaurantName: restaurant.restaurantName,
@@ -90,14 +91,14 @@ class HomeUi extends StatelessWidget {
                                       onTap: () {
                                         Get.offAll(
                                           () => RestaurantDetailPageUi(
-                                            restaurantId: restaurant.id, // ใช้ .id
+                                            restaurantId: restaurant.id,
                                           ),
                                           binding: BindingsBuilder(() {
                                             Get.put(
                                               RestaurantDetailController(
-                                                restaurantId: restaurant.id, // ใช้ .id
+                                                restaurantId: restaurant.id,
                                               ),
-                                              tag: restaurant.id, // ใช้ .id
+                                              tag: restaurant.id,
                                             );
                                           }),
                                         );

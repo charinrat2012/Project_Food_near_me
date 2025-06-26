@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 // คุณสามารถสร้างไฟล์ใหม่สำหรับเก็บข้อมูลดิบ หรือจะใส่ไว้ในนี้ตามตัวอย่างก็ได้
-import 'package:food_near_me_app/widgets/matwid/reslist.dart'; // import ข้อมูลดิบ
+import 'package:food_near_me_app/widgets/matwid/reslist.dart';
 
 class RestaurantController extends GetxController {
   final LoginController _loginController = Get.find<LoginController>();
@@ -11,11 +11,11 @@ class RestaurantController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // โหลดข้อมูลร้านอาหารทั้งหมดเมื่อ Controller ถูกสร้างขึ้น
+   
     allRestaurants.assignAll(Reslist.restaurantList);
   }
   
-  // (ฟังก์ชัน favorite ทั้งหมดจะอยู่ที่นี่ เหมือนกับที่เคยเสนอไป)
+ 
   List<Map<String, dynamic>> get favoriteRestaurants {
     if (!_loginController.isLoggedIn.value) return [];
     List<String> userFavIds = _loginController.userFavoriteList.value;

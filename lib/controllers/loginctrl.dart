@@ -21,13 +21,13 @@ List<String> phoneNumber = ['0123456789', '9876543210', '9876543210'];
 List<String> favoriteRestaurants = ['1,2', '2,3', '3,6'];
 
 
-  final RxBool isLoggedIn = true.obs;
-  final RxString userId = '1'.obs;
-  final RxString userName = 'Admin'.obs;
-  final RxString userEmail = 'admin@gmail.com'.obs;
-  final RxString userPhoneNumber = '0123456789'.obs;
-  final RxString userPassword = '123456'.obs;
-  final RxString userProfileImageUrl = 'assets/imgs/pofile.jpg'.obs;
+  final RxBool isLoggedIn = false.obs;
+  final RxString userId = ''.obs;
+  final RxString userName = ''.obs;
+  final RxString userEmail = ''.obs;
+  final RxString userPhoneNumber = ''.obs;
+  final RxString userPassword = ''.obs;
+  final RxString userProfileImageUrl = ''.obs;
  final RxList<String> userFavoriteList = <String>[].obs;
 
   void fetchLogin() {
@@ -95,7 +95,8 @@ _clearUserData();
         duration: const Duration(seconds: 2),
       );
 
-      Get.offAll(() => Navbar());
+      // Get.offAll(() => Navbar());
+      Get.to(() => Navbar());
     } else {
      
       Get.closeCurrentSnackbar();
@@ -115,7 +116,7 @@ _clearUserData();
    _clearUserData();
 
    
-    await Future.delayed(const Duration(milliseconds: 200));
+    await Future.delayed(const Duration(milliseconds: 100));
 
     Get.snackbar(
       'System',
@@ -125,8 +126,9 @@ _clearUserData();
       backgroundColor: Colors.orange,
     );
 
-    await Future.delayed(const Duration(milliseconds: 200));
+    await Future.delayed(const Duration(milliseconds: 100));
     Get.offAll(() => LoginUi());
+    // Get.to(() => LoginUi());
   }
    void _clearUserData() {
     isLoggedIn.value = false;
@@ -137,4 +139,97 @@ _clearUserData();
     userPhoneNumber.value = '';
     userPassword.value = '';
   }
+
+     Future<void> deleteAccount() async {
+    // ในแอปพลิเคชันจริง: อาจแสดง loading dialog ก่อนเรียก API
+    // Get.dialog(
+    //   const Center(child: CircularProgressIndicator()),
+    //   barrierDismissible: false,
+    // );
+
+    try {
+      // ตรวจสอบว่าผู้ใช้ล็อกอินอยู่หรือไม่และมี userId ที่ถูกต้องหรือไม่
+      if (!isLoggedIn.value || userId.value.isEmpty) {
+        Get.snackbar(
+          'ข้อผิดพลาด',
+          'ไม่สามารถลบบัญชีได้: ไม่ได้เข้าสู่ระบบ',
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+        // ปิด loading dialog หากมี
+        // Get.back();
+        return;
+      }
+
+      // ค้นหา index ของผู้ใช้ปัจจุบันใน mock data lists
+      final int userIndex = userid.indexOf(userId.value);
+
+      if (userIndex == -1) {
+        Get.snackbar(
+          'ข้อผิดพลาด',
+          'ไม่พบบัญชีผู้ใช้สำหรับการลบ',
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+        // ปิด loading dialog หากมี
+        // Get.back();
+        return;
+      }
+
+      // *** ในแอปพลิเคชันจริง: เรียก API หรือ Firebase Auth เพื่อลบบัญชีผู้ใช้จริง ***
+      // ตัวอย่าง Firebase Auth: await FirebaseAuth.instance.currentUser!.delete();
+      // หรือเรียก API: await apiService.deleteUser(userId.value);
+      
+      // จำลองการทำงาน: หน่วงเวลา 2 วินาทีเพื่อจำลองการเรียก API
+      await Future.delayed(const Duration(seconds: 1));
+
+      // ลบข้อมูลผู้ใช้จากทุก List จำลอง (นี่คือการ "ลบ" จริงๆ ในบริบทของ Mock Data)
+      userid.removeAt(userIndex);
+      names.removeAt(userIndex);
+      emails.removeAt(userIndex);
+      passwords.removeAt(userIndex);
+      profileImages.removeAt(userIndex);
+      phoneNumber.removeAt(userIndex);
+      // ตรวจสอบ favoriteRestaurants.length ก่อน removeAt เพื่อป้องกัน Index out of bounds
+      if (userIndex < favoriteRestaurants.length) {
+        favoriteRestaurants.removeAt(userIndex);
+      }
+      
+      // หลังจากลบบัญชีใน Backend/Mock Data สำเร็จ ให้ล้างข้อมูลผู้ใช้ใน Controller
+      _clearUserData();
+
+      // ปิด loading dialog หากมี
+      // Get.back();
+
+      Get.snackbar(
+        'ลบบัญชีสำเร็จ',
+        'บัญชีของคุณถูกลบเรียบร้อยแล้ว',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+
+      // นำทางไปยังหน้า Login หลังจากลบบัญชีสำเร็จ
+      Get.offAll(() => LoginUi());
+
+    } catch (e) {
+      // หากเกิดข้อผิดพลาดในการลบ
+      // ปิด loading dialog หากมี
+      // Get.back();
+
+      Get.snackbar(
+        'ลบบัญชีไม่สำเร็จ',
+        'เกิดข้อผิดพลาดในการลบบัญชี: ${e.toString()}',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      print('Error deleting account: $e'); // แสดงข้อผิดพลาดใน console สำหรับ debug
+    }
+  }
+
+  // เมธอดส่วนตัวสำหรับล้างข้อมูลผู้ใช้
+
 }

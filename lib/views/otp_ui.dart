@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/forgotpass_ui.dart';
+import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
@@ -41,7 +42,7 @@ class OtpUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [BackBt(srcp: () =>  ForgotPassUi(),), Iconperson()]),
+                          Stack(children: [Back3Bt(), Iconperson()]),
                           OtpHead(),
                           FormOtp(),
                          

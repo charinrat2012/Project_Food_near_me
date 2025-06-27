@@ -29,7 +29,7 @@ class FormRegister extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 4.9),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8 * 0.1),
           child: TextField(
@@ -49,7 +49,27 @@ class FormRegister extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 4.9),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8 * 0.1),
+          child: TextField(
+            controller: controller.phoneNumberController,
+            keyboardType: TextInputType.name,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white.withValues(alpha: 8 * 0.03),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide.none,
+              ),
+              hintText: 'Phone Number',
+              hintStyle: GoogleFonts.charmonman(
+                color: Colors.white.withValues(alpha: 8 * 0.07),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: 4.9),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8 * 0.1),
           child: Obx(
@@ -82,7 +102,7 @@ class FormRegister extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 4.9),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8 * 0.1),
           child: Obx(
@@ -116,6 +136,7 @@ class FormRegister extends StatelessWidget {
           ),
         ),
         SizedBox(height: 8 * 2),
+        
       ],
     );
   }

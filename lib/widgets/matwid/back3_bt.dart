@@ -18,8 +18,10 @@ class Back3Bt extends StatelessWidget {
               FocusScope.of(Get.context!).unfocus();
                if (Get.previousRoute.isNotEmpty) {
                   Get.back(); // Go back to the previous screen if available
-                } else {
+                } else if (Get.previousRoute.isEmpty) {
                   Get.offAll(() => Navbar()); // Go to HomeUi if no previous route
+                }else{
+                  Get.offAll(() => Navbar());
                 }
             },
             icon: Image.asset( 

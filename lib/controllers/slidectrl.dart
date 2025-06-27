@@ -101,7 +101,7 @@ class SlideController extends GetxController {
   void navigateToRestaurantDetail(String restaurantId) {
    
    
-    Get.offAll(
+    Get.to(
       () => RestaurantDetailPageUi(
         restaurantId: restaurantId,
       ),

@@ -9,6 +9,7 @@ import 'package:food_near_me_app/widgets/matwid/iconperson.dart';
 import 'package:food_near_me_app/widgets/resetwid/resetpass_bt.dart';
 import 'package:food_near_me_app/widgets/resetwid/resetpass_head.dart';
 
+import '../widgets/matwid/back3_bt.dart';
 import 'navbar.dart';
 
 class ResetpassUi extends StatelessWidget {
@@ -42,7 +43,7 @@ class ResetpassUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [BackBt(srcp: () =>  OtpUi(),), Iconperson()]),
+                          Stack(children: [Back3Bt(), Iconperson()]),
                           ResetpassHead(),
                           FormReset(),
                          

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:food_near_me_app/widgets/forgotwid/form_forgot.dart';
+import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
 import 'package:get/get.dart';
 import '../controllers/fogotpassctrl.dart';
 import '../widgets/forgotwid/forgot_head.dart';
@@ -39,7 +40,7 @@ class ForgotPassUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [BackBt(srcp: () =>  LoginUi(),), Iconperson()]),
+                          Stack(children: [Back3Bt(), Iconperson()]),
                           ForgotHead(),
                           SizedBox(height: 5),
                           FormForgot(),

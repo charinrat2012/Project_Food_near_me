@@ -146,7 +146,7 @@ class SettingUi extends StatelessWidget {
                 SizedBox(height: 8),
                 OutlinedButton(
                   onPressed: () {
-                    Get.offAll(ContactUsUi());
+                    Get.to(ContactUsUi());
                   },
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -223,7 +223,7 @@ class SettingUi extends StatelessWidget {
                               children: [
                                 ElevatedButton(
                                   onPressed: () {
-                                    loginController.logout();
+                                    loginController.deleteAccount();
                                     Get.back();
                                   },
                                   child: const Text(

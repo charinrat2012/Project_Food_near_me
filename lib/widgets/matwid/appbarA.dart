@@ -35,9 +35,9 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
                   await Future.delayed(const Duration(milliseconds: 100));
 
                   if (result == 'profile') {
-                    Get.offAll(() => MyprofileUi());
+                    Get.to(() => MyprofileUi());
                   } else if (result == 'setting') {
-                    Get.offAll(() => SettingUi());
+                    Get.to(() => SettingUi());
                   } else if (result == 'logout') {
                     loginController.logout();
                   }
@@ -82,6 +82,7 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
           } else {
             return TextButton(
               onPressed: () {
+                // Get.to(() => LoginUi());
                 Get.offAll(() => LoginUi());
               },
               child: const Text(

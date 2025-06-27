@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/registerctrl.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
+import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
@@ -36,15 +37,15 @@ class RegisterUi extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
 
                   children: [
-                    SizedBox(height: 20),
-
+                    // SizedBox(height: -5),
+                    // Expanded(child: SizedBox()),
                     Blurcontainer(
                       width: MediaQuery.of(context).size.width * 0.88,
-                      height: MediaQuery.of(context).size.height * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.65,
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [BackBt(srcp: () =>  LoginUi(),), Iconperson()]),
+                          Stack(children: [Back3Bt(), Iconperson()]),
                           Expanded(child: SizedBox()),
                           RegisterHead(),
                           Expanded(child: SizedBox()),
@@ -55,6 +56,7 @@ class RegisterUi extends StatelessWidget {
                         ],
                       ),
                     ),
+                    // Expanded(child: SizedBox()),
                   ],
                 ),
               ),

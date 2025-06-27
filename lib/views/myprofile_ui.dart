@@ -1,29 +1,31 @@
+// lib/views/myprofile_ui.dart
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 import 'package:food_near_me_app/views/editeprofile_ui.dart';
+import 'package:food_near_me_app/views/login_ui.dart';
 
-import 'package:food_near_me_app/views/navbar.dart';
+
 import 'package:get/get.dart';
 
 import '../controllers/scrollctrl.dart';
 import '../widgets/matwid/back3_bt.dart';
 import '../widgets/matwid/back_bt.dart';
 import '../widgets/matwid/scrolltotop_bt.dart';
+import 'navbar.dart';
 
 class MyprofileUi extends StatelessWidget {
   const MyprofileUi({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-   
+
     final double appBarHeight = AppBar().preferredSize.height;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final double profileCircleSize = 100.0;
     final LoginController loginController = Get.find<LoginController>();
 
-   
-   
-   final ScrollpageController scrollpageController =
+
+    final ScrollpageController scrollpageController =
         Get.put(ScrollpageController(), tag: 'myprofile_scroll');
 
     return GestureDetector(
@@ -31,11 +33,12 @@ class MyprofileUi extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-       
+
         appBar: AppBar(
           backgroundColor: Colors.pink[200],
           title: Align(
             alignment: Alignment.centerLeft,
+            // ใช้วิธีเดิมที่เคยแก้ไปแล้ว หรือถ้ายังใช้ Back3Bt ให้แน่ใจว่ามันเรียก Get.back() ถูกต้อง
             child: Back3Bt(),
           ),
           toolbarHeight: 8 * 10,
@@ -50,7 +53,7 @@ class MyprofileUi extends StatelessWidget {
           ],
 
           flexibleSpace: Container(
-           
+
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -66,7 +69,7 @@ class MyprofileUi extends StatelessWidget {
         ),
         body: Stack(
           children: [
-           
+
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -80,9 +83,9 @@ class MyprofileUi extends StatelessWidget {
                 ),
               ),
               child: Column(
-               
+
                 children: [
-                 
+
                   Container(
                     height:
                         50.0,
@@ -98,7 +101,7 @@ class MyprofileUi extends StatelessWidget {
                       ),
                     ),
                   ),
-                 
+
                   Expanded(
                     child: Container(
                       width: double.infinity,
@@ -114,7 +117,7 @@ class MyprofileUi extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                           
+
                             Expanded(child: SizedBox()),
                             Text(
                               'โปรไฟล์',
@@ -125,36 +128,36 @@ class MyprofileUi extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 10),
-                           
-                            _buildTextFieldWithLabel(
-                              'ชื่อเล่น',
-                              loginController.userName.value,
-                              false,
-                            ),
-                            _buildTextFieldWithLabel(
-                              'เบอร์โทรศัพท์',
-                             loginController.userPhoneNumber.value,
-                              false,
-                            ),
-                            _buildTextFieldWithLabel(
-                              'อีเมล',
-                              loginController.userEmail.value,
-                              false,
-                            ),
-                            _buildTextFieldWithLabel(
-                              'รหัสผ่าน',
-                              loginController.userPassword.value,
-                              true,
-                            ),
+
+                            // ห่อหุ้ม _buildTextFieldWithLabel ด้วย Obx เพื่อให้ UI อัปเดตเมื่อค่าเปลี่ยน
+                            Obx(() => _buildTextFieldWithLabel(
+                                  'ชื่อเล่น',
+                                  loginController.userName.value,
+                                  false,
+                                )),
+                            Obx(() => _buildTextFieldWithLabel(
+                                  'เบอร์โทรศัพท์',
+                                  loginController.userPhoneNumber.value,
+                                  false,
+                                )),
+                            Obx(() => _buildTextFieldWithLabel(
+                                  'อีเมล',
+                                  loginController.userEmail.value,
+                                  false,
+                                )),
+                            Obx(() => _buildTextFieldWithLabel(
+                                  'รหัสผ่าน',
+                                  loginController.userPassword.value,
+                                  true, // isObscure ควรเป็น true สำหรับรหัสผ่าน
+                                )),
 
                             SizedBox(height: 30),
-                           
+
                             SizedBox(
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: () {
-                                 
-                                  // Get.offAll(() => EditProfileUi());
+                                  // ตรวจสอบให้แน่ใจว่าใช้ Get.to เพื่อให้สามารถย้อนกลับได้
                                   Get.to(() => EditProfileUi());
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -175,13 +178,13 @@ class MyprofileUi extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 15),
-                           
+
                             TextButton(
                               onPressed: () {
-                                Get.offAll(() => Navbar());
-                               
-
-                               
+                                loginController.logout();
+                                // ออกจากระบบและกลับไปหน้า Navbar (ซึ่งอาจเป็นหน้า Login/Splash)
+                                // ถ้า Navbar เป็นหน้า Login/Splash ก็เหมาะสม
+                                Get.offAll(() => LoginUi());
                               },
                               child: Text(
                                 'ออกจากระบบ',
@@ -202,8 +205,7 @@ class MyprofileUi extends StatelessWidget {
               ),
             ),
 
-           
-            Positioned(
+ Positioned(
               left: 0,
               right: 0,
              
@@ -235,17 +237,17 @@ class MyprofileUi extends StatelessWidget {
               ),
             ),
 
-           
+
             Obx(
               () => scrollpageController.showScrollToTopButton.value
-                  ? Positioned(
-                      right: 20.0,
-                      bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                      child: ScrollToTopButton(
-                        onPressed: scrollpageController.scrollToTop,
-                      ),
-                    )
-                  : Container(),
+                      ? Positioned(
+                          right: 20.0,
+                          bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                          child: ScrollToTopButton(
+                            onPressed: scrollpageController.scrollToTop,
+                          ),
+                        )
+                      : Container(),
             ),
           ],
         ),
@@ -253,7 +255,7 @@ class MyprofileUi extends StatelessWidget {
     );
   }
 
- 
+
   Widget _buildTextFieldWithLabel(String label, String hint, bool isObscure) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
@@ -284,8 +286,7 @@ class MyprofileUi extends StatelessWidget {
               ),
             ),
             obscureText: isObscure,
-            readOnly: true,
-           
+            readOnly: true, // ทำให้เป็น readOnly เนื่องจากหน้านี้แสดงผลเท่านั้น
           ),
         ],
       ),

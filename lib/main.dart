@@ -28,19 +28,22 @@ void main() {
   ]);
 
   Get.put(LoginController());
+  Get.put(ForgotpassController());
+  Get.put(ResetpassController());
+  // Get.put(DetailController());
+  // Get.put(EditDetailController());
   Get.put(FilterController());
   Get.put(MyShopController());
   Get.put(RestaurantController());
+
   
   Get.put(MainController());
   Get.put(ReviewController());
   Get.put(SlideController());
   // Get.put(ScrollpageController());
   Get.put(RegisterController());
-  Get.put(ResetpassController());
   Get.put(OtpCotroller());
   Get.put(SplashContrller());
-  Get.put(ForgotpassController());
 
   runApp(const MyApp());
 }

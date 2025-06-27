@@ -8,6 +8,9 @@ class LoginController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _obscureText = true.obs;
+  // เพิ่ม observable เพื่อควบคุม obscureText
+
+
 
   get obscureText => _obscureText.value;
   set obscureText(value) => _obscureText.value = value;

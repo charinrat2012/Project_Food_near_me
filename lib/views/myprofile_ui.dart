@@ -4,7 +4,6 @@ import 'package:food_near_me_app/controllers/loginctrl.dart';
 import 'package:food_near_me_app/views/editeprofile_ui.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 
-
 import 'package:get/get.dart';
 
 import '../controllers/scrollctrl.dart';
@@ -18,22 +17,21 @@ class MyprofileUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final double appBarHeight = AppBar().preferredSize.height;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final double profileCircleSize = 100.0;
     final LoginController loginController = Get.find<LoginController>();
 
-
-    final ScrollpageController scrollpageController =
-        Get.put(ScrollpageController(), tag: 'myprofile_scroll');
+    final ScrollpageController scrollpageController = Get.put(
+      ScrollpageController(),
+      tag: 'myprofile_scroll',
+    );
 
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-
         appBar: AppBar(
           backgroundColor: Colors.pink[200],
           title: Align(
@@ -53,13 +51,9 @@ class MyprofileUi extends StatelessWidget {
           ],
 
           flexibleSpace: Container(
-
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  Colors.pink[200]!,
-                  Colors.blue[200]!,
-                ],
+                colors: [Colors.pink[200]!, Colors.blue[200]!],
                 begin: Alignment.centerLeft,
                 transform: GradientRotation(3.0),
                 end: Alignment.centerRight,
@@ -69,32 +63,22 @@ class MyprofileUi extends StatelessWidget {
         ),
         body: Stack(
           children: [
-
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Colors.pink[200]!,
-                    Colors.blue[200]!,
-                  ],
+                  colors: [Colors.pink[200]!, Colors.blue[200]!],
                   begin: Alignment.centerLeft,
                   transform: GradientRotation(3.0),
                   end: Alignment.centerRight,
                 ),
               ),
               child: Column(
-
                 children: [
-
                   Container(
-                    height:
-                        50.0,
+                    height: 50.0,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          Colors.pink[200]!,
-                          Colors.blue[200]!,
-                        ],
+                        colors: [Colors.pink[200]!, Colors.blue[200]!],
                         begin: Alignment.centerLeft,
                         transform: GradientRotation(3.0),
                         end: Alignment.centerRight,
@@ -117,7 +101,6 @@ class MyprofileUi extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-
                             Expanded(child: SizedBox()),
                             Text(
                               'โปรไฟล์',
@@ -130,26 +113,34 @@ class MyprofileUi extends StatelessWidget {
                             SizedBox(height: 10),
 
                             // ห่อหุ้ม _buildTextFieldWithLabel ด้วย Obx เพื่อให้ UI อัปเดตเมื่อค่าเปลี่ยน
-                            Obx(() => _buildTextFieldWithLabel(
-                                  'ชื่อเล่น',
-                                  loginController.userName.value,
-                                  false,
-                                )),
-                            Obx(() => _buildTextFieldWithLabel(
-                                  'เบอร์โทรศัพท์',
-                                  loginController.userPhoneNumber.value,
-                                  false,
-                                )),
-                            Obx(() => _buildTextFieldWithLabel(
-                                  'อีเมล',
-                                  loginController.userEmail.value,
-                                  false,
-                                )),
-                            Obx(() => _buildTextFieldWithLabel(
-                                  'รหัสผ่าน',
-                                  loginController.userPassword.value,
-                                  true, // isObscure ควรเป็น true สำหรับรหัสผ่าน
-                                )),
+                            Obx(
+                              () => _buildTextFieldWithLabel(
+                                'ชื่อเล่น',
+                                loginController.userName.value,
+                                false,
+                              ),
+                            ),
+                            Obx(
+                              () => _buildTextFieldWithLabel(
+                                'เบอร์โทรศัพท์',
+                                loginController.userPhoneNumber.value,
+                                false,
+                              ),
+                            ),
+                            Obx(
+                              () => _buildTextFieldWithLabel(
+                                'อีเมล',
+                                loginController.userEmail.value,
+                                false,
+                              ),
+                            ),
+                            Obx(
+                              () => _buildTextFieldWithLabel(
+                                'รหัสผ่าน',
+                                loginController.userPassword.value,
+                                true, // isObscure ควรเป็น true สำหรับรหัสผ่าน
+                              ),
+                            ),
 
                             SizedBox(height: 30),
 
@@ -161,8 +152,7 @@ class MyprofileUi extends StatelessWidget {
                                   Get.to(() => EditProfileUi());
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Colors.pink[400],
+                                  backgroundColor: Colors.pink[400],
                                   padding: EdgeInsets.symmetric(vertical: 12.0),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -191,8 +181,7 @@ class MyprofileUi extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey[600],
-                                  decoration:
-                                      TextDecoration.underline,
+                                  decoration: TextDecoration.underline,
                                 ),
                               ),
                             ),
@@ -205,10 +194,10 @@ class MyprofileUi extends StatelessWidget {
               ),
             ),
 
- Positioned(
+            Positioned(
               left: 0,
               right: 0,
-             
+
               top: statusBarHeight + appBarHeight - (profileCircleSize / 1.2),
               child: Align(
                 alignment: Alignment.center,
@@ -237,24 +226,22 @@ class MyprofileUi extends StatelessWidget {
               ),
             ),
 
-
             Obx(
               () => scrollpageController.showScrollToTopButton.value
-                      ? Positioned(
-                          right: 20.0,
-                          bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                          child: ScrollToTopButton(
-                            onPressed: scrollpageController.scrollToTop,
-                          ),
-                        )
-                      : Container(),
+                  ? Positioned(
+                      right: 20.0,
+                      bottom: MediaQuery.of(context).padding.bottom + 16.0,
+                      child: ScrollToTopButton(
+                        onPressed: scrollpageController.scrollToTop,
+                      ),
+                    )
+                  : Container(),
             ),
           ],
         ),
       ),
     );
   }
-
 
   Widget _buildTextFieldWithLabel(String label, String hint, bool isObscure) {
     return Padding(

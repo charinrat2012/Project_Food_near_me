@@ -224,7 +224,9 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                       color: Colors.black,
                                                       fontWeight:
                                                           FontWeight.bold,
+                                                        
                                                     ),
+                                                    
                                                   ),
                                                 ),
                                                 const SizedBox(width: 8),
@@ -249,49 +251,86 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                               .value!;
 
                                                       return IconButton(
-                icon: Icon(
-                  restaurant.isFavorite.value
-                      ? Icons.bookmark_rounded
-                      : Icons.bookmark_outline_rounded,
-                  color: restaurant.isFavorite.value
-                      ? Colors.amber
-                      : Colors.black,
-                ),
-                onPressed: loginController.isLoggedIn.value
-                    ? () {
-                        // 1. เก็บสถานะ *ก่อน* ที่จะกดปุ่ม
-                        final bool wasFavorite = restaurant.isFavorite.value;
+                                                        icon: Icon(
+                                                          restaurant
+                                                                  .isFavorite
+                                                                  .value
+                                                              ? Icons
+                                                                    .bookmark_rounded
+                                                              : Icons
+                                                                    .bookmark_outline_rounded,
+                                                          color:
+                                                              restaurant
+                                                                  .isFavorite
+                                                                  .value
+                                                              ? Colors.amber
+                                                              : Colors.black,
+                                                        ),
+                                                        onPressed:
+                                                            loginController
+                                                                .isLoggedIn
+                                                                .value
+                                                            ? () {
+                                                                // 1. เก็บสถานะ *ก่อน* ที่จะกดปุ่ม
+                                                                final bool
+                                                                wasFavorite =
+                                                                    restaurant
+                                                                        .isFavorite
+                                                                        .value;
 
-                        // 2. สั่งให้ Controller ทำงาน
-                        filterController.toggleFavorite(restaurant.id);
+                                                                // 2. สั่งให้ Controller ทำงาน
+                                                                filterController
+                                                                    .toggleFavorite(
+                                                                      restaurant
+                                                                          .id,
+                                                                    );
 
-                        // 3. แสดง Snackbar โดยอิงจากสถานะ *ก่อนหน้า*
-                        Get.snackbar(
-                          'รายการโปรด',
-                          !wasFavorite
-                              ? 'เพิ่ม ${restaurant.restaurantName} ในรายการโปรดแล้ว'
-                              : 'ลบ ${restaurant.restaurantName} ออกจากรายการโปรดแล้ว',
-                          snackPosition: SnackPosition.TOP,
-                          backgroundColor: Colors.blueGrey,
-                          colorText: Colors.white,
-                          duration: const Duration(milliseconds: 1200),
-                        );
-                      }
-                    : () {
-                        Get.snackbar(
-                          'System',
-                          'กรุณาเข้าสู่ระบบเพื่อเพิ่มร้านค้าในรายการโปรด',
-                          snackPosition: SnackPosition.TOP,
-                          backgroundColor: Colors.orange,
-                          colorText: Colors.white,
-                          duration: const Duration(seconds: 2),
-                        );
-                      },
-              );
-            }),
-                                                  ),  
+                                                                // 3. แสดง Snackbar โดยอิงจากสถานะ *ก่อนหน้า*
+                                                                Get.snackbar(
+                                                                  'รายการโปรด',
+                                                                  !wasFavorite
+                                                                      ? 'เพิ่ม ${restaurant.restaurantName} ในรายการโปรดแล้ว'
+                                                                      : 'ลบ ${restaurant.restaurantName} ออกจากรายการโปรดแล้ว',
+                                                                  snackPosition:
+                                                                      SnackPosition
+                                                                          .TOP,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .blueGrey,
+                                                                  colorText:
+                                                                      Colors
+                                                                          .white,
+                                                                  duration:
+                                                                      const Duration(
+                                                                        milliseconds:
+                                                                            1200,
+                                                                      ),
+                                                                );
+                                                              }
+                                                            : () {
+                                                                Get.snackbar(
+                                                                  'System',
+                                                                  'กรุณาเข้าสู่ระบบเพื่อเพิ่มร้านค้าในรายการโปรด',
+                                                                  snackPosition:
+                                                                      SnackPosition
+                                                                          .TOP,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .orange,
+                                                                  colorText:
+                                                                      Colors
+                                                                          .white,
+                                                                  duration:
+                                                                      const Duration(
+                                                                        seconds:
+                                                                            2,
+                                                                      ),
+                                                                );
+                                                              },
+                                                      );
+                                                    }),
+                                                  ),
                                                 ),
-                                                
                                               ],
                                             ),
                                           ),

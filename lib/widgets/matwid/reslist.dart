@@ -635,7 +635,7 @@ class Reslist {
           "4 1 ถนนมหาดไทยบำรุง ตำบล หนองหลวง เมืองตาก ตาก 63000 ",
       'menuimage': 'assets/imgs/mu30.jpg',
       'bannerImage': 'assets/imgs/po30.jpg',
-      'type': 'ก๋วยเดี๋ยว',
+      'type': 'ก๋วยเตี๋ยว',
     },
     
    {
@@ -656,7 +656,7 @@ class Reslist {
           " 430 4 ถนน เจริญราษฎร์ ตำบล ฟ้าฮ่าม เมืองเชียงใหม่ เชียงใหม่ 50000 ",
       'menuimage': 'assets/imgs/mu30.jpg',
       'bannerImage': 'assets/imgs/po30.jpg',
-      'type': 'อาหารไทย',
+      'type': 'ก๋วยเตี๋ยว, อาหารไทย',
     },
     
    {

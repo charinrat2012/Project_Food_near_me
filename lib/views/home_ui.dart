@@ -89,7 +89,7 @@ class HomeUi extends StatelessWidget {
                                       isOpen: restaurant.isOpen.value,
                                       showMotorcycleIcon: restaurant.showMotorcycleIcon,
                                       onTap: () {
-                                        Get.offAll(
+                                        Get.to(
                                           () => RestaurantDetailPageUi(
                                             restaurantId: restaurant.id,
                                           ),

@@ -29,9 +29,7 @@ class RestaurantDetailController extends GetxController {
     _reviewController = Get.find<ReviewController>();
     _filterController = Get.find<FilterController>();
 
-    // *** จุดแก้ไข: ลบ ever listeners ที่ไม่จำเป็นและอาจทำให้เกิดปัญหาออก ***
-    // การอัปเดต UI ควรจะเกิดขึ้นโดยตรงผ่าน Obx ในหน้า UI
-    // ซึ่งจะคอยดักฟังการเปลี่ยนแปลงของ restaurant.value.isFavorite อยู่แล้ว
+
     
     loadRestaurantDetails(); // โหลดข้อมูลครั้งแรก
     _loadReviews();

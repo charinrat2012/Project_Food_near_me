@@ -16,7 +16,11 @@ class Back3Bt extends StatelessWidget {
           child: IconButton(
             onPressed: () {
               FocusScope.of(Get.context!).unfocus();
-              Get.back();
+               if (Get.previousRoute.isNotEmpty) {
+                  Get.back(); // Go back to the previous screen if available
+                } else {
+                  Get.offAll(() => Navbar()); // Go to HomeUi if no previous route
+                }
             },
             icon: Image.asset( 
               "assets/ics/backicon.png", 

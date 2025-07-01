@@ -1,8 +1,8 @@
-// lib/views/editeprofile_ui.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 import 'package:food_near_me_app/views/myprofile_ui.dart';
+import 'dart:io'; // <--- สำคัญ: ตรวจสอบว่ามีบรรทัดนี้
 
 import '../controllers/editeprofilectrl.dart';
 import '../controllers/scrollctrl.dart';
@@ -10,19 +10,18 @@ import '../widgets/matwid/back3_bt.dart';
 import '../widgets/matwid/back_bt.dart';
 import '../widgets/matwid/scrolltotop_bt.dart';
 
+
 class EditProfileUi extends StatelessWidget {
   EditProfileUi({Key? key}) : super(key: key);
- 
+
+  final LoginController loginController = Get.find<LoginController>();
+  final EditProfileController editController = Get.put(EditProfileController());
 
   final ScrollpageController scrollpageController =
         Get.put(ScrollpageController(), tag: 'edit_profile_scroll');
 
   @override
   Widget build(BuildContext context) {
-   
-    final EditProfileController editController = Get.put(EditProfileController());
-    final LoginController loginController = Get.find<LoginController>();
-
     final double appBarHeight = AppBar().preferredSize.height;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final double profileCircleSize = 100.0;
@@ -34,7 +33,6 @@ class EditProfileUi extends StatelessWidget {
           backgroundColor: Colors.pink[200],
           title: Align(
             alignment: Alignment.centerLeft,
-            // child: BackBt(srcp: () => const MyprofileUi()),
             child: Back3Bt(),
           ),
           toolbarHeight: 80,
@@ -100,14 +98,14 @@ class EditProfileUi extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const SizedBox(height: 60),
-                              Obx(() => Text(
-                                loginController.userName.value,
+                               Text(
+                                'แก้ไขข้อมูลส่วนตัว',
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey[800],
                                 ),
-                              )),
+                              ),
                               const SizedBox(height: 10),
                               _buildTextFieldWithLabel(
                                 'ชื่อเล่น',
@@ -124,18 +122,20 @@ class EditProfileUi extends StatelessWidget {
                                 editController.emailController,
                                 false,
                               ),
-                              _buildTextFieldWithLabel(
+                              _buildPasswordTextFieldWithToggle(
                                 'รหัสผ่าน',
                                 editController.passwordController,
-                                false,
+                                loginController.isEditPasswordVisible,
+                                loginController.toggleEditPasswordVisibility,
                               ),
-                              _buildTextFieldWithLabel(
+                              _buildPasswordTextFieldWithToggle(
                                 'ยืนยันรหัสผ่าน',
                                 editController.confirmPasswordController,
-                                false,
+                                loginController.isConfirmPasswordVisible,
+                                loginController.toggleConfirmPasswordVisibility,
                               ),
 
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 5),
                               SizedBox(
                                 width: double.infinity,
                                 child: Obx(() => ElevatedButton(
@@ -174,28 +174,36 @@ class EditProfileUi extends StatelessWidget {
               top: statusBarHeight + appBarHeight - (profileCircleSize / 1.2),
               child: Align(
                 alignment: Alignment.center,
-                child: Obx(() => Container(
-                  width: profileCircleSize,
-                  height: profileCircleSize,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: ClipOval(
-                    child: Image.asset(
-                      loginController.userProfileImageUrl.value,
-                      fit: BoxFit.cover,
+                child: InkWell(
+                  onTap: () => editController.pickProfileImage(),
+                  child: Obx(() => Container(
+                    width: profileCircleSize,
+                    height: profileCircleSize,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.grey,
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                     ),
-                  ),
-                )),
+                    child: ClipOval(
+                      child: editController.newProfileImagePath.isNotEmpty && File(editController.newProfileImagePath).existsSync() // ตรวจสอบไฟล์ที่เลือก
+                          ? Image.file(
+                              File(editController.newProfileImagePath), // <--- ใช้ Image.file
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              loginController.userProfileImageUrl.value,
+                              fit: BoxFit.cover,
+                            ),
+                    ),
+                  )),
+                ),
               ),
             ),
             Obx(
@@ -215,11 +223,47 @@ class EditProfileUi extends StatelessWidget {
     );
   }
 
- 
   Widget _buildTextFieldWithLabel(
+      String label, TextEditingController controller, bool isObscure) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey[700],
+            ),
+          ),
+          const SizedBox(height: 3),
+          TextField(
+            controller: controller,
+            obscureText: isObscure,
+            decoration: InputDecoration(
+              hintText: 'กรอก $label',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.0),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: Colors.grey[100],
+              contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16.0, vertical: 12.0),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPasswordTextFieldWithToggle(
     String label,
     TextEditingController controller,
-    bool isObscure,
+    RxBool isVisible,
+    VoidCallback toggleFunction,
   ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
@@ -235,18 +279,28 @@ class EditProfileUi extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          TextField(
-            controller: controller,
-            obscureText: isObscure,
-            decoration: InputDecoration(
-              hintText: 'กรอก $label',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                borderSide: BorderSide.none,
+          Obx(
+            () => TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                hintText: 'กรอก $label',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 12.0),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    isVisible.value ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.grey,
+                  ),
+                  onPressed: toggleFunction,
+                ),
               ),
-              filled: true,
-              fillColor: Colors.grey[100],
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              obscureText: !isVisible.value,
             ),
           ),
         ],

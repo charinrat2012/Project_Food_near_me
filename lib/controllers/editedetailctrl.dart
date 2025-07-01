@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/filterctrl.dart';
-import 'package:food_near_me_app/controllers/detailctrl.dart'; // เพิ่ม import เพื่อเรียกใช้ RestaurantDetailController
+import 'package:food_near_me_app/controllers/detailctrl.dart';
 import '../model/restaurant.dart';
+import 'package:image_picker/image_picker.dart'; // Import image_picker
 
 class EditRestaurantDetailsController extends GetxController {
   final String restaurantId;
@@ -15,11 +16,16 @@ class EditRestaurantDetailsController extends GetxController {
   final openingHoursController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final locationController = TextEditingController();
-  final menuImageController = TextEditingController();
-  final bannerImageController = TextEditingController();
+  final menuImageController = TextEditingController(); // Keep for data binding
+  final bannerImageController =
+      TextEditingController(); // Keep for data binding
   final typeController = TextEditingController();
 
   final RxBool isLoading = false.obs;
+
+  // New reactive variables for displaying selected images
+  final RxString selectedMenuImagePath = ''.obs;
+  final RxString selectedBannerImagePath = ''.obs;
 
   EditRestaurantDetailsController({required this.restaurantId});
 
@@ -57,18 +63,54 @@ class EditRestaurantDetailsController extends GetxController {
       menuImageController.text = foundRestaurant.menuImage;
       bannerImageController.text = foundRestaurant.bannerImage;
       typeController.text = foundRestaurant.type;
+
+      // Initialize reactive paths for display
+      selectedMenuImagePath.value = foundRestaurant.menuImage;
+      selectedBannerImagePath.value = foundRestaurant.bannerImage;
     } else {
-      Get.snackbar('ข้อผิดพลาด', 'ไม่พบข้อมูลร้านค้าสำหรับการแก้ไข',
-          snackPosition: SnackPosition.TOP);
+      Get.snackbar(
+        'ข้อผิดพลาด',
+        'ไม่พบข้อมูลร้านค้าสำหรับการแก้ไข',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.black.withOpacity(0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
+      );
       Get.back();
     }
   }
 
-  // *** จุดแก้ไขสำคัญ: ปรับปรุง Logic การบันทึกและอัปเดตข้อมูล ***
+  // New method to pick images
+  Future<void> pickImage(
+    ImageSource source, {
+    required bool isMenuImage,
+  }) async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? pickedFile = await _picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      if (isMenuImage) {
+        selectedMenuImagePath.value = pickedFile.path;
+        menuImageController.text =
+            pickedFile.path; // Update text controller as well
+      } else {
+        selectedBannerImagePath.value = pickedFile.path;
+        bannerImageController.text =
+            pickedFile.path; // Update text controller as well
+      }
+    }
+  }
+
   Future<void> saveChanges() async {
     if (restaurantToEdit.value == null) {
-      Get.snackbar('ข้อผิดพลาด', 'ไม่สามารถบันทึก: ไม่พบข้อมูลร้านค้า',
-          snackPosition: SnackPosition.TOP);
+      Get.snackbar(
+        'ข้อผิดพลาด',
+        'ไม่สามารถบันทึก: ไม่พบข้อมูลร้านค้า',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.black.withOpacity(0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
+      );
       return;
     }
 
@@ -78,8 +120,14 @@ class EditRestaurantDetailsController extends GetxController {
         phoneNumberController.text.isEmpty ||
         locationController.text.isEmpty ||
         typeController.text.isEmpty) {
-      Get.snackbar('ข้อผิดพลาด', 'กรุณากรอกข้อมูลให้ครบถ้วน',
-          snackPosition: SnackPosition.TOP);
+      Get.snackbar(
+        'ข้อผิดพลาด',
+        'กรุณากรอกข้อมูลให้ครบถ้วน',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.black.withOpacity(0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
+      );
       return;
     }
 
@@ -92,34 +140,32 @@ class EditRestaurantDetailsController extends GetxController {
       openingHours: openingHoursController.text,
       phoneNumber: phoneNumberController.text,
       location: locationController.text,
-      menuImage: menuImageController.text,
-      bannerImage: bannerImageController.text,
+      menuImage: menuImageController.text, // Use updated path
+      bannerImage: bannerImageController.text, // Use updated path
       type: typeController.text,
     );
 
-    // 1. อัปเดตข้อมูลใน List กลาง
     _filterController.updateRestaurantInList(updatedRestaurant);
 
-    // 2. สั่งให้ Controller ของหน้ารายละเอียดโหลดข้อมูลใหม่ (สำคัญมาก)
     if (Get.isRegistered<RestaurantDetailController>(tag: restaurantId)) {
-      final detailController = Get.find<RestaurantDetailController>(tag: restaurantId);
+      final detailController = Get.find<RestaurantDetailController>(
+        tag: restaurantId,
+      );
       detailController.restore();
     }
 
-    // หน่วงเวลาเล็กน้อยเพื่อให้ UI ตอบสนอง
     await Future.delayed(const Duration(milliseconds: 100));
     isLoading.value = false;
 
-    // 3. ย้อนกลับไปหน้ารายละเอียด
     Get.back();
 
-    // 4. แสดง Snackbar เพื่อยืนยัน
     Get.snackbar(
       'สำเร็จ',
       'บันทึกข้อมูลร้านค้าเรียบร้อยแล้ว',
       snackPosition: SnackPosition.TOP,
-      backgroundColor: Colors.green[400],
-      colorText: Colors.white,
+      backgroundColor: Colors.black.withOpacity(0.1),
+      colorText: Colors.black,
+      duration: const Duration(milliseconds: 900),
     );
   }
 }

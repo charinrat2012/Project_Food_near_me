@@ -291,40 +291,22 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                                                   !wasFavorite
                                                                       ? 'เพิ่ม ${restaurant.restaurantName} ในรายการโปรดแล้ว'
                                                                       : 'ลบ ${restaurant.restaurantName} ออกจากรายการโปรดแล้ว',
-                                                                  snackPosition:
-                                                                      SnackPosition
-                                                                          .TOP,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .blueGrey,
-                                                                  colorText:
-                                                                      Colors
-                                                                          .white,
-                                                                  duration:
-                                                                      const Duration(
-                                                                        milliseconds:
-                                                                            1200,
-                                                                      ),
+                                                                 snackPosition: SnackPosition.TOP,
+                                        backgroundColor:  Colors.black.withValues(alpha: 0.1) 
+ ,
+                                        colorText: Colors.black,
+                                        duration: const Duration(milliseconds: 900),
                                                                 );
                                                               }
                                                             : () {
                                                                 Get.snackbar(
                                                                   'System',
                                                                   'กรุณาเข้าสู่ระบบเพื่อเพิ่มร้านค้าในรายการโปรด',
-                                                                  snackPosition:
-                                                                      SnackPosition
-                                                                          .TOP,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .orange,
-                                                                  colorText:
-                                                                      Colors
-                                                                          .white,
-                                                                  duration:
-                                                                      const Duration(
-                                                                        seconds:
-                                                                            2,
-                                                                      ),
+                                                                 snackPosition: SnackPosition.TOP,
+                                        backgroundColor:  Colors.black.withValues(alpha: 0.1) 
+ ,
+                                        colorText: Colors.black,
+                                        duration: const Duration(milliseconds: 900),
                                                                 );
                                                               },
                                                       );

@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 
 import '../../controllers/filterctrl.dart';
 class Formsearch extends StatelessWidget {
-  const Formsearch({super.key});
+  
+  const Formsearch({super.key,});
   @override
   Widget build(BuildContext context) {
      final FilterController filterController = Get.find<FilterController>();
@@ -17,33 +18,41 @@ class Formsearch extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(32.0),
+                  // gradient:  LinearGradient(colors: [Colors.blue.shade100, Colors.pink.shade100]),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.pink.withValues(alpha: 8 * 0.03),
+                  color: Colors.black.withValues(alpha: 8 * 0.02), // Corrected alpha usage
                   spreadRadius: 2,
                   blurRadius: 5,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
             child: TextField(
-               controller: filterController.searchInputController,
+               controller: filterController.searchInputController2,
+               focusNode: filterController.searchFocusNode, // Assign the FocusNode here
               decoration: InputDecoration(
                 hintText: 'ค้นหา...',
                 border: InputBorder.none,
-                suffixIcon: Icon(Icons.search, color: Colors.grey[600]),
+                suffixIcon: IconButton(icon:  Icon(Icons.search, color: Colors.grey[700],size: 18,), onPressed: () {
+                  filterController.applyFilters();
+                  filterController.clearSearchFocus(); // Clear focus on search button press
+                },),
               ),
+      
                onSubmitted: (value) {
-               
-               
-               
                 filterController.applyFilters();
-                FocusScope.of(context).unfocus(); 
+                filterController.clearSearchFocus(); // Clear focus on submit
               },
-              onChanged: (value) {
-               
-               
-                filterController.applyFilters();
+              onTapOutside: (value) {
+               filterController.clearSearchFocus(); // Clear focus on tap outside
+              },
+              autofocus: false,
+              onChanged: (value) => {
+                if (value.isEmpty) {
+                  // filterController.clearSearchFocus() ,
+                  filterController.applyFilters()
+                }
               },
             ),
           ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 import 'package:food_near_me_app/views/editeprofile_ui.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
+import 'dart:io'; // <--- เพิ่มบรรทัดนี้
 
 import 'package:get/get.dart';
 
@@ -36,7 +37,6 @@ class MyprofileUi extends StatelessWidget {
           backgroundColor: Colors.pink[200],
           title: Align(
             alignment: Alignment.centerLeft,
-            // ใช้วิธีเดิมที่เคยแก้ไปแล้ว หรือถ้ายังใช้ Back3Bt ให้แน่ใจว่ามันเรียก Get.back() ถูกต้อง
             child: Back3Bt(),
           ),
           toolbarHeight: 8 * 10,
@@ -49,7 +49,6 @@ class MyprofileUi extends StatelessWidget {
             ),
             const SizedBox(width: 10),
           ],
-
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -85,7 +84,6 @@ class MyprofileUi extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   Expanded(
                     child: Container(
                       width: double.infinity,
@@ -110,9 +108,7 @@ class MyprofileUi extends StatelessWidget {
                                 color: Colors.grey[800],
                               ),
                             ),
-                            SizedBox(height: 10),
-
-                            // ห่อหุ้ม _buildTextFieldWithLabel ด้วย Obx เพื่อให้ UI อัปเดตเมื่อค่าเปลี่ยน
+                            Expanded(child: SizedBox()),
                             Obx(
                               () => _buildTextFieldWithLabel(
                                 'ชื่อเล่น',
@@ -134,21 +130,15 @@ class MyprofileUi extends StatelessWidget {
                                 false,
                               ),
                             ),
-                            Obx(
-                              () => _buildTextFieldWithLabel(
+                            _buildPasswordTextFieldWithToggle(
                                 'รหัสผ่าน',
-                                loginController.userPassword.value,
-                                true, // isObscure ควรเป็น true สำหรับรหัสผ่าน
+                                loginController,
                               ),
-                            ),
-
                             SizedBox(height: 30),
-
                             SizedBox(
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // ตรวจสอบให้แน่ใจว่าใช้ Get.to เพื่อให้สามารถย้อนกลับได้
                                   Get.to(() => EditProfileUi());
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -168,12 +158,9 @@ class MyprofileUi extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height: 15),
-
                             TextButton(
                               onPressed: () {
                                 loginController.logout();
-                                // ออกจากระบบและกลับไปหน้า Navbar (ซึ่งอาจเป็นหน้า Login/Splash)
-                                // ถ้า Navbar เป็นหน้า Login/Splash ก็เหมาะสม
                                 Get.offAll(() => LoginUi());
                               },
                               child: Text(
@@ -193,15 +180,13 @@ class MyprofileUi extends StatelessWidget {
                 ],
               ),
             ),
-
             Positioned(
               left: 0,
               right: 0,
-
               top: statusBarHeight + appBarHeight - (profileCircleSize / 1.2),
               child: Align(
                 alignment: Alignment.center,
-                child: Container(
+                child: Obx(() => Container( // เพิ่ม Obx เพื่อให้ UI อัปเดตเมื่อค่าเปลี่ยน
                   width: profileCircleSize,
                   height: profileCircleSize,
                   decoration: BoxDecoration(
@@ -217,15 +202,24 @@ class MyprofileUi extends StatelessWidget {
                     ],
                   ),
                   child: ClipOval(
-                    child: Image.asset(
-                      loginController.userProfileImageUrl.value,
-                      fit: BoxFit.cover,
-                    ),
+                    child: loginController.userProfileImageUrl.value.startsWith('assets/') // ตรวจสอบว่าเป็น asset path
+                        ? Image.asset(
+                            loginController.userProfileImageUrl.value,
+                            fit: BoxFit.cover,
+                          )
+                        : File(loginController.userProfileImageUrl.value).existsSync() // ตรวจสอบว่าเป็นไฟล์และไฟล์มีอยู่จริง
+                            ? Image.file(
+                                File(loginController.userProfileImageUrl.value), // <--- ใช้ Image.file
+                                fit: BoxFit.cover,
+                              )
+                            : Image.asset( // Fallback หากไม่ใช่ asset และไฟล์ไม่มีอยู่จริง (เช่น เป็นเส้นทางรูปภาพเก่าที่ถูกลบไปแล้ว)
+                                'assets/ics/person.png', // รูปภาพเริ่มต้น
+                                fit: BoxFit.cover,
+                              ),
                   ),
-                ),
+                )),
               ),
             ),
-
             Obx(
               () => scrollpageController.showScrollToTopButton.value
                   ? Positioned(
@@ -243,7 +237,47 @@ class MyprofileUi extends StatelessWidget {
     );
   }
 
-  Widget _buildTextFieldWithLabel(String label, String hint, bool isObscure) {
+  // ปรับปรุง _buildTextFieldWithLabel ให้ใช้ TextEditingController
+  Widget _buildTextFieldWithLabel(String label, String value, bool isObscure) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.grey[700],
+            ),
+          ),
+          SizedBox(height: 3),
+          TextField(
+            controller: TextEditingController(text: value),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.0),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: Colors.grey[100],
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 12.0,
+              ),
+            ),
+            obscureText: isObscure,
+            readOnly: true,
+          ),
+        ],
+      ),
+    );
+  }
+
+  // สร้างฟังก์ชันใหม่สำหรับช่องรหัสผ่านที่มีปุ่มลูกตา
+  Widget _buildPasswordTextFieldWithToggle(
+      String label, LoginController loginController) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: Column(
@@ -258,22 +292,36 @@ class MyprofileUi extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8),
-          TextField(
-            decoration: InputDecoration(
-              hintText: hint,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                borderSide: BorderSide.none,
+          Obx(
+            () => TextField(
+              controller: TextEditingController(text: loginController.userPassword.value),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 12.0,
+                ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    loginController.isPasswordVisible.value
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    color: Colors.grey,
+                  ),
+                  onPressed: () {
+                    loginController.togglePasswordVisibility();
+                  },
+                ),
               ),
-              filled: true,
-              fillColor: Colors.grey[100],
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 12.0,
-              ),
+              obscureText:
+                  !loginController.isPasswordVisible.value,
+              readOnly: true,
             ),
-            obscureText: isObscure,
-            readOnly: true, // ทำให้เป็น readOnly เนื่องจากหน้านี้แสดงผลเท่านั้น
           ),
         ],
       ),

@@ -19,25 +19,25 @@ class MyShopController extends GetxController {
     // *** จุดแก้ไขที่ 1: เพิ่ม Listener ติดตามการเปลี่ยนแปลง ***
     // ever() จะทำงานทุกครั้งที่ allRestaurantsObservable ใน FilterController เปลี่ยนแปลง
     ever(_filterController.allRestaurantsObservable, (_) => filterMyShops());
-    
+
     // ever() จะทำงานทุกครั้งที่ User ID เปลี่ยน (เช่น ตอน login/logout)
     ever(_loginController.userId, (_) => filterMyShops());
-    
+
     // เรียก filterMyShops() ครั้งแรกเพื่อแสดงผล
     filterMyShops();
   }
 
   void filterMyShops() {
-    if (_loginController.isLoggedIn.value && _loginController.userId.value.isNotEmpty) {
+    if (_loginController.isLoggedIn.value &&
+        _loginController.userId.value.isNotEmpty) {
       final String currentOwnerId = _loginController.userId.value;
-      
+
       // กรองร้านค้าที่เป็นของเจ้าของปัจจุบันจาก list กลาง
       final filteredShops = _filterController.allRestaurantsObservable
           .where((restaurant) => restaurant.ownerId == currentOwnerId)
           .toList();
-          
-      myOwnerShopList.assignAll(filteredShops);
 
+      myOwnerShopList.assignAll(filteredShops);
     } else {
       myOwnerShopList.clear();
     }

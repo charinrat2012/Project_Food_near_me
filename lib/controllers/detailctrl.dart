@@ -29,11 +29,10 @@ class RestaurantDetailController extends GetxController {
     _reviewController = Get.find<ReviewController>();
     _filterController = Get.find<FilterController>();
 
-
-    
     loadRestaurantDetails(); // โหลดข้อมูลครั้งแรก
     _loadReviews();
   }
+
   void restore() {
     loadRestaurantDetails();
   }
@@ -48,8 +47,14 @@ class RestaurantDetailController extends GetxController {
     // จัดการกรณีที่อาจหาร้านไม่เจอ (เช่น ร้านถูกลบไปแล้ว)
     if (restaurant.value == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        Get.snackbar('ข้อผิดพลาด', 'ไม่พบข้อมูลร้านค้า',
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(
+          'ข้อผิดพลาด',
+          'ไม่พบข้อมูลร้านค้า',
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.black.withValues(alpha: 0.1),
+          colorText: Colors.black,
+          duration: const Duration(milliseconds: 900),
+        );
         Get.back(); // กลับไปหน้าก่อนหน้าอย่างปลอดภัย
       });
     }
@@ -65,8 +70,14 @@ class RestaurantDetailController extends GetxController {
 
   void deleteRestaurant() {
     if (restaurant.value == null) {
-      Get.snackbar('ข้อผิดพลาด', 'ไม่สามารถลบ: ไม่พบข้อมูลร้านค้า',
-          snackPosition: SnackPosition.TOP);
+      Get.snackbar(
+        'ข้อผิดพลาด',
+        'ไม่สามารถลบ: ไม่พบข้อมูลร้านค้า',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.black.withValues(alpha: 0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
+      );
       return;
     }
 
@@ -79,8 +90,10 @@ class RestaurantDetailController extends GetxController {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("คุณแน่ใจหรือไม่ว่าต้องการลบร้าน\n'$restaurantName'?",
-              textAlign: TextAlign.center),
+          Text(
+            "คุณแน่ใจหรือไม่ว่าต้องการลบร้าน\n'$restaurantName'?",
+            textAlign: TextAlign.center,
+          ),
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -92,26 +105,30 @@ class RestaurantDetailController extends GetxController {
                   child: const Text(
                     "ยกเลิก",
                     style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white),
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                  ),
                   onPressed: () {
                     isDeleting.value = true;
                     Get.back();
-                    _filterController
-                        .removeRestaurantFromList(currentRestaurantId);
+                    _filterController.removeRestaurantFromList(
+                      currentRestaurantId,
+                    );
                     Get.back();
                     Get.snackbar(
                       'สำเร็จ',
                       'ลบร้านค้า "$restaurantName" เรียบร้อยแล้ว',
                       snackPosition: SnackPosition.TOP,
-                      backgroundColor: Colors.green,
-                      colorText: Colors.white,
-                      duration: const Duration(seconds: 2),
+                      backgroundColor: Colors.black.withValues(alpha: 0.1),
+                      colorText: Colors.black,
+                      duration: const Duration(milliseconds: 900),
                     );
                     isDeleting.value = false;
                   },
@@ -141,16 +158,18 @@ class RestaurantDetailController extends GetxController {
           'ส่งรีวิวแล้ว',
           'รีวิวของคุณถูกส่งเรียบร้อยแล้วค่ะ!',
           snackPosition: SnackPosition.TOP,
-          backgroundColor: Colors.green[400],
-          colorText: Colors.white,
+          backgroundColor: Colors.black.withValues(alpha: 0.1),
+          colorText: Colors.black,
+          duration: const Duration(milliseconds: 900),
         );
       } else {
         Get.snackbar(
           'ข้อผิดพลาด',
           'โปรดให้คะแนนและเขียนคอมเมนต์ให้ครบถ้วนก่อนส่ง',
           snackPosition: SnackPosition.TOP,
-          backgroundColor: Colors.red[400],
-          colorText: Colors.white,
+          backgroundColor: Colors.black.withValues(alpha: 0.1),
+          colorText: Colors.black,
+          duration: const Duration(milliseconds: 900),
         );
       }
     } else {

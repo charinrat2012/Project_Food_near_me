@@ -7,9 +7,6 @@ import 'localist.dart';
 class LocationFilterBar extends StatelessWidget {
   const LocationFilterBar({super.key});
 
- 
- 
-
   @override
   Widget build(BuildContext context) {
     final FilterController filterController = Get.find<FilterController>();
@@ -19,23 +16,27 @@ class LocationFilterBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        SingleChildScrollView(
-  scrollDirection: Axis.horizontal,
-  child: Row(
-    children: [
-      Obx(() => _buildProvinceDropdown(filterController)),
-      const SizedBox(width: 8),
-      Obx(() => _buildDistrictDropdown(filterController)),
-      const SizedBox(width: 8),
-       _buildLocationButton(),
-
-      
-    ],
-  ),
-),
-  const SizedBox(height: 8),
-
-SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterController))),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Obx(() => _buildProvinceDropdown(filterController)),
+                const SizedBox(width: 8),
+                Obx(() => _buildDistrictDropdown(filterController)),
+                const SizedBox(width: 8),
+                _buildLocationButton(),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Flexible(fit: FlexFit.loose, child: Obx(() => _buildCategoryDropdown(filterController))),
+              const SizedBox(width: 8),
+              // เพิ่ม SizedBox เพื่อกำหนดความกว้างที่ชัดเจนให้กับ Dropdown สถานะร้าน
+              SizedBox(width: 143, child: Obx(() => _buildOpenStatusDropdown(filterController))),
+            ],
+          ),
         ],
       ),
     );
@@ -51,18 +52,16 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
               ? null
               : filterController.selectedProvince.value,
           hint: const Text('เลือกจังหวัด', style: TextStyle(color: Colors.white)),
-         
           dropdownColor: Colors.purple[200],
           iconEnabledColor: Colors.white,
           menuMaxHeight: 400,
-        menuWidth: 200,
+          menuWidth: 200,
           style: const TextStyle(color: Colors.white),
           items: [
             const DropdownMenuItem<String>(
               value: '',
               child: Text('ทั้งหมด', style: TextStyle(color: Colors.white)),
             ),
-           
             ...Localist.provinces.map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -79,7 +78,6 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
   }
 
   Widget _buildDistrictDropdown(FilterController filterController) {
-   
     final List<String> districts = Localist.districtsByProvince[filterController.selectedProvince.value] ?? [];
     return _buildContainer(
       SizedBox(
@@ -93,7 +91,7 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
           dropdownColor: Colors.purple[200],
           iconEnabledColor: Colors.white,
           menuMaxHeight: 400,
-        menuWidth: 200,
+          menuWidth: 200,
           style: const TextStyle(color: Colors.white),
           items: [
             const DropdownMenuItem<String>(
@@ -120,7 +118,6 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
       height: 35,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-       
         gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
         borderRadius: BorderRadius.circular(20),
       ),
@@ -135,13 +132,11 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
         iconEnabledColor: Colors.white,
         menuMaxHeight: 400,
         menuWidth: 200,
-       
         items: [
           const DropdownMenuItem<String>(
             value: '',
             child: Text('ทั้งหมด', style: TextStyle(color: Colors.white)),
           ),
-         
           ...Localist.foodTypes.map((String value) {
             return DropdownMenuItem<String>(
               value: value,
@@ -156,16 +151,53 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
     );
   }
 
- 
+  // ฟังก์ชันใหม่สำหรับ Dropdown สถานะร้านค้า (เปิด/ปิด)
+  Widget _buildOpenStatusDropdown(FilterController filterController) {
+    return Container(
+      height: 35,
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: DropdownButton<String>(
+        isExpanded: true,
+        value: filterController.openStatusFilter.value,
+        hint: const Text('สถานะร้าน', style: TextStyle(color: Colors.white)),
+        dropdownColor: Colors.purple[200],
+        style: const TextStyle(color: Colors.white),
+        iconEnabledColor: Colors.white,
+        menuMaxHeight: 200,
+        menuWidth: 150,
+        items: const [
+          DropdownMenuItem<String>(
+            value: 'all',
+            child: Text('ทั้งหมด', style: TextStyle(color: Colors.white)),
+          ),
+          DropdownMenuItem<String>(
+            value: 'open',
+            child: Text('เปิด', style: TextStyle(color: Colors.white)),
+          ),
+          DropdownMenuItem<String>(
+            value: 'closed',
+            child: Text('ปิด', style: TextStyle(color: Colors.white)),
+          ),
+        ],
+        onChanged: (newValue) {
+          filterController.openStatusFilter.value = newValue ?? 'all';
+        },
+      ),
+    );
+  }
+
   Widget _buildLocationButton() {
     const double iconSize = 20.0;
     const double buttonPadding = 8.0;
 
     return Container(
       height: iconSize + buttonPadding * 2,
-      width: iconSize + buttonPadding * 2, 
+      width: iconSize + buttonPadding * 2,
       decoration: BoxDecoration(
-       
         gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
         borderRadius: BorderRadius.circular((iconSize + buttonPadding * 2) / 2),
       ),
@@ -178,8 +210,9 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
             'ตำแหน่งปัจจุบัน',
             'ฟังก์ชันนี้ยังไม่ได้ถูกพัฒนา',
             snackPosition: SnackPosition.TOP,
-            backgroundColor: Colors.blueAccent,
-            colorText: Colors.white,
+            backgroundColor: Colors.black.withOpacity(0.1),
+            colorText: Colors.black,
+            duration: const Duration(milliseconds: 900),
           );
         },
         icon: const Icon(Icons.my_location, color: Colors.white),
@@ -192,7 +225,6 @@ SizedBox(width: double.infinity, child: Obx(() => _buildCategoryDropdown(filterC
       height: 35,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-       
         gradient: LinearGradient(colors: [Colors.pink[300]!, Colors.blue[300]!]),
         borderRadius: BorderRadius.circular(20),
       ),

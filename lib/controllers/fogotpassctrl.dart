@@ -34,8 +34,9 @@ class ForgotpassController extends GetxController {
         'System',
         'กรุณากรอกข้อมูลให้ครบถ้วน',
         snackPosition: SnackPosition.TOP,
-        colorText: Colors.white,
-        backgroundColor: Colors.red.shade200,
+        backgroundColor: Colors.black.withValues(alpha: 0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
       );
       return;
     }
@@ -47,22 +48,25 @@ class ForgotpassController extends GetxController {
         'System',
         'กรุณากรอกอีเมลให้ถูกต้อง',
         snackPosition: SnackPosition.TOP,
-        colorText: Colors.white,
-        backgroundColor: Colors.red.shade200,
+        backgroundColor: Colors.black.withValues(alpha: 0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
       );
       return;
     }
 
     // 3. ตรวจสอบว่าอีเมลมีอยู่ในระบบหรือไม่ โดยใช้ข้อมูลจาก LoginController
     final String enteredEmail = emailController.text.trim();
-    if (!_loginController.emails.contains(enteredEmail)) { // ใช้ enteredEmail ที่ trim แล้ว
+    if (!_loginController.emails.contains(enteredEmail)) {
+      // ใช้ enteredEmail ที่ trim แล้ว
       Get.closeCurrentSnackbar();
       Get.snackbar(
         'System',
         'ไม่พบอีเมลนี้ในระบบ',
         snackPosition: SnackPosition.TOP,
-        colorText: Colors.white,
-        backgroundColor: Colors.red.shade200,
+        backgroundColor: Colors.black.withValues(alpha: 0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
       );
       return;
     }
@@ -74,8 +78,9 @@ class ForgotpassController extends GetxController {
         'System',
         'กรุณายืนยันตัวตน',
         snackPosition: SnackPosition.TOP,
-        colorText: Colors.white,
-        backgroundColor: Colors.red.shade200,
+        backgroundColor: Colors.black.withValues(alpha: 0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
       );
       return;
     }
@@ -95,9 +100,9 @@ class ForgotpassController extends GetxController {
       'System',
       'ส่ง OTP ไปยังอีเมลของคุณแล้ว', // แสดงข้อความแจ้งเตือนเมื่อสำเร็จ
       snackPosition: SnackPosition.TOP,
-      colorText: Colors.white,
-      backgroundColor: Colors.green.shade400,
-      duration: const Duration(seconds: 2),
+      backgroundColor: Colors.black.withValues(alpha: 0.1),
+      colorText: Colors.black,
+      duration: const Duration(milliseconds: 900),
     );
     return;
   }

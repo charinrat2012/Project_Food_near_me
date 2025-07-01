@@ -21,12 +21,9 @@ class MainController extends GetxController {
     tabController.addListener(() {
       if ((tabController.index == 0 || tabController.index == 2) &&
           !_loginController.isLoggedIn.value) {
-       
-       
         _showLoginDialog();
         tabController.jumpToTab(_previousIndex);
       } else {
-       
         _previousIndex = tabController.index;
       }
     });
@@ -38,7 +35,6 @@ class MainController extends GetxController {
     super.onClose();
   }
 
- 
   void _showLoginDialog() {
     Get.defaultDialog(
       title: 'แจ้งเตือน',
@@ -63,7 +59,10 @@ class MainController extends GetxController {
                     ),
                     child: const Text(
                       "ตกลง",
-                      style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -72,7 +71,6 @@ class MainController extends GetxController {
                   child: ElevatedButton(
                     onPressed: () {
                       Get.back();
-                     
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
@@ -80,7 +78,10 @@ class MainController extends GetxController {
                     ),
                     child: const Text(
                       "ยกเลิก",
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -127,6 +128,5 @@ class MainController extends GetxController {
 
   void goToHomeTab() {
     tabController.jumpToTab(1);
-   
   }
 }

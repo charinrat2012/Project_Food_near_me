@@ -1,5 +1,6 @@
 // lib/screens/about_app_ui.dart
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
 import 'package:get/get.dart';
 import '../widgets/matwid/back_bt.dart';
 import 'setting_ui.dart';
@@ -11,7 +12,7 @@ class AboutAppUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackBt(srcp: () => SettingUi()),
+        leading: Back3Bt(),
         title: const Text('เกี่ยวกับ ร้านอาหารใกล้ฉัน'),
         backgroundColor: Colors.blue[200],
         automaticallyImplyLeading: false,

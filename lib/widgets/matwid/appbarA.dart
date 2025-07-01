@@ -1,11 +1,14 @@
+// lib/widgets/matwid/appbarA.dart
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/setting_ui.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:io'; // <--- เพิ่มบรรทัดนี้
 
 import '../../controllers/loginctrl.dart';
 import '../../views/login_ui.dart';
 import '../../views/myprofile_ui.dart';
+import '../../controllers/filterctrl.dart';
 
 class AppbarA extends StatelessWidget implements PreferredSizeWidget {
   const AppbarA({super.key});
@@ -13,6 +16,8 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final LoginController loginController = Get.find<LoginController>();
+    final FilterController filterController = Get.find<FilterController>();
+
     return AppBar(
       backgroundColor: Colors.pink[200],
       title: Align(
@@ -32,6 +37,9 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
               padding: const EdgeInsets.only(right: 16.0),
               child: PopupMenuButton<String>(
                 onSelected: (String result) async {
+                  filterController.clearSearchFocus();
+                  FocusScope.of(context).unfocus();
+
                   await Future.delayed(const Duration(milliseconds: 100));
 
                   if (result == 'profile') {
@@ -40,6 +48,7 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
                     Get.to(() => SettingUi());
                   } else if (result == 'logout') {
                     loginController.logout();
+                    Get.offAll(() => LoginUi());
                   }
                 },
                 color: Colors.pink[50],
@@ -68,7 +77,12 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
                 child: CircleAvatar(
                   radius: 20,
                   backgroundImage: loginController.userProfileImageUrl.value.isNotEmpty
-                      ? AssetImage(loginController.userProfileImageUrl.value)
+                      ? (loginController.userProfileImageUrl.value.startsWith('assets/') // ตรวจสอบว่าเป็น asset path
+                          ? AssetImage(loginController.userProfileImageUrl.value) // ใช้ AssetImage
+                          : File(loginController.userProfileImageUrl.value).existsSync() // ตรวจสอบว่าเป็นไฟล์และไฟล์มีอยู่จริง
+                              ? FileImage(File(loginController.userProfileImageUrl.value)) // ใช้ FileImage
+                              : const AssetImage('assets/ics/person.png') // Fallback หากไม่ใช่ asset และไฟล์ไม่มีอยู่จริง
+                        ) as ImageProvider<Object>? // Cast to ImageProvider<Object>?
                       : null,
                   child: loginController.userProfileImageUrl.value.isEmpty
                       ? const Icon(Icons.person, color: Colors.white)
@@ -82,7 +96,8 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
           } else {
             return TextButton(
               onPressed: () {
-                // Get.to(() => LoginUi());
+                filterController.clearSearchFocus();
+                FocusScope.of(context).unfocus();
                 Get.offAll(() => LoginUi());
               },
               child: const Text(

@@ -122,10 +122,12 @@ class MyShopCard extends StatelessWidget {
                                       Get.snackbar(
                                         'สถานะร้านค้า',
                                         isOpen.value ? 'ร้าน ${restaurantName} เปิดแล้ว!' : 'ร้าน ${restaurantName} ปิดแล้ว!',
+                                        
                                         snackPosition: SnackPosition.TOP,
-                                        backgroundColor: isOpen.value ? Colors.green : Colors.red,
-                                        colorText: Colors.white,
-                                        duration: const Duration(milliseconds: 800),
+                                        backgroundColor: isOpen.value ? Colors.white.withValues(alpha: 0.1) : Colors.white.withValues(alpha: 0.1),
+                                        colorText: Colors.black,
+                                        duration: const Duration(milliseconds: 900),
+
                                       );
                                     },
                                     activeColor: Colors.green,

@@ -88,6 +88,7 @@ class HomeUi extends StatelessWidget {
                                       rating: restaurant.rating,
                                       isOpen: restaurant.isOpen.value,
                                       showMotorcycleIcon: restaurant.showMotorcycleIcon,
+                                    
                                       onTap: () {
                                         Get.to(
                                           () => RestaurantDetailPageUi(
@@ -102,7 +103,7 @@ class HomeUi extends StatelessWidget {
                                             );
                                           }),
                                         );
-                                      },
+                                      }, 
                                     );
                                   }).toList(),
                                 );

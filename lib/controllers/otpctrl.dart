@@ -12,7 +12,7 @@ class OtpCotroller extends GetxController {
 
   // Constructor สำหรับ OtpController
   OtpCotroller({this.fields = 5})
-      : otpcontroller = List.generate(fields, (index) => TextEditingController());
+    : otpcontroller = List.generate(fields, (index) => TextEditingController());
 
   @override
   void onInit() {
@@ -58,7 +58,8 @@ class OtpCotroller extends GetxController {
   }
 
   // เมธอดสำหรับยืนยัน OTP
-  void verifyOtp() async { // เปลี่ยนเป็น async เพื่อใช้ Future.delayed
+  void verifyOtp() async {
+    // เปลี่ยนเป็น async เพื่อใช้ Future.delayed
     String enteredOtp = getOtpValue();
 
     // 1. ตรวจสอบว่ากรอก OTP ครบถ้วนหรือไม่
@@ -68,8 +69,9 @@ class OtpCotroller extends GetxController {
         'System',
         'กรุณากรอกรหัส OTP ให้ครบถ้วน', // ข้อความที่ชัดเจนขึ้น
         snackPosition: SnackPosition.TOP,
-        colorText: Colors.white,
-        backgroundColor: Colors.red.shade200,
+        backgroundColor: Colors.black.withValues(alpha: 0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
       );
       return; // หยุดการทำงาน
     }
@@ -81,8 +83,9 @@ class OtpCotroller extends GetxController {
         'System',
         'รหัส OTP ไม่ถูกต้อง', // ข้อความที่ชัดเจนขึ้น
         snackPosition: SnackPosition.TOP,
-        colorText: Colors.white,
-        backgroundColor: Colors.red.shade200,
+        backgroundColor: Colors.black.withValues(alpha: 0.1),
+        colorText: Colors.black,
+        duration: const Duration(milliseconds: 900),
       );
       // clearOtpFields(); // ล้างช่อง OTP เมื่อ OTP ไม่ถูกต้อง (ไม่บังคับ แต่ช่วย UX)
       return; // หยุดการทำงาน
@@ -91,7 +94,9 @@ class OtpCotroller extends GetxController {
     // หาก OTP ถูกต้อง
     // ในแอปจริง: อาจจะเรียก API เพื่อยืนยัน OTP กับ Backend
     // จำลองการทำงาน: หน่วงเวลาเล็กน้อยเพื่อจำลองการตรวจสอบ
-    await Future.delayed(const Duration(milliseconds: 1000)); // จำลองการทำงาน 1 วินาที
+    await Future.delayed(
+      const Duration(milliseconds: 1000),
+    ); // จำลองการทำงาน 1 วินาที
 
     // ล้างข้อมูลในช่อง OTP และซ่อนคีย์บอร์ด
     clearOtpFields();
@@ -104,9 +109,9 @@ class OtpCotroller extends GetxController {
       'System',
       'ยืนยัน OTP สำเร็จ',
       snackPosition: SnackPosition.TOP,
-      colorText: Colors.white,
-      backgroundColor: Colors.green.shade400,
-      duration: const Duration(seconds: 2),
+      backgroundColor: Colors.black.withValues(alpha: 0.1),
+      colorText: Colors.black,
+      duration: const Duration(milliseconds: 900),
     );
 
     // นำทางไปยังหน้า ResetpassUi

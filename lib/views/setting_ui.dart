@@ -8,6 +8,7 @@ import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/logo.dart';
 import 'package:get/get.dart';
 
+import '../widgets/matwid/back3_bt.dart';
 import 'navbar.dart';
 
 class SettingUi extends StatelessWidget {
@@ -18,7 +19,7 @@ class SettingUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackBt(srcp: () => const Navbar()),
+        leading: Back3Bt(),
         title: const Text('ตั้งค่า'),
         backgroundColor: Colors.blue[200],
         automaticallyImplyLeading: false,

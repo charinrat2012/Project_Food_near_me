@@ -1,19 +1,17 @@
 
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/controllers/registerctrl.dart';
-import 'package:food_near_me_app/views/login_ui.dart';
-import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
-import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
-import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
-import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
-import 'package:food_near_me_app/widgets/regiswid/improfile_insert.dart';
-import 'package:food_near_me_app/widgets/regiswid/register_bt.dart';
-import 'package:food_near_me_app/widgets/regiswid/register_head.dart';
+import 'package:food_near_me_app/controllers/register_ctrl.dart';
+
+import 'package:food_near_me_app/widgets/material_widget/back3_bt.dart';
+
+import 'package:food_near_me_app/widgets/material_widget/backgoundlogin.dart';
+import 'package:food_near_me_app/widgets/material_widget/blurcontainer.dart';
+import 'package:food_near_me_app/widgets/register_widget/register_image_profile_insert.dart';
+import 'package:food_near_me_app/widgets/register_widget/register_bt.dart';
+import 'package:food_near_me_app/widgets/register_widget/register_head_text.dart';
 import 'package:get/get.dart';
-import 'package:food_near_me_app/widgets/regiswid/form_register.dart';
-import '../widgets/matwid/iconperson.dart';
-import 'navbar_ui.dart';
-import 'dart:io'; 
+import 'package:food_near_me_app/widgets/register_widget/register_form_edit.dart';
+
 
 class RegisterUi extends StatelessWidget {
   RegisterUi({super.key});
@@ -46,12 +44,12 @@ class RegisterUi extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Stack(children: [Back3Bt(),  ImprofileInsert() ]),
+                          Stack(children: [Back3Bt(),  RegisterImageProfileInsert() ]),
 
                           Expanded(child: SizedBox()),
-                          RegisterHead(),
+                          RegisterHeadText(),
                           Expanded(child: SizedBox()),
-                          FormRegister(),
+                          RegisterFormEdit(),
                           Expanded(child: SizedBox()),
 
                           RegisterBt(),

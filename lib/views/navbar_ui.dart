@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import '../controllers/pagectrl.dart';
+import '../controllers/page_navbar_ctrl.dart';
 
 
 class Navbar extends StatefulWidget {
@@ -11,13 +11,13 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
-  late MainController _mainController;
+  late PageNavbarController _pageNavbarController;
   
 
   @override
   void initState() {
     super.initState();
-    _mainController = Get.find<MainController>();
+    _pageNavbarController = Get.find<PageNavbarController>();
     
   }
 
@@ -26,8 +26,8 @@ class _NavbarState extends State<Navbar> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      controller: _mainController.tabController,
-      tabs: _mainController.tabs,
+      controller: _pageNavbarController.tabController,
+      tabs: _pageNavbarController.tabs,
       navBarBuilder: (navBarConfig) => Style6BottomNavBar(
         navBarConfig: navBarConfig,
         height: 60,

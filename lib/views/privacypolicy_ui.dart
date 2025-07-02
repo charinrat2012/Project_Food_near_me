@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
+import 'package:food_near_me_app/widgets/material_widget/back3_bt.dart';
 import 'package:get/get.dart';
-import '../widgets/matwid/back_bt.dart';
+import '../widgets/material_widget/back_bt.dart';
 import 'setting_ui.dart';
 
 class PrivacyPolicyUi extends StatelessWidget {

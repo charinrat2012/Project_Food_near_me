@@ -15,7 +15,7 @@ class Restaurant {
   final String phoneNumber;
   final String location;
   final List<String> menuImages;
-  final List<String> bannerImages;
+  final List<String> promotion;
   final String type;
   final RxBool isFavorite; // *** เพิ่ม isFavorite เป็น final RxBool ***
 
@@ -34,7 +34,7 @@ class Restaurant {
     required this.phoneNumber,
     required this.location,
     required this.menuImages,
-    required this.bannerImages,
+    required this.promotion,
     required this.type,
     bool? isFavorite, // *** รับ isFavorite เป็น bool ธรรมดา และเป็น optional parameter ***
   }) : this.isOpen = isOpen.obs, // Initializer สำหรับ isOpen
@@ -56,7 +56,7 @@ class Restaurant {
       phoneNumber: map['phoneNumber'] as String,
       location: map['location'] as String,
       menuImages: List<String>.from(map['menuImages'] ?? []),
-      bannerImages: List<String>.from(map['bannerImages'] ?? []),
+      promotion: List<String>.from(map['promotion'] ?? []),
       type: map['type'] as String,
       isFavorite: map['isFavorite'] as bool? ?? false, // *** รับ isFavorite จาก map ถ้าไม่มีให้เป็น false ***
     );
@@ -77,9 +77,9 @@ class Restaurant {
     String? phoneNumber,
     String? location,
    List<String>? menuImages,
-    List<String>? bannerImages,
+    List<String>? promotion,
     String? type,
-    bool? isFavorite, // *** เพิ่ม isFavorite เป็น bool ธรรมดา ***
+    bool? isFavorite, 
   }) {
     return Restaurant(
       id: id ?? this.id,
@@ -95,7 +95,7 @@ class Restaurant {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       location: location ?? this.location,
       menuImages: menuImages ?? this.menuImages,
-      bannerImages: bannerImages ?? this.bannerImages,
+      promotion: promotion ?? this.promotion,
       type: type ?? this.type,
       isFavorite: isFavorite ?? this.isFavorite.value, // *** ใช้ .value เพื่อให้รับ bool ***
     );

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/views/forgotpass_ui.dart';
-import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
-import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
-import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
-import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
-import 'package:food_near_me_app/widgets/otpwid/form_otp.dart';
-import 'package:food_near_me_app/widgets/matwid/iconperson.dart';
-import 'package:food_near_me_app/widgets/otpwid/otp_head.dart';
-import 'package:food_near_me_app/widgets/otpwid/otp_logo.dart';
-import '../widgets/otpwid/otp_bt.dart';
-import 'navbar_ui.dart';
+
+import 'package:food_near_me_app/widgets/material_widget/back3_bt.dart';
+
+import 'package:food_near_me_app/widgets/material_widget/backgoundlogin.dart';
+import 'package:food_near_me_app/widgets/material_widget/blurcontainer.dart';
+import 'package:food_near_me_app/widgets/otp_widget/otp_form_edit.dart';
+import 'package:food_near_me_app/widgets/material_widget/iconperson.dart';
+import 'package:food_near_me_app/widgets/otp_widget/otp_head_text.dart';
+import 'package:food_near_me_app/widgets/otp_widget/otp_logo.dart';
+import '../widgets/otp_widget/otp_bt.dart';
+
 
 class OtpUi extends StatelessWidget {
   const OtpUi({super.key});
@@ -43,8 +43,8 @@ class OtpUi extends StatelessWidget {
                       child: Column(
                         children: [
                           Stack(children: [Back3Bt(), Iconperson()]),
-                          OtpHead(),
-                          FormOtp(),
+                          OtpHeadText(),
+                          OtpFormEdit(),
 
                           Expanded(child: SizedBox()),
                           OtpLogo(),

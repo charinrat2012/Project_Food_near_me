@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import '../model/bannerslide.dart';
 
-import '../views/details_ui.dart';
-import 'detailctrl.dart';
+import '../views/restaurant_details_ui.dart';
+import 'restaurant_detail_ctrl.dart';
 
 class SlideController extends GetxController {
   final List<BannerItem> originalBannerItems = [

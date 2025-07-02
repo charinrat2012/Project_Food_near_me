@@ -1,9 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
-import 'package:get/get.dart';
-import '../widgets/matwid/back_bt.dart';
-import 'setting_ui.dart';
+import 'package:food_near_me_app/widgets/material_widget/back3_bt.dart';
 
 class AboutAppUi extends StatelessWidget {
   const AboutAppUi({super.key});
@@ -25,18 +21,7 @@ class AboutAppUi extends StatelessWidget {
       ),
       body: Container(
         color: const Color.fromARGB(255, 255, 255, 255),
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
+
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -59,7 +44,11 @@ class AboutAppUi extends StatelessWidget {
 
               Text(
                 'วิสัยทัศน์ของเรา',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -70,7 +59,11 @@ class AboutAppUi extends StatelessWidget {
 
               Text(
                 'คุณสมบัติเด่น',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -93,7 +86,11 @@ class AboutAppUi extends StatelessWidget {
 
               Text(
                 'ทีมงานของเรา',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -104,7 +101,11 @@ class AboutAppUi extends StatelessWidget {
 
               Text(
                 'ติดต่อเรา',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -114,12 +115,20 @@ class AboutAppUi extends StatelessWidget {
               SizedBox(height: 24),
               Text(
                 'ขอบคุณที่เลือกใช้แอปพลิเคชัน "ร้านอาหารใกล้ฉัน"!',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 24),
               Text(
                 'เวอร์ชั่น: 0.0.11',
-                style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.black54),
+                style: TextStyle(
+                  fontSize: 14,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black54,
+                ),
               ),
             ],
           ),

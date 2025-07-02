@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/controllers/loginctrl.dart';
+import 'package:food_near_me_app/controllers/login_ctrl.dart';
 import 'package:food_near_me_app/views/navbar_ui.dart';
-import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
-import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
-import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';
-import 'package:food_near_me_app/widgets/loginwid/form_login.dart';
-import 'package:food_near_me_app/widgets/loginwid/login_with.dart';
-import 'package:food_near_me_app/widgets/loginwid/path_bt.dart';
-import 'package:food_near_me_app/widgets/loginwid/login_bt.dart';
+import 'package:food_near_me_app/widgets/material_widget/back_bt.dart';
+import 'package:food_near_me_app/widgets/material_widget/backgoundlogin.dart';
+import 'package:food_near_me_app/widgets/material_widget/blurcontainer.dart';
+import 'package:food_near_me_app/widgets/login_widget/login_form.dart';
+import 'package:food_near_me_app/widgets/login_widget/login_with_bt.dart';
+import 'package:food_near_me_app/widgets/login_widget/login_path_bt.dart';
+import 'package:food_near_me_app/widgets/login_widget/login_bt.dart';
 import 'package:get/get.dart';
 
-import '../widgets/matwid/iconperson.dart';
-import '../widgets/loginwid/login_head.dart';
+import '../widgets/material_widget/iconperson.dart';
+import '../widgets/login_widget/login_head_text.dart';
 
 class LoginUi extends StatelessWidget {
   LoginUi({super.key});
@@ -49,11 +49,11 @@ class LoginUi extends StatelessWidget {
                           children: [
                             Stack(children: [BackBt(srcp: () =>  Navbar(),), Iconperson()]),
                            
-                            LoginHead(),
+                            LoginHeadText(),
                            
-                            FormLogin(),
-                            PathBt(),
-                            LoginWith(),
+                            LoginForm(),
+                            LoginPathBt(),
+                            LoginWithBt(),
                            
                             LoginBt(),
                           ],

@@ -1,49 +1,39 @@
-
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/controllers/filterctrl.dart';
-import 'package:food_near_me_app/widgets/homewid/show_card_home.dart';
-import 'package:food_near_me_app/widgets/matwid/bt_scrolltop.dart';
+
+import 'package:food_near_me_app/widgets/home_widget/home_show_card.dart';
+import 'package:food_near_me_app/widgets/material_widget/bt_scrolltop.dart';
 import 'package:get/get.dart';
 
-
-import '../controllers/detailctrl.dart';
 import '../controllers/scrollctrl.dart';
-import '../widgets/homewid/LocationFilterBar.dart';
-import '../widgets/matwid/formsearch.dart';
-import '../widgets/homewid/rescard.dart';
+import '../widgets/home_widget/home_location_FilterBar.dart';
+import '../widgets/material_widget/search_bar_filter.dart';
 
-import '../widgets/homewid/slideim.dart';
+import '../widgets/home_widget/home_slide_image.dart';
 
-import '../widgets/matwid/appbarA.dart';
-import '../widgets/matwid/scrolltotop_bt.dart';
-import 'details_ui.dart';
-
-
+import '../widgets/material_widget/appbarA.dart';
 
 class HomeUi extends StatelessWidget {
   const HomeUi({super.key});
 
   @override
   Widget build(BuildContext context) {
-     final ScrollpageController scrollpageController =
-        Get.find<ScrollpageController>(tag: 'home_scroll') ;
+    final ScrollpageController scrollpageController =
+        Get.find<ScrollpageController>(tag: 'home_scroll');
     // final FilterController filterController = Get.find<FilterController>();
     // final FilterController filterController = Get.find<FilterController>();
 
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
-       
       },
       child: Scaffold(
         backgroundColor: Colors.pink[200],
-        appBar: const AppbarA(tag: 'home filter ctrl',),
+        appBar: const AppbarA(tag: 'home filter ctrl'),
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.blue[200]!,
-              Colors.pink[200]!,
-            ]),
+            gradient: LinearGradient(
+              colors: [Colors.blue[200]!, Colors.pink[200]!],
+            ),
           ),
           child: Stack(
             children: [
@@ -67,12 +57,12 @@ class HomeUi extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                               Formsearch(tag: 'home'),
-                              const LocationFilterBar(),
+                               SearchBarFilter(tag: 'home'),
+                              const HomeLocationFilterbar(),
                               const SizedBox(height: 8),
-                              Slideim(),
+                              HomeSlideImage(),
                               const SizedBox(height: 8),
-                             ShowCardHome(),
+                              ShowCardHome(),
                               const SizedBox(height: 50),
                             ],
                           ),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:food_near_me_app/controllers/loginctrl.dart';
+import 'package:food_near_me_app/controllers/login_ctrl.dart';
 import 'package:food_near_me_app/views/aboutapp_ui.dart';
 import 'package:food_near_me_app/views/contact_us_ui.dart';
 import 'package:food_near_me_app/views/privacypolicy_ui.dart';
 import 'package:food_near_me_app/views/terms_conditions_ui.dart';
-import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
-import 'package:food_near_me_app/widgets/matwid/logo.dart';
+import 'package:food_near_me_app/widgets/material_widget/back_bt.dart';
+import 'package:food_near_me_app/widgets/material_widget/logo.dart';
 import 'package:get/get.dart';
 
-import '../widgets/matwid/back3_bt.dart';
+import '../widgets/material_widget/back3_bt.dart';
 import 'navbar_ui.dart';
 
 class SettingUi extends StatelessWidget {

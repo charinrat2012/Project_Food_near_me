@@ -5,9 +5,9 @@ import '../../controllers/restaurant_detail_ctrl.dart';
 import '../material_widget/star_rating.dart';
 import '../material_widget/status_tag.dart';
 
-class Description extends StatelessWidget {
+class DetailDescription extends StatelessWidget {
   final String restaurantId;
-  const Description({super.key, required this.restaurantId});
+  const DetailDescription({super.key, required this.restaurantId});
 
   @override
   Widget build(BuildContext context) {

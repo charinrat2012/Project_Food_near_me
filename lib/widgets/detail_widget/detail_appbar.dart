@@ -9,9 +9,9 @@ import '../../controllers/scrollctrl.dart';
 import '../../views/edit_restaurant_detail_ui.dart';
 import '../material_widget/back3_bt.dart';
 
-class AppbarDetail extends StatelessWidget implements PreferredSizeWidget {
+class DetailAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String restaurantId;
-  const AppbarDetail({super.key, required this.restaurantId});
+  const DetailAppbar({super.key, required this.restaurantId});
 
   @override
   Widget build(BuildContext context) {

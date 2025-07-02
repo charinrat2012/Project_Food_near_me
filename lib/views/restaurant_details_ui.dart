@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/edit_restaurant_detail_ui.dart';
 import 'package:food_near_me_app/views/home_ui.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
-import 'package:food_near_me_app/widgets/detail_widget/description.dart';
+import 'package:food_near_me_app/widgets/detail_widget/detail_description.dart';
 import 'package:food_near_me_app/widgets/detail_widget/detail_head_banner_text.dart';
 import 'package:food_near_me_app/widgets/detail_widget/detail_menu_image.dart';
 import 'package:food_near_me_app/widgets/detail_widget/review.dart';
@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 import '../controllers/restaurant_detail_ctrl.dart';
 
 import '../controllers/scrollctrl.dart';
-import '../widgets/detail_widget/appbar_detail.dart';
+import '../widgets/detail_widget/detail_appbar.dart';
 import '../widgets/detail_widget/detail_promotion.dart';
 import '../widgets/detail_widget/detail_head_image.dart';
 
@@ -39,7 +39,7 @@ class RestaurantDetailPageUi extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppbarDetail(restaurantId: restaurantId),
+        appBar: DetailAppbar(restaurantId: restaurantId),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -91,7 +91,7 @@ class RestaurantDetailPageUi extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Description(restaurantId: restaurantId),
+                                        DetailDescription(restaurantId: restaurantId),
                                         const SizedBox(height: 20),
                                         DetailMenuImage(menuImages: menuImages),
 

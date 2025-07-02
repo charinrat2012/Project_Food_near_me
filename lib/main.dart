@@ -30,9 +30,19 @@ void main() {
   Get.put(LoginController());
   Get.put(ForgotpassController());
   Get.put(ResetpassController());
-  // Get.put(DetailController());
-  // Get.put(EditDetailController());
+  
+  
+
   Get.put(FilterController());
+
+  Get.put(ScrollpageController(), tag: 'home_scroll');
+  Get.put(ScrollpageController(), tag: 'favorite_scroll');
+  Get.put(ScrollpageController(), tag: 'myshop_scroll');
+  Get.put(ScrollpageController(), tag: 'detail_scroll');
+  Get.put(ScrollpageController(), tag: 'editdetail_scroll');
+  Get.put(ScrollpageController(), tag: 'editprofile_scroll');
+
+  
   Get.put(MyShopController());
   Get.put(RestaurantController());
 
@@ -40,7 +50,7 @@ void main() {
   Get.put(MainController());
   Get.put(ReviewController());
   Get.put(SlideController());
-  // Get.put(ScrollpageController());
+  
   Get.put(RegisterController());
   Get.put(OtpCotroller());
   Get.put(SplashContrller());

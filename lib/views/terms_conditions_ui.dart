@@ -1,4 +1,4 @@
-// lib/screens/terms_conditions_ui.dart
+
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
 import 'package:get/get.dart';
@@ -25,18 +25,7 @@ class TermsConditionsUi extends StatelessWidget {
       ),
       body: Container(
         color: const Color.fromARGB(255, 255, 255, 255),
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
+
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(

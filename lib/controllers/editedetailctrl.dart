@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/filterctrl.dart';
 import 'package:food_near_me_app/controllers/detailctrl.dart';
 import '../model/restaurant.dart';
-import 'package:image_picker/image_picker.dart'; // Import image_picker
+import 'package:image_picker/image_picker.dart'; 
 
 class EditRestaurantDetailsController extends GetxController {
   final String restaurantId;
@@ -16,14 +16,14 @@ class EditRestaurantDetailsController extends GetxController {
   final openingHoursController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final locationController = TextEditingController();
-  final menuImageController = TextEditingController(); // Keep for data binding
+  final menuImageController = TextEditingController(); 
   final bannerImageController =
-      TextEditingController(); // Keep for data binding
+      TextEditingController(); 
   final typeController = TextEditingController();
 
   final RxBool isLoading = false.obs;
 
-  // New reactive variables for displaying selected images
+  
   final RxString selectedMenuImagePath = ''.obs;
   final RxString selectedBannerImagePath = ''.obs;
 
@@ -32,7 +32,7 @@ class EditRestaurantDetailsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _filterController = Get.find<FilterController>();
+   _filterController = Get.find<FilterController>();
     _loadRestaurantData();
   }
 
@@ -60,13 +60,13 @@ class EditRestaurantDetailsController extends GetxController {
       openingHoursController.text = foundRestaurant.openingHours;
       phoneNumberController.text = foundRestaurant.phoneNumber;
       locationController.text = foundRestaurant.location;
-      menuImageController.text = foundRestaurant.menuImage;
-      bannerImageController.text = foundRestaurant.bannerImage;
+      // menuImageController.text = foundRestaurant.menuImage;
+      // bannerImageController.text = foundRestaurant.bannerImage;
       typeController.text = foundRestaurant.type;
 
-      // Initialize reactive paths for display
-      selectedMenuImagePath.value = foundRestaurant.menuImage;
-      selectedBannerImagePath.value = foundRestaurant.bannerImage;
+      
+      // selectedMenuImagePath.value = foundRestaurant.menuImage;
+      // selectedBannerImagePath.value = foundRestaurant.bannerImage;
     } else {
       Get.snackbar(
         'ข้อผิดพลาด',
@@ -80,7 +80,7 @@ class EditRestaurantDetailsController extends GetxController {
     }
   }
 
-  // New method to pick images
+  
   Future<void> pickImage(
     ImageSource source, {
     required bool isMenuImage,
@@ -92,11 +92,11 @@ class EditRestaurantDetailsController extends GetxController {
       if (isMenuImage) {
         selectedMenuImagePath.value = pickedFile.path;
         menuImageController.text =
-            pickedFile.path; // Update text controller as well
+            pickedFile.path; 
       } else {
         selectedBannerImagePath.value = pickedFile.path;
         bannerImageController.text =
-            pickedFile.path; // Update text controller as well
+            pickedFile.path; 
       }
     }
   }
@@ -133,15 +133,15 @@ class EditRestaurantDetailsController extends GetxController {
 
     isLoading.value = true;
 
-    // สร้างข้อมูลร้านค้าที่อัปเดตแล้ว
+    
     final updatedRestaurant = restaurantToEdit.value!.copyWith(
       restaurantName: restaurantNameController.text,
       description: descriptionController.text,
       openingHours: openingHoursController.text,
       phoneNumber: phoneNumberController.text,
       location: locationController.text,
-      menuImage: menuImageController.text, // Use updated path
-      bannerImage: bannerImageController.text, // Use updated path
+      // menuImage: menuImageController.text, 
+      // bannerImage: bannerImageController.text, 
       type: typeController.text,
     );
 

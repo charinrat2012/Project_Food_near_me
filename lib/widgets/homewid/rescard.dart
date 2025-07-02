@@ -29,29 +29,7 @@ class RestaurantCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
-          
-         
-         
-         
-         
-         
-              
-         
-         
-         
-         
-           
-         
-         
-         
-              
-         
-         
-         
-         
-         
-         
-          
+
           ),
         child: InkWell(
           onTap: onTap,

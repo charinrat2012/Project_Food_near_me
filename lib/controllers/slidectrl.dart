@@ -16,8 +16,6 @@ class SlideController extends GetxController {
     BannerItem(imagePath: 'assets/imgs/bn6.jpg', restaurantId: '6'),
     BannerItem(imagePath: 'assets/imgs/bn7.jpg', restaurantId: '7'),
     BannerItem(imagePath: 'assets/imgs/bn9.jpeg', restaurantId: '8'),
-    
-   
   ];
 
   late final RxList<BannerItem> displayBannerItems;
@@ -58,26 +56,26 @@ class SlideController extends GetxController {
       if (currentPage.value < displayBannerItems.length - 1) {
         targetPage = currentPage.value + 1;
       } else {
-       
         targetPage = _initialPageIndex;
       }
 
       if (pageController.hasClients) {
-        if (targetPage == _initialPageIndex && currentPage.value == displayBannerItems.length - 1) {
-         
+        if (targetPage == _initialPageIndex &&
+            currentPage.value == displayBannerItems.length - 1) {
           pageController.jumpToPage(targetPage);
           currentPage.value = targetPage;
         } else {
-          pageController.animateToPage(
-            targetPage,
-            duration: const Duration(milliseconds: 400),
-            curve: Curves.easeIn,
-          ).then((_) {
-           
-            if (pageController.hasClients && pageController.page != null) {
-              currentPage.value = pageController.page!.round();
-            }
-          });
+          pageController
+              .animateToPage(
+                targetPage,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeIn,
+              )
+              .then((_) {
+                if (pageController.hasClients && pageController.page != null) {
+                  currentPage.value = pageController.page!.round();
+                }
+              });
         }
       }
     });
@@ -86,31 +84,26 @@ class SlideController extends GetxController {
   void onPageChanged(int page) {
     currentPage.value = page;
     if (page == 0 && displayBannerItems.length > 1) {
-     
       pageController.jumpToPage(originalBannerItems.length);
       currentPage.value = originalBannerItems.length;
-    } else if (page == displayBannerItems.length - 1 && displayBannerItems.length > 1) {
-     
+    } else if (page == displayBannerItems.length - 1 &&
+        displayBannerItems.length > 1) {
       pageController.jumpToPage(_initialPageIndex);
       currentPage.value = _initialPageIndex;
     }
     _startAutoScroll();
   }
 
- 
   void navigateToRestaurantDetail(String restaurantId) {
-   
-   
     Get.to(
-      () => RestaurantDetailPageUi(
-        restaurantId: restaurantId,
-      ),
+      () => RestaurantDetailPageUi(restaurantId: restaurantId),
       binding: BindingsBuilder(() {
-       
-        Get.put(RestaurantDetailController(restaurantId: restaurantId), tag: restaurantId);
+        Get.put(
+          RestaurantDetailController(restaurantId: restaurantId),
+          tag: restaurantId,
+        );
       }),
     );
-    
   }
 
   @override

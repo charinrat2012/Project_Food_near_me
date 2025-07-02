@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../controllers/filterctrl.dart';
+
 class Formsearch extends StatelessWidget {
-  
-  const Formsearch({super.key,});
+  final String tag;
+
+  const Formsearch({super.key, required this.tag});
+
   @override
   Widget build(BuildContext context) {
-     final FilterController filterController = Get.find<FilterController>();
+    final FilterController filterController = Get.find<FilterController>();
+    
+    final TextEditingController currentController = tag == 'home'
+        ? filterController.homeSearchInputController
+        : filterController.favSearchInputController;
+        
+    final FocusNode currentFocusNode = tag == 'home'
+        ? filterController.homeSearchFocusNode
+        : filterController.favSearchFocusNode;
+
     return Column(
       children: [
         Padding(
@@ -18,10 +29,9 @@ class Formsearch extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(32.0),
-                  // gradient:  LinearGradient(colors: [Colors.blue.shade100, Colors.pink.shade100]),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 8 * 0.02), // Corrected alpha usage
+                  color: Colors.black.withValues(alpha: 0.05),
                   spreadRadius: 2,
                   blurRadius: 5,
                   offset: const Offset(0, 3),
@@ -29,31 +39,27 @@ class Formsearch extends StatelessWidget {
               ],
             ),
             child: TextField(
-               controller: filterController.searchInputController2,
-               focusNode: filterController.searchFocusNode, // Assign the FocusNode here
+              controller: currentController,
+              focusNode: currentFocusNode,
               decoration: InputDecoration(
                 hintText: 'ค้นหา...',
                 border: InputBorder.none,
-                suffixIcon: IconButton(icon:  Icon(Icons.search, color: Colors.grey[700],size: 18,), onPressed: () {
-                  filterController.applyFilters();
-                  filterController.clearSearchFocus(); // Clear focus on search button press
-                },),
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.search, color: Colors.grey[700], size: 18),
+                  onPressed: () {
+                    filterController.applyFilters();
+                    filterController.clearSearchFocus(tag);
+                  },
+                ),
               ),
-      
-               onSubmitted: (value) {
+              onSubmitted: (value) {
                 filterController.applyFilters();
-                filterController.clearSearchFocus(); // Clear focus on submit
+                filterController.clearSearchFocus(tag);
               },
-              onTapOutside: (value) {
-               filterController.clearSearchFocus(); // Clear focus on tap outside
+              onTapOutside: (event) {
+                 filterController.clearSearchFocus(tag);
               },
               autofocus: false,
-              onChanged: (value) => {
-                if (value.isEmpty) {
-                  // filterController.clearSearchFocus() ,
-                  filterController.applyFilters()
-                }
-              },
             ),
           ),
         ),

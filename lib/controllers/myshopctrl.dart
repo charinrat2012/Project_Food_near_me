@@ -1,4 +1,3 @@
-// lib/controllers/myshopctrl.dart
 import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 import 'package:food_near_me_app/controllers/filterctrl.dart';
@@ -12,15 +11,14 @@ class MyShopController extends GetxController {
 
   @override
   void onInit() {
+    
     super.onInit();
     _loginController = Get.find<LoginController>();
-    _filterController = Get.find<FilterController>();
+    // ใช้ FilterController จาก tag ของหน้า Home ซึ่งเป็นแหล่งข้อมูลหลัก
+   _filterController = Get.find<FilterController>();
 
-    // *** จุดแก้ไขที่ 1: เพิ่ม Listener ติดตามการเปลี่ยนแปลง ***
-    // ever() จะทำงานทุกครั้งที่ allRestaurantsObservable ใน FilterController เปลี่ยนแปลง
+    // ติดตามการเปลี่ยนแปลงของ allRestaurantsObservable และ userId เพื่อกรองร้านค้าของฉัน
     ever(_filterController.allRestaurantsObservable, (_) => filterMyShops());
-
-    // ever() จะทำงานทุกครั้งที่ User ID เปลี่ยน (เช่น ตอน login/logout)
     ever(_loginController.userId, (_) => filterMyShops());
 
     // เรียก filterMyShops() ครั้งแรกเพื่อแสดงผล
@@ -32,7 +30,6 @@ class MyShopController extends GetxController {
         _loginController.userId.value.isNotEmpty) {
       final String currentOwnerId = _loginController.userId.value;
 
-      // กรองร้านค้าที่เป็นของเจ้าของปัจจุบันจาก list กลาง
       final filteredShops = _filterController.allRestaurantsObservable
           .where((restaurant) => restaurant.ownerId == currentOwnerId)
           .toList();

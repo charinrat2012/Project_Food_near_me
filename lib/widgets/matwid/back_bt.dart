@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
-import '../../views/navbar.dart';
+import '../../views/navbar_ui.dart';
 class BackBt extends StatelessWidget {
   const BackBt({super.key, required this.srcp});
  

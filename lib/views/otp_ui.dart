@@ -9,7 +9,7 @@ import 'package:food_near_me_app/widgets/matwid/iconperson.dart';
 import 'package:food_near_me_app/widgets/otpwid/otp_head.dart';
 import 'package:food_near_me_app/widgets/otpwid/otp_logo.dart';
 import '../widgets/otpwid/otp_bt.dart';
-import 'navbar.dart';
+import 'navbar_ui.dart';
 
 class OtpUi extends StatelessWidget {
   const OtpUi({super.key});
@@ -45,7 +45,7 @@ class OtpUi extends StatelessWidget {
                           Stack(children: [Back3Bt(), Iconperson()]),
                           OtpHead(),
                           FormOtp(),
-                         
+
                           Expanded(child: SizedBox()),
                           OtpLogo(),
                           Expanded(child: SizedBox()),

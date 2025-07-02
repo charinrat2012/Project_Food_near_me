@@ -1,4 +1,4 @@
-// lib/screens/privacy_policy_ui.dart
+
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/widgets/matwid/back3_bt.dart';
 import 'package:get/get.dart';
@@ -22,35 +22,10 @@ class PrivacyPolicyUi extends StatelessWidget {
           fontSize: 20,
         ),
         toolbarHeight: 8 * 9,
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
       ),
       body: Container(
         color: const Color.fromARGB(255, 255, 255, 255),
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
+
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -73,7 +48,11 @@ class PrivacyPolicyUi extends StatelessWidget {
 
               Text(
                 '1. ข้อมูลที่เราเก็บรวบรวม',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -92,7 +71,11 @@ class PrivacyPolicyUi extends StatelessWidget {
 
               Text(
                 '2. การใช้ข้อมูลของคุณ',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -119,7 +102,11 @@ class PrivacyPolicyUi extends StatelessWidget {
 
               Text(
                 '3. การเปิดเผยข้อมูล',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -142,7 +129,11 @@ class PrivacyPolicyUi extends StatelessWidget {
 
               Text(
                 '4. การรักษาความปลอดภัยของข้อมูล',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -153,7 +144,11 @@ class PrivacyPolicyUi extends StatelessWidget {
 
               Text(
                 '5. การเปลี่ยนแปลงนโยบายความเป็นส่วนตัว',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -164,7 +159,11 @@ class PrivacyPolicyUi extends StatelessWidget {
 
               Text(
                 '6. การติดต่อเรา',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
               SizedBox(height: 8),
               Text(
@@ -174,7 +173,11 @@ class PrivacyPolicyUi extends StatelessWidget {
               SizedBox(height: 24),
               Text(
                 'อัปเดตล่าสุด: 24 มิถุนายน 2567',
-                style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic, color: Colors.black54),
+                style: TextStyle(
+                  fontSize: 14,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black54,
+                ),
               ),
             ],
           ),

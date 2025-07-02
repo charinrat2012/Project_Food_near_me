@@ -1,9 +1,9 @@
-// lib/widgets/matwid/appbarA.dart
+
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/setting_ui.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:io'; // <--- เพิ่มบรรทัดนี้
+import 'dart:io'; 
 
 import '../../controllers/loginctrl.dart';
 import '../../views/login_ui.dart';
@@ -11,7 +11,9 @@ import '../../views/myprofile_ui.dart';
 import '../../controllers/filterctrl.dart';
 
 class AppbarA extends StatelessWidget implements PreferredSizeWidget {
-  const AppbarA({super.key});
+  final String tag;
+
+  const AppbarA({super.key, required this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
               padding: const EdgeInsets.only(right: 16.0),
               child: PopupMenuButton<String>(
                 onSelected: (String result) async {
-                  filterController.clearSearchFocus();
+                  filterController.clearSearchFocus( tag);
                   FocusScope.of(context).unfocus();
 
                   await Future.delayed(const Duration(milliseconds: 100));
@@ -77,12 +79,12 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
                 child: CircleAvatar(
                   radius: 20,
                   backgroundImage: loginController.userProfileImageUrl.value.isNotEmpty
-                      ? (loginController.userProfileImageUrl.value.startsWith('assets/') // ตรวจสอบว่าเป็น asset path
-                          ? AssetImage(loginController.userProfileImageUrl.value) // ใช้ AssetImage
-                          : File(loginController.userProfileImageUrl.value).existsSync() // ตรวจสอบว่าเป็นไฟล์และไฟล์มีอยู่จริง
-                              ? FileImage(File(loginController.userProfileImageUrl.value)) // ใช้ FileImage
-                              : const AssetImage('assets/ics/person.png') // Fallback หากไม่ใช่ asset และไฟล์ไม่มีอยู่จริง
-                        ) as ImageProvider<Object>? // Cast to ImageProvider<Object>?
+                      ? (loginController.userProfileImageUrl.value.startsWith('assets/') 
+                          ? AssetImage(loginController.userProfileImageUrl.value) 
+                          : File(loginController.userProfileImageUrl.value).existsSync() 
+                              ? FileImage(File(loginController.userProfileImageUrl.value)) 
+                              : const AssetImage('assets/ics/person.png') 
+                        ) as ImageProvider<Object>? 
                       : null,
                   child: loginController.userProfileImageUrl.value.isEmpty
                       ? const Icon(Icons.person, color: Colors.white)
@@ -96,7 +98,7 @@ class AppbarA extends StatelessWidget implements PreferredSizeWidget {
           } else {
             return TextButton(
               onPressed: () {
-                filterController.clearSearchFocus();
+                filterController.clearSearchFocus(tag);
                 FocusScope.of(context).unfocus();
                 Get.offAll(() => LoginUi());
               },

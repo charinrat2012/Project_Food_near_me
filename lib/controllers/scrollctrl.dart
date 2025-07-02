@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 class ScrollpageController extends GetxController {
   late ScrollController scrollController;
   final RxBool showScrollToTopButton = false.obs;
@@ -9,20 +10,24 @@ class ScrollpageController extends GetxController {
     scrollController = ScrollController();
     scrollController.addListener(_scrollListener);
   }
+
   @override
   void onClose() {
     scrollController.removeListener(_scrollListener);
-    scrollController.dispose(); 
+    scrollController.dispose();
+
     super.onClose();
   }
+
   void _scrollListener() {
-    if (!scrollController.hasClients) return; 
+    if (!scrollController.hasClients) return;
     if (scrollController.offset >= 300 && !showScrollToTopButton.value) {
       showScrollToTopButton.value = true;
     } else if (scrollController.offset < 300 && showScrollToTopButton.value) {
       showScrollToTopButton.value = false;
     }
   }
+
   void scrollToTop() {
     if (scrollController.hasClients) {
       scrollController.animateTo(
@@ -32,8 +37,8 @@ class ScrollpageController extends GetxController {
       );
     }
   }
+
   void resetScrollButtonState() {
     showScrollToTopButton.value = false;
-    
   }
 }

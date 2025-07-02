@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
 import 'package:food_near_me_app/views/myprofile_ui.dart';
-import 'dart:io'; // <--- สำคัญ: ตรวจสอบว่ามีบรรทัดนี้
+import 'dart:io'; 
 
 import '../controllers/editeprofilectrl.dart';
 import '../controllers/scrollctrl.dart';
@@ -192,9 +192,9 @@ class EditProfileUi extends StatelessWidget {
                       ],
                     ),
                     child: ClipOval(
-                      child: editController.newProfileImagePath.isNotEmpty && File(editController.newProfileImagePath).existsSync() // ตรวจสอบไฟล์ที่เลือก
+                      child: editController.newProfileImagePath.isNotEmpty && File(editController.newProfileImagePath).existsSync() 
                           ? Image.file(
-                              File(editController.newProfileImagePath), // <--- ใช้ Image.file
+                              File(editController.newProfileImagePath), 
                               fit: BoxFit.cover,
                             )
                           : Image.asset(

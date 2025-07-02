@@ -9,7 +9,7 @@ import 'package:food_near_me_app/widgets/matwid/logo.dart';
 import 'package:get/get.dart';
 
 import '../widgets/matwid/back3_bt.dart';
-import 'navbar.dart';
+import 'navbar_ui.dart';
 
 class SettingUi extends StatelessWidget {
   SettingUi({super.key});
@@ -50,7 +50,7 @@ class SettingUi extends StatelessWidget {
               children: [
                 OutlinedButton(
                   onPressed: () {
-                    // Get.offAll(PrivacyPolicyUi());
+                    
                      Get.to(PrivacyPolicyUi());
                     
                   },
@@ -84,7 +84,7 @@ class SettingUi extends StatelessWidget {
                 OutlinedButton(
                   onPressed: () {
                     Get.to(TermsConditionsUi());
-                    // Get.offAll(TermsConditionsUi());
+                    
                   },
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -116,7 +116,7 @@ class SettingUi extends StatelessWidget {
                 OutlinedButton(
                   onPressed: () {
                     Get.to(AboutAppUi());
-                    // Get.offAll(AboutAppUi());
+                    
                   },
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.white,

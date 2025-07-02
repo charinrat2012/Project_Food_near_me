@@ -13,8 +13,8 @@ class EditRestaurantDetailsUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // *** จุดแก้ไขที่ 1: เปลี่ยนจาก Get.put เป็น Get.find ***
-    // เราจะใช้ Controller ที่ถูกสร้างไว้แล้วจากตอนที่กดปุ่ม ไม่สร้างใหม่ที่นี่
+    
+    
     final EditRestaurantDetailsController editRestaurantController =
         Get.find<EditRestaurantDetailsController>(tag: restaurantId);
     final ScrollpageController scrollpageController =

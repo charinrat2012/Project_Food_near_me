@@ -1,3 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
@@ -5,7 +9,7 @@ import 'package:food_near_me_app/controllers/reviewctrl.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:food_near_me_app/controllers/filterctrl.dart';
 import '../model/restaurant.dart';
-import '../views/navbar.dart';
+import '../views/navbar_ui.dart';
 
 class RestaurantDetailController extends GetxController {
   final LoginController loginController = Get.find<LoginController>();
@@ -15,6 +19,7 @@ class RestaurantDetailController extends GetxController {
   final TextEditingController commentController = TextEditingController();
   final RxDouble userRating = 0.0.obs;
   final String restaurantId;
+  
 
   final Rx<Restaurant?> restaurant = Rx<Restaurant?>(null);
   final RxBool isDeleting = false.obs;
@@ -27,9 +32,11 @@ class RestaurantDetailController extends GetxController {
   void onInit() {
     super.onInit();
     _reviewController = Get.find<ReviewController>();
-    _filterController = Get.find<FilterController>();
-
-    loadRestaurantDetails(); // โหลดข้อมูลครั้งแรก
+   _filterController = Get.find<FilterController>();
+    //filterController = Get.find<FilterController>();
+      // ever(_filterController.allRestaurantsObservable, (_) => loadRestaurantDetails());
+   
+    loadRestaurantDetails(); 
     _loadReviews();
   }
 
@@ -37,14 +44,14 @@ class RestaurantDetailController extends GetxController {
     loadRestaurantDetails();
   }
 
-  // ทำให้เป็น public เพื่อให้เรียกจากภายนอกได้ (เช่นหลังแก้ไขข้อมูล)
+  
   void loadRestaurantDetails() {
     final newRestaurantInstance = _filterController.allRestaurantsObservable
         .firstWhereOrNull((res) => res.id == restaurantId);
 
     restaurant.value = newRestaurantInstance;
 
-    // จัดการกรณีที่อาจหาร้านไม่เจอ (เช่น ร้านถูกลบไปแล้ว)
+    
     if (restaurant.value == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Get.snackbar(
@@ -55,7 +62,7 @@ class RestaurantDetailController extends GetxController {
           colorText: Colors.black,
           duration: const Duration(milliseconds: 900),
         );
-        Get.back(); // กลับไปหน้าก่อนหน้าอย่างปลอดภัย
+        // Get.back(); 
       });
     }
   }
@@ -196,4 +203,5 @@ class RestaurantDetailController extends GetxController {
     commentController.dispose();
     super.onClose();
   }
+ 
 }

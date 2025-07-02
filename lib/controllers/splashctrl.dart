@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../views/navbar.dart';
+import '../views/navbar_ui.dart';
 
 class SplashContrller extends GetxController {
   @override

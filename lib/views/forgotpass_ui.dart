@@ -11,7 +11,7 @@ import '../widgets/matwid/backgoundlogin.dart';
 import '../widgets/matwid/blurcontainer.dart';
 import '../widgets/matwid/checkbox.dart';
 import '../widgets/matwid/iconperson.dart';
-import 'navbar.dart';
+import 'navbar_ui.dart';
 
 class ForgotPassUi extends StatelessWidget {
   ForgotPassUi({super.key});

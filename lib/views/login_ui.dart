@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
-import 'package:food_near_me_app/views/navbar.dart';
+import 'package:food_near_me_app/views/navbar_ui.dart';
 import 'package:food_near_me_app/widgets/matwid/back_bt.dart';
 import 'package:food_near_me_app/widgets/matwid/backgoundlogin.dart';
 import 'package:food_near_me_app/widgets/matwid/blurcontainer.dart';

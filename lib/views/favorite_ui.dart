@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/widgets/matwid/bt_scrolltop.dart';
 import 'package:get/get.dart';
 
 import 'package:food_near_me_app/controllers/filterctrl.dart';
@@ -11,14 +12,16 @@ import 'package:food_near_me_app/widgets/matwid/scrolltotop_bt.dart';
 import 'package:food_near_me_app/views/details_ui.dart';
 import 'package:food_near_me_app/controllers/detailctrl.dart';
 
+
+
 class FavoriteUi extends StatelessWidget {
   const FavoriteUi({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ScrollpageController scrollpageController =
-        Get.put(ScrollpageController(), tag: 'favorite_scroll');
+    final ScrollpageController scrollpageController = Get.find<ScrollpageController>(tag: 'favorite_scroll');
     final FilterController filterController = Get.find<FilterController>();
+    // final FilterController filterController = Get.find<FilterController>();
     final LoginController loginController = Get.find<LoginController>();
 
     return GestureDetector(
@@ -27,7 +30,7 @@ class FavoriteUi extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: Colors.pink[200],
-        appBar: const AppbarA(),
+        appBar: const AppbarA(tag: 'favorite filter ctrl',),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
@@ -57,7 +60,7 @@ class FavoriteUi extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Formsearch(),
+                               Formsearch(tag:'favorite'),
                               const SizedBox(height: 8),
 
                               Obx(() {
@@ -115,17 +118,7 @@ class FavoriteUi extends StatelessWidget {
                   ),
                 ],
               ),
-              Obx(
-                () => scrollpageController.showScrollToTopButton.value
-                    ? Positioned(
-                        right: 20.0,
-                        bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                        child: ScrollToTopButton(
-                          onPressed: scrollpageController.scrollToTop,
-                        ),
-                      )
-                    : Container(),
-              ),
+             BtScrollTop(tag: 'favorite_scroll'),
             ],
           ),
         ),

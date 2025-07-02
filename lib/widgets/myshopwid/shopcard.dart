@@ -1,4 +1,4 @@
-// lib/widgets/myshopwid/shopcard.dart
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../matwid/star_rating.dart';

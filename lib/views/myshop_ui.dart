@@ -1,39 +1,28 @@
-// lib/views/myshop_ui.dart
 import 'package:flutter/material.dart';
+import 'package:food_near_me_app/widgets/matwid/bt_scrolltop.dart';
 
 import 'package:get/get.dart';
 
-// Import Controllers
 import '../controllers/detailctrl.dart';
 import '../controllers/myshopctrl.dart';
 import '../controllers/scrollctrl.dart';
 
-
-// Import Widgets
 import '../widgets/matwid/appbarA.dart';
 import 'details_ui.dart';
-import 'login_ui.dart';
 
 import '../widgets/matwid/scrolltotop_bt.dart';
-// import 'widgets/matwid/star_rating.dart';
-// import 'widgets/matwid/statustag.dart';
-
-// *** Import MyShopCard ที่สร้างใหม่ ***
 
 import '../widgets/myshopwid/shopcard.dart';
-
-// Helper Widget สำหรับขอบ Gradient (ถ้าคุณต้องการ)
-// ควรย้ายไปอยู่ในไฟล์แยกต่างหาก (เช่น common/gradient_border.dart)
-// ถ้าไม่ใช้ gradient border กับ MyShopCard ก็สามารถลบ class นี้ออกได้
 
 class MyshopUi extends StatelessWidget {
   const MyshopUi({super.key});
 
   @override
   Widget build(BuildContext context) {
-     final ScrollpageController scrollpageController =
-        Get.put(ScrollpageController(), tag: 'myshop_scroll');
-   
+    
+    final ScrollpageController scrollpageController =
+        Get.find<ScrollpageController>(tag: 'myshop_scroll');
+
     final MyShopController myshopController = Get.find<MyShopController>();
 
     return GestureDetector(
@@ -42,13 +31,12 @@ class MyshopUi extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: Colors.pink[200],
-         appBar: const AppbarA(),
+        appBar: const AppbarA(tag: 'myshop filter ctrl'),
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.blue[200]!,
-              Colors.pink[200]!,
-            ]),
+            gradient: LinearGradient(
+              colors: [Colors.blue[200]!, Colors.pink[200]!],
+            ),
           ),
           child: Stack(
             children: [
@@ -70,38 +58,38 @@ class MyshopUi extends StatelessWidget {
                           controller: scrollpageController.scrollController,
                           padding: const EdgeInsets.all(16.0),
                           child: Obx(
-                           () => Column(
+                            () => Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                
-                            
-                               
-                                ...myshopController.myOwnerShopList.map((restaurant) {
-                                 return MyShopCard(
-                                        imageUrl: restaurant.imageUrl,
-                                        restaurantName: restaurant.restaurantName,
-                                        description: restaurant.description,
-                                        rating: restaurant.rating,
-                                        isOpen: restaurant.isOpen,// ส่ง RxBool ไปตรงๆ
-                                        showMotorcycleIcon: restaurant.showMotorcycleIcon,
-                                         shopId: restaurant.id,
-                                        onTap: () {
-                                          Get.to(
-                                            () => RestaurantDetailPageUi(
+                                ...myshopController.myOwnerShopList.map((
+                                  restaurant,
+                                ) {
+                                  return MyShopCard(
+                                    imageUrl: restaurant.imageUrl,
+                                    restaurantName: restaurant.restaurantName,
+                                    description: restaurant.description,
+                                    rating: restaurant.rating,
+                                    isOpen: restaurant.isOpen,
+                                    showMotorcycleIcon:
+                                        restaurant.showMotorcycleIcon,
+                                    shopId: restaurant.id,
+                                    onTap: () {
+                                      Get.to(
+                                        () => RestaurantDetailPageUi(
+                                          restaurantId: restaurant.id,
+                                        ),
+                                        binding: BindingsBuilder(() {
+                                          Get.put(
+                                            RestaurantDetailController(
                                               restaurantId: restaurant.id,
                                             ),
-                                            binding: BindingsBuilder(() {
-                                              Get.put(
-                                                RestaurantDetailController(
-                                                  restaurantId: restaurant.id,
-                                                ),
-                                                tag: restaurant.id,
-                                              );
-                                            }),
+                                            tag: restaurant.id,
                                           );
-                                        },
+                                        }),
                                       );
-                                    }).toList(),
+                                    },
+                                  );
+                                }).toList(),
                                 const SizedBox(height: 80),
                               ],
                             ),
@@ -112,17 +100,7 @@ class MyshopUi extends StatelessWidget {
                   ),
                 ],
               ),
-              Obx(
-                () => scrollpageController.showScrollToTopButton.value
-                    ? Positioned(
-                        right: 20.0,
-                        bottom: MediaQuery.of(context).padding.bottom + 16.0,
-                        child: ScrollToTopButton(
-                          onPressed: scrollpageController.scrollToTop,
-                        ),
-                      )
-                    : Container(),
-              ),
+              BtScrollTop(tag: 'myshop_scroll'),
             ],
           ),
         ),

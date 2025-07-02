@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:get/get.dart';
-import 'package:food_near_me_app/controllers/loginctrl.dart'; // Import LoginController
-import 'package:food_near_me_app/controllers/fogotpassctrl.dart'; // Import ForgotpassController
+import 'package:food_near_me_app/controllers/loginctrl.dart'; 
+import 'package:food_near_me_app/controllers/fogotpassctrl.dart'; 
 
 class ResetpassController extends GetxController {
   final passwordController = TextEditingController();
@@ -16,9 +16,9 @@ class ResetpassController extends GetxController {
   set obscureText(value) => _obscureText.value = value;
   set obscureText2(value) => _obscureText2.value = value;
 
-  // Inject LoginController เพื่อเข้าถึงและแก้ไขข้อมูลผู้ใช้
+  
   final LoginController _loginController = Get.find<LoginController>();
-  // Inject ForgotpassController เพื่อดึงอีเมลที่ต้องการรีเซ็ต
+  
   final ForgotpassController _forgotpassController =
       Get.find<ForgotpassController>();
 
@@ -30,10 +30,10 @@ class ResetpassController extends GetxController {
   }
 
   void fetchReset() {
-    // ซ่อนคีย์บอร์ดหากยังเปิดอยู่
+    
     FocusScope.of(Get.context!).unfocus();
 
-    // 1. ตรวจสอบการกรอกข้อมูล
+    
     if (passwordController.text.isEmpty ||
         confirmPasswordController.text.isEmpty) {
       Get.closeCurrentSnackbar();
@@ -47,7 +47,7 @@ class ResetpassController extends GetxController {
       );
       return;
     }
-    // 2. ตรวจสอบความยาวรหัสผ่าน
+    
     else if (passwordController.text.length < 6) {
       Get.closeCurrentSnackbar();
       Get.snackbar(
@@ -61,7 +61,7 @@ class ResetpassController extends GetxController {
       );
       return;
     }
-    // 3. ตรวจสอบว่ารหัสผ่านตรงกันหรือไม่
+    
     else if (passwordController.text != confirmPasswordController.text) {
       Get.closeCurrentSnackbar();
       Get.snackbar(
@@ -75,10 +75,10 @@ class ResetpassController extends GetxController {
       return;
     }
 
-    // ดึงอีเมลที่ต้องการรีเซ็ตมาจาก ForgotpassController
+    
     final String targetEmail = _forgotpassController.resetEmail;
 
-    // ตรวจสอบว่ามีอีเมลถูกส่งมาหรือไม่
+    
     if (targetEmail.isEmpty) {
       Get.closeCurrentSnackbar();
       Get.snackbar(
@@ -89,11 +89,11 @@ class ResetpassController extends GetxController {
         colorText: Colors.black,
         duration: const Duration(milliseconds: 900),
       );
-      Get.offAll(() => LoginUi()); // นำกลับไปหน้า Login
+      Get.offAll(() => LoginUi()); 
       return;
     }
 
-    // ค้นหา index ของผู้ใช้ด้วยอีเมลที่ได้จาก ForgotpassController
+    
     final int userIndex = _loginController.emails.indexOf(targetEmail);
 
     if (userIndex == -1) {
@@ -106,13 +106,13 @@ class ResetpassController extends GetxController {
         colorText: Colors.black,
         duration: const Duration(milliseconds: 900),
       );
-      Get.offAll(() => LoginUi()); // นำกลับไปหน้า Login
+      Get.offAll(() => LoginUi()); 
       return;
     }
 
-    // 4. ตรวจสอบรหัสผ่านซ้ำกับรหัสผ่านเก่า
+    
     final String currentOldPassword =
-        _loginController.passwords[userIndex]; // รหัสผ่านเก่าของ user คนนี้
+        _loginController.passwords[userIndex]; 
     if (passwordController.text == currentOldPassword) {
       Get.closeCurrentSnackbar();
       Get.snackbar(
@@ -126,18 +126,18 @@ class ResetpassController extends GetxController {
       return;
     }
 
-    // หากผ่านเงื่อนไขทั้งหมด: อัปเดตรหัสผ่านใหม่ใน LoginController's mock data
+    
     _loginController.passwords[userIndex] = passwordController.text;
 
-    // สำคัญ: ถ้าผู้ใช้ที่รีเซ็ตรหัสผ่านเป็นคนเดียวกับที่เคยล็อกอินอยู่ก่อนหน้านี้
-    // และ userPassword ใน LoginController ยังคงเป็นค่าเก่า
-    // เราควรจะอัปเดต userPassword ใน _loginController ด้วย เพื่อให้ข้อมูลที่แสดงใน MyProfileUi ถูกต้อง
-    // แต่ควรทำเฉพาะเมื่อ userEmail.value ตรงกับ targetEmail เท่านั้น
+    
+    
+    
+    
     if (_loginController.userEmail.value == targetEmail) {
       _loginController.userPassword.value = passwordController.text;
     }
 
-    // ล้างข้อมูลใน TextField และซ่อนคีย์บอร์ด
+    
     passwordController.clear();
     confirmPasswordController.clear();
     FocusScope.of(Get.context!).unfocus();
@@ -151,7 +151,7 @@ class ResetpassController extends GetxController {
       duration: const Duration(milliseconds: 900),
     );
 
-    // นำทางไปยังหน้า LoginUi
+    
     Get.offAll(() => LoginUi());
   }
 }

@@ -1,4 +1,4 @@
-// lib/widgets/homewid/LocationFilterBar.dart
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/filterctrl.dart';
@@ -9,6 +9,7 @@ class LocationFilterBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final FilterController filterController = Get.find<FilterController>();
     final FilterController filterController = Get.find<FilterController>();
 
     return Padding(
@@ -33,7 +34,7 @@ class LocationFilterBar extends StatelessWidget {
             children: [
               Flexible(fit: FlexFit.loose, child: Obx(() => _buildCategoryDropdown(filterController))),
               const SizedBox(width: 8),
-              // เพิ่ม SizedBox เพื่อกำหนดความกว้างที่ชัดเจนให้กับ Dropdown สถานะร้าน
+              
               SizedBox(width: 143, child: Obx(() => _buildOpenStatusDropdown(filterController))),
             ],
           ),
@@ -151,7 +152,7 @@ class LocationFilterBar extends StatelessWidget {
     );
   }
 
-  // ฟังก์ชันใหม่สำหรับ Dropdown สถานะร้านค้า (เปิด/ปิด)
+  
   Widget _buildOpenStatusDropdown(FilterController filterController) {
     return Container(
       height: 35,

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/home_ui.dart';
 import 'package:get/get.dart';
 import '../views/login_ui.dart';
-import '../views/navbar.dart';
+import '../views/navbar_ui.dart';
 
 class LoginController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _obscureText = true.obs;
-  // เพิ่ม observable เพื่อควบคุม obscureText
+  
 
   get obscureText => _obscureText.value;
   set obscureText(value) => _obscureText.value = value;
@@ -29,8 +29,8 @@ class LoginController extends GetxController {
   List<String> phoneNumber = ['0123456789', '9876543210', '9876543210'];
   List<String> favoriteRestaurants = ['1,2', '2,3', '3,6'];
 
-  final RxBool isLoggedIn = false.obs;
-  final RxString userId = ''.obs;
+  final RxBool isLoggedIn = true.obs;
+  final RxString userId = '1'.obs;
   final RxString userName = ''.obs;
   final RxString userEmail = ''.obs;
   final RxString userPhoneNumber = ''.obs;
@@ -100,7 +100,7 @@ class LoginController extends GetxController {
         duration: const Duration(milliseconds: 900),
       );
 
-      // Get.offAll(() => Navbar());
+      
       Get.to(() => Navbar());
     } else {
       Get.closeCurrentSnackbar();
@@ -132,7 +132,7 @@ class LoginController extends GetxController {
 
     await Future.delayed(const Duration(milliseconds: 100));
     Get.offAll(() => LoginUi());
-    // Get.to(() => LoginUi());
+    
   }
 
   void _clearUserData() {
@@ -144,18 +144,18 @@ class LoginController extends GetxController {
     userPhoneNumber.value = '';
     userPassword.value = '';
     userFavoriteList
-        .clear(); // <--- เพิ่มบรรทัดนี้เพื่อเคลียร์รายการโปรดเมื่อออกจากระบบ
+        .clear(); 
   }
 
   Future<void> deleteAccount() async {
-    // ในแอปพลิเคชันจริง: อาจแสดง loading dialog ก่อนเรียก API
-    // Get.dialog(
-    //   const Center(child: CircularProgressIndicator()),
-    //   barrierDismissible: false,
-    // );
+    
+    
+    
+    
+    
 
     try {
-      // ตรวจสอบว่าผู้ใช้ล็อกอินอยู่หรือไม่และมี userId ที่ถูกต้องหรือไม่
+      
       if (!isLoggedIn.value || userId.value.isEmpty) {
         Get.snackbar(
           'ข้อผิดพลาด',
@@ -165,12 +165,12 @@ class LoginController extends GetxController {
           colorText: Colors.black,
           duration: const Duration(milliseconds: 900),
         );
-        // ปิด loading dialog หากมี
-        // Get.back();
+        
+        
         return;
       }
 
-      // ค้นหา index ของผู้ใช้ปัจจุบันใน mock data lists
+      
       final int userIndex = userid.indexOf(userId.value);
 
       if (userIndex == -1) {
@@ -182,35 +182,35 @@ class LoginController extends GetxController {
           colorText: Colors.black,
           duration: const Duration(milliseconds: 900),
         );
-        // ปิด loading dialog หากมี
-        // Get.back();
+        
+        
         return;
       }
 
-      // *** ในแอปพลิเคชันจริง: เรียก API หรือ Firebase Auth เพื่อลบบัญชีผู้ใช้จริง ***
-      // ตัวอย่าง Firebase Auth: await FirebaseAuth.instance.currentUser!.delete();
-      // หรือเรียก API: await apiService.deleteUser(userId.value);
+      
+      
+      
 
-      // จำลองการทำงาน: หน่วงเวลา 2 วินาทีเพื่อจำลองการเรียก API
+      
       await Future.delayed(const Duration(seconds: 1));
 
-      // ลบข้อมูลผู้ใช้จากทุก List จำลอง (นี่คือการ "ลบ" จริงๆ ในบริบทของ Mock Data)
+      
       userid.removeAt(userIndex);
       names.removeAt(userIndex);
       emails.removeAt(userIndex);
       passwords.removeAt(userIndex);
       profileImages.removeAt(userIndex);
       phoneNumber.removeAt(userIndex);
-      // ตรวจสอบ favoriteRestaurants.length ก่อน removeAt เพื่อป้องกัน Index out of bounds
+      
       if (userIndex < favoriteRestaurants.length) {
         favoriteRestaurants.removeAt(userIndex);
       }
 
-      // หลังจากลบบัญชีใน Backend/Mock Data สำเร็จ ให้ล้างข้อมูลผู้ใช้ใน Controller
+      
       _clearUserData();
 
-      // ปิด loading dialog หากมี
-      // Get.back();
+      
+      
 
       Get.snackbar(
         'ลบบัญชีสำเร็จ',
@@ -221,12 +221,12 @@ class LoginController extends GetxController {
         duration: const Duration(milliseconds: 900),
       );
 
-      // นำทางไปยังหน้า Login หลังจากลบบัญชีสำเร็จ
+      
       Get.offAll(() => LoginUi());
     } catch (e) {
-      // หากเกิดข้อผิดพลาดในการลบ
-      // ปิด loading dialog หากมี
-      // Get.back();
+      
+      
+      
 
       Get.snackbar(
         'ลบบัญชีไม่สำเร็จ',
@@ -239,10 +239,10 @@ class LoginController extends GetxController {
     }
   }
 
-  // เมธอดส่วนตัวสำหรับล้างข้อมูลผู้ใช้
+  
   var isPasswordVisible = false.obs;
 
-  // เมธอดสำหรับสลับสถานะการมองเห็นรหัสผ่าน
+  
   void togglePasswordVisibility() {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
@@ -253,7 +253,7 @@ class LoginController extends GetxController {
     isEditPasswordVisible.value = !isEditPasswordVisible.value;
   }
 
-  // เมธอดสำหรับสลับสถานะการมองเห็นรหัสผ่านในหน้าแก้ไขโปรไฟล์ (ช่องยืนยันรหัสผ่าน)
+  
   void toggleConfirmPasswordVisibility() {
     isConfirmPasswordVisible.value = !isConfirmPasswordVisible.value;
   }

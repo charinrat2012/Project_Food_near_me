@@ -10,7 +10,7 @@ import 'package:food_near_me_app/widgets/resetwid/resetpass_bt.dart';
 import 'package:food_near_me_app/widgets/resetwid/resetpass_head.dart';
 
 import '../widgets/matwid/back3_bt.dart';
-import 'navbar.dart';
+import 'navbar_ui.dart';
 
 class ResetpassUi extends StatelessWidget {
   const ResetpassUi({super.key});
@@ -46,19 +46,9 @@ class ResetpassUi extends StatelessWidget {
                           Stack(children: [Back3Bt(), Iconperson()]),
                           ResetpassHead(),
                           FormReset(),
-                         
+
                           Expanded(child: SizedBox()),
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
+
                           ResetpassBt(),
                         ],
                       ),

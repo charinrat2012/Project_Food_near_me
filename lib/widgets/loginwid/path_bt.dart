@@ -17,7 +17,7 @@ class PathBt extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                // Get.offAll(RegisterUi());
+                
                 Get.to(RegisterUi());
               },
               child: Text(
@@ -30,7 +30,7 @@ class PathBt extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                // Get.offAll(ForgotPassUi());
+                
                 Get.to(ForgotPassUi());
               },
               child: Text(

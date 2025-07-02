@@ -1,9 +1,9 @@
-// Project_Food_near_me - Copy/lib/controllers/registerctrl.dart
+
 import 'package:flutter/material.dart';
 import 'package:food_near_me_app/views/login_ui.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
-import 'package:food_near_me_app/views/navbar.dart';
+import 'package:food_near_me_app/views/navbar_ui.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RegisterController extends GetxController {

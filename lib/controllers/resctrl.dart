@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:food_near_me_app/controllers/loginctrl.dart';
-// คุณสามารถสร้างไฟล์ใหม่สำหรับเก็บข้อมูลดิบ หรือจะใส่ไว้ในนี้ตามตัวอย่างก็ได้
+
 import 'package:food_near_me_app/widgets/matwid/reslist.dart';
 
 class RestaurantController extends GetxController {
